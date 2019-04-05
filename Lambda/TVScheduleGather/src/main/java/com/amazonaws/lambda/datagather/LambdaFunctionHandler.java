@@ -104,7 +104,7 @@ public class LambdaFunctionHandler implements RequestHandler<Object, Response> {
     webClient.getOptions().setJavaScriptEnabled(false);
     for(String item : channellist) {
       List<Map<String,String>> scheduleList=new ArrayList<>();
-      context.getLogger().log("Processing... " + item + "\n");
+      context.getLogger().log("Processing " + item + "...	");
       HtmlPage page = null;
       try {
         page = (HtmlPage) webClient.getPage(urlbase + item + "/");
@@ -152,10 +152,9 @@ public class LambdaFunctionHandler implements RequestHandler<Object, Response> {
         return new Response(500);
       }
       PutItemOutcome outcome = table.putItem(new Item().withPrimaryKey("channel", removeHypen(item)).withList("schedule", scheduleList));
-
+      context.getLogger().log("Done.\n");
     }
     webClient.close();
-    context.getLogger().log("SONO ARRIVATO ALLA FINE");
     return new Response(200);
   }
 
