@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">swetlApp</string>
+    <string name="action_settings">Settings</string>
+    <string name="logout">Logout</string>
+    <string name="delete">Delete</string>
+    <string name="workflow">Workflow</string>
+    <string name="setwf">set</string>
+    <string name="available_connectors">available connectors</string>
+    <string name="active_connectors">active connectors</string>
+    <string name="save_edits">save edits</string>
+    <string name="add">add</string>
+    <string name="remove">remove</string>
+    <string name="setConn">set</string>
+</resources>
