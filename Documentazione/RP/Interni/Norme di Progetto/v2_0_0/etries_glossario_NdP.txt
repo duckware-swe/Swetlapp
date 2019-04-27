@@ -1,0 +1,11 @@
+- requisiti 
+    la parola requisito assume un significato diverso dipendentemente dal punto di vista: nell'ottica del cliente è "cosa mi serve?", mentre dal punto di vista del fornitore un singolo requisito cliente si traduce in k requisiti, che tipicamente indicano la capacità di un sistema di verificare una certa condizione, la capacità di una persona di svolgere un determinato compito e la documentazione che descrive i due significati precedenti. I requisiti devono poter essere trovati facilmente, perciò oltre ad un sistema di numerazione vengono divisi in requisiti di processo (requisito su come devo fare le cose) e requisiti di prodotto (requisito su cosa devo fare). Vengono inoltre categorizzati in Obbligatori, Opzionali (se non ci sono va bene lo stesso) e Desiderabili (negoziabili). Tutti i requisiti inoltre devono essere verificabili (ad esempio il requisito "deve essere bello" non è verificabile);
+
+- alexa	
+	Logo Amazon Alexa
+	Amazon Alexa è un assistente personale intelligente sviluppato dalla azienda statunitense Amazon, utilizzato per la prima volta nei dispositivi Amazon Echo e Amazon Echo Dot sviluppati dalla sezione Amazon Lab126.
+
+- ticket
+
+- branch master
+	I rami (branch o più estesamente “ramificazioni”) vengono utilizzati in Git per l’implementazione di funzionalità tra loro isolate, cioè sviluppate in modo indipendente l’una dall’altra ma a partire dalla medesima radice.

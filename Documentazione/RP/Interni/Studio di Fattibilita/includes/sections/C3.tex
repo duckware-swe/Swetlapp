@@ -1,0 +1,27 @@
+\clearpage
+\section{Capitolato C3 - Grafana \& Bayes}
+\label{sec:c3}
+\subsection{Descrizione}
+Il capitolato C3 si pone l'obiettivo di sviluppare un plug-in per la piattaforma Grafana, che gestisca e monitori il flusso di dati proveniente dal reparto DevOps, tramite l'implementazione di una o più reti Bayesiane. 
+L'applicativo, attraverso il modello probabilistico, dovrebbe essere in grado di evidenziare le criticità nei \markg{processi} di DevOps, aiutando quindi le \markg{software} houses a capire dove intervenire per migliorare l'erogazione del servizio.
+
+\subsection{Dominio Applicativo}
+Costruire un plug-in di Grafana che applichi la definizione di una o più reti bayesiane al flusso di dati provenienti dal campo, per identificare i problemi che gli operatori di erogazione possono segnalare alla fabbrica del \markg{software} al fine di migliorare la qualità del servizio.
+
+\subsection{Dominio Tecnologico}
+\begin{description}	
+	\item[Grafana:] Piattaforma open source di analisi e monitoraggio di flussi di dati in real-time. Fortemente modulare, consente agli sviluppatori di creare plug-in personalizzati sfruttando la duttilità di javascript.
+Grafana archivia i dati in InfluxDB, un database specializzato per serie temporali.\\
+Link: \href{https://grafana.com/}{https://grafana.com/}
+	
+	\item[Javascript:] Linguaggio di scripting orientato agli oggetti e agli eventi, comunemente utilizzato nella programmazione web lato \markg{client} per la creazione, in siti e applicazioni web, di effetti dinamici interattivi tramite funzioni di script invocate da eventi.
+Ultimamente il suo campo di utilizzo è stato esteso alle cosiddette Hybrid App (app ibride), con le quali è possibile creare app per più sistemi operativi utilizzando un unico codice sorgente.\\
+Link: \href{https://www.javascript.com/}{https://www.javascript.com/}
+	
+	\item[Reti Bayesiane:] Modello grafico probabilistico che rappresenta un insieme di variabili stocastiche con le loro dipendenze condizionali attraverso l'uso di un grafo aciclico, in cui i nodi rappresentano le variabili, mentre gli archi rappresentano le relazioni di dipendenza statistica tra le variabili e le distribuzioni locali di probabilità dei nodi figlio rispetto ai valori dei nodi padre.\\
+Libreria utilizzata:\href{https://github.com/vangj/jsbayes}{https://github.com/vangj/jsbayes} 
+\end{description}
+
+\subsection{Valutazione Finale}
+Questo capitolato è stato accolto discretamente bene dal gruppo, forse per merito dell'ottima presentazione e dall'ambizione dei singoli di interfacciarsi con una grossa azienda del settore, tanto da essersi guadagnato il terzo posto tra le preferenze	generali.
+Tuttavia, in seguito ad un'attenta analisi dei progetti disponibili e delle specifiche richieste, il team di Duckware ha deciso di scartare questo progetto in quanto ritenuto troppo circoscritto, oltre a fornire un apporto cognitivo inferiore rispetto alle altre proposte.

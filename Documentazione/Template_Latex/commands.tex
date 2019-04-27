@@ -1,0 +1,166 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% COMANDI DA RIDEFINIRE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%TITOLO
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\thetitle}{TEMPLATE}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%VERSIONE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\theversion}{ 0.0.0 }
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%DATA
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\thedate}{ 00 Mese 2018 }
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%DATA (Ultima modifica)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\thedatelast}{ 00 Mese 2018 }
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%USO (INTERNO/ESTERNO)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\usage}{ Interno/Esterno }
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%STATO
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\status}{ Da Approvare/Approvato/.. }
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%RESPONSABILE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\resp}{Unico Responsabile}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%VERIFICATORI
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\verif}{Primo Verificatore, Secondo Verificatore}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%REDAZIONE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\editorfrow}{Membri Redazione, Prima Riga}
+\newcommand{\editorsrow}{Membri Redazione, Seconda Riga}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%NOME PROPONENTE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\proposer}{zero12}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%DESCRIZIONE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\descript}{
+	\\[0.65cm]
+	\textbf{Descrizione}\\
+	\input{../includes/description}
+	\\[0.65cm]	
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%CONTENUTI
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\contents}{
+	\input{../includes/sections/example}
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% COMANDI DA NON RIDEFINIRE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%NOME E EMAIL GRUPPO
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\groupName}{duckware}
+\newcommand{\groupEmail}{duckware.swe@gmail.com}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%NOME MEMBRI DEL GRUPPO
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\luca}{\mbox{Luca} \textsc{\mbox{Stocco}}}
+\newcommand{\sonia}{\mbox{Sonia} \textsc{\mbox{Menon}}}
+\newcommand{\alberto}{\mbox{Alberto} \textsc{\mbox{Miola}}}
+\newcommand{\pardeep}{\mbox{Pardeep} \textsc{\mbox{Singh}}}
+\newcommand{\matteo}{\mbox{Matteo} \textsc{\mbox{Pellanda}}}
+\newcommand{\alessandro}{\mbox{Alessandro} \textsc{\mbox{Pegoraro}}}
+\newcommand{\andrea}{\mbox{Andrea} \textsc{\mbox{Pavin}}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%NOME DEI DOCUMENTI
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\SdF}{Studio di Fattibilità}
+\newcommand{\PdP}{Piano di Progetto}
+\newcommand{\PdQ}{Piano di Qualifica}
+\newcommand{\AdR}{Analisi dei Requisiti}
+\newcommand{\NdP}{Norme di Progetto}
+\newcommand{\Glos}{Glossario}
+\newcommand{\Ver}{Verbale}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%ATTIVITA' DEL CHANGELOG
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\creazione}{Creazione scheletro del documento}
+\newcommand{\stesura}[1]{Stesura #1}
+\newcommand{\rimozione}[1]{Rimozione #1}
+\newcommand{\inserimento}[1]{Inserimento #1}
+\newcommand{\modifica}[1]{Modifica #1}
+\newcommand{\correzione}[1]{Correzione #1}
+\newcommand{\verifica}[1]{Superamento verifica #1}
+\newcommand{\approvazione}[1]{Approvazione per rilascio del documento in #1}
+\newcommand{\analisi}[1]{Analisi e stesura #1}
+\newcommand{\update}{Aggiornamento del documento}
+
+%COMANDO PER AGGIUNGERE IL RIFERIMENTO AL PARAGRAFO (#1 = NOME DELLA LABEL)
+\newcommand{\addref}[1]{\hyperref[#1]{\textsection \ref*{#1}}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%COLORI TABELLE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{tableHeadYellow}{rgb}{1.0, 0.88, 0.21}
+\definecolor{tableLightYellow}{rgb}{1.0, 0.97, 0.86}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%NUMERAZIONE PAGINE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\cambiastile}{\fancyfoot[R]{Pagina \thepage{} di \pageref{LastPage}}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% UTILITIES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%Inserisce Pagina Bianca
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand\blankpage{%
+    \null
+    \newpage}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%Impostazioni Glossario
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\markg}[1]{\textit{#1}\textsubscript{\textit{G}}} %MACRO PER INSERIRE "G" A PEDICE
+\makeglossaries
+\loadglsentries{../../../../Template_Latex/glsentries} %CARICA LE ENTRIES DEL GLOSSARIO
+\newglossarystyle{dict}%
+{%
+  \renewcommand*{\glossaryheader}{}%
+  \renewcommand*{\glsgroupheading}[1]{%
+ 	 \ifstrequal{A}{##1}{}%
+	{\clearpage}%  
+    \section*{##1}% 
+    \addcontentsline{toc}{section}{##1} 
+  }%
+  \renewcommand{\glossaryentryfield}[5]{%
+    \markboth{##2}{##2}%
+    \par\vspace{0.25\baselineskip}%
+    \textbf{\textsf{##2}} \textit{- ##4 -} ##3%
+  }%
+}%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

@@ -1,0 +1,633 @@
+%\newglossaryentry{}
+%{
+%  name=,
+%  description={},
+%  plural= %optional
+%}
+
+\newglossaryentry{Alexa}
+{
+  name=Alexa,
+  description={Assistente personale intelligente creato da \markg{Amazon}, in grado di interagire ai comandi vocali dell'utente}
+}
+
+\newglossaryentry{Amazon}
+{
+	name=Amazon,
+	description={Azienda di commercio elettronico statunitense, con sede a Seattle nello stato di Washington; è la più grande Internet company al mondo. Dal 2002, Amazon fornisce commercialmente una suite di servizi web e di cloud computing, chiamata \markg{AWS}} 
+}
+
+\newglossaryentry{requisito}
+{
+  name=requisito,
+  description={Funzionalità che il nuovo prodotto (o il prodotto modificato) deve offrire. I requisiti si suddividono in tre categorie:
+  \begin{itemize}
+  \item \emph{Obbligatori}: requisiti alla quale gli \markg{stakeholder} non sono disposti a rinunciare.
+  \item \emph{Desiderabili}: requisiti non strettamente necessari, ma che forniscono un valore aggiunto al prodotto.
+  \item \emph{Opzionali}: requisiti relativamente utili, oppure contrattabili in fasi di progetto più avanzate.
+  \end{itemize}
+  \'E fondamentale che i requisiti non siano in contrasto tra loro},
+  plural=requisiti
+}
+
+\newglossaryentry{verifica}
+{
+  name=verifica,
+  description={Serve a stabilire che il software rispetti i requisiti e le specifiche, ad esempio che non ci siano requisiti mancanti. Si definisce \emph{statica} se effettuata in fase di progetto, \emph{dinamica} se effettuata attraverso il collaudo dello stesso software tramite batterie di test create ad hoc},
+  plural=verifiche
+}
+
+\newglossaryentry{ticket}
+{
+  name=ticket,
+  description={Notifica di segnalazione di una attività da svolgere per l’avanzamento del progetto oppure una segnalazione di errore all’interno del software da risolvere}
+}
+
+\newglossaryentry{responsabile}
+{
+  name=responsabile,
+  description={(\emph{Project Manager}) Il responsabile unico dell'avvio, pianificazione, esecuzione, controllo e chiusura di un progetto facendo ricorso a tecniche e metodi di project management}
+}
+
+\newglossaryentry{Asana}
+{
+  name=Asana,
+  description={Applicazione mobile e web che ha lo scopo di aiutare i team di sviluppo nell'organizzare, tracciare e gestire il loro lavoro. Permette la creazione di task e la loro assegnazione, la creazione di workspace che contengno i progetti e l’aggiunta e rimozione di commenti}
+}
+
+\newglossaryentry{Gantt}
+{
+  name=diagramma di Gantt,
+  description={Consiste in un diagramma costruito partendo da un asse orizzontale - a rappresentazione dell'arco temporale totale del progetto, suddiviso in fasi incrementali (ad esempio, giorni, settimane, mesi) - e da un asse verticale - a rappresentazione delle mansioni o attività che costituiscono il progetto.\\
+  Un diagramma di Gantt permette dunque la rappresentazione grafica di un calendario di attività, utile al fine di pianificare, coordinare e tracciare specifiche attività in un progetto dando una chiara illustrazione dello stato d'avanzamento del progetto rappresentato},
+  plural=diagrammi di Gantt
+}
+
+\newglossaryentry{baseline}
+{
+  name=baseline,
+  description={Descrizione delle caratteristiche di un prodotto, in un punto nel tempo, che serve come base per definire il cambiamento. Un "cambiamento" è un movimento da questo stato base ad uno stato successivo. L'identificazione dei cambiamenti rilevanti rispetto alla condizione di base è lo scopo centrale della baseline}
+}
+
+\newglossaryentry{Git}
+{
+	name=Git,
+	description={\markg{VCS} distribuito, utilizzabile da interfaccia a riga di comando o tramite interfaccia grafica, creato da Linus Torvalds nel 2005. La progettazione di Git è stata ispirata da \emph{BitKeeper} e da \emph{Monotone}. \'E stato pensato inizialmente solamente come motore a basso livello che altri potevano sviluppare applicazioni avanzate. In seguito è però diventato un sistema di controllo di versione direttamente utilizzabile da riga di comando. Vari progetti software adesso usano Git per tale attività, principalmente il kernel Linux}
+}
+
+\newglossaryentry{VCS}
+{
+	name=VCS,
+	description={Acronimo che indica i software per il controllo del versionamento dei files di un progetto. Lo scopo principale di questa categoria di software è quella di tenere traccia delle modifiche effettuate ai files per tutto il ciclo di vita del prodotto in sviluppo. Alcuni di loro permettono la creazione di \markg{branch} per lo sviluppo di codice in parallelo}
+}
+
+\newglossaryentry{branch}
+{
+	name=branch,
+	description={Letteralmente \emph{"ramo"}. Accostato ai \markg{VCS} indica una diramazione del processo di sviluppo e consente quindi una parallelizzazione del lavoro}
+}
+
+\newglossaryentry{AWS}
+{
+	name=AWS,
+	description={Acronimo per \emph{Amazon Web Service}. \'E una collezione di servizi di cloud computing che costituiscono la piattaforma di cloud computing offerta da \markg{Amazon}}
+}
+
+\newglossaryentry{API}
+{
+	name=API,
+	description={Con \emph{Application Programming Interface} si indica un insieme di procedure disponibili al programmatore, di solito raggruppate a formare un set di strumenti specifici per lo svolgimento di un determinato compito all’interno di un certo programma. Talvolta le API sono offerte tramite servizi a pagamento, oppure potrebbero essere funzionalità gratuite, come librerie software disponibili in un certo linguaggio di programmazione}
+}
+
+\newglossaryentry{client}
+{
+	name=client,
+	description={Una componente che accede ai servizi o alle risorse di un'altra componente detta server. In questo contesto si può quindi parlare di client riferendosi all'applicativo software}
+}
+
+\newglossaryentry{design pattern}
+{
+	name=design pattern,
+	description={\'E un concetto che può essere definito "una soluzione progettuale generale ad un problema ricorrente". Si tratta di una descrizione o modello logico da applicare per la risoluzione di un problema che può presentarsi in diverse situazioni durante le fasi di progettazione e sviluppo del software, ancor prima della definizione dell'algoritmo risolutivo della parte computazionale. È un approccio spesso efficace nel contenere o ridurre il debito tecnico.
+I design pattern orientati agli oggetti tipicamente mostrano relazioni ed interazioni tra classi o oggetti, senza specificare le classi applicative finali coinvolte, risiedendo quindi nel dominio dei moduli e delle interconnessioni. Ad un livello più alto sono invece i pattern architetturali che hanno un ambito ben più ampio, descrivendo un pattern complessivo adottato dall'intero sistema, la cui implementazione logica dà vita ad un \markg{framework}}
+}
+
+\newglossaryentry{framework}
+{
+	name=framework,
+	description={Architettura logica di supporto per lo sviluppo. Alla base di un framework c’è sempre una serie di librerie di codice utilizzabili con uno o più linguaggi di programmazione}
+}
+
+\newglossaryentry{Google Drive}
+{
+	name=Google Drive,
+	description={\'E un servizio, in ambiente cloud computing, di memorizzazione e sincronizzazione online introdotto da \emph{Google} il 24 aprile 2012. Il servizio comprende il file hosting, il file sharing e la modifica collaborativa di documenti fino a 15 GB gratuiti estendibili fino a 30 TB in totale. Il servizio può essere usato via Web, caricando e visualizzando i file tramite il web browser, oppure tramite l'applicazione installata su computer che sincronizza automaticamente una cartella locale del file system con quella condivisa. Su Google Drive sono presenti anche i documenti creati con Google Documenti}
+}
+
+\newglossaryentry{IDE}
+{
+	name=IDE,
+	description={L’ambiente di sviluppo integrato (in inglese \emph{Integrated Development Environment}) è un software che, in fase di programmazione, aiuta i programmatori nello sviluppo del codice sorgente di un programma. Spesso l’IDE aiuta lo sviluppatore segnalando errori di sintassi del codice direttamente in fase di scrittura, oltre a tutta una serie di strumenti e funzionalità di supporto alla fase di sviluppo e debugging}
+}
+
+\newglossaryentry{ISO}
+{
+	name=ISO,
+	description={\emph{International Standards Organization}, è la più importante organizzazione a livello mondiale per la definizione di norme tecniche}
+}
+
+\newglossaryentry{LaTeX}
+{
+	name=LaTeX ,
+	description={Linguaggio di markup utilizzato per la produzione di documentazione tecnica e scientifica. \LaTeX è lo standard de facto per la comunicazione e la pubblicazione di documenti scientifici. \LaTeX è disponibile come software libero}
+}
+
+\newglossaryentry{material design}
+{
+	name=material design,
+	description={Linguaggio di design sviluppato da \markg{Google}}
+}
+
+\newglossaryentry{milestone}
+{
+	name=milestone,
+	description={Indica importanti traguardi intermedi nello svolgimento del progetto. Molto spesso sono rappresentate da eventi, cioè da attività con durata zero o di un giorno, e vengono evidenziate in maniera diversa dalle altre attività nell'ambito dei documenti di progetto}
+}
+
+\newglossaryentry{override}
+{
+	name=override,
+	description={Nella programmazione ad oggetti override è l'operazione di riscrittura di un metodo ereditato. Assume notevole importanza per la possibilità di creare classi a partire da classi già esistenti (ereditarietà). La classe nuova che eredita quella esistente può avere metodi ereditati che possono essere riscritti per le nuove necessità}
+}
+
+\newglossaryentry{package}
+{
+	name=package,
+	description={Meccanismo per organizzare classi Java, logicamente correlate o che forniscono servizi simili, all’interno di sottogruppi ordinati. Questi package possono essere compressi permettendo la trasmissione di più classi in una sola volta. In \markg{UML}, analogamente, è un raggruppamento arbitrario di elementi in una unità di livello più alto}
+}
+
+\newglossaryentry{quality assurance}
+{
+	name=quality assurance ,
+	description={Insieme di attività realizzate per garantire il raggiungimento degli obiettivi di qualità. Prevede l'attuazione di tecniche di analisi statica e dinamica}
+}
+
+\newglossaryentry{repository}
+{
+	name=repository,
+	description={Ambiente di un sistema informativo, in cui vengono gestiti i metadati, attraverso tabelle relazionali. L'insieme di tabelle, regole e motori di calcolo tramite cui si gestiscono i metadati prende il nome di metabase}
+}
+
+\newglossaryentry{server}
+{
+	name=server,
+	description={Indica una componente che gestisce il traffico di informazioni e fornisce servizi o risorse ad altre componenti, dette clients, che ne fanno richiesta. Al termine server possono dunque riferirsi sia la componente hardware che la componente software. Esso fa parte dunque dell'architettura logica di rete detta client-server}
+}
+
+\newglossaryentry{serverless}
+{
+	name=serverless,
+	description={Si intende un network la cui gestione non viene incentrata su dei server, come spesso accade, ma viene dislocata fra i vari utenti che utilizzano il network stesso, quindi il lavoro necessario di gestione del network viene eseguito dagli stessi utilizzatori}
+}
+
+\newglossaryentry{Scrum}
+{
+	name=Scrum,
+	description={\markg{Framework} \markg{agile} per la gestione del ciclo di sviluppo del software, iterativo ed incrementale, concepito per gestire progetti e prodotti software o applicazioni di sviluppo. In maniera molto sintetica, Scrum prevede di dividere il progetto in blocchi rapidi di lavoro (Sprint) alla fine di ciascuno dei quali creare un incremento del software. Esso indica come definire i dettagli del lavoro da fare nell'immediato futuro e prevede vari meeting con caratteristiche precise per creare occasioni di ispezione e controllo del lavoro svolto}
+}
+
+\newglossaryentry{task}
+{
+	name=task,
+	description={Lavoro, compito, incarico}
+}
+
+\newglossaryentry{TexMaker}
+{
+	name=TexMaker,
+	description={Editor gratuito, moderno e multi-piattaforma per Linux, sistemi Mac OS e Microsoft Windows che integra molti strumenti utili per sviluppare documenti in \LaTeX.
+	TexMaker include il supporto \markg{Unicode}, il controllo ortografico, il completamento automatico, il raggruppamento del codice e un visore incorporato PDF con il supporto Synctex e modalità di visualizzazione continua}
+}
+
+\newglossaryentry{TexStudio}
+{
+	name=TexStudio,
+	description={Editor gratuito per lo sviluppo di documenti in \LaTeX{}. Offre le stesse funzionalità di \markg{TexMaker}}
+}
+
+\newglossaryentry{UML}
+{
+	name=UML,
+	description={\emph{Unified Modelling Language}, linguaggio di modellazione unificato, è un linguaggio di modellazione e specifica basato sul paradigma orientato agli oggetti, ed una famiglia di notazioni grafiche che si basano su un singolo meta-modello e servono a supportare la descrizione e il progetto dei sistemi software. Il linguaggio nacque con l'intento di unificare approcci precedenti, raccogliendo le migliori prassi nel settore e definendo così uno standard industriale unificato}
+}
+
+\newglossaryentry{unicode}
+{
+	name=unicode,
+	description={Sistema di codifica che assegna un numero univoco ad ogni carattere usato per la scrittura di testi, in maniera indipendente dalla lingua, dalla piattaforma informatica e dal programma utilizzato.
+	È stato compilato e viene aggiornato e pubblicizzato dall'Unicode Consortium, un consorzio internazionale di aziende interessate alla interoperabilità nel trattamento informatico dei testi in lingue diverse}
+}
+
+\newglossaryentry{XML}
+{
+	name=XML,
+	description={\emph{eXtensible Markup Language}, è un linguaggio di markup, ovvero un linguaggio marcatore basato su un meccanismo sintattico che consente di definire e controllare il significato degli elementi contenuti in un documento. Il nome indica che si tratta di un linguaggio marcatore estensibile in quanto permette di creare tag personalizzati. Rispetto all’HTML, l’XML ha uno scopo ben diverso: mentre il primo definisce una grammatica per la descrizione e la formattazione di pagine web e, in generale,di ipertesti, il secondo è un metalinguaggio utilizzato per creare nuovi linguaggi,atti a descrivere documenti strutturati. Mentre l’HTML ha un insieme ben definito e ristretto di tag, con l’XML è invece possibile definirne di propri a seconda delle esigenze. Viene spesso utilizzato anche nello scambio di dati tra software diversi}
+}
+
+\newglossaryentry{bot}
+{
+	name=bot,
+	description={Programma che sostituisce un essere umano nello svolgere una attività usualmente ripetitiva, fornisce agli utenti servizi e informazioni in modo completamente automatizzato}
+}
+
+\newglossaryentry{CamelCase}
+{
+	name=CamelCase,
+	description={La notazione a cammello è la pratica di scrivere parole composte o frasi unendo tutte le parole tra loro, ma lasciando le loro iniziali maiuscole}
+}
+
+\newglossaryentry{capitolato d'appalto}
+{
+	name=capitolato d'appalto,
+	description={Documento tecnico per la definizione delle specifiche tecniche delle opere che andranno ad  eseguirsi per effetto del relativo contratto, di cui è solitamente parte integrante},
+	plural=capitolati d'appalto
+}
+
+\newglossaryentry{Instagantt}
+{
+	name=Instagantt,
+	description={Applicazione integrabile con \markg{Asana} che permette di creare, modificare e visualizzare diagrammi di Gantt sincronizzati con le attività programmate in Asana}
+}
+
+\newglossaryentry{release}
+{
+	name=release,
+	description={Indica la combinazione dell'output fornito dal processo di build con i file di configurazione che personalizzano l’esecuzione del programma. Può indicare anche l’output di una fase di relase}
+}
+
+\newglossaryentry{Slack}
+{
+	name=Slack,
+	description={Applicazione di messaggistica istantanea pensata per la collaborazione tra i membri di uno o più gruppi di lavoro.  Offre la possibilità di creare canali privati tematizzati, gruppi privati e chat dirette. Tutto ciò che è presente in \markg{Slack} può essere cercato, che sia un file, una conversazione o le persone stesse.  Inoltre può essere esteso mediante l’uso di applicazioni di terze parti.}
+}
+
+\newglossaryentry{software}
+{
+	name=software,
+	description={Indica l'insieme delle componenti modificabili di un sistema elettronico, in contrapposizione all'hardware, cioè la parte fisica dello stesso sistema. In ambito informatico si intendono le istruzioni memorizzate su uno o più supporti informatici e che possono essere rappresentate da uno o più programmi, o più impropriamente al semplice dato o informazione. Genericamente si intende l’insieme dei programmi impiegati in un sistema di elaborazione dati che gestisce il funzionamento di un elaboratore}
+}
+
+\newglossaryentry{processo}
+{
+	name=processo,
+	description={Insieme di attività correlate e coese che trasformano ingressi (bisogni) in uscite (prodotti) secondo regole date, consumando risorse nel farlo},
+	plural=processi
+}
+
+\newglossaryentry{feedback}
+{
+	name=feedback,
+	description={Processo per cui il risultato dall'azione di un sistema si riflette sul sistema stesso per correggerne o modificarne il comportamento. In ambito informatico, un esempio di feedback possono essere le valutazioni e segnalazioni degli utenti}
+}
+
+\newglossaryentry{workflow}
+{
+	name=workflow,
+	description={Letteralmente \emph{"flusso di lavoro"}, indica la creazione di modelli e la gestione informatica dell'insieme dei compiti e i diversi attori coinvolti nella realizzazione di un processo lavorativo (detto anche processo operativo)}
+}
+
+\newglossaryentry{lowerCamelCase}
+{
+  name=lowerCamelCase,
+  description={Particolare utilizzo della tecnica di scrittura \markg{CamelCase} che consiste nel lasciare la prima lettera minuscola}
+}
+
+
+\newglossaryentry{UpperCamelCase}
+{
+  name=UpperCamelCase,
+  description={Tecnica di scrittura \markg{CamelCase} con lettera iniziale maiuscola}
+}
+
+\newglossaryentry{user story}
+{
+	name=user story,
+	description={\'E un documento contenente la descrizione del problema individuato, la minuta delle conversazioni con gli \markg{stakeholder} e la strategia da usare affinchè il software realizzato soddisfi gli obiettivi del problema}
+}
+
+\newglossaryentry{stakeholder}
+{
+	name=stakeholder ,
+	description={Insieme dei portatori di interessi, ossia le persone che a vario titolo sono coinvolte nel ciclo di vita del software avendo influenza sul prodotto o sul processo}
+}
+
+\newglossaryentry{white-box}
+{
+	name=white-box ,
+	description={Tipologia di test atta a verificare la struttura del codice, controllando ogni azione logica che il codice può o deve compiere}
+}
+
+\newglossaryentry{black-box}
+{
+	name=black-box,
+	description={Tipologia di test atta a verificare il comportamento del codice fornendo dei parametri di ingresso e controllando che quelli di uscita corrispondano a quelli previsti, ignorando la logica all’interno}
+}
+
+\newglossaryentry{TDD}
+{
+	name=TDD,
+	description={Test-Driven Development (in italiano "sviluppo guidato dai test" o "sviluppo guidato dalle verifiche") è un modello di sviluppo del software che prevede che la stesura dei test automatici avvenga prima di quella del software che deve essere sottoposto a test, e che lo sviluppo del software applicativo sia orientato esclusivamente all'obiettivo di passare i test automatici precedentemente predisposti.
+Più in dettaglio, il TDD prevede la ripetizione di un breve ciclo di sviluppo in tre fasi, detto "ciclo TDD". Nella prima fase, detta "fase rossa", il programmatore scrive un test automatico per la nuova funzione da sviluppare, che deve fallire in quanto la funzione non è stata ancora realizzata. Nella seconda fase, detta "fase verde", il programmatore sviluppa la quantità minima di codice necessaria per passare il test. Nella terza fase, detta "fase grigia" o di \markg{refactoring}, il programmatore esegue il \markg{refactoring} del codice per adeguarlo a determinati standard di qualità}
+}
+
+\newglossaryentry{refactoring}
+{
+	name=refactoring,
+	description={\'E una "tecnica strutturata per modificare la struttura interna di porzioni di codice senza modificarne il comportamento esterno", applicata per migliorare alcune caratteristiche non funzionali del software}
+}
+
+\newglossaryentry{budget variance}
+{
+	name=budget variance,
+	description={È un indicatore che ha un valore unicamente contabile e finanziario. Se BV > 0 significa che il progetto sta spendendo il proprio budget con minor velocità di quanto pianificato, viceversa se negativo. Il fatto di spendere più velocemente il budget non ha nulla a che fare con il risparmio che se ne può avere}
+}
+
+\newglossaryentry{schedule variance}
+{
+	name=schedule variance,
+	description={Si tratta di una formula che permette di calcolare se si è in linea con la schedulazione temporale delle attivita` e si calcola attraverso la seguente formula: SV = BCWP - BCWS, dove 
+\begin{description}	
+	\item[BCWP]: Rappresenta il valore prodotto dal progetto ossia il valore dei deliverable rilasciati fino al momento della misurazione in seguito alle attività svolte.
+	\item[BCWS]: Costo pianificato (in giorni o euro) per realizzare le attività di progetto alla data corrente.
+\end{description}}
+}
+
+\newglossaryentry{PDCA}
+{
+	name=PDCA,
+	description={Il ciclo di Deming (o ciclo di PDCA, acronimo dall'inglese Plan–Do–Check–Act, in italiano "Pianificare - Fare - Verificare - Agire") è un metodo di gestione iterativo in quattro fasi utilizzato per il controllo e il miglioramento continuo dei processi e dei prodotti. È noto anche come ciclo di Shewhart. Un'altra versione di questo ciclo viene chiamata, OPDCA, in cui la "O" ha il significato sia di "osservazione", che di "afferrare la condizione attuale."
+È un modello studiato per il miglioramento continuo della qualità in un'ottica a lungo raggio. Serve per promuovere una cultura della qualità che è tesa al miglioramento continuo dei processi e all'utilizzo ottimale delle risorse. Questo strumento parte dall'assunto che per il raggiungimento del massimo della qualità sia necessaria la costante interazione tra ricerca, progettazione, test, produzione e vendita. Per migliorare la qualità e soddisfare il cliente, è necessario passare attraverso tutte e quattro le fasi costantemente, tenendo come criterio principale la qualità}
+}
+
+\newglossaryentry{front-end}
+{
+	name=front-end,
+	description={L'insieme delle applicazioni e dei programmi informatici con cui l'utente interagisce direttamente. Contrapposto a \markg{back-end}}
+}
+
+\newglossaryentry{back-end}
+{
+	name=back-end,
+	description={L'insieme del codice e dei servizi che permette l'effettivo funzionamento delle applicazioni e dei programmi informatici. Contrapposto a \markg{front-end}}
+}
+
+\newglossaryentry{agile}
+{
+	name=agile,
+	description={I metodi agili, in Ingegneria del Software, si contrappongono al modello a cascata e altri processi software tradizionali, proponendo un approccio meno strutturato e focalizzato sull’obiettivo di consegnare al cliente, in tempi brevi e frequentemente, software funzionantee di qualità},
+	plural=agili
+}
+
+\newglossaryentry{caso d'uso}
+{
+	name=caso d'uso,
+	description={Descrive una sequenza di interazioni con il sistema che un utente, detto attore, svolge per ottenere un risultato.  Più casi d’uso rappresentano quindi diversi scenari che un utente del sistema può incontrare nell’utilizzo di un prodotto software}
+}
+
+\newglossaryentry{indice di Gulpease}
+{
+	name=indice di Gulpease,
+	description={Indice di leggibilità tarato sulla lingua italiana}
+}
+
+\newglossaryentry{integrazione continua}
+{
+	name=integrazione continua,
+	description={Metodologia di versionamento che prevede l’automazione delle procedure di analisi statica, analisi dinamica, configurazione e building all’atto dell’inserimento del prodotto in repository. L’inserimento del prodotto nella repository viene regolato in funzione dell’esito delle procedure di verifica effettuate sul prodotto, affinchè il prodotto versionato risulti sempre consistente rispetto agli obiettivi di qualità e funzionalità imposti}
+}
+
+\newglossaryentry{proof of concept}
+{
+	name=proof of concept,
+	description={Prototipo che realizza un sottoinsieme delle funzionalità principali del prodotto, realizzato utilizzando un definito insieme di tecnologie per le quali se ne vuole  dimostrare l’adeguatezza applicativa}
+}
+
+\newglossaryentry{speech-to-text}
+{
+	name=speech-to-text,
+	description={Il riconoscimento vocale è il processo mediante il quale il linguaggio orale umano viene riconosciuto e successivamente elaborato attraverso un computer o più specificatamente attraverso un apposito sistema di riconoscimento vocale}
+}
+
+\newglossaryentry{SPICE}
+{
+	name=SPICE,
+	description={\'E uno standard internazionale per la valutazione del processo software e pu`o essereutilizzata per attuare delle migliorie}
+}
+
+\newglossaryentry{Android}
+{
+	name=Android,
+	description={Sistema operativo per dispositivi mobili sviluppato da \emph{Google} Inc., basato su kernel Linux in cui la quasi totalità delle utilità sono costituite da software Java}
+}
+
+\newglossaryentry{cloud computing}
+{
+	name=cloud computing,
+	description={Paradigma di erogazione di risorse informatiche, come l’archiviazione, l’elaborazione o la trasmissione di dati, caratterizzato dalla disponibilità on-demand attraverso Internet a partire da un insieme di risorse pre-esistenti e configurabili}
+}
+
+\newglossaryentry{Java}
+{
+	name=Java,
+	description={Linguaggio di programmazione orientato agli oggetti con tipizzazione statica specificatamente progettato per essere indipendente dalla piattaforma di esecuzione}
+}
+
+\newglossaryentry{architettura}
+{
+	name=architettura,
+	description={L’architettura del software descrive le relazioni fra un insieme di moduli che si raggruppano in unità, che a loro volta si raggruppano in componenti, che vanno a formare il sistema}
+}
+
+\newglossaryentry{RSS}
+{
+	name=RSS,
+	description={\'E uno dei più popolari formati per la distribuzione di contenuti Web; è basato su \markg{XML}, da cui ha ereditato la semplicità, l'estensibilità e la flessibilità. L'applicazione principale per cui è noto sono i flussi che permettono di essere aggiornati su nuovi articoli o commenti pubblicati nei siti di interesse senza doverli visitare manualmente uno a uno.}
+}
+
+\newglossaryentry{validazione}
+{
+	name=validazione,
+	description={Serve ad accertare che i requisiti e le specifiche siano anche rispettati nella maniera giusta. Questa fase è molto delicata in quanto, dopo tutto il processo si può ottenere un software perfettamente funzionante, senza errori, ma del tutto inutile in quanto non rispecchia quanto era stato chiesto all'inizio.}
+}
+
+\newglossaryentry{error}
+{
+	name=error,
+	description={Problema interno al sistema che si manifesta nel comportamento esterno di questo}
+}
+
+\newglossaryentry{failure}
+{
+	name=failure,
+	description={Si verifica una failure quando il sistema non si comporta come è stato previsto.}
+}
+
+\newglossaryentry{fault}
+{
+	name=fault,
+	description={Causa meccanica o algoritmica o concettuale di \markg{error}}
+}
+
+\newglossaryentry{connettore}
+{
+	name=connettore,
+	description={Nell'ambito di questo progetto, con "connettore" si intende un elemento che ha la funzione di collegare sequenzialmente due distinte funzionalità del dispositivo \markg{Amazon} \markg{Alexa}},
+	plural=connettori
+}
+
+\newglossaryentry{voice flow}
+{
+	name=voice flow,
+	description={Come \markg{workflow}, solo implementato tramite \markg{VUI}}
+}
+
+\newglossaryentry{VUI}
+{
+	name=VUI,
+	description={\emph{Voice User Interface}, si tratta di un prodotto software controllato vocalmente. Una \markg{VUI} risulta essere più sofisticata di un sistema a "risposta vocale interattiva" (IVR) in quanto necessita un ampio range di comandi vocali. Si contrappone alla GUI, che ne è la controparte a livello grafico}
+}
+
+\newglossaryentry{rumore bianco}
+{
+	name=rumore bianco,
+	description={Particolare tipo di rumore caratterizzato dall'assenza di periodicità nel tempo e da ampiezza costante su tutto lo spettro di frequenze},
+	plural=rumori bianchi
+}
+
+\newglossaryentry{Trello}
+{
+	name=Trello,
+	description={Applicazione web per la gestione di progetti softare}
+}
+
+\newglossaryentry{Google}
+{
+	name=Google,
+	description={Azienda statunitense che offre servizi online. Tra la grande quantità di prodotti o servizi offerti troviamo il motore di ricerca Google, il sistema operativo \markg{Android}, il sistema operativo Chrome OS e servizi web quali YouTube, Gmail, Google Maps, \markg{Google Drive} e molti altri.
+È una delle più importanti aziende informatiche statunitensi, nonché una delle più grandi aziende a livello globale con capitalizzazione azionaria superiore ai 740 miliardi di dollari}
+}
+
+\newglossaryentry{text-to-speech}
+{
+	name=text-to-speech,
+	description={Tecnica per la riproduzione artificiale della voce umana. In particolare, i sistemi TTS devono il loro nome alla loro capacità di convertire il testo in parlato}
+}
+
+\newglossaryentry{codebase}
+{
+	name=codebase,
+	description={Indica l'intera collezione di codice sorgente usata per costruire una particolare applicazione o un particolare componente}
+}
+
+\newglossaryentry{DVCS}
+{
+	name=DVCS,
+	description={Particolare tipologia di \markg{VCS} in cui l'intera \markg{codebase} - e tutta la sua storia - è distribuito (da qui il nome \emph{Distributed} Version Control) in tutti i computer degli sviluppatori. Questo permette di gestire branching e merging automaticamente, aumentando la velocità di molte operazioni e consentendo lo sviluppo offline. Inoltre è molto sicuro, in quanto ogni nodo della rete aggiornato è considerato come un punto di backup}
+}
+
+\newglossaryentry{IDEA}
+{
+	name=IDEA,
+	description={Ambiente di sviluppo integrato per il linguaggio di programmazione Java. Sviluppato da JetBrains, è disponibile sia in licenza Apache che in edizione proprietaria commerciale}
+}
+
+\newglossaryentry{GitLab}
+{
+	name=GitLab,
+	description={\'E una piattaforma web open source che permette la gestione di repository \markg{Git} e di funzioni trouble \markg{ticket}}
+}
+
+\newglossaryentry{efficienza}
+{
+	name=efficienza,
+	description={Misura dell’abilità di raggiungere l’obiettivo prefissato utilizzando le risorse minime indispensabili. Il metro è la produttività (quantità di prodotto realizzato per unità di risorsa)}
+}
+
+\newglossaryentry{efficacia}
+{
+	name=efficacia,
+	description={Misura dell’abilità di raggiungere l’obiettivo prefissato. Misurata internamente (dallo stesso fornitore) ed esternamente (soddisfazione del cliente/utente)}
+}
+
+\newglossaryentry{area di staging}
+{
+	name=area di staging,
+	description={Area "contenitore" utilizzata durante il processo di estrazione, trasformazione e utilizzo dei dati. L'area di staging è situata tra la sorgente e la destinazione dei dati}
+}
+
+\newglossaryentry{JUnit}
+{
+	name=JUnit,
+	description={\'E un \markg{framework} che agevola la creazione di test d'unità per il linguaggio di programmazione Java}
+}
+
+\newglossaryentry{excel}
+{
+	name=excel,
+	description={Programma prodotto da Microsoft, dedicato alla produzione ed alla gestione di fogli elettronici}
+}
+
+
+\newglossaryentry{Node.js}
+{
+  name=Node.js,
+  description={Piattaforma Open source event-driven basata su JavaScript. Consente di creare script eseguibili lato server e gestire I/O asincroni}
+}
+
+\newglossaryentry{Lambda}
+{
+  name=Lambda,
+  description={Lambda è un servizio serverless offerto da AWS che permette di eseguire il codice senza dover gestire server e provisioning, elaborando le richieste in maniera estremamente scalabile, adattandosi automaticamente. Viene utilizzato per applicazioni serverless costituite da funzioni attivate da eventi}
+}
+
+\newglossaryentry{DynamoDB}
+{
+  name=DynamoDB,
+  description={Amazon DynamoDB è un database NoSQL offerto da AWS che supporta sia i modelli di dati di tipo documento sia quelli di tipo chiave-valore. Consente inoltre agli sviluppatori di creare applicazioni serverless estremamente scalabili in grado di supportare qualsiasi volume di dati ed adattarsi autonomamente}
+}
+
+\newglossaryentry{skill}
+{
+  name=skill,
+  description={Le Alexa Skill sono abilità che possono essere integrate nel sistema Alexa al fine di eseguire specifici comandi aggiuntivi per aumentarne le funzionalità. Questa sorta di applicazioni non necessitano di spazio di archiviazione ma sono memorizzate su cloud}
+}
+
+\newglossaryentry{API Gateway}
+{
+  name=API Gateway,
+  description={\'E un servizio completamente gestito che semplifica agli sviluppatori la creazione, la pubblicazione, la manutenzione, il monitoraggio e la protezione delle API su qualsiasi scala. Consente di creare API REST che fungono da "porta di ingresso" per le applicazioni, monitorando l'accesso ai dati, alla logica di business o alle funzionalità dai propri servizi back-end}
+}
+
+\newglossaryentry{sprint planning}
+{
+	name= sprint planning,
+	description={Lo \emph{Sprint Planning} è un evento tipico dei framework agili, dove il team determina su quali task del Product Backlog lavorerà durante quello sprint, e discute la strategia iniziale per completare quelle attività. Alcuni team possono trovare utile stabilire un obiettivo finale ad inizio sprint, così da poter determinare con maggiore facilità quali attività portare avanti durante lo sprint}
+}
+
+\newglossaryentry{sprint review}
+{
+	name= sprint review,
+	description={Meeting di fine sprint, nel quale il team mostra quali sono le attività completate. Tipicamente si svolge sotto forma di dimostrazione delle nuove funzionalità implementate nel prodotto}
+}
+
+\newglossaryentry{sprint retrospective}
+{
+	name= sprint retrospective,
+	description={Tipicamente è l'ultima attività di uno sprint. Molti team preferiscono svolgerla subito dopo la Sprint Review. Consiste nell'analisi obiettiva da parte del team, di quanto è stato fatto durante lo sprint. Solitamente si consiglia un approccio "start-stop-continue meeting", ovvero ogni membro del team deve dire cosa secondo lui, il team dovrebbe cominciare, smettere o continuare a fare nel prossimo sprint}
+}
+
+\newglossaryentry{product backlog}
+{
+	name= product backlog,
+	description={è semplicemente una lista di tutte le cose che devono essere fatte in un progetto. Ogni task, generalmente, viene anche classificata in base alla difficoltà e all'importanza}
+}

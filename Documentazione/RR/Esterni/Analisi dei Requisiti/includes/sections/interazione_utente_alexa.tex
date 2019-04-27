@@ -1,0 +1,194 @@
+\clearpage
+\section{\markg{Voice flow}}
+È resa disponibile all'utente una \markg{skill} utilizzabile con l'assistente \markg{Amazon} \markg{Alexa} che permette l'avvio dei \markg{workflow} presenti nell'applicazione tramite comandi vocali.
+L'immagine sottostante rappresenta lo schema di un \markg{voice flow} generico avviato tramite la \markg{skill}.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=15cm,keepaspectratio]{../includes/pics/voice_flow_alexa_utente.png}
+	\caption{\label{fig:mission}Schema \markg{voice flow} generico}
+\end{figure}
+\subsection{Interazione vocale Utente - Assistente vocale}
+Durante l'esecuzione del \markg{workflow} alcuni \markg{connettori} potrebbero necessitare di un'ulteriore interazione vocale tra l'utente e l'assistente vocale. Di seguito viene esplicato in che modo è strutturato il dialogo tra l'utente e \markg{Amazon} \markg{Alexa}.
+\subsection{Interazioni UC9.10 - Connettore: imposta sveglia}
+\begin{itemize}
+        \item \markg{Alexa}: "Vuoi/Desideri impostare una sveglia?".
+        \item Utente: "Sì/No/{\it orario}".
+        \begin{itemize}
+         \item{Risposta {\it "Sì"} }, \markg{Alexa}:"Che orario vuoi impostare per la sveglia?".
+         \begin{itemize}
+              \item{Risposta {\it orario} corretto}, \markg{Alexa}:"La sveglia è stata impostata alle ore {\it orario}".
+              \item{Risposta {\it orario} errato}, \markg{Alexa}:  {\it UC9.10.2 - Ricezione notifica orario errato}
+         \end{itemize}
+         \item{Risposta {\it "No"} }, il sistema passa al \markg{connettore} successivo o termina il \markg{workflow} se non sono presenti altri \markg{connettori}.
+         \item{Risposta {\it orario} corretto}, \markg{Alexa}:"La sveglia è stata impostata alle ore {\it orario}".
+         \item{Risposta {\it orario} errato}, \markg{Alexa}:  {\it UC9.10.2 - Ricezione notifica orario errato}
+         \end{itemize}
+    \end{itemize}
+
+\subsection{Interazioni UC9.11 - Connettore: riproduzione musica}
+ \begin{itemize}
+        \item \markg{Alexa}: "Cosa/chi vuoi ascoltare?".
+        \item Utente: "{\it nome artista}/{\it nome traccia}".
+        \begin{itemize}
+         \item{Risposta {\it nome artista} corretto}, il sistema fa riprodurre ad \markg{Alexa} le tracce dell'artista.
+        \item{Risposta {\it nome artista} errato}, \markg{Alexa}:  {\it UC9.11.1 - Ricezione notifica titolo o artista non riconosciuto}.
+        \item{Risposta {\it nome traccia} corretto}, il sistema fa riprodurre ad \markg{Alexa} la traccia.
+        \item{Risposta {\it nome traccia} errato}, \markg{Alexa}:  {\it UC9.11.1 - Ricezione notifica titolo o artista non riconosciuto}.
+         \end{itemize}
+    \end{itemize}
+
+
+\subsection{Interazioni UC9.13 - Connettore: lettura calendario}
+\begin{itemize}
+        \item \markg{Alexa}: "Domani hai fissato i seguenti eventi: {\it lista eventi}, vuoi sapere gli eventi del resto della settimana?".
+        \item Utente: "Sì/No".
+        \begin{itemize}
+         \item{Risposta "Sì"}, \markg{Alexa}: "Hai fissato i seguenti eventi: {\it lista eventi successivi}".
+         \item{Risposta "No"}, il sistema passa al \markg{connettore} successivo o termina il \markg{workflow} se non sono presenti altri \markg{connettori}.
+         \end{itemize}
+    \end{itemize}
+
+
+\subsection{Interazioni UC9.14 - Connettore: aggiunta evento calendario}
+ \begin{itemize}
+        \item \markg{Alexa}: "Vuoi aggiungere un evento?".
+        \item Utente: "Sì/No".
+        \begin{itemize}
+         \item{Risposta "Sì"}, \markg{Alexa}: "In che data?".
+         \item Utente: "{\it data}".
+         \begin{itemize}
+             \item{Risposta {\it data in formato corretto}}, \markg{Alexa}: "Che nome vuoi dare all'evento?".
+             \item Utente: {\it nome evento}.
+             \item \markg{Alexa}: "Ho creato l'evento {\it nome evento} in data {\it data}."
+            \item{Risposta "{\it data in formato non corretto}}, \markg{Alexa}: {\it UC9.14.1 - Ricezione notifica data errata}.
+         \end{itemize}
+         \item{Risposta "No"}, il sistema passa al \markg{connettore} successivo o termina il \markg{workflow} se non sono presenti altri \markg{connettori}.
+         \end{itemize}
+    \end{itemize}
+
+\subsection{Interazioni UC9.15 - Connettore: scrittura nota}
+\begin{itemize}
+        \item \markg{Alexa}: "Vuoi aggiungere una nota?".
+        \item Utente: "Sì/No".
+        \begin{itemize}
+         \item{Risposta "Sì"}, \markg{Alexa}: "Dimmi pure/Che nota aggiungo?".
+         \item Utente: "{\it Corpo nota}".
+         \item{Risposta "No"}, il sistema passa al \markg{connettore} successivo o termina il \markg{workflow} se non sono presenti altri \markg{connettori}.
+         \end{itemize}
+    \end{itemize}
+
+
+\subsection{Interazioni UC9.16 - Connettore: Twitter}
+ \begin{itemize}
+        \item \markg{Alexa}: "Cosa vuoi fare? Puoi: pubblicare un tweet, leggere i tweet di {\it Account impostato da \markg{connettore}}, leggere i tweet della tua bacheca".
+        \item Utente: "Voglio pubblicare un tweet/Voglio leggere i tweet di {\it Account impostato da \markg{connettore}}/Voglio leggere i tweet della mia bacheca".
+        \begin{itemize}
+         \item{Risposta "Voglio pubblicare un tweet"}, \markg{Alexa}: "{\it UC9.16.2 - Pubblicazione tweet}".
+         \item{Risposta "Voglio leggere i tweet di {\it Account impostato da \markg{connettore}}"}, \markg{Alexa}: "{\it UC9.16.3 - Lettura ultimi tweet da singolo account}".
+         \item{Risposta "Voglio leggere i tweet della mia bacheca"}, \markg{Alexa}: "{\it UC9.16.4 - lettura tweet bacheca personale}".
+         \end{itemize}
+    \end{itemize}
+
+
+\subsection{Interazioni UC9.16.2 - Pubblicazione tweet}
+\begin{itemize}
+        \item \markg{Alexa}: "Dimmi pure cosa vuoi pubblicare./Cosa vuoi rispondere?".
+        \item Utente: "{\it corpo tweet}".
+        \begin{itemize}
+        \item \markg{Alexa}: "Ho pubblicato il tuo tweet".
+           \end{itemize}
+        \item Utene: "{\it corpo tweet con più di 280 caratteri}".
+           \begin{itemize}
+        \item \markg{Alexa}: "{\it UC9.16.1.3 - Ricezione notifica fine caratteri disponibili}".
+           \end{itemize}
+        
+    \end{itemize}
+
+
+\subsection{Interazioni UC9.16.3 - Lettura ultimi tweet da singolo account}
+ \begin{itemize}
+        \item \markg{Alexa}: "Gli ultimi tweet di {\it Account impostato da \markg{connettore}} sono {\it lettura corpo tweet}".
+        \item Utente che interrompe dopo l'ascolto di un tweet: "Voglio rispondere".
+        \item \markg{Alexa}: "{\it UC9.16.2 - Pubblicazione tweet}".
+    \end{itemize}
+
+
+\subsection{Interazioni UC9.16.4 - Connettore: lettura tweet bacheca personale}
+ \begin{itemize}
+        \item \markg{Alexa}: "Nella tua bacheca ho trovato i seguenti tweet: {\it lettura corpo tweet}".
+        \item Utente che interrompe dopo l'ascolto di un tweet: "Voglio rispondere".
+        \item \markg{Alexa}: "{\it UC9.16.2 - Pubblicazione tweet}".
+    \end{itemize}
+
+
+\subsection{Interazioni  UC9.17 - Connettore: \markg{Trello}}
+ \begin{itemize}
+        \item \markg{Alexa}: "Cosa desideri fare nella bacheca {\it bacheca impostata}? Puoi: leggere le tue schede, aggiungere una nuova scheda, spostare una scheda tra liste".
+        \item Utente: "Voglio leggere le mie schede/Voglio aggiungere una scheda/Voglio spostare una scheda.".
+        \begin{itemize}
+         \item{Risposta "Voglio leggere le mie schede"}, \markg{Alexa}: "{\it UC9.17.2 - Lettura lista da bacheca \markg{Trello}}".
+         \item{Risposta "Voglio aggiungere una scheda"}, \markg{Alexa}: "{\it  UC9.17.3 - Creazione scheda in bacheca \markg{Trello}}".
+         \item{Risposta "Voglio spostare una scheda"}, \markg{Alexa}: "{\it UC9.17.4 - Spostamento scheda tra liste \markg{Trello}}".
+         \end{itemize}
+    \end{itemize}
+
+
+\subsection{Interazioni UC9.17.2 - Lettura lista da bacheca \markg{Trello}}
+ \begin{itemize}
+        \item \markg{Alexa}: "Che lista devo leggere?".
+        \item Utente: "{\it nome lista esistente}".
+        \begin{itemize}
+        \item \markg{Alexa}: "{\it lettura lista}".
+           \end{itemize}
+        \item Utene: "{\it nome lista inesistente}".
+           \begin{itemize}
+        \item \markg{Alexa}: "{\it UC9.17.1.3 - Ricezione notifica lista inesistente}".
+           \end{itemize}
+    \end{itemize}
+
+
+\subsection{Interazioni UC9.17.3 - Creazione scheda in bacheca \markg{Trello}}
+ \begin{itemize}
+        \item \markg{Alexa}: "In che lista vuoi che aggiunga la scheda?".
+        \item Utente: "{\it nome lista esistente}".
+        \begin{itemize}
+        \item \markg{Alexa}: "Dimmi pure".
+        \item Utente: "{\it corpo scheda}".
+           \end{itemize}
+        \item Utente: "{\it nome lista inesistente}".
+           \begin{itemize}
+        \item \markg{Alexa}: "{\it UC9.17.1.3 - Ricezione notifica lista inesistente}".
+           \end{itemize}
+    \end{itemize}
+
+
+\subsection{Interazioni  UC9.17.4 - Spostamento scheda tra liste \markg{Trello}}
+ \begin{itemize}
+        \item \markg{Alexa}: "Da che lista vuoi spostare la scheda?".
+        \item Utente: "{\it nome lista esistente}".
+        \begin{itemize}
+        \item \markg{Alexa}: "Che scheda vuoi spostare".
+       
+        \item Utente: "{\it nome scheda esistente}".
+        \begin{itemize}
+        \item \markg{Alexa}: "In che lista vuoi spostare la scheda?"
+          \item Utente: "{\it nome lista esistente}".
+          \begin{itemize}
+              \item \markg{Alexa}: "Scheda spostata con successo".
+          \end{itemize}
+           \item Utente: "{\it nome lista inesistente}".
+           \begin{itemize}
+        \item \markg{Alexa}: "{\it UC9.17.1.3 - Ricezione notifica lista inesistente}".
+        \end{itemize}
+      \end{itemize}
+      
+     \item Utente: "{\it nome scheda inesistente}".
+     \begin{itemize}
+           \item \markg{Alexa}: "{\it UC9.17.1.4 - Ricezione notifica scheda inesistente}".
+           \end{itemize}
+            \end{itemize}
+        \item Utente: "{\it nome lista inesistente}".
+           \begin{itemize}
+        \item \markg{Alexa}: "{\it UC9.17.1.3 - Ricezione notifica lista inesistente}".
+           \end{itemize}
+    \end{itemize}
