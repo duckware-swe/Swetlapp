@@ -57,17 +57,27 @@ Gli analisti avranno anche cura di identificare i casi d’uso i quali verranno 
 \subsection{Progettazione}
 \label{sec:progettazione}
 \subsubsection{Scopo}
-La progettazione ha il compito di disegnare, attraverso i Progettisti, una soluzione del problema che sia esaustiva per tutti gli \markg{stakeholders}. Verrà definita la logica del prodotto identificando i componenti e cercando sempre di restare nei costi che sono stati prefissati. In particolare la logica definita dovrà:
+La progettazione ha il compito di disegnare, attraverso i Progettisti, una soluzione del problema che sia esaustiva per tutti gli \markg{stakeholders}. Verrà definita la logica del prodotto identificando i componenti e cercando sempre di restare nei costi che sono stati prefissati.
+L'attività di progettazione viene fatta in due momenti: una prima parte ad alto livello viene fatta durante il periodo di Progettazione della base tecnologica, dove verranno studiati i design pattern che potrebbero essere utilizzati durante il periodo di Progettazione di dettaglio e codifica, durante il quale la progettazione diventa atomica per ogni componente del sistema.\newline
+Una volta ottenuta la suddivisione in componenti, è possibile per i programmatori sviluppare il codice per i singoli componenti eseguendo task focalizzate.
+In particolare, l'architettura definita dovrà rispettare le seguenti proprietà:
 \begin{itemize}
-	\item Soddisfare i requisiti dell’\emph{Analisi dei requisiti} ed adattarsi ai cambiamenti od alle evoluzioni che potenzialmente avverranno nel tempo;
-	\item Essere comprensibile e modulare;
-	\item Avere la capacità di rispettare le specifiche nel tempo, anche nel caso di malfunzionamenti;
-	\item Ridurre al minimo i tempi di manutenzione;
-	\item Le varie parti dovranno poter essere usate anche in altre applicazioni;
-	\item Avere un'elevata capacità di rispettare le specifiche nel tempo;
-	\item Garantire l'integrità evitando intrusioni da parte di terzi non autorizzati e malfunzionamenti;
-	\item Le varie parti devono essere poco dipendenti l'una dalle altre, di modo da poter essere facilmente manutenibili;
-	\item Ridurre al minimo i tempi di manutenzione.
+	\item \textbf{Sufficienza}: soddisfare i requisiti dell’\emph{Analisi dei requisiti} ed adattarsi ai cambiamenti od alle evoluzioni che potenzialmente avverranno nel tempo;
+	\item \textbf{Comprensibilità}: essere comprensibile e modulare;
+	\item \textbf{Affidabilità}: avere la capacità di rispettare le specifiche nel tempo, anche nel caso di malfunzionamenti;
+	\item \textbf{Riusabilità}: le varie parti dovranno poter essere usate anche in altre applicazioni;
+	\item \textbf{Modularità}: deve essere suddivisa in parti chiare e ben distinte, così che possa essere facilmente manutenibile;
+	\item \textbf{Robustezza}: deve essere capace di sopportare ingressi diversi, sia da parte di utenti che dall'ambiente;
+	\item \textbf{Flessibilità}: deve poter permettere modifiche al variare o all'aggiunta di requisiti senza perdite di performance o senza doverla restaurare profondamente;
+	\item \textbf{Disponibilità}: la manutenzione delle sue parti non dovrà inabilitare il funzionamento di tutto il sistema;
+	\item \textbf{Efficienza}: deve essere pensata in modo da poter ridurre gli sprechi di
+	tempo e spazio;
+	\item \textbf{Semplicità}: ogni parte contiene solo il necessario e nulla di superfluo;
+	\item \textbf{Sicurezza}: garantire l'integrità evitando intrusioni da parte di terzi non autorizzati e malfunzionamenti;
+	\item \textbf{Incapsulazione}: le componenti dovranno essere progettate in modo che le
+	informazioni interne siano nascoste;
+	\item \textbf{Coesione}: in modo che le parti che hanno gli stessi obiettivi stanno insieme;
+	\item \textbf{Basso accoppiamento}: le varie parti devono essere poco dipendenti l'una dalle altre, di modo da poter essere facilmente manutenibili.
 \end{itemize}
 \subsubsection{Obiettivi}
 Essa serve a garantire che il prodotto possa soddisfare le proprietà specificate nell'attività di analisi ponendo i seguenti obiettivi:
@@ -77,6 +87,7 @@ Essa serve a garantire che il prodotto possa soddisfare le proprietà specificat
     \item Mantenere nascosti i dettagli implementativi secondo quanto espresso dal principio dell'\textit{information hiding};
     \item Mantenere un basso grado di dipendenza fra le varie parti del prodotto;
     \item Ottimizzare l'uso di risorse.
+    \item Facilitare l'attività di codifica da parte dei singoli Programmatori attraverso una buona organizzazione e ripartizione dei compiti implementativi, riducendo la complessità del problema originale fino alle singole componenti.
 \end{itemize}
 \subsubsection{Diagrammi}
 Le scelte adottate dai progettisti verranno adeguatamente descritte attraverso l’uso di diagrammi \markg{UML 2.0} per rendere più chiare e meno ambigue le decisioni prese. Verranno in particolare utilizzate le seguenti rappresentazioni:
