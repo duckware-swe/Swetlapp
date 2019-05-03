@@ -16,6 +16,7 @@ class ReadFeedRSSAction extends Action {
      */
     async run() {
         let output = '';
+        //TODO change for
         for(let i=0; i<this.params.length; i++){
             let param = this.params[i];
             //console.log("Parametro: " + param);

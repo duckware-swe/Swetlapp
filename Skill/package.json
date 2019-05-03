@@ -11,7 +11,9 @@
     "ask-sdk-core": "^2.4.0",
     "ask-sdk-model": "^1.12.0",
     "aws-sdk": "^2.413.0",
+    "request": "^2.88.0",
     "rss-parser": "^3.6.3",
+    "trello": "^0.9.1",
     "twitter": "^1.7.1"
   }
 }

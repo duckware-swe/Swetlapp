@@ -1,8 +1,8 @@
-const {ReadFeedRSSAction} = require("./src/actions/ReadFeedRSSAction");
-const {getWF} = require('./src/utils/db-util');
-const {actionFactory} = require("./src/utils/actionFactory");
-
+const https = require('https');
 const Alexa = require('ask-sdk');
+const {actionFactory} = require("./src/utils/ActionFactory");
+const {getDatabaseInstance, buildDatabaseParams} = require("./src/DatabaseInteractor");
+
 const appName = 'SwetlApp';
 
 const LaunchRequestHandler = {
@@ -26,6 +26,7 @@ const LaunchRequestHandler = {
             let response = await httpGet(tokenOptions);
             console.log({ response });
             console.log('Username:' + response.username);
+            console.log('Username:' + response.id);
             const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
             sessionAttributes.username = response.username;
         }
@@ -33,7 +34,7 @@ const LaunchRequestHandler = {
             console.log(`Error message: ${error.message}`);
         }
 
-        speechText = 'Ciao ' + handlerInput.attributesManager.getSessionAttributes().username +'! Benvenuto in swetlapp!';
+        speechText = /*'Ciao ' + handlerInput.attributesManager.getSessionAttributes().username +*/ 'Ciao Dac uer! Benvenuto in Paperella!';//swetlapp
             return handlerInput.responseBuilder
                 .speak(speechText)
                 .reprompt(speechText)
@@ -43,8 +44,6 @@ const LaunchRequestHandler = {
 };
 
 //Helper Function for calling the Cognito /oauth2/userInfo to get user info using the accesstoken
-let https = require('https');
-// https is a default part of Node.JS.  Read the developer doc:  https://nodejs.org/api/https.html
 function buildHttpGetOptions(accessToken) {
     return {
         //Replace the host with your cognito user pool domain
@@ -85,6 +84,28 @@ function httpGet(options) {
     }));
 }
 
+function getWF(username, idWF) {
+    let params = buildDatabaseParams(
+        "User-tevi37ekkbfvjgpusicgsjpt5m-testcog",
+        "workflow",
+        "id",
+        username
+    );
+
+    return getDatabaseInstance().query(params).then(
+        data => {
+            if(data.Count === 0) return null;
+
+            let hit = data.Items[0].workflow.find(i => i.name === idWF);
+
+            if (hit) return hit.def;
+
+            return null;
+        },
+        () => null
+    );
+}
+
 const RunWorkflowHandler = {
     canHandle(handlerInput) {
         let request = handlerInput.requestEnvelope.request;
@@ -94,11 +115,12 @@ const RunWorkflowHandler = {
         let request = handlerInput.requestEnvelope.request;
         let workflowName =  request.intent.slots.workflow.value;
         let speechText = '';
+
         console.log(handlerInput.attributesManager.getSessionAttributes().username);
         console.log(workflowName);
 
         let actionList;
-        await getWF('b60dabc1-78bc-487f-be8d-5a0ee9319a33', workflowName).then(
+        await getWF(/*'b60dabc1-78bc-487f-be8d-5a0ee9319a33'*/'Duck', workflowName).then(
             data => actionList = JSON.parse(data)
         );
 
@@ -107,7 +129,11 @@ const RunWorkflowHandler = {
         for(let i=0; i<actionList.actions_records.length; i++) {
             let action = actionList.actions_records[i];
             //console.log("Esecuzione azione: " + action.action);
-            speechText += await actionFactory(action.action, action.params).run();
+            try {
+                speechText += await actionFactory(action.action, action.params).run()+". ";
+            } catch (e) {
+                speechText += "Azione non riconosciuta";
+            }
         }
 
         return handlerInput.responseBuilder

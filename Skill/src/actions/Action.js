@@ -4,7 +4,7 @@ class Action {
     /**
      *
      * @param name {string} name of the action
-     * @param params {string} parameters of the action
+     * @param params {JSON} parameters of the action
      */
     constructor(name, params) {
         this.name = name;
