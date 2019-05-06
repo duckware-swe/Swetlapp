@@ -22,10 +22,9 @@ function doRequest(url) {
 
 class WeatherAction extends Action {
 
-    constructor(name, params) {
-        super(name, params);
+    constructor(params) {
+        super(params);
     }
-
 
 
     /**

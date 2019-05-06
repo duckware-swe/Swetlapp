@@ -6,8 +6,8 @@ var exports = module.exports = {};
 
 class ReadFeedRSSAction extends Action {
 
-    constructor(name, params) {
-        super(name, params);
+    constructor(params) {
+        super(params);
     }
 
     /**

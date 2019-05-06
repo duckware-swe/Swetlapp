@@ -5,8 +5,8 @@ var exports = module.exports = {};
 
 class TVScheduleAction extends Action {
 
-    constructor(name, params) {
-        super(name, params);
+    constructor(params) {
+        super(params);
     }
 
     /**

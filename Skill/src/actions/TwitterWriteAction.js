@@ -11,8 +11,9 @@ var exports = module.exports = {};
 
 class TwitterWriteAction extends Action {
 
-    constructor(name, params) {
-        super(name, params);
+    constructor(params) {
+        super(params);
+        this.inputRequired = true;
     }
 
     /**
@@ -20,14 +21,20 @@ class TwitterWriteAction extends Action {
      * @returns {Promise<string>} Returns an output containing the top twitter of a specified account
      */
     async run() {
-        let output = ' Inviato il Tweet';
-        let body = this.params[0];
-        await twitter.post('statuses/update', {status: body}).then(data => {
-          console.log(data);
-        }, err => {
-          console.log(err);
-        });
-        console.log("un sacco");
+        let output;
+        //TODO non c'è il token?
+        if(params.length<2) {
+            output = "Per pubblicare un tweet, dimmi invia seguito dal corpo del messaggio";
+        } else {
+            output = 'Tweet inviato con successo';
+            let body = this.params[1];
+            await twitter.post('statuses/update', {status: body}).then(data => {
+                console.log(data);
+            }, err => {
+                console.log(err);
+            });
+        }
+
         /*for(let i=0; i<this.params.length; i++){
             let param = this.params[i];
             //console.log("Parametro: " + param);

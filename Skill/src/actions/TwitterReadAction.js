@@ -11,8 +11,8 @@ var exports = module.exports = {};
 
 class TwitterReadAction extends Action {
 
-    constructor(name, params) {
-        super(name, params);
+    constructor(params) {
+        super(params);
     }
 
     /**

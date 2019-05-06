@@ -14,8 +14,8 @@ var exports = module.exports = {};
 
 class AddCardTrelloAction extends Action {
 
-    constructor(name, params) {
-        super(name, params);
+    constructor(params) {
+        super(params);
     }
 
     /**

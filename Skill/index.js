@@ -1,3 +1,5 @@
+import {Workflow} from "./src/utils/Workflow";
+
 const https = require('https');
 const Alexa = require('ask-sdk');
 const {actionFactory} = require("./src/utils/ActionFactory");
@@ -34,7 +36,7 @@ const LaunchRequestHandler = {
             console.log(`Error message: ${error.message}`);
         }
 
-        speechText = /*'Ciao ' + handlerInput.attributesManager.getSessionAttributes().username +*/ 'Ciao Dac uer! Benvenuto in Paperella!';//swetlapp
+        speechText = 'Ciao ' + handlerInput.attributesManager.getSessionAttributes().username + "! Benvenuto in " + appName;
             return handlerInput.responseBuilder
                 .speak(speechText)
                 .reprompt(speechText)
@@ -113,33 +115,83 @@ const RunWorkflowHandler = {
     },
     async handle(handlerInput) {
         let request = handlerInput.requestEnvelope.request;
-        let workflowName =  request.intent.slots.workflow.value;
+        let workflowName = request.intent.slots.workflow.value;
         let speechText = '';
+        let username = handlerInput.attributesManager.getSessionAttributes().username;
+        let response;
 
-        console.log(handlerInput.attributesManager.getSessionAttributes().username);
+        console.log(username);
         console.log(workflowName);
 
         let actionList;
-        await getWF(/*'b60dabc1-78bc-487f-be8d-5a0ee9319a33'*/'Duck', workflowName).then(
+        await getWF(username, workflowName).then(
             data => actionList = JSON.parse(data)
         );
 
-        speechText += 'Va bene, eseguo ' + JSON.stringify(workflowName) + '.';
+        let workflow = new Workflow(JSON.stringify(workflowName), actionList, 0);
 
-        for(let i=0; i<actionList.actions_records.length; i++) {
-            let action = actionList.actions_records[i];
-            //console.log("Esecuzione azione: " + action.action);
-            try {
-                speechText += await actionFactory(action.action, action.params).run()+". ";
-            } catch (e) {
-                speechText += "Azione non riconosciuta";
-            }
+        workflow.run().then(
+            data => speechText += 'Va bene, eseguo ' + workflow.workflowName + '. ' + data,
+            err => speechText += err
+        );
+
+        const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
+        sessionAttributes.workflow = workflow;
+
+        if (workflow.isInProgress()) {
+            request.dialogState = 'IN_PROGRESS';
+
+            response = handlerInput.responseBuilder
+                .speak(speechText)
+                .reprompt('')
+                .addElicitSlotDirective('elicitSlot')
+                .getResponse();
+        } else {
+            response = handlerInput.responseBuilder
+                .speak(speechText)
+                .reprompt('')
+                .getResponse();
         }
 
-        return handlerInput.responseBuilder
-            .speak(speechText)
-            .reprompt("Puoi chiedermi di eseguire un altro workflow, oppure terminare la skill.")
-            .getResponse();
+        return response;
+    }
+};
+
+const InProgressRunWorkflowHandler = {
+    canHandle(handlerInput) {
+        let request = handlerInput.requestEnvelope.request;
+        return request.type === 'IntentRequest' && request.dialogState === 'IN_PROGRESS'
+            && handlerInput.attributesManager.getSessionAttributes().workflow;
+        //TODO controllare intent name?
+    },
+    async handle(handlerInput) {
+        let request = handlerInput.requestEnvelope.request;
+        let elicitSlot =  request.intent.slots.elicitSlot.value;
+        let speechText = '';
+        let workflow = handlerInput.attributesManager.getSessionAttributes().workflow;
+        let response;
+
+        if(elicitSlot) workflow.actionList[workflow.index].params.push(elicitSlot);
+        workflow.run().then(
+            data => speechText += data,
+            err => speechText += err
+        );
+
+        if(workflow.isInProgress()) {
+            response = handlerInput.responseBuilder
+                .speak(speechText)
+                .reprompt('')
+                .addElicitSlotDirective('elicitSlot')
+                .getResponse();
+        } else {
+            request.dialogState = 'STARTED';
+            response = handlerInput.responseBuilder
+                .speak(speechText)
+                .reprompt('')
+                .getResponse();
+        }
+
+        return response;
     }
 };
 
