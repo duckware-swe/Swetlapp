@@ -23,9 +23,12 @@ class TwitterWriteAction extends Action {
     async run() {
         let output;
         //TODO non c'è il token?
+        console.log("Twitter action");
         if(params.length<2) {
+            console.log("Twitter params <2");
             output = "Per pubblicare un tweet, dimmi invia seguito dal corpo del messaggio";
         } else {
+            console.log("Twitter ha params input");
             output = 'Tweet inviato con successo';
             let body = this.params[1];
             await twitter.post('statuses/update', {status: body}).then(data => {

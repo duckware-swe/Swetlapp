@@ -15,6 +15,7 @@ class Workflow {
         this.actionList = [];
 
         actionList.forEach(action => {
+            //TODO potrebbe lanciare un errore non gestito!
             this.actionList.push(actionFactory(action.action, action.params));
         });
     }
@@ -31,13 +32,12 @@ class Workflow {
                 console.log("ho fatto un connettore");
                 console.log("pre if");
                 if(action.inputRequired) {
-                    console.log("dentro if");
                     this.index--;
                     inputRequired = true;
                 }
-                console.log("post if");
             } catch (e) {
-                speechText += "Azione non riconosciuta";
+                //TODO apostrofi con escape?
+                speechText += "Si è verificato un errore durante l esecuzione dell azione";
             }
         }
 
