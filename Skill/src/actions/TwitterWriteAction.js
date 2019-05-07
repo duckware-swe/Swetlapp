@@ -24,7 +24,7 @@ class TwitterWriteAction extends Action {
         let output;
         //TODO non c'è il token?
         console.log("Twitter action");
-        if(params.length<2) {
+        if(this.params.length<2) {
             console.log("Twitter params <2");
             output = "Per pubblicare un tweet, dimmi invia seguito dal corpo del messaggio";
         } else {
