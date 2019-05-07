@@ -1,4 +1,4 @@
-import {actionFactory} from "./ActionFactory";
+const {actionFactory} = require("./ActionFactory");
 
 var exports = module.exports = {};
 

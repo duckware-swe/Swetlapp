@@ -1,8 +1,6 @@
-import {Workflow} from "./src/utils/Workflow";
-
 const https = require('https');
 const Alexa = require('ask-sdk');
-const {actionFactory} = require("./src/utils/ActionFactory");
+const {Workflow} = require("./src/utils/Workflow");
 const {getDatabaseInstance, buildDatabaseParams} = require("./src/DatabaseInteractor");
 
 const appName = 'SwetlApp';
