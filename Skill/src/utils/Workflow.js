@@ -23,13 +23,13 @@ class Workflow {
     async run() {
         let inputRequired = false;
         let speechText = "";
-
+        console.log("comincio il for");
         for(; this.index<this.actionList.length && !inputRequired; this.index++) {
             let action = this.actionList[this.index];
             //console.log("Esecuzione azione: " + action.action);
             try {
                 speechText += await action.run()+". ";
-
+                console.log("ho fatto un connettore");
                 if(action.inputRequired) {
                     this.index--;
                     inputRequired = true;

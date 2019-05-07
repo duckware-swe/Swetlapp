@@ -120,22 +120,23 @@ const RunWorkflowHandler = {
 
         console.log(username);
         console.log(workflowName);
-
+        console.log("prime robe");
         let actionList;
         await getWF(username, workflowName).then(
             data => actionList = JSON.parse(data)
         );
-
-        let workflow = new Workflow(JSON.stringify(workflowName), actionList, 0);
-
+        console.log(actionList);
+        console.log("prima creazione Workflow");
+        let workflow = new Workflow(JSON.stringify(workflowName), actionList.actions_records, 0);
+        console.log("dopo creazione Workflow");
         workflow.run().then(
             data => speechText += 'Va bene, eseguo ' + workflow.workflowName + '. ' + data,
             err => speechText += err
         );
-
+        console.log("dopo then del run");
         const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
         sessionAttributes.workflow = workflow;
-
+        console.log("salvataggio wf");
         if (workflow.isInProgress()) {
             request.dialogState = 'IN_PROGRESS';
 

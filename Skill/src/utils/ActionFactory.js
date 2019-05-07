@@ -19,6 +19,7 @@ var exports = module.exports = {};
 function actionFactory(name, params) {
     switch (name) {
         case "custom_message":
+        	console.log("ho scelto il connettore");
             return new CustomMessageAction(params);
         case "read_feed":
             return new ReadFeedRSSAction(params);
