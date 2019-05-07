@@ -29,10 +29,13 @@ class Workflow {
             try {
                 speechText += await action.run()+". ";
                 console.log("ho fatto un connettore");
+                console.log("pre if");
                 if(action.inputRequired) {
+                    console.log("dentro if");
                     this.index--;
                     inputRequired = true;
                 }
+                console.log("post if");
             } catch (e) {
                 speechText += "Azione non riconosciuta";
             }
