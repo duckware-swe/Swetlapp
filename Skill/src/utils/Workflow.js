@@ -3,7 +3,6 @@ const {actionFactory} = require("./ActionFactory");
 var exports = module.exports = {};
 
 class Workflow {
-
     /**
      *
      * @param workflowName {string}
@@ -45,7 +44,6 @@ class Workflow {
     isInProgress() {
         return this.index < this.actionList.length;
     }
-
 }
 
 exports.Workflow = Workflow;

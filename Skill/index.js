@@ -129,10 +129,9 @@ const RunWorkflowHandler = {
         console.log("prima creazione Workflow");
         let workflow = new Workflow(JSON.stringify(workflowName), actionList.actions_records, 0);
         console.log("dopo creazione Workflow");
-        workflow.run().then(
-            data => speechText += 'Va bene, eseguo ' + workflow.workflowName + '. ' + data,
-            err => speechText += err
-        );
+        speechText += 'Va bene, eseguo ' + workflow.workflowName + '. ';
+        speechText += await workflow.run();
+
         console.log("dopo then del run");
         const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
         sessionAttributes.workflow = workflow;
