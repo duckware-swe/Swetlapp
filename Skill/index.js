@@ -293,6 +293,7 @@ exports.handler = async function (event, context) {
             .addRequestHandlers(
                 LaunchRequestHandler,
                 RunWorkflowHandler,
+                InProgressRunWorkflowHandler,
                 WorkflowRepeatHandler,
                 HelpIntentHandler,
                 CancelIntent,
