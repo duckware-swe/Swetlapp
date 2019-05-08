@@ -42,7 +42,7 @@ In questa fase del progetto le metriche istanziate saranno quelle di qualità re
 \end{itemize}
 \textbf{Attenzione:} Le metriche di qualità per il software utilizzate in questa fase si riferiscono ad un \markg{Proof of Concept}, di conseguenza alcune non sono state attuate e molte forniscono dati che non riflettono un prodotto rifinito.
 \subsubsection{Processi}
-\paragraph{MPRDP001 - SV e MPRDP002 -  BV}\mbox{}\\[0.4cm]
+\paragraph{MPRCP001 - SV e MPRCP002 -  BV}\mbox{}\\[0.4cm]
 \markg{Schedule variance} e \markg{budget variance} indicano un buono stato di salute del progetto.
 \begin{itemize}
 \item SV = +2.127
@@ -51,18 +51,18 @@ In questa fase del progetto le metriche istanziate saranno quelle di qualità re
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=10cm,keepaspectratio]{../includes/pics/SV.PNG}
-	\caption{\label{fig:mission}MPRDP001 - Schedule variance}
+	\caption{\label{fig:mission}MPRCP001 - Schedule variance}
 \end{figure}
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=10cm,keepaspectratio]{../includes/pics/BV.PNG}
-	\caption{\label{fig:mission}MPRDP002 - Budget variance}
+	\caption{\label{fig:mission}MPRCP002 - Budget variance}
 \end{figure}
-\paragraph{MPRDP003 - Rischi non previsti}\mbox{}\\[0.4cm]
+\paragraph{MPRCP003 - Rischi non previsti}\mbox{}\\[0.4cm]
 I rischi presentatisi in questa fase sono tutti già individuati nel set dei rischi. Di conseguenza non viene riportato alcun rischio non preventivato.
-\paragraph{MPRDP004 - Indisponibilità servizi terzi}\mbox{}\\[0.4cm]
+\paragraph{MPRCP004 - Indisponibilità servizi terzi}\mbox{}\\[0.4cm]
 I servizi terzi utilizzati non hanno subito interruzioni di disponibilità in nessun periodo. Di conseguenza non viene riportata alcuna segnalazione.
-\paragraph{MPRDP005 - Media di commit per settimana}\mbox{}\\[0.4cm]
+\paragraph{MPRCP005 - Media di commit per settimana}\mbox{}\\[0.4cm]
 Nella tabella sottostante è mostrato il risultato ottenuto per le repository utilizzate.
 \begin{center}%%TODO aggiorna numeri
 	\centering
@@ -76,7 +76,7 @@ Nella tabella sottostante è mostrato il risultato ottenuto per le repository ut
 		Applicazione Android         & 9             \\
 		Backend AWS    & 20                           \\
 		\rowcolor{white}
-		\caption{Resoconto misurazioni metrica MPRDP005 - Media commit per settimana}
+		\caption{Resoconto misurazioni metrica MPRCP005 - Media commit per settimana}
 	\end{longtable}
 \end{center}
 \subsubsection{Documenti}
@@ -132,7 +132,7 @@ La misura è stata effettuata tramite il plugin CodeMR. Per il codice dell' appl
 Le variabili inutilizzate sono segnalate come warnings dagli \markg{IDE} utilizzati, sono perciò facili da individuare, il loro valore è 0.
 \subsubsection{Test sul software}
 I risultati sono relativi allo stato attuale di Revisione di Progettazione, sono stati applicati pochi test per l'applicazione Android, solo quelli necessari a coprire i requisiti necessari ad un proof of concept, per quanto riguarda il backend AWS Lambda i test sono automaticamente generati per ogni Lambda implementata. Non è ancora stato definito il numero totale di test che si andranno ad eseguire, questo numero sarà molto vicino al numero totale di requisiti definiti in analisi dei requisiti.
-\paragraph{MPRC006 - Misurazione dei test}\mbox{}\\[0.4cm]
+\paragraph{MPRCS006 - Misurazione dei test}\mbox{}\\[0.4cm]
 \begin{center}
 	\centering
 	\renewcommand{\arraystretch}{1.5}
@@ -146,9 +146,19 @@ I risultati sono relativi allo stato attuale di Revisione di Progettazione, sono
 		Efficienza progettazione test    & 25 minuti & Accettabile \\
 		Contenimento dei difetti    & 80\% & Accettabile \\
 		\rowcolor{white}
-		\caption{Resoconto misurazioni metrica MPRC006 - Misurazione dei test}
+		\caption{Resoconto misurazioni metrica MPRCS006 - Misurazione dei test}
 	\end{longtable}
 \end{center}
+\clearpage
+\paragraph{MPRCS007 - Copertura requisiti}\mbox{}\\[0.4cm]
+In questa revisione la copertura dei requisiti è pari al 63\%, valore considerato non accettato per tale revisione.
+Il team terrà in piena considerazione questo risultato per soddisfare a pieno tale metrica per la revisione successiva
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=13cm,keepaspectratio]{../includes/pics/CoperturaRP.png}
+	\caption{\label{fig:mission}MPRCS007 - Copertura}
+\end{figure}
+\paragraph{MPRDS014 - Code Coverage}\mbox{}\\[0.4cm]
 
 \clearpage
 \subsection{Revisione di Qualifica}
@@ -161,7 +171,7 @@ In questa fase del progetto le metriche istanziate saranno quelle di qualità re
 \end{itemize}
 \textbf{Attenzione:} Le metriche di qualità per il software utilizzate in questa fase si riferiscono ad un prodotto totalmente finito per la fase di sviluppo. Alcune delle metriche riportate nelle Norme di Progetto v4.0.0 non sono state attuate in quanto alcune di queste servono a qualificare il raffinamento del prodotto.
 \subsubsection{Processi}
-\paragraph{MPRDP001 - SV e MPRDP002 -  BV}\mbox{}\\[0.4cm]
+\paragraph{MPRCP001 - SV e MPRCP002 -  BV}\mbox{}\\[0.4cm]
 Schedule variance e budget variance indicano un buono stato di salute del progetto.
 \begin{itemize}
 	\item SV = +1.150
@@ -170,18 +180,18 @@ Schedule variance e budget variance indicano un buono stato di salute del proget
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=13cm,keepaspectratio]{../includes/pics/Schedule_Variance.png}
-	\caption{\label{fig:mission}MPRDP001 - Schedule variance}
+	\caption{\label{fig:mission}MPRCP001 - Schedule variance}
 \end{figure}
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=13cm,keepaspectratio]{../includes/pics/Budget_Variance.png}
-	\caption{\label{fig:mission}MPRDP002 - Budget variance}
+	\caption{\label{fig:mission}MPRCP002 - Budget variance}
 \end{figure}
-\paragraph{MPRDP003 - Rischi non previsti}\mbox{}\\[0.4cm]
+\paragraph{MPRCP003 - Rischi non previsti}\mbox{}\\[0.4cm]
 I rischi presentatisi in questa fase sono tutti già individuati nel set dei rischi. Di conseguenza non viene riportato alcun rischio non preventivato.
-\paragraph{MPRDP004 - Indisponibilità servizi terzi}\mbox{}\\[0.4cm]
+\paragraph{MPRCP004 - Indisponibilità servizi terzi}\mbox{}\\[0.4cm]
 I servizi terzi utilizzati non hanno subito interruzioni di disponibilità in nessun periodo. Di conseguenza non viene riportata alcuna segnalazione.
-\paragraph{MPRDP005 - Media di commit per settimana}\mbox{}\\[0.4cm]
+\paragraph{MPRCP005 - Media di commit per settimana}\mbox{}\\[0.4cm]
 Nella tabella sottostante è mostrato il risultato ottenuto per le repository utilizzate.
 \begin{center}%%TODO aggiorna numeri
 	\centering
@@ -195,13 +205,13 @@ Nella tabella sottostante è mostrato il risultato ottenuto per le repository ut
 		Applicazione Android  & 32 \\
 		Backend AWS    & 21          \\
 		\rowcolor{white}
-		\caption{Resoconto misurazioni metrica MPRDP005 - Media commit per settimana}
+		\caption{Resoconto misurazioni metrica MPRCP005 - Media commit per settimana}
 	\end{longtable}
 \end{center}
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=13cm,keepaspectratio]{../includes/pics/Commit_RQ.png}
-	\caption{\label{fig:mission}MPRDP005 - Commit fatti durante le settimane di RQ}
+	\caption{\label{fig:mission}MPRCP005 - Commit fatti durante le settimane di RQ}
 \end{figure}
 \subsubsection{Documenti}
 \paragraph{MPRDD001 - Indice di Gulpease}\mbox{}\\[0.4cm]
@@ -274,7 +284,7 @@ Notiamo dal grafico sopra riportato che il numero di metodi sia per l'applicazio
 Le variabili inutilizzate sono segnalate come warnings dagli \markg{IDE} utilizzati, sono perciò facili da individuare, il loro valore è 0.
 \subsubsection{Test sul software}
 I risultati sono relativi allo stato attuale di Revisione di Qualifica. Sono stati applicati i test necessari a coprire i requisiti obbligatori di qualità sui prodotti. Per l'app Android sono stati applicati test per verificare le funzionalità dei metodi, mentre per quanto riguarda il backend della Skill i test sono automaticamente generati per ogni funzione Lambda implementata. Non è ancora stato definito il numero totale di test che si andranno ad eseguire, questo numero sarà molto vicino al numero totale di requisiti definiti in analisi dei requisiti.
-\paragraph{MPRC006 - Misurazione dei test}\mbox{}\\[0.4cm]
+\paragraph{MPRCS006 - Misurazione dei test}\mbox{}\\[0.4cm]
 \begin{center}
 	\centering
 	\renewcommand{\arraystretch}{1.5}
@@ -288,15 +298,24 @@ I risultati sono relativi allo stato attuale di Revisione di Qualifica. Sono sta
 		Efficienza progettazione test    & 15 minuti & Accettabile \\
 		Contenimento dei difetti    & 91\% & Accettabile \\
 		\rowcolor{white}
-		\caption{Resoconto misurazioni metrica MPRC006 - Misurazione dei test}
+		\caption{Resoconto misurazioni metrica MPRCS006 - Misurazione dei test}
 	\end{longtable}
 \end{center}
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=13cm,keepaspectratio]{../includes/pics/Misurazione.png}
-	\caption{\label{fig:mission}MPRC006 - Misurazione dei test da RP a RQ}
+	\caption{\label{fig:mission}MPRCS006 - Misurazione dei test da RP a RQ}
 \end{figure}
+\paragraph{MPRCS007 - Copertura requisiti}\mbox{}\\[0.4cm]
+In questa revisione la copertura dei requisiti è pari al 73\%, valore considerato accettato per tale revisione.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=13cm,keepaspectratio]{../includes/pics/CoperturaRP_RQ.png}
+	\caption{\label{fig:mission}MPRCS007 - Copertura}
+\end{figure}
+\paragraph{MPRDS014 - Code Coverage}\mbox{}\\[0.4cm]
 
+\clearpage
 \subsection{Revisione di Accettazione}
 \label{sec:revisione_accettazione}
 In questa fase del progetto le metriche istanziate saranno quelle di qualità relative ai:
@@ -307,7 +326,7 @@ In questa fase del progetto le metriche istanziate saranno quelle di qualità re
 \end{itemize}
 \textbf{Attenzione:} Le metriche di qualità per il software utilizzate in questa fase si riferiscono ad un prodotto totalmente finito per la fase di sviluppo. Alcune delle metriche riportate nelle Norme di Progetto v4.0.0 non sono state attuate in quanto alcune di queste servono a qualificare il raffinamento del prodotto.
 \subsubsection{Processi}
-\paragraph{MPRDP001 - SV e MPRDP002 -  BV}\mbox{}\\[0.4cm]
+\paragraph{MPRCP001 - SV e MPRCP002 -  BV}\mbox{}\\[0.4cm]
 Schedule variance e budget variance indicano un buono stato di salute del progetto.
 \begin{itemize}
 	\item SV = 
@@ -316,18 +335,18 @@ Schedule variance e budget variance indicano un buono stato di salute del proget
 \begin{figure}[H]
 	\centering
 	% \includegraphics[width=13cm,keepaspectratio]{../includes/pics/Schedule_Variance.png}
-	\caption{\label{fig:mission}MPRDP001 - Schedule variance}
+	\caption{\label{fig:mission}MPRCP001 - Schedule variance}
 \end{figure}
 \begin{figure}[H]
 	\centering
 	% \includegraphics[width=13cm,keepaspectratio]{../includes/pics/Budget_Variance.png}
-	\caption{\label{fig:mission}MPRDP002 - Budget variance}
+	\caption{\label{fig:mission}MPRCP002 - Budget variance}
 \end{figure}
-\paragraph{MPRDP003 - Rischi non previsti}\mbox{}\\[0.4cm]
+\paragraph{MPRCP003 - Rischi non previsti}\mbox{}\\[0.4cm]
 I rischi presentatisi in questa fase sono tutti già individuati nel set dei rischi. Di conseguenza non viene riportato alcun rischio non preventivato.
-\paragraph{MPRDP004 - Indisponibilità servizi terzi}\mbox{}\\[0.4cm]
+\paragraph{MPRCP004 - Indisponibilità servizi terzi}\mbox{}\\[0.4cm]
 I servizi terzi utilizzati non hanno subito interruzioni di disponibilità in nessun periodo. Di conseguenza non viene riportata alcuna segnalazione.
-\paragraph{MPRDP005 - Media di commit per settimana}\mbox{}\\[0.4cm]
+\paragraph{MPRCP005 - Media di commit per settimana}\mbox{}\\[0.4cm]
 Nella tabella sottostante è mostrato il risultato ottenuto per le repository utilizzate.
 \begin{center}
 	\centering
@@ -341,13 +360,13 @@ Nella tabella sottostante è mostrato il risultato ottenuto per le repository ut
 		Applicazione Android  & 37 \\
 		Backend AWS    & 29          \\
 		\rowcolor{white}
-		\caption{Resoconto misurazioni metrica MPRDP005 - Media commit per settimana}
+		\caption{Resoconto misurazioni metrica MPRCP005 - Media commit per settimana}
 	\end{longtable}
 \end{center}
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=13cm,keepaspectratio]{../includes/pics/Commit_RA.png}
-	\caption{\label{fig:mission}MPRDP005 - Commit fatti durante le settimane di RA}
+	\caption{\label{fig:mission}MPRCP005 - Commit fatti durante le settimane di RA}
 \end{figure}
 \subsubsection{Documenti}
 \paragraph{MPRDD001 - Indice di Gulpease}\mbox{}\\[0.4cm]
@@ -420,7 +439,7 @@ Notiamo dal grafico sopra riportato che il numero di metodi sia per l'applicazio
 Le variabili inutilizzate sono segnalate come warnings dagli \markg{IDE} utilizzati, sono perciò facili da individuare, il loro valore è 0.
 \subsubsection{Test sul software}
 I risultati sono relativi allo stato attuale di Revisione di Qualifica. Sono stati applicati i test necessari a coprire i requisiti obbligatori di qualità sui prodotti. Per l'app Android sono stati applicati test per verificare le funzionalità dei metodi, mentre per quanto riguarda il backend della Skill i test sono automaticamente generati per ogni funzione Lambda implementata. Non è ancora stato definito il numero totale di test che si andranno ad eseguire, questo numero sarà molto vicino al numero totale di requisiti definiti in analisi dei requisiti.
-\paragraph{MPRC006 - Misurazione dei test}\mbox{}\\[0.4cm]
+\paragraph{MPRCS006 - Misurazione dei test}\mbox{}\\[0.4cm]
 \begin{center}
 	\centering
 	\renewcommand{\arraystretch}{1.5}
@@ -434,11 +453,14 @@ I risultati sono relativi allo stato attuale di Revisione di Qualifica. Sono sta
 		Efficienza progettazione test    & 15 minuti & Accettabile \\
 		Contenimento dei difetti    & 95\% & Accettabile \\
 		\rowcolor{white}
-		\caption{Resoconto misurazioni metrica MPRC006 - Misurazione dei test}
+		\caption{Resoconto misurazioni metrica MPRCS006 - Misurazione dei test}
 	\end{longtable}
 \end{center}
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=13cm,keepaspectratio]{../includes/pics/MisurazioneRA.png}
-	\caption{\label{fig:mission}MPRC006 - Misurazione dei test da RP a RA}
+	\caption{\label{fig:mission}MPRCS006 - Misurazione dei test da RP a RA}
 \end{figure}
+\paragraph{MPRCS007 - Copertura requisiti}\mbox{}\\[0.4cm]
+In questa revisione la copertura dei requisiti è pari al DA CALCOLARE\%, valore considerato accettato per tale revisione.
+\paragraph{MPRDS014 - Code Coverage}\mbox{}\\[0.4cm]

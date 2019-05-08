@@ -269,18 +269,17 @@ Verranno ora elencate una serie di misurazioni che hanno lo scopo di tenere trac
     \end{center}
     Dove TE indica il numero totale di test eseguiti mentre TT indica il numero di test totali;
 \end{itemize}
-\subsubsection{MPRC007 - Copertura}
+\subsubsection{MPRC007 - Copertura requisiti}
 Verrà ora indicata una categoria di misurazioni utile per tenere traccia dell'esecuzione dei test e della copertura che questi hanno sui requisiti.
 
 \begin{itemize}
-    \item \textbf{MPRC007.1 - Copertura requisiti}: indica la percentuale di requisiti coperti dai test sui requisiti totali. Metrica utile per capire quante parti del prodotto finale hanno un test associato. La formula per il calcolo del \textit{CR} è la seguente:
+    \item \textbf{MPRC007 - Copertura requisiti}: indica la percentuale di requisiti coperti dai test sui requisiti totali. Metrica utile per capire quante parti del prodotto finale hanno un test associato. La formula per il calcolo del \textit{CR} è la seguente:
     \begin{center}
         \begin{displaymath}
             CR = \frac{R}{RTOT} * 100
         \end{displaymath}
     \end{center}
     Dove R indica il numero di requisiti coperti mentre RTOT indica il numero totale di requisiti;
-    \item \textbf{MPRC007.2 - Difetti per requisito}: indica il numero di difetti trovati nel test del requisito e fornisce informazioni sullo stato di soddisfacimento del requisito. In caso di zero difetti, il requisito viene considerato senza errori e dunque soddisfatto. La misurazione si mostra con una tabella avente nella prima colonna il nome del requisito mentre nella seconda i relativi difetti.
 \end{itemize}
 
 \subsection{Metriche qualità per i documenti}
@@ -405,13 +404,14 @@ Questa metrica riguarda le linee di codice prodotte in rapporto con le linee di 
     \item \textbf{Valore ottimale}: rapporto \textgreater { 0.30}.
 \end{itemize}
 \subsubsection{MPRDS014 - Code Coverage}
-Per poter avere una misura di codice verifica e testato si adotteranno determinati criteri, tecnicamente definiti come \textit{coverage criteria}:
-\begin{itemize}
-    \item \textbf{MPRDS014.1 - Function coverage}: Verificare che ogni funzione sia stata invocata almeno una volta;
-    \item \textbf{MPRDS014.2 - Statement coverage}: Verificare che ogni statement di codice sia stato eseguito e dunque che sia raggiungibile;
-    \item \textbf{MPRDS014.3 - Branch coverage}: Verificare se tutti i possibili branch di un \textit{if} sono stati eseguiti;
-    \item \textbf{MPRDS014.4 - Lines coverage}: Verificare se ogni linea è stata eseguita e/o percorsa;
-\end{itemize}
+\label{sec:CodeCoverage}
+Per poter avere una misura di codice verificato e testato si adotterà il Code Coverage che si calcola nel seguente modo:
+\begin{center}
+	\begin{displaymath}
+	CC = \frac{NMT}{TNMT} * 100
+	\end{displaymath}
+\end{center}
+Dove NMT indica il numero di metodi sottoposti a test mentre TNMT indica il numero di metodi da sottoporre a test.
 Verrà utilizzato il tool JaCoCo\footnote{\href{https://www.jetbrains.com/help/idea/code-coverage.html}{https://www.jetbrains.com/help/idea/code-coverage.html}} che è integrabile all'interno dell'\markg{IDE} IntelliJ \markg{IDEA} e Android Studio per il linguaggio Java. Per quanto riguarda Node.js si farà affidamento a \footnote{\href{https://mochajs.org/}{https://mochajs.org/}}.
 
 \subsection{Verifica}

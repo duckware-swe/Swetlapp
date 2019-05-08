@@ -43,8 +43,8 @@ Di seguito viene riportata la tabella riassuntiva delle metriche e degli obietti
 			\textbf{\label{metrica_processo_ob_MPRC001}\hyperref[metrica_processo_MPRC001]{MPRC001}} SV & Monitoraggio schedulazione temporale & $x \eqslantless \text{- 5 giorni}$ & 0 giorni \\
 			\textbf{\label{metrica_processo_ob_MPRC002}\hyperref[metrica_processo_MPRC002]{MPRC002}} BV & Monitoraggio costo preventivo fuori budget & $x \eqslantless -10$\% & 0\% \\
 			\textbf{\label{metrica_processo_ob_MPRC003}\hyperref[metrica_processo_MPRC003]{MPRC003}} Rischi non previsti & Controllo dei rischi non previsti &  x < 3 &  x = 0  \\
-			\textbf{\label{metrica_processo_ob_MPRC004}\hyperref[metrica_processo_MPRC004]{MPRC004}} Indisponibilità servizi terzi & Controllo indisponibilità dei servizi terzi & x < 3 & x = 0 \\
-			\textbf{\label{metrica_processo_ob_MPRC005}\hyperref[metrica_processo_MPRC005]{MPRC005}} Media di commit per settimana & Controllo della media dei commit & 100 commit /settimana & 140 commit /settimana \\
+			\textbf{\label{metrica_processo_ob_MPRC004}\hyperref[metrica_processo_MPRC004]{MPRC004}} \mbox{Indisponibilità} servizi terzi & Controllo indisponibilità dei servizi terzi & x < 3 & x = 0 \\
+			\textbf{\label{metrica_processo_ob_MPRC005}\hyperref[metrica_processo_MPRC005]{MPRC005}} \mbox{Media} di commit per settimana & Controllo della media dei commit & 100 commit /settimana & 140 commit /settimana \\
 			\rowcolor{white}
 			\caption{Tabella riassuntiva metriche e obiettivi per qualità di processo}
 		\end{longtable}
@@ -58,10 +58,11 @@ Il software prodotto deve possedere le seguenti caratteristiche, in modo da faci
 	\item \textbf{Commenti al codice:} Ogni unità di codice deve essere sufficientemente commentata;
 	\item \textbf{Prevenzione di bug:} Bisogna accertarsi che ogni unità di codice prodotto non sia affetta da bug prima dell'utilizzo.
 \end{itemize}
-Vengono utilizzate le seguenti metriche definite nelle \textit{Norme di Progetto} alla §3.5 e §3.7.14:
+Vengono utilizzate le seguenti metriche definite nelle \textit{Norme di Progetto} alla §3.5:
 \begin{itemize}
 	\item \label{metrica_processo_MPRC006}\hyperref[sec:qprocesso_tabella_metriche_sw_obiettivi_MPRC006]{MPRC006 Misurazione dei test};
-	\item \label{metrica_processo_MPRC007}\hyperref[sec:qprocesso_tabella_metriche_sw_obiettivi_MPRC007]{MPRC007 Copertura}.
+	\item \label{metrica_processo_MPRC007}\hyperref[sec:qprocesso_tabella_metriche_sw_obiettivi_MPRC007]{MPRC007 Copertura requisiti}.
+	\item \label{metrica_processo_MPRDS014}\hyperref[sec:qprocesso_tabella_metriche_sw_obiettivi_MPRDS014]{MPRDS014 Code Coverage}.
 \end{itemize}
 
 
@@ -79,23 +80,37 @@ Vengono utilizzate le seguenti metriche definite nelle \textit{Norme di Progetto
 		\textbf{\label{metrica_processo_ob_MPRC006}\hyperref[metrica_processo_MPRC006]{MPRC006.4}} & Superamento Contenimento dei difetti & > 60\% privi & 100\% \\ 
 		\textbf{\label{metrica_processo_ob_MPRC006}\hyperref[metrica_processo_MPRC006]{MPRC006.5}} & Superamento Copertura dei test eseguiti & 90\% & 100\% \\
 		\rowcolor{white}
-		\caption{Tabella delle metriche della qualità dei processi - MPRC006.x}
+		\caption{Tabella delle metriche della qualità del software - MPRC006.x}
 		\label{sec:qprocesso_tabella_metriche_sw_obiettivi_MPRC006}
 	\end{longtable}
 \end{center}
 
 \pagebreak
-\textbf{MPRC007 - Copertura}
+\textbf{MPRC007 - Copertura requisiti}
+\label{sec:copertura_req}
 \begin{center}	
 	\renewcommand{\arraystretch}{1.5}
 	\rowcolors{3}{tableLightYellow}{}
 	\begin{longtable}{  >{\RaggedRight}p{2.8cm}  >{\RaggedRight}p{5cm} >{\RaggedRight}p{2.5cm}  >{\RaggedRight}p{2.5cm}  }
 		\rowcolor{tableHeadYellow}
 		\textbf{Metrica}   & \textbf{Obiettivo} & \textbf{Valori \mbox{accettati}} & \textbf{Valori \mbox{ottimali}}\\		
-		\textbf{\label{metrica_processo_ob_MPRC007}\hyperref[metrica_processo_MPRC007]{MPRC007.1}} & Superamento Copertura requisiti & > 80\% & 100\% \\ 
-		\textbf{\label{metrica_processo_ob_MPRC007}\hyperref[metrica_processo_MPRC007]{MPRC007.2}} & Superamento Difetti per requisito & 100\% privi & 100\% privi \\ 
+		\textbf{\label{metrica_processo_ob_MPRC007}\hyperref[metrica_processo_MPRC007]{MPRC007}} & Superamento Copertura requisiti & > 70\% & 100\% \\ 
 		\rowcolor{white}
-		\caption{Tabella delle metriche della qualità dei processi - MPRC007.x}
+		\caption{Tabella delle metriche della qualità del software - MPRC007}
+		\label{sec:qprocesso_tabella_metriche_sw_obiettivi_MPRC007}
+	\end{longtable}
+\end{center}
+\textbf{MPRDS014 - Code Coverage}
+\label{sec:copertura_req}
+\begin{center}	
+	\renewcommand{\arraystretch}{1.5}
+	\rowcolors{3}{tableLightYellow}{}
+	\begin{longtable}{  >{\RaggedRight}p{2.8cm}  >{\RaggedRight}p{5cm} >{\RaggedRight}p{2.5cm}  >{\RaggedRight}p{2.5cm}  }
+		\rowcolor{tableHeadYellow}
+		\textbf{Metrica}   & \textbf{Obiettivo} & \textbf{Valori \mbox{accettati}} & \textbf{Valori \mbox{ottimali}}\\		
+		\textbf{\label{metrica_processo_ob_MPRC007}\hyperref[metrica_processo_MPRDS014]{MPRDS014}} & Copertura Code Coverage & > 85\% & 100\% \\ 
+		\rowcolor{white}
+		\caption{Tabella delle metriche della qualità del software - MPRDS014}
 		\label{sec:qprocesso_tabella_metriche_sw_obiettivi_MPRC007}
 	\end{longtable}
 \end{center}
