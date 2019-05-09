@@ -1,0 +1,12 @@
+{
+    "cognito": {
+        "configLevel": "project",
+        "useProfile": true,
+        "profileName": "default"
+    },
+    "testcog": {
+        "configLevel": "project",
+        "useProfile": true,
+        "profileName": "default"
+    }
+}

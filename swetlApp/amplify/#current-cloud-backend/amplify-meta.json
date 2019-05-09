@@ -1,0 +1,56 @@
+{
+	"providers": {
+		"awscloudformation": {
+			"AuthRoleName": "testcognito-20190320172632-authRole",
+			"UnauthRoleArn": "arn:aws:iam::865509909492:role/testcognito-20190320172632-unauthRole",
+			"AuthRoleArn": "arn:aws:iam::865509909492:role/testcognito-20190320172632-authRole",
+			"Region": "eu-central-1",
+			"DeploymentBucketName": "testcognito-20190320172632-deployment",
+			"UnauthRoleName": "testcognito-20190320172632-unauthRole",
+			"StackName": "testcognito-20190320172632",
+			"StackId": "arn:aws:cloudformation:eu-central-1:865509909492:stack/testcognito-20190320172632/ebca51e0-4b2c-11e9-b6e1-0ac03387fd40"
+		}
+	},
+	"auth": {
+		"cognito67b7895e": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation",
+			"providerMetadata": {
+				"s3TemplateURL": "https://s3.amazonaws.com/testcognito-20190320172632-deployment/amplify-cfn-templates/auth/cognito67b7895e-cloudformation-template.yml",
+				"logicalId": "authcognito67b7895e"
+			},
+			"lastPushTimeStamp": "2019-03-26T16:33:29.886Z",
+			"output": {
+				"AppClientSecret": "1jpe9e848r3ploiq6jbl7hppvhsku11oid9nf663r44nggmf0kdh",
+				"UserPoolId": "eu-central-1_HKxvsTMYN",
+				"AppClientIDWeb": "3pfe1o3vscg3d914b1sm8le32v",
+				"AppClientID": "51ehl4a6ab253jbt5u43asm2fr",
+				"IdentityPoolId": "eu-central-1:22a4b252-5dff-4bf3-9280-2bf2792857d3",
+				"IdentityPoolName": "cognito67b7895e_identitypool_67b7895e__testcog",
+				"UserPoolName": "cognito67b7895e_userpool_67b7895e"
+			},
+			"lastPushDirHash": "nWm7FZTfFyHUarlvgodR/8E/iXk="
+		}
+	},
+	"api": {
+		"testcognito": {
+			"service": "AppSync",
+			"providerPlugin": "awscloudformation",
+			"output": {
+				"securityType": "AMAZON_COGNITO_USER_POOLS",
+				"GraphQLAPIIdOutput": "tevi37ekkbfvjgpusicgsjpt5m",
+				"GraphQLAPIEndpointOutput": "https://g2yxbpcaxjghrhl3rt4pjepnsu.appsync-api.eu-central-1.amazonaws.com/graphql",
+				"GraphQLAPIKeyOutput": "da2-ufbtgczxgvgovjbamvtlffejbe",
+				"AuthCognitoUserPoolIdOutput": "eu-central-1_HKxvsTMYN",
+				"AuthCognitoUserPoolNativeClientId": "See UserPool: eu-central-1_HKxvsTMYN",
+				"AuthCognitoUserPoolJSClientId": "See UserPool: eu-central-1_HKxvsTMYN"
+			},
+			"providerMetadata": {
+				"s3TemplateURL": "https://s3.amazonaws.com/testcognito-20190320172632-deployment/amplify-cfn-templates/api/cloudformation-template.json",
+				"logicalId": "apitestcognito"
+			},
+			"lastPushTimeStamp": "2019-03-26T16:33:30.712Z",
+			"lastPushDirHash": "U45/mSq+eTOMaKSXKaoPXQn2Xx8="
+		}
+	}
+}
