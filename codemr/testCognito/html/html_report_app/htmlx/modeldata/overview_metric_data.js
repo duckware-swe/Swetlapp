@@ -1,1 +1,0 @@
-var CodeMR_ProjectMetrics = {"Project Name":"testCognito working set: {app}", "Number of Highly Problematic Classes":0, "Number of Entities":9, "Number of Problematic Classes":0, "Class Lines of Code":307, "Number of External Packages":5, "Number of Packages":1, "Number of External Entities":17}
