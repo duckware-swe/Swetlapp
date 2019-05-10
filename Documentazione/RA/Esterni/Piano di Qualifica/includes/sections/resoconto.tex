@@ -79,6 +79,7 @@ Nella tabella sottostante è mostrato il risultato ottenuto per le repository ut
 		\caption{Resoconto misurazioni metrica MPRCP005 - Media commit per settimana}
 	\end{longtable}
 \end{center}
+\pagebreak
 \subsubsection{Documenti}
 \paragraph{MPRDD001 - Indice di Gulpease}\mbox{}\\[0.4cm]
 Per mezzo di script automatici è stato possibile istanziare la metrica  \textbf{MPRDD001 Indice di Gulpease}.\\
@@ -111,9 +112,9 @@ Sono coperti da implementazione il 22\% dei requisiti accettati.
 %%ds 4 5 e 6 non sono ancora misurabili
 \paragraph{MPRDS009 - Complessità ciclomatica}\mbox{}\\[0.4cm]
 La misura è stata effettuata tramite il plugin CodeMR. Per il codice dell' applicazione Android, su un totale di 24 classi, sono state individuate: \begin{itemize}
-\item 7 classi di complessità bassa (verde chiaro)
-\item 8 classi di complessità medio-bassa (giallo)
-\item 6 classi di complessità medio-alta (verde scuro)
+\item 8 classi di complessità medio-alta (giallo)
+\item 7 classi di complessità medio-bassa (verde chiaro) 
+\item 6 classi di complessità bassa (verde scuro) 
 \end{itemize}
 \begin{figure}[H]
 	\centering
@@ -132,7 +133,7 @@ La misura è stata effettuata tramite il plugin CodeMR. Per il codice dell' appl
 Le variabili inutilizzate sono segnalate come warnings dagli \markg{IDE} utilizzati, sono perciò facili da individuare, il loro valore è 0.
 \subsubsection{Test sul software}
 I risultati sono relativi allo stato attuale di Revisione di Progettazione, sono stati applicati pochi test per l'applicazione Android, solo quelli necessari a coprire i requisiti necessari ad un proof of concept, per quanto riguarda il backend AWS Lambda i test sono automaticamente generati per ogni Lambda implementata. Non è ancora stato definito il numero totale di test che si andranno ad eseguire, questo numero sarà molto vicino al numero totale di requisiti definiti in analisi dei requisiti.
-\paragraph{MPRCS006 - Misurazione dei test}\mbox{}\\[0.4cm]
+\paragraph{MPRCS006 - Misurazione dei test}
 \begin{center}
 	\centering
 	\renewcommand{\arraystretch}{1.5}
@@ -158,7 +159,6 @@ Il team terrà in piena considerazione questo risultato per soddisfare a pieno t
 	\includegraphics[width=13cm,keepaspectratio]{../includes/pics/CoperturaRP.png}
 	\caption{\label{fig:mission}MPRCS007 - Copertura}
 \end{figure}
-\paragraph{MPRDS014 - Code Coverage}\mbox{}\\[0.4cm]
 
 \clearpage
 \subsection{Revisione di Qualifica}
@@ -260,16 +260,16 @@ Sono coperti da implementazione il 32\% dei requisiti accettati.
 \end{figure}
 \paragraph{MPRDS009 - Complessità ciclomatica}\mbox{}\\[0.4cm]
 La misura è stata effettuata tramite il plugin CodeMR. Per il codice dell' applicazione Android, su un totale di 16 classi, sono state individuate: \begin{itemize}
-	\item 4 classi di complessità bassa (verde chiaro)
-	\item 5 classi di complessità medio-bassa (giallo)
-	\item 2 classi di complessità medio-alta (verde scuro)
+	\item 5 classi di complessità medio-alta(giallo)
+	\item 4 classi di complessità medio-bassa (verde chiaro)
+	\item 2 classi di complessità bassa (verde scuro)
 \end{itemize}
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=10cm,keepaspectratio]{../includes/pics/complex.png}
 	\caption{\label{fig:mission}MPRDS009 - Complessità ciclomatica}
 \end{figure}
-\paragraph{MPRDS010 - Numero di metodi}\mbox{}\\[0.4cm]
+\paragraph{MPRDS010 - Numero di metodi}
 \begin{itemize}
 	\item La parte Android dell'Applicazione conta di 49 metodi.
 	\item La parte AWS Lambda dell'Applicazione conta di 40 metodi.
@@ -284,7 +284,7 @@ Notiamo dal grafico sopra riportato che il numero di metodi sia per l'applicazio
 Le variabili inutilizzate sono segnalate come warnings dagli \markg{IDE} utilizzati, sono perciò facili da individuare, il loro valore è 0.
 \subsubsection{Test sul software}
 I risultati sono relativi allo stato attuale di Revisione di Qualifica. Sono stati applicati i test necessari a coprire i requisiti obbligatori di qualità sui prodotti. Per l'app Android sono stati applicati test per verificare le funzionalità dei metodi, mentre per quanto riguarda il backend della Skill i test sono automaticamente generati per ogni funzione Lambda implementata. Non è ancora stato definito il numero totale di test che si andranno ad eseguire, questo numero sarà molto vicino al numero totale di requisiti definiti in analisi dei requisiti.
-\paragraph{MPRCS006 - Misurazione dei test}\mbox{}\\[0.4cm]
+\paragraph{MPRCS006 - Misurazione dei test}
 \begin{center}
 	\centering
 	\renewcommand{\arraystretch}{1.5}
@@ -314,6 +314,7 @@ In questa revisione la copertura dei requisiti è pari al 73\%, valore considera
 	\caption{\label{fig:mission}MPRCS007 - Copertura}
 \end{figure}
 \paragraph{MPRDS014 - Code Coverage}\mbox{}\\[0.4cm]
+\label{sec:CCRQ}
 
 \clearpage
 \subsection{Revisione di Accettazione}
@@ -329,17 +330,17 @@ In questa fase del progetto le metriche istanziate saranno quelle di qualità re
 \paragraph{MPRCP001 - SV e MPRCP002 -  BV}\mbox{}\\[0.4cm]
 Schedule variance e budget variance indicano un buono stato di salute del progetto.
 \begin{itemize}
-	\item SV = 
-	\item BV = 
+	\item SV = + 160
+	\item BV = + 500
 \end{itemize}
 \begin{figure}[H]
 	\centering
-	% \includegraphics[width=13cm,keepaspectratio]{../includes/pics/Schedule_Variance.png}
+	\includegraphics[width=13cm,keepaspectratio]{../includes/pics/Schedule_VarianceRA.png}
 	\caption{\label{fig:mission}MPRCP001 - Schedule variance}
 \end{figure}
 \begin{figure}[H]
 	\centering
-	% \includegraphics[width=13cm,keepaspectratio]{../includes/pics/Budget_Variance.png}
+	\includegraphics[width=13cm,keepaspectratio]{../includes/pics/Budget_VarianceRA.png}
 	\caption{\label{fig:mission}MPRCP002 - Budget variance}
 \end{figure}
 \paragraph{MPRCP003 - Rischi non previsti}\mbox{}\\[0.4cm]
@@ -415,31 +416,38 @@ Sono coperti da implementazione il 63\% dei requisiti accettati.
 \end{figure}
 \paragraph{MPRDS009 - Complessità ciclomatica}\mbox{}\\[0.4cm]
 La misura è stata effettuata tramite il plugin CodeMR. Per il codice dell' applicazione Android, su un totale di 16 classi, sono state individuate: \begin{itemize}
-	\item 4 classi di complessità bassa (verde chiaro)
-	\item 5 classi di complessità medio-bassa (giallo)
-	\item 2 classi di complessità medio-alta (verde scuro)
+	\item 5 classi di complessità medio-alta (giallo)
+	\item 4 classi di complessità medio-bassa (verde chiaro)
+	\item 2 classi di complessità bassa (verde scuro)
 \end{itemize}
 \begin{figure}[H]
 	\centering
-	% \includegraphics[width=10cm,keepaspectratio]{../includes/pics/complex.png}
+	\includegraphics[width=10cm,keepaspectratio]{../includes/pics/complexRA.png}
 	\caption{\label{fig:mission}MPRDS009 - Complessità ciclomatica}
 \end{figure}
-\paragraph{MPRDS010 - Numero di metodi}\mbox{}\\[0.4cm]
+Di seguito viene riportato l'andamento della Complessità Ciclomatica del prodotto software nella fase da Revisione di Progettazione a Revisione di Accettazione:
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=13cm,keepaspectratio]{../includes/pics/complexCiclo.png}
+	\caption{\label{fig:mission}MPRDS009 - Complessità ciclomatica da RP a RA}
+\end{figure}
+\paragraph{MPRDS010 - Numero di metodi}
 \begin{itemize}
-	\item La parte Android dell'Applicazione conta di \textbf{DA COMPLEATARE} metodi.
-	\item La parte AWS Lambda dell'Applicazione conta di \textbf{DA COMPLEATARE} metodi.
+	\item La parte Android dell'Applicazione conta di 49 metodi.
+	\item La parte AWS Lambda dell'Applicazione conta di 40 metodi.
 \end{itemize}
 \begin{figure}[H]
 	\centering
-	% \includegraphics[width=13cm,keepaspectratio]{../includes/pics/nMetodi.png}
+	\includegraphics[width=13cm,keepaspectratio]{../includes/pics/nMetodiRA.png}
 	\caption{\label{fig:mission}MPRDS010 -  Numero di metodi da RP a RA}
 \end{figure}
-Notiamo dal grafico sopra riportato che il numero di metodi sia per l'applicazione Android sia per le funzioni AWS Lambda è diminuito, questo perché tante funzionalità sono state migliorate appoggiandosi ai servizi e alle funzioni di Amazon AWS, snellendo così il codice e migliorandone l'efficienza e l'efficacia.
+Notiamo dal grafico sopra riportato che il numero di metodi sia per l'applicazione Android sia per le funzioni AWS Lambda è rimasto costante dalla Revisione precedente, questo perché le funzionalità sono già state implementate migliorate appoggiandosi ai servizi, alle funzioni di Amazon AWS e ai Design Pattern adottati.
 \paragraph{MPRDS011 - Variabili non utilizzate}\mbox{}\\[0.4cm]
 Le variabili inutilizzate sono segnalate come warnings dagli \markg{IDE} utilizzati, sono perciò facili da individuare, il loro valore è 0.
 \subsubsection{Test sul software}
 I risultati sono relativi allo stato attuale di Revisione di Qualifica. Sono stati applicati i test necessari a coprire i requisiti obbligatori di qualità sui prodotti. Per l'app Android sono stati applicati test per verificare le funzionalità dei metodi, mentre per quanto riguarda il backend della Skill i test sono automaticamente generati per ogni funzione Lambda implementata. Non è ancora stato definito il numero totale di test che si andranno ad eseguire, questo numero sarà molto vicino al numero totale di requisiti definiti in analisi dei requisiti.
-\paragraph{MPRCS006 - Misurazione dei test}\mbox{}\\[0.4cm]
+\pagebreak
+\paragraph{MPRCS006 - Misurazione dei test}
 \begin{center}
 	\centering
 	\renewcommand{\arraystretch}{1.5}
@@ -461,6 +469,13 @@ I risultati sono relativi allo stato attuale di Revisione di Qualifica. Sono sta
 	\includegraphics[width=13cm,keepaspectratio]{../includes/pics/MisurazioneRA.png}
 	\caption{\label{fig:mission}MPRCS006 - Misurazione dei test da RP a RA}
 \end{figure}
+\pagebreak
 \paragraph{MPRCS007 - Copertura requisiti}\mbox{}\\[0.4cm]
-In questa revisione la copertura dei requisiti è pari al DA CALCOLARE\%, valore considerato accettato per tale revisione.
+In questa revisione la copertura dei requisiti è pari al DA 94\%, valore considerato accettato per tale revisione.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=13cm,keepaspectratio]{../includes/pics/CoperturaRP_RA.png}
+	\caption{\label{fig:mission}MPRCS007 - Copertura}
+\end{figure}
 \paragraph{MPRDS014 - Code Coverage}\mbox{}\\[0.4cm]
+\label{sec:CCRA}
