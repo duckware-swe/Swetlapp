@@ -5,8 +5,8 @@ const { TwitterReadAction } = require('../actions/TwitterReadAction.js');
 const { TwitterWriteAction } = require('../actions/TwitterWriteAction.js');
 const { TVScheduleAction } = require('../actions/TVScheduleAction.js');
 const { WeatherAction } = require('../actions/WeatherAction.js');
-/*const { AddCardTrelloAction } = require('../actions/AddCardTrelloAction');
-const { GetCardsFromBoardTrelloAction } = require('../actions/GetCardsFromBoardTrelloAction');*/
+const { AddCardTrelloAction } = require('../actions/AddCardTrelloAction');
+const { GetCardsFromBoardTrelloAction } = require('../actions/GetCardsFromBoardTrelloAction');
 
 var exports = module.exports = {};
 
@@ -31,10 +31,10 @@ function actionFactory(name, params) {
             return new TVScheduleAction(name, params);
         case "weather":
         	return new WeatherAction(name, params);
-        /*case "add_card_trello":
+        case "add_card_trello":
             return new AddCardTrelloAction(name,params);
-        case "get_cards_on_board":
-            return new GetCardsFromBoardTrelloAction(name,params);*/
+        case "read_trello_cards":
+            return new GetCardsFromBoardTrelloAction(name,params);
         default :
             throw "Unknown action";
     }

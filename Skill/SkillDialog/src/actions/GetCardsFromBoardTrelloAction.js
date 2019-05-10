@@ -5,35 +5,29 @@ var apiKey = '77b62a6bf6bde24b95bd2f7d28d7b226';
 var token = 'a1a5b837de41f33a97f27b8afc716f0dbd0a8db35d51c77cafe95a1db9fdd333';
 var trello = new Trello(apiKey, token);
 
-let memberId, boardsIDs=[];
-
-//let trelloBoardId = '5ca6817e46cec324aeed2dc9'; // id della board dove è presente la lista (deve darcelo l'utente?)
-
-let trelloBoardId='';
-let objBoard ={}; //oggetto che rappresenta tutte le bacheche dell'utente
-let objListOnBoard = {};//tutte le liste presenti nella bacheca richiesta dall'utente
-let listNameSaidByUser = 'Cose da fare'; //nome lista detta dall'utente
-let boardNameSaidByUser = 'Bacheca Prova'; //nome della bacheca pronunciato dall'utente
-let titoloSchedaDaAggiungere = '';//titolo della scheda che l'utente vuole aggiungere
-let corpoSchedaDaAggiungere = '';//corpo della scheda che l'utente vuole aggiungere
+let memberId; //id dell'utente
+let boardsIDs=[]; //contiene gli ID tutte le bachece proprie dell'utente (nel caso serva)
+let trelloBoardId ='';//id della bacheca che l'utente ha scelto a voce
+let objBoard = {}; //oggetto JSON contiene tutto sulla bacheca voluta dall'utente
+let objListOnBoard = {}; //oggetto JSON della lista che l'utente ha scelto
+let listNameSaidByUser = 'In esecuzione';//nome lista detta dall'utente
+let boardNameSaidByUser = 'Bacheca prova';//corpo della scheda che l'utente vuole aggiungere
+let numberOfCardsToRead = 3; //Le prime 3 schede da leggere
+let arrOfObjsSchede={}; //array di oggetti riguardanti le schede
 
 /**
- * Permette di aggiungere una scheda con titolo e corpo
+ * See link trello developers: https://developers.trello.com
+ * For example we can use the following url: 'https://api.trello.com/1/boards/{boardId}/?cards=all' to get all cards in a board
+ *
+ * Riferimenti alla pagina: https://www.npmjs.com/package/trello
+ *
+ * To get Api Key follow: https://trello.com/app-key
+ * To get token key just click on the link 'puoi generare un Token manualmente'. It is near the section where there is the Api Key
+ *
+ * @type {{}}
  */
-let promiseAddCard = (titoloSchedaDaAggiungere,corpoSchedaDaAggiungere) => {
-    return new Promise(function (resolve, reject) {
-        trello.addCard(titoloSchedaDaAggiungere, corpoSchedaDaAggiungere, myListId, function (error, trelloCard) {
-            if (error) {
-                console.log('errore addCard: ',error);
-                reject(false);
-            }
-            else {
-                console.log('scheda aggiunta: ', trelloCard);
-                resolve(true);
-            }
-        });
-    });
-};
+
+var exports = module.exports = {};
 
 /**
  * Permette di ottenere l'id univoco dell'utente (member ID)
@@ -93,7 +87,8 @@ function getBoardWrapper(memberId){
                 }
             });
         });
-    }    
+    }
+    
 }
 
 /**
@@ -134,30 +129,49 @@ function getListsFromBoard(boardId){
 }
 
 /**
- * Riferimenti alla pagina: https://www.npmjs.com/package/trello
- * @type {{}}
+ * Permette di ottenere tutte le schede che sono presenti sulla lista specificata
  */
+function getCardsOnList_Wrapper(listId){
+    return new Promise(function(resolve,reject){
+        trello.getCardsOnList(listId,function(error,cards){
+            if (error) {
+                console.log('errore - getCardsOnBoard: ',error);
+                reject(false);
+            }else{
+                console.log('\n ho le schede getCardsOnBoard: ', cards);
 
-var exports = module.exports = {};
+                /**
+                 * Qua mi ritorna tutto l'object con tutte le schede della lista:
+                 * 
+                 * titolo scheda: name
+                 * descrizione scheda: desc 
+                 * 
+                 */
 
-class AddCardTrelloAction extends Action {
+                arrOfObjsSchede = JSON.parse(cards);
+            }
+        });
+    });
+}
+
+class GetCardsFromBoardTrelloAction extends Action {
 
     constructor(name, params) {
         super(name, params);
     }
 
     /**
-     *  It's not using parameters info from DynamoDb yet ..
+     * TODO
      *
-     * @returns {Promise<string>} Returns an output containing the result of the insert of new card in a list in Trello
+     *  TODO
+     *
+     * @returns {Promise<string>} TODO
      */
     async run() {
-    	let check = {
-        		output: '',
-        		noInput: true
+        let check = {
+            output: '',
+            noInput: true
         };
-        //let body = this.params[0];
-        
         let tempBool; //variabile temporanea
         
         /*
@@ -175,8 +189,20 @@ class AddCardTrelloAction extends Action {
                 //si ottiene la lista che l'utente ha voluto
                 tempBool = await getListsFromBoard(trelloBoardId);
                 if(tempBool){//lista trovata
-                    //aggiungere la scheda con titolo e descrizione
-                    promiseAddCard(titoloSchedaDaAggiungere,corpoSchedaDaAggiungere);
+                    //ottenere la descrizione delle schede della lista
+                    let tempObj;
+                    for(i=0; i< arrOfObjsSchede.length;++i){
+                        tempObj = arrOfObjsSchede[i];
+                        if(tempObj.name != ""){
+                            if(tempObj.desc != ""){
+                                check.output += "La scheda "+tempObj.name+" ha come descrizione " +tempObj.desc;
+                            }else{//descrizione della scheda vuota
+                                check.output += "La scheda "+tempObj.name+" non ha nessuna descrizione";
+                            }
+                        }else{
+                            //non c'è niente da dire
+                        }
+                    }
                 }else{
                     //lista non trovata
                 }
@@ -190,34 +216,31 @@ class AddCardTrelloAction extends Action {
         return check;
 
         /*
-        let myListId = '5ca6817e91267628b5af5922'; //Id of the list where to add the card
-
-        let promiseAddCard = () => {
+        let promiseGetCardsOnBoard = () => {
             return new Promise(function (resolve, reject) {
-                trello.addCard('Clean car', 'Wax on, wax off', myListId,
-                function (error, trelloCard) {
+                trello.getCardsOnBoard(boardId, function (error, data) {
                     if (error) {
-                        console.log('errore: ',error);
-                        reject('Impossibile aggiungere la scheda richiesta');
+                        console.log('errore - getCardsOnBoard: ',error);
+                        reject('Impossibile leggere le schede');
                     }
                     else {
-                        console.log('scheda aggiunta:', trelloCard);
-                        resolve('scheda aggiunta');
+                        console.log('ho le schede getCardsOnBoard: ', data);
+                        resolve('scheda 1 si chiama :'+data[0].name);
                     }
                 });
             });
         };
-        
+
         //it is possible to use await
         try{
-        	check.output = await promiseAddCard();
+            output = await promiseGetCardsOnBoard();
         }catch (error) {
-        	check.output = error;
+            output = error;
         }
-        
-        return check;
+
+        return output;
         */
     }
 }
 
-exports.AddCardTrelloAction = AddCardTrelloAction;
+exports.GetCardsFromBoardTrelloAction = GetCardsFromBoardTrelloAction;
