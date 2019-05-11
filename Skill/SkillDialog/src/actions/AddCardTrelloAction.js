@@ -11,12 +11,13 @@ let memberId, boardsIDs=[];
 //let trelloBoardId = '5ca6817e46cec324aeed2dc9'; // id della board dove è presente la lista (deve darcelo l'utente?)
 
 let trelloBoardId='';
-let objBoard ={}; //oggetto che rappresenta tutte le bacheche dell'utente
-let objListOnBoard = {};//tutte le liste presenti nella bacheca richiesta dall'utente
+let objBoard =null; //oggetto che rappresenta tutte le bacheche dell'utente
+let objListOnBoard = null;//tutte le liste presenti nella bacheca richiesta dall'utente
 let listNameSaidByUser = 'Cose da fare'; //nome lista detta dall'utente
 let boardNameSaidByUser = 'Bacheca Prova'; //nome della bacheca pronunciato dall'utente
 let titoloSchedaDaAggiungere = '';//titolo della scheda che l'utente vuole aggiungere
 let corpoSchedaDaAggiungere = '';//corpo della scheda che l'utente vuole aggiungere
+let nomeUtente = 'duckware';
 
 /**
  * Permette di aggiungere una scheda con titolo e corpo
@@ -30,7 +31,7 @@ let promiseAddCard = (titoloSchedaDaAggiungere,corpoSchedaDaAggiungere,listID) =
             }
             else {
                 console.log('scheda aggiunta: ', trelloCard);
-                resolve(true);
+                resolve(JSON.parse(JSON.stringify(trelloCard)));
             }
         });
     });
@@ -39,9 +40,9 @@ let promiseAddCard = (titoloSchedaDaAggiungere,corpoSchedaDaAggiungere,listID) =
 /**
  * Permette di ottenere l'id univoco dell'utente (member ID)
  */
-function httpGetMemberId() {
+function httpGetMemberId(username) {
     return new Promise((resolve, reject) => {
-        axios.get('https://api.trello.com/1/members/duckware')
+        axios.get('https://api.trello.com/1/members/'+username)
         .then(response => {
             //console.log(response.data.url);
             //console.log(JSON.parse(JSON.stringify(response.data)));
@@ -78,6 +79,7 @@ function getBoardWrapper(memberId){
                         actualBoard = tempJSON[i];
                         boardsIDs.push(trelloBoardId);
 
+                        console.log('trello board: ',actualBoard);
                         if((actualBoard.name).toLowerCase() == (boardNameSaidByUser).toLowerCase()){//se il nome  dela bacheca coincide con quello detto dall'utente
                             trelloBoardId = actualBoard.id; //ID della bacheca voluta dall'utente
                             /*if(!(trelloBoardId in objBoard)){//se la proprietà non è già presente
@@ -90,11 +92,12 @@ function getBoardWrapper(memberId){
                     //console.log('board:', JSON.stringify(objBoard), '\n');
 
                 
-                    resolve(true);//ritorna true nel caso si trovi la bacheca
+                    resolve(objBoard !== null);//ritorna true nel caso si trovi la bacheca
                 }
             });
         });
-    }    
+    }
+    
 }
 
 /**
@@ -112,15 +115,16 @@ function getListsFromBoard(boardId){
             else {
 
                 //console.log('risposta:', JSON.stringify(lists));
-                resolve('scheda aggiunta');
+                
 
                 let tempJSON = JSON.parse(JSON.stringify(lists));
                 let actualList;
-                let actualListId;
+                
                 
                 for(let i=0; i < tempJSON.length;++i){ //ottengo gli id di tutti le bacheche che l'utente possiede
                     actualList = tempJSON[i];
 
+                    console.log('actual list: ',JSON.stringify(actualList));
                     if((actualList.name).toLowerCase() == (listNameSaidByUser).toLowerCase()){//abbiamo trovato la lista che l'utente cercava
                         objListOnBoard = actualList;
                     }
@@ -128,7 +132,7 @@ function getListsFromBoard(boardId){
 
                 console.log('lista trovata:', JSON.stringify(objListOnBoard));
 
-                resolve(true);//successo
+                resolve(objListOnBoard !== null);//successo
             }
         });
     });
@@ -166,6 +170,7 @@ class AddCardTrelloAction extends Action {
         let boardId = '5ca6817e46cec324aeed2dc9';
         */
 
+        /*
         try{
             //ottengo il memberId
             memberId = await httpGetMemberId();
@@ -194,6 +199,88 @@ class AddCardTrelloAction extends Action {
             }
         }catch(error){
             check.output = error;
+        }*/
+
+
+        console.log("this.params: ", this.params);
+        //Prova con Dialog
+        if(this.params.length < 2){//ho solo il token
+            //Chiedo all'utente da che bacheca vuole leggere
+            console.log("AddCardTrello params < 2");
+            check.output = "Dimmi il nome della bacheca di Trello dove vuoi aggiungere la scheda";
+            check.noInput = false;
+        }else if(this.params.length ==2){ //ho il nome della bacheca
+            boardNameSaidByUser = this.params[1];
+            if(boardNameSaidByUser == ''){//nome vuoto
+                this.params.splice(1,1);//rimuovo l'attuale valore vuoto presente in fondo e ricomincio
+            }else{
+                check.output = "Dimmi il nome della lista dove aggiungere la scheda";
+            }
+            check.noInput = false;
+        }else if(this.params.length == 3){//ho il nome della lista
+            listNameSaidByUser = this.params[2];
+            if(listNameSaidByUser == ''){//nome lista vuoto
+                this.params.splice(2,1);
+            }else{
+                check.output = "Dimmi il titolo della scheda da aggiungere";
+            }
+            check.noInput = false;
+        }else if(this.params.length == 4){//ho il titolo della scheda
+            titoloSchedaDaAggiungere = this.params[3];
+            if(titoloSchedaDaAggiungere == ''){//nome lista vuoto
+                this.params.splice(3,1);
+            }else{
+                check.output = "Dimmi la descrizione della scheda da aggiungere";
+            }
+            check.noInput = false;
+        }else if(this.params.length == 5){//ho la descrizione della scheda
+            corpoSchedaDaAggiungere = this.params[4];
+            if(corpoSchedaDaAggiungere == ''){//nome lista vuoto
+                this.params.splice(4,1);
+                check.noInput = false;
+            }else{ //tutto ok
+                check.noInput = true;
+                tempBool = true;
+            }
+        }
+
+        //qui comincia l'esecuzione se ho tutto le info
+        if((boardNameSaidByUser !== '') && (listNameSaidByUser !== '') && (memberId !== '') && (titoloSchedaDaAggiungere != '') && (corpoSchedaDaAggiungere != '') && tempBool){
+            try{
+                console.log('boardNameSaidByUser: ', boardNameSaidByUser);
+                console.log('listNameByUSer: ', listNameSaidByUser);
+                
+                //ottengo il memberId
+                memberId = await httpGetMemberId(nomeUtente);
+                console.log('memberId: ', memberId);
+        
+
+                //si ottiene il JSON della bacheca voluta dall'utente
+                tempBool = await getBoardWrapper(memberId);
+                if(tempBool){//bacheca trovata
+                    //si ottiene la lista che l'utente ha voluto
+                    tempBool = await getListsFromBoard(trelloBoardId);
+                    if(tempBool){//lista trovata
+                        console.log('lists: ',objListOnBoard);
+                        //aggiungere la scheda con titolo e descrizione
+                        tempBool = await promiseAddCard(titoloSchedaDaAggiungere,corpoSchedaDaAggiungere,objListOnBoard.id);
+                        if(tempBool){//scehda aggiugnta correttamente
+                            check.output += "La scheda è stata aggiunta corretamente";
+                        }else{
+                            check.output += "Si è verificato un errore";
+                        }
+                    }else{
+                        //lista non trovata
+                        check.output += "La lista desiderata non è stata trovata";
+                    }
+                }else{
+                    //Qua dire all'utente che la bacheca scelta non è stata trovata
+                    check.output += "La bacheca desiderata non è stata trovata";
+                }
+
+            }catch(error){
+                check.output = error;
+            }
         }
 
         console.log('aggiunta scheda: ',check);
