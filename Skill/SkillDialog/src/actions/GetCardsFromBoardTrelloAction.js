@@ -1,5 +1,6 @@
 const { Action } = require('./Action.js');
 const Trello = require("trello");
+const axios = require('axios');
 
 var apiKey = '77b62a6bf6bde24b95bd2f7d28d7b226';
 var token = 'a1a5b837de41f33a97f27b8afc716f0dbd0a8db35d51c77cafe95a1db9fdd333';
@@ -8,10 +9,14 @@ var trello = new Trello(apiKey, token);
 let memberId; //id dell'utente
 let boardsIDs=[]; //contiene gli ID tutte le bachece proprie dell'utente (nel caso serva)
 let trelloBoardId ='';//id della bacheca che l'utente ha scelto a voce
-let objBoard = {}; //oggetto JSON contiene tutto sulla bacheca voluta dall'utente
-let objListOnBoard = {}; //oggetto JSON della lista che l'utente ha scelto
-let listNameSaidByUser = 'In esecuzione';//nome lista detta dall'utente
-let boardNameSaidByUser = 'Bacheca prova';//corpo della scheda che l'utente vuole aggiungere
+let objBoard = null; //oggetto JSON contiene tutto sulla bacheca voluta dall'utente
+let objListOnBoard = null; //oggetto JSON della lista che l'utente ha scelto
+//let listNameSaidByUser = 'In esecuzione';//nome lista detta dall'utente
+let listNameSaidByUser = '';//nome lista detta dall'utente
+let boardNameSaidByUser = '';//corpo della scheda che l'utente vuole aggiungere
+//let listNameSaidByUser = 'In esecuzifsdfsdfone';//nome lista detta dall'utente
+//let boardNameSaidByUser = 'Bacheca prova';//corpo della scheda che l'utente vuole aggiungere
+//let boardNameSaidByUser = 'Bacheca fdsfsdfsdfsdfprova';//corpo della scheda che l'utente vuole aggiungere
 let numberOfCardsToRead = 3; //Le prime 3 schede da leggere
 let arrOfObjsSchede={}; //array di oggetti riguardanti le schede
 
@@ -71,7 +76,8 @@ function getBoardWrapper(memberId){
                         actualBoard = tempJSON[i];
                         boardsIDs.push(trelloBoardId);
 
-                        if(toLowerCase(actualBoard.name) == toLowerCase(boardNameSaidByUser)){//se il nome  dela bacheca coincide con quello detto dall'utente
+                        console.log('trello board: ',actualBoard);
+                        if((actualBoard.name).toLowerCase() == (boardNameSaidByUser).toLowerCase()){//se il nome  dela bacheca coincide con quello detto dall'utente
                             trelloBoardId = actualBoard.id; //ID della bacheca voluta dall'utente
                             /*if(!(trelloBoardId in objBoard)){//se la proprietà non è già presente
                                 objBoard = tempJSON[i];//aggiunge la riga
@@ -83,7 +89,7 @@ function getBoardWrapper(memberId){
                     //console.log('board:', JSON.stringify(objBoard), '\n');
 
                 
-                    resolve(true);//ritorna true nel caso si trovi la bacheca
+                    resolve(objBoard !== null);//ritorna true nel caso si trovi la bacheca
                 }
             });
         });
@@ -106,23 +112,24 @@ function getListsFromBoard(boardId){
             else {
 
                 //console.log('risposta:', JSON.stringify(lists));
-                resolve('scheda aggiunta');
+                
 
                 let tempJSON = JSON.parse(JSON.stringify(lists));
                 let actualList;
-                let actualListId;
+                
                 
                 for(let i=0; i < tempJSON.length;++i){ //ottengo gli id di tutti le bacheche che l'utente possiede
                     actualList = tempJSON[i];
 
-                    if(toLowerCase(actualList.name) == toLowerCase(listNameSaidByUser)){//abbiamo trovato la lista che l'utente cercava
+                    console.log('actual list: ',JSON.stringify(actualList));
+                    if((actualList.name).toLowerCase() == (listNameSaidByUser).toLowerCase()){//abbiamo trovato la lista che l'utente cercava
                         objListOnBoard = actualList;
                     }
                 }
 
                 console.log('lista trovata:', JSON.stringify(objListOnBoard));
 
-                resolve(true);//successo
+                resolve(objListOnBoard !== null);//successo
             }
         });
     });
@@ -138,7 +145,7 @@ function getCardsOnList_Wrapper(listId){
                 console.log('errore - getCardsOnBoard: ',error);
                 reject(false);
             }else{
-                console.log('\n ho le schede getCardsOnBoard: ', cards);
+                console.log('\n ho le schede getCardsOnBoard: ', JSON.stringify(cards));
 
                 /**
                  * Qua mi ritorna tutto l'object con tutte le schede della lista:
@@ -148,7 +155,8 @@ function getCardsOnList_Wrapper(listId){
                  * 
                  */
 
-                arrOfObjsSchede = JSON.parse(cards);
+                arrOfObjsSchede = JSON.parse(JSON.stringify(cards));
+                resolve(arrOfObjsSchede.length > 0);
             }
         });
     });
@@ -172,17 +180,15 @@ class GetCardsFromBoardTrelloAction extends Action {
             output: '',
             noInput: true
         };
-        let tempBool; //variabile temporanea
-        
-        /*
-        let myListId = '5ca6817e91267628b5af5922'; //Id of the list where to add the card.. to be pulled from the parameters on Dynamo Db
-        let boardId = '5ca6817e46cec324aeed2dc9';
-        */
+        let tempBool=false; //variabile temporanea
+        let tempObj;
+    
 
+        /*
         try{
             //ottengo il memberId
             memberId = await httpGetMemberId();
-
+    
             //si ottiene il JSON della bacheca voluta dall'utente
             tempBool = await getBoardWrapper(memberId);
             if(tempBool){//bacheca trovata
@@ -190,29 +196,124 @@ class GetCardsFromBoardTrelloAction extends Action {
                 tempBool = await getListsFromBoard(trelloBoardId);
                 if(tempBool){//lista trovata
                     //ottenere la descrizione delle schede della lista
-                    let tempObj;
-                    for(i=0; i< arrOfObjsSchede.length;++i){
-                        tempObj = arrOfObjsSchede[i];
-                        if(tempObj.name != ""){
-                            if(tempObj.desc != ""){
-                                check.output += "La scheda "+tempObj.name+" ha come descrizione " +tempObj.desc;
-                            }else{//descrizione della scheda vuota
-                                check.output += "La scheda "+tempObj.name+" non ha nessuna descrizione";
+                    tempBool = await getCardsOnList_Wrapper(objListOnBoard.id);
+                    if(tempBool){//schede recuperate
+                        for(let i=0; i< arrOfObjsSchede.length;++i){
+                            tempObj = arrOfObjsSchede[i];
+                            if(tempObj.name != ""){
+                                if(tempObj.desc != ""){
+                                    check.output += " La scheda "+tempObj.name+" ha come descrizione " +tempObj.desc + " <break time=\"0.8s\"/> ";
+                                }else{//descrizione della scheda vuota
+                                    check.output += " La scheda "+tempObj.name+" non ha nessuna descrizione" + " <break time=\"0.8s\"/> ";
+                                }
+                            }else{
+                                //non c'è niente da dire.. la scheda non ha nome
                             }
-                        }else{
-                            //non c'è niente da dire
                         }
+                    }else{
+                        check.output += "Errore schede";
                     }
                 }else{
                     //lista non trovata
+                    check.output += "La lista desiderata non è stata trovata";
                 }
             }else{
                 //Qua dire all'utente che la bacheca scelta non è stata trovata
+                check.output += "La bacheca desiderata non è stata trovata";
             }
         }catch(error){
             check.output = error;
         }
+        */
 
+        console.log("this.params: ", this.params);
+        //Prova con Dialog
+        if(this.params.length < 2){//ho solo il token
+            //Chiedo all'utente da che bacheca vuole leggere
+            console.log("GetCardsTrello params < 2");
+            check.output = "Dimmi il nome della bacheca di Trello da dove vuoi leggere le tue schede";
+            check.noInput = false;
+        }else if(this.params.length ==2){ //ho il nome della bacheca
+            boardNameSaidByUser = this.params[1];
+            if(boardNameSaidByUser == ''){//nome vuoto
+                this.params.splice(1,1);//rimuovo l'attuale valore vuoto presente in fondo e ricomincio
+            }else{
+                check.output = "Dimmi il nome della lista da dove vuoi leggere le tue schede";
+            }
+            check.noInput = false;
+        }else if(this.params.length == 3){//ho il nome della lista
+            listNameSaidByUser = this.params[2];
+            if(listNameSaidByUser == ''){//nome lista vuoto
+                this.params.splice(2,1);
+                check.noInput = false;
+            }else{
+                check.noInput = true;
+                tempBool = true;
+            }
+        }/*else if(this.params.length == 4){//ho il numero di schede da leggere
+            numberOfCardsToRead = parseInt(this.params[3]);
+            if(numberOfCardsToRead === NaN){//ho il numero di schede da leggere
+                check.output = "Dimmi quante schede vuole leggere";
+                this.params.splice(3,1);
+                check.noInput = false;
+            }else{
+                tempBool = true;
+                check.noInput = true;
+            }
+        }*/
+
+        //qui comincia l'esecuzione se ho tutto le info
+        if((boardNameSaidByUser !== '') && (listNameSaidByUser !== '') && (memberId !== '') && tempBool){
+            try{
+                console.log('boardNameSaidByUser: ', boardNameSaidByUser);
+                console.log('listNameByUSer: ', listNameSaidByUser);
+                console.log('numberOfCardsToRead: ',numberOfCardsToRead);
+                
+                //ottengo il memberId
+                memberId = await httpGetMemberId();
+                console.log('memberId: ', memberId);
+        
+                //si ottiene il JSON della bacheca voluta dall'utente
+                tempBool = await getBoardWrapper(memberId);
+                if(tempBool){//bacheca trovata
+                    //si ottiene la lista che l'utente ha voluto
+                    tempBool = await getListsFromBoard(trelloBoardId);
+                    if(tempBool){//lista trovata
+                        
+                        //ottenere la descrizione delle schede della lista
+                        tempBool = await getCardsOnList_Wrapper(objListOnBoard.id);
+                        if(tempBool){//schede recuperate
+                            for(let i=0; i< arrOfObjsSchede.length;++i){
+                                tempObj = arrOfObjsSchede[i];
+                                if(tempObj.name != ""){
+                                    if(tempObj.desc != ""){
+                                        check.output += " La scheda "+tempObj.name+" ha come descrizione " +tempObj.desc + " <break time=\"0.8s\"/> ";
+                                    }else{//descrizione della scheda vuota
+                                        check.output += " La scheda "+tempObj.name+" non ha nessuna descrizione" + " <break time=\"0.8s\"/> ";
+                                    }
+                                }else{
+                                    //non c'è niente da dire.. la scheda non ha nome
+                                }
+                            }
+                        }else{
+                            check.output += "Nessuna scheda trovata";
+                        }
+                    }else{
+                        //lista non trovata
+                        check.output += "La lista desiderata non è stata trovata";
+                    }
+                }else{
+                    //Qua dire all'utente che la bacheca scelta non è stata trovata
+                    check.output += "La bacheca desiderata non è stata trovata";
+                }
+            }catch(error){
+                check.output = error;
+            }
+        }else{
+            //check.output += "Qualcosa è andato storto";
+        }
+    
+        console.log("ho check: ",JSON.stringify(check));
         return check;
 
         /*

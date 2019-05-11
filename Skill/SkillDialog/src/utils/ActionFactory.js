@@ -31,7 +31,7 @@ function actionFactory(name, params) {
             return new TVScheduleAction(name, params);
         case "weather":
         	return new WeatherAction(name, params);
-        case "add_card_trello":
+        case "add_trello_cards":
             return new AddCardTrelloAction(name,params);
         case "read_trello_cards":
             return new GetCardsFromBoardTrelloAction(name,params);

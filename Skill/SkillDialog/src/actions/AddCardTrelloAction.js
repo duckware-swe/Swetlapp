@@ -1,5 +1,6 @@
 const { Action } = require('./Action.js');
 const Trello = require("trello");
+const axios = require('axios');
 
 var apiKey = '77b62a6bf6bde24b95bd2f7d28d7b226';
 var token = 'a1a5b837de41f33a97f27b8afc716f0dbd0a8db35d51c77cafe95a1db9fdd333';
@@ -20,9 +21,9 @@ let corpoSchedaDaAggiungere = '';//corpo della scheda che l'utente vuole aggiung
 /**
  * Permette di aggiungere una scheda con titolo e corpo
  */
-let promiseAddCard = (titoloSchedaDaAggiungere,corpoSchedaDaAggiungere) => {
+let promiseAddCard = (titoloSchedaDaAggiungere,corpoSchedaDaAggiungere,listID) => {
     return new Promise(function (resolve, reject) {
-        trello.addCard(titoloSchedaDaAggiungere, corpoSchedaDaAggiungere, myListId, function (error, trelloCard) {
+        trello.addCard(titoloSchedaDaAggiungere, corpoSchedaDaAggiungere, listID, function (error, trelloCard) {
             if (error) {
                 console.log('errore addCard: ',error);
                 reject(false);
@@ -77,7 +78,7 @@ function getBoardWrapper(memberId){
                         actualBoard = tempJSON[i];
                         boardsIDs.push(trelloBoardId);
 
-                        if(toLowerCase(actualBoard.name) == toLowerCase(boardNameSaidByUser)){//se il nome  dela bacheca coincide con quello detto dall'utente
+                        if((actualBoard.name).toLowerCase() == (boardNameSaidByUser).toLowerCase()){//se il nome  dela bacheca coincide con quello detto dall'utente
                             trelloBoardId = actualBoard.id; //ID della bacheca voluta dall'utente
                             /*if(!(trelloBoardId in objBoard)){//se la proprietà non è già presente
                                 objBoard = tempJSON[i];//aggiunge la riga
@@ -120,7 +121,7 @@ function getListsFromBoard(boardId){
                 for(let i=0; i < tempJSON.length;++i){ //ottengo gli id di tutti le bacheche che l'utente possiede
                     actualList = tempJSON[i];
 
-                    if(toLowerCase(actualList.name) == toLowerCase(listNameSaidByUser)){//abbiamo trovato la lista che l'utente cercava
+                    if((actualList.name).toLowerCase() == (listNameSaidByUser).toLowerCase()){//abbiamo trovato la lista che l'utente cercava
                         objListOnBoard = actualList;
                     }
                 }
@@ -159,7 +160,7 @@ class AddCardTrelloAction extends Action {
         //let body = this.params[0];
         
         let tempBool; //variabile temporanea
-        
+    
         /*
         let myListId = '5ca6817e91267628b5af5922'; //Id of the list where to add the card.. to be pulled from the parameters on Dynamo Db
         let boardId = '5ca6817e46cec324aeed2dc9';
@@ -175,18 +176,27 @@ class AddCardTrelloAction extends Action {
                 //si ottiene la lista che l'utente ha voluto
                 tempBool = await getListsFromBoard(trelloBoardId);
                 if(tempBool){//lista trovata
+                    console.log('lists: ',objListOnBoard);
                     //aggiungere la scheda con titolo e descrizione
-                    promiseAddCard(titoloSchedaDaAggiungere,corpoSchedaDaAggiungere);
+                    tempBool = await promiseAddCard(titoloSchedaDaAggiungere,corpoSchedaDaAggiungere,objListOnBoard.id);
+                    if(tempBool){//scehda aggiugnta correttamente
+                        check.output += "La scheda è stata aggiunta corretamente";
+                    }else{
+                        check.output += "Si è verificato un errore";
+                    }
                 }else{
                     //lista non trovata
+                    check.output += "La lista desiderata non è stata trovata";
                 }
             }else{
                 //Qua dire all'utente che la bacheca scelta non è stata trovata
+                check.output += "La bacheca desiderata non è stata trovata";
             }
         }catch(error){
             check.output = error;
         }
 
+        console.log('aggiunta scheda: ',check);
         return check;
 
         /*
