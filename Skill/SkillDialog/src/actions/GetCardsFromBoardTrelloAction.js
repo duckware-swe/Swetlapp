@@ -19,6 +19,7 @@ let boardNameSaidByUser = '';//corpo della scheda che l'utente vuole aggiungere
 //let boardNameSaidByUser = 'Bacheca fdsfsdfsdfsdfprova';//corpo della scheda che l'utente vuole aggiungere
 let numberOfCardsToRead = 3; //Le prime 3 schede da leggere
 let arrOfObjsSchede={}; //array di oggetti riguardanti le schede
+let nomeUtente = 'duckware';
 
 /**
  * See link trello developers: https://developers.trello.com
@@ -39,7 +40,7 @@ var exports = module.exports = {};
  */
 function httpGetMemberId() {
     return new Promise((resolve, reject) => {
-        axios.get('https://api.trello.com/1/members/duckware')
+        axios.get('https://api.trello.com/1/members/'+nomeUtente)
         .then(response => {
             //console.log(response.data.url);
             //console.log(JSON.parse(JSON.stringify(response.data)));
@@ -182,19 +183,63 @@ class GetCardsFromBoardTrelloAction extends Action {
         };
         let tempBool=false; //variabile temporanea
         let tempObj;
-    
+        let indexParams= 0; //indice per ricavare i vari parametri
 
-        /*
-        try{
+       try{
             //ottengo il memberId
-            memberId = await httpGetMemberId();
-    
-            //si ottiene il JSON della bacheca voluta dall'utente
-            tempBool = await getBoardWrapper(memberId);
-            if(tempBool){//bacheca trovata
-                //si ottiene la lista che l'utente ha voluto
-                tempBool = await getListsFromBoard(trelloBoardId);
-                if(tempBool){//lista trovata
+            memberId = await httpGetMemberId(nomeUtente);
+            console.log('memberId: ', memberId);
+        
+            console.log("this.params: ", this.params);
+            if(memberId !== ''){
+                //Prova con Dialog
+                if(this.params.length < 2){//ho solo il token
+                    //Chiedo all'utente da che bacheca vuole leggere
+                    console.log("GetCardsTrello params < 2");
+                    check.output = "Dimmi il nome della bacheca di Trello da dove vuoi leggere le tue schede";
+                    check.noInput = false;
+                }else if(this.params.length ==2){ //ho il nome della bacheca
+                    indexParams = 1;
+                    boardNameSaidByUser = this.params[indexParams];
+                    if(boardNameSaidByUser == ''){//nome vuoto
+                        this.params.splice(indexParams,1);//rimuovo l'attuale valore vuoto presente in fondo e ricomincio
+                    }else{
+                        //si controlla se il nome della bacheca esiste ed è valido per l'utente
+                        //quindi ottengo le bacheche dell'utente
+                        //si ottiene il JSON della bacheca voluta dall'utente
+                        tempBool = await getBoardWrapper(memberId);
+                        if(tempBool){//bacheca trovata.. OK!
+                            check.output = "Ok adesso dimmi il nome della lista da dove leggere le tue schede";
+                        }else{//Bacheca non trovata .. richiedere all'utente il nome della bacheca
+                            check.output = "Riprova a dirmi il nome della bacheca di Trello da dove leggere le tue schede";
+                            this.params.splice(indexParams,1);//rimuovo l'attuale valore vuoto presente in fondo e ricomincio perchè è vuoto
+                        }
+                    }
+                    check.noInput = false;
+                }else if(this.params.length == 3){//ho il nome della lista
+                    indexParams = 2;
+                    listNameSaidByUser = this.params[indexParams];
+                    if(listNameSaidByUser == ''){//nome lista vuoto
+                        this.params.splice(indexParams,1);
+                    }else{
+                        //si ottiene la lista che l'utente ha voluto
+                        tempBool = await getListsFromBoard(trelloBoardId);
+                        if(tempBool){//lista trovata
+                            check.noInput = true; //tutto ok
+                            tempBool = true;
+                        }else{ //lista non trovata .. richiederla
+                            check.output = "Riprova a dirmi il nome della lista da dove leggere le tue schede";
+                            this.params.splice(indexParams,1);
+                            check.noInput = false;
+                        } 
+                    }
+                }
+
+                //qui comincia l'esecuzione se ho tutto le info
+                if((boardNameSaidByUser !== '') && (listNameSaidByUser !== '') && (memberId !== '') && tempBool){
+                    console.log('boardNameSaidByUser: ', boardNameSaidByUser);
+                    console.log('listNameByUSer: ', listNameSaidByUser);
+                    
                     //ottenere la descrizione delle schede della lista
                     tempBool = await getCardsOnList_Wrapper(objListOnBoard.id);
                     if(tempBool){//schede recuperate
@@ -202,30 +247,29 @@ class GetCardsFromBoardTrelloAction extends Action {
                             tempObj = arrOfObjsSchede[i];
                             if(tempObj.name != ""){
                                 if(tempObj.desc != ""){
-                                    check.output += " La scheda "+tempObj.name+" ha come descrizione " +tempObj.desc + " <break time=\"0.8s\"/> ";
+                                    check.output += " La scheda "+tempObj.name+" ha come descrizione " +tempObj.desc + " <break time=\"0.8s\"/> .";
                                 }else{//descrizione della scheda vuota
-                                    check.output += " La scheda "+tempObj.name+" non ha nessuna descrizione" + " <break time=\"0.8s\"/> ";
+                                    check.output += " La scheda "+tempObj.name+" non ha nessuna descrizione" + " <break time=\"0.8s\"/> .";
                                 }
                             }else{
                                 //non c'è niente da dire.. la scheda non ha nome
                             }
                         }
                     }else{
-                        check.output += "Errore schede";
+                        check.output += "Nessuna scheda trovata";
                     }
-                }else{
-                    //lista non trovata
-                    check.output += "La lista desiderata non è stata trovata";
-                }
+                }    
             }else{
-                //Qua dire all'utente che la bacheca scelta non è stata trovata
-                check.output += "La bacheca desiderata non è stata trovata";
+                check.output = "Per usare il connettore di Trello è necessario autenticarsi dall'applicazione";
             }
         }catch(error){
             check.output = error;
         }
-        */
 
+
+
+        //Versione vecchia
+        /*
         console.log("this.params: ", this.params);
         //Prova con Dialog
         if(this.params.length < 2){//ho solo il token
@@ -250,18 +294,9 @@ class GetCardsFromBoardTrelloAction extends Action {
                 check.noInput = true;
                 tempBool = true;
             }
-        }/*else if(this.params.length == 4){//ho il numero di schede da leggere
-            numberOfCardsToRead = parseInt(this.params[3]);
-            if(numberOfCardsToRead === NaN){//ho il numero di schede da leggere
-                check.output = "Dimmi quante schede vuole leggere";
-                this.params.splice(3,1);
-                check.noInput = false;
-            }else{
-                tempBool = true;
-                check.noInput = true;
-            }
-        }*/
+        }
 
+        
         //qui comincia l'esecuzione se ho tutto le info
         if((boardNameSaidByUser !== '') && (listNameSaidByUser !== '') && (memberId !== '') && tempBool){
             try{
@@ -312,6 +347,7 @@ class GetCardsFromBoardTrelloAction extends Action {
         }else{
             //check.output += "Qualcosa è andato storto";
         }
+        */
     
         console.log("ho check: ",JSON.stringify(check));
         return check;
