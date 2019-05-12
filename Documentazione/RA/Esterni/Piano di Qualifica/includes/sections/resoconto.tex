@@ -132,7 +132,68 @@ La misura è stata effettuata tramite il plugin CodeMR. Per il codice dell' appl
 \paragraph{MPRDS011 - Variabili non utilizzate}\mbox{}\\[0.4cm]
 Le variabili inutilizzate sono segnalate come warnings dagli \markg{IDE} utilizzati, sono perciò facili da individuare, il loro valore è 0.
 \subsubsection{Test sul software}
-I risultati sono relativi allo stato attuale di Revisione di Progettazione, sono stati applicati pochi test per l'applicazione Android, solo quelli necessari a coprire i requisiti necessari ad un proof of concept, per quanto riguarda il backend AWS Lambda i test sono automaticamente generati per ogni Lambda implementata. Non è ancora stato definito il numero totale di test che si andranno ad eseguire, questo numero sarà molto vicino al numero totale di requisiti definiti in analisi dei requisiti.
+I risultati sono relativi allo stato attuale di Revisione di Progettazione, sono stati applicati pochi test per l'applicazione Android, solo quelli necessari a coprire i requisiti necessari ad un proof of concept, per quanto riguarda il backend AWS Lambda i test sono automaticamente generati per ogni Lambda implementata. Non è ancora stato definito il numero totale di test che si andranno ad eseguire.
+\paragraph{Test di Unità}
+\label{sec:tuRP}
+Di seguito vengono riportati i Test di Unità relativi all'applicazione Android realizzata, con descrizione e corrispettivo codice identificativo.
+\begin{center}
+	\centering
+	\renewcommand{\arraystretch}{1.5}
+	\rowcolors{3}{tableLightYellow}{}
+	\begin{longtable}{  p{1.5cm}  p{10.5cm} p{2cm}  }
+		\rowcolor{tableHeadYellow}
+		\textbf{Codice}   & \textbf{Valore ottenuto} & \textbf{Esito} \\ 
+		\endhead
+		TU1 & Verifica che l’utente appena registrato venga salvato in nel database.  & Superato \\
+		TU2 & Verifica che vengano caricati i workflow dell’utente corrente. & Superato \\
+		TU3 & Verifica che il workflow appena creato venga salvato nel database nella giusta forma. & Superato \\
+		TU4 & Verifica che vengano caricati i connettori già impostati del workflow selezionato. & Superato \\
+		TU5 & Verifica dell’eliminazione dei workflow. & Superato \\
+		\rowcolor{white}
+		\caption{Elenco Test di Unità}
+	\end{longtable}
+\end{center}
+Per quanto riguarda la Skill sono stati eseguiti i test di unità già forniti da Amazon AWS, restituendo esito positivo per le funzionalità implementate.
+\pagebreak
+\paragraph{Test di Integrazione}
+\label{sec:tiRP}
+Di seguito vengono riportati i Test di Integrazione relativi all'applicazione Android realizzata, con descrizione e corrispettivo codice identificativo.
+\begin{center}
+	\centering
+	\renewcommand{\arraystretch}{1.5}
+	\rowcolors{3}{tableLightYellow}{}
+	\begin{longtable}{  p{1.5cm}  p{10.5cm} p{2cm}  }
+		\rowcolor{tableHeadYellow}
+		\textbf{Codice}   & \textbf{Valore ottenuto} & \textbf{Esito} \\ 
+		\endhead
+		TI1 & Verifica la compatibilità tra model view e controller.  & Superato \\
+		TI2 & Verifica l’integrazione tra Cognito e DynamoDB. & Superato \\
+		TI3 & Verifica l’integrazione tra Skill e DynamoDB. & Superato \\
+		\rowcolor{white}
+		\caption{Elenco Test di Integrazione}
+	\end{longtable}
+\end{center}
+\paragraph{Test di Sistema}
+\label{sec:tsRP}
+Di seguito vengono riportati i Test di Sistema relativi all'applicazione Android realizzata, con descrizione e corrispettivo codice identificativo.
+\begin{center}
+	\centering
+	\renewcommand{\arraystretch}{1.5}
+	\rowcolors{3}{tableLightYellow}{}
+	\begin{longtable}{  p{1.2cm}  p{8.5cm} p{2cm} p{1.5cm} }
+		\rowcolor{tableHeadYellow}
+		\textbf{Codice}   & \textbf{Valore ottenuto} & \textbf{Cod. \mbox{requisito}} & \textbf{Esito} \\ 
+		\endhead
+		TS1 & Verifica che il sistema permetta la registrazione. & R2F1 & Superato \\
+		TS2 & Verifica che il sistema permetta il login. & R2F2 & Superato \\
+		TS3 & Verifica che il sistema permetta l’accesso a tutti i workflow creati dall’utente. & R2F4 & Superato \\
+		TS4 & Verifica che il sistema mostri solo i workflow dell’utente corrente. & R2F5 & Superato \\
+		TS5 & Verifica che il sistema impedisca la creazione di workflow il cui nome è inferiore ai 4 caratteri. & R2F6 & Superato \\
+		TS6 & Verifica che il sistema visualizzi i connettori disponibili. & R2F7 & Superato \\
+		\rowcolor{white}
+		\caption{Elenco Test di Sistema}
+	\end{longtable}
+\end{center}
 \paragraph{MPRCS006 - Misurazione dei test}
 \begin{center}
 	\centering
@@ -150,7 +211,6 @@ I risultati sono relativi allo stato attuale di Revisione di Progettazione, sono
 		\caption{Resoconto misurazioni metrica MPRCS006 - Misurazione dei test}
 	\end{longtable}
 \end{center}
-\clearpage
 \paragraph{MPRCS007 - Copertura requisiti}\mbox{}\\[0.4cm]
 In questa revisione la copertura dei requisiti è pari al 63\%, valore considerato non accettato per tale revisione.
 Il team terrà in piena considerazione questo risultato per soddisfare a pieno tale metrica per la revisione successiva
@@ -283,7 +343,71 @@ Notiamo dal grafico sopra riportato che il numero di metodi sia per l'applicazio
 \paragraph{MPRDS011 - Variabili non utilizzate}\mbox{}\\[0.4cm]
 Le variabili inutilizzate sono segnalate come warnings dagli \markg{IDE} utilizzati, sono perciò facili da individuare, il loro valore è 0.
 \subsubsection{Test sul software}
-I risultati sono relativi allo stato attuale di Revisione di Qualifica. Sono stati applicati i test necessari a coprire i requisiti obbligatori di qualità sui prodotti. Per l'app Android sono stati applicati test per verificare le funzionalità dei metodi, mentre per quanto riguarda il backend della Skill i test sono automaticamente generati per ogni funzione Lambda implementata. Non è ancora stato definito il numero totale di test che si andranno ad eseguire, questo numero sarà molto vicino al numero totale di requisiti definiti in analisi dei requisiti.
+I risultati sono relativi allo stato attuale di Revisione di Qualifica. Sono stati applicati i test necessari a coprire i requisiti obbligatori di qualità sui prodotti. Per l'app Android sono stati applicati test per verificare le funzionalità dei metodi, mentre per quanto riguarda il backend della Skill i test sono automaticamente generati per ogni funzione Lambda implementata. Non è ancora stato definito il numero totale di test che si andranno ad eseguire.
+\paragraph{Test di Unità}
+\label{sec:tuRQ}
+Di seguito vengono riportati i Test di Unità relativi all'applicazione Android realizzata, con descrizione e corrispettivo codice identificativo.
+\begin{center}
+	\centering
+	\renewcommand{\arraystretch}{1.5}
+	\rowcolors{3}{tableLightYellow}{}
+	\begin{longtable}{  p{1.5cm}  p{10.5cm} p{2cm}  }
+		\rowcolor{tableHeadYellow}
+		\textbf{Codice}   & \textbf{Valore ottenuto} & \textbf{Esito} \\ 
+		\endhead
+		TU1 & Verifica che l’utente appena registrato venga salvato in nel database.  & Superato \\
+		TU2 & Verifica che vengano caricati i workflow dell’utente corrente. & Superato \\
+		TU3 & Verifica che il workflow appena creato venga salvato nel database nella giusta forma. & Superato \\
+		TU4 & Verifica che vengano caricati i connettori già impostati del workflow selezionato. & Superato \\
+		TU5 & Verifica dell’eliminazione dei workflow. & Superato \\
+		TU6 & Verifica che vengano caricati i parametri già impostati dei connettori già impostati del workflow selezionato. & Superato \\
+		\rowcolor{white}
+		\caption{Elenco Test di Unità}
+	\end{longtable}
+\end{center}
+Per quanto riguarda la Skill sono stati eseguiti i test di unità già forniti da Amazon AWS, restituendo esito positivo per le funzionalità implementate.
+\paragraph{Test di Integrazione}
+\label{sec:tiRQ}
+Di seguito vengono riportati i Test di Integrazione relativi all'applicazione Android realizzata, con descrizione e corrispettivo codice identificativo.
+\begin{center}
+	\centering
+	\renewcommand{\arraystretch}{1.5}
+	\rowcolors{3}{tableLightYellow}{}
+	\begin{longtable}{  p{1.5cm}  p{10.5cm} p{2cm}  }
+		\rowcolor{tableHeadYellow}
+		\textbf{Codice}   & \textbf{Valore ottenuto} & \textbf{Esito} \\ 
+		\endhead
+		TI1 & Verifica la compatibilità tra model view e controller.  & Superato \\
+		TI2 & Verifica l’integrazione tra Cognito e DynamoDB. & Superato \\
+		TI3 & Verifica l’integrazione tra Skill e DynamoDB. & Superato \\
+		TI4 & Verifica l’integrazione tra AWS MobileClient e Cognito. & Superato \\
+		TI5 & Verifica integrazione tra GraphQL Schema e AppSync. & Superato \\
+		\rowcolor{white}
+		\caption{Elenco Test di Integrazione}
+	\end{longtable}
+\end{center}
+\paragraph{Test di Sistema}
+\label{sec:tsRQ}
+Di seguito vengono riportati i Test di Sistema relativi all'applicazione Android realizzata, con descrizione e corrispettivo codice identificativo.
+\begin{center}
+	\centering
+	\renewcommand{\arraystretch}{1.5}
+	\rowcolors{3}{tableLightYellow}{}
+	\begin{longtable}{  p{1.2cm}  p{8.5cm} p{2cm} p{1.5cm} }
+		\rowcolor{tableHeadYellow}
+		\textbf{Codice}   & \textbf{Valore ottenuto} & \textbf{Cod. \mbox{requisito}} & \textbf{Esito} \\ 
+		\endhead
+		TS1 & Verifica che il sistema permetta la registrazione. & R2F1 & Superato \\
+		TS2 & Verifica che il sistema permetta il login. & R2F2 & Superato \\
+		TS3 & Verifica che il sistema permetta l’accesso a tutti i workflow creati dall’utente. & R2F4 & Superato \\
+		TS4 & Verifica che il sistema mostri solo i workflow dell’utente corrente. & R2F5 & Superato \\
+		TS5 & Verifica che il sistema impedisca la creazione di workflow il cui nome è inferiore ai 4 caratteri. & R2F6 & Superato \\
+		TS6 & Verifica che il sistema visualizzi i connettori disponibili. & R2F7 & Superato \\
+		\rowcolor{white}
+		\caption{Elenco Test di Sistema}
+	\end{longtable}
+\end{center}
+\pagebreak
 \paragraph{MPRCS006 - Misurazione dei test}
 \begin{center}
 	\centering
@@ -306,6 +430,7 @@ I risultati sono relativi allo stato attuale di Revisione di Qualifica. Sono sta
 	\includegraphics[width=13cm,keepaspectratio]{../includes/pics/Misurazione.png}
 	\caption{\label{fig:mission}MPRCS006 - Misurazione dei test da RP a RQ}
 \end{figure}
+\pagebreak
 \paragraph{MPRCS007 - Copertura requisiti}\mbox{}\\[0.4cm]
 In questa revisione la copertura dei requisiti è pari al 73\%, valore considerato accettato per tale revisione.
 \begin{figure}[H]
@@ -315,6 +440,12 @@ In questa revisione la copertura dei requisiti è pari al 73\%, valore considera
 \end{figure}
 \paragraph{MPRDS014 - Code Coverage}\mbox{}\\[0.4cm]
 \label{sec:CCRQ}
+In questa revisione il Code Coverage calcolato è pari al 91\%, valore considerato accettato per tale revisione.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=13cm,keepaspectratio]{../includes/pics/ccRQ.png}
+	\caption{\label{fig:mission}MPRDS014 - Code Coverage}
+\end{figure}
 
 \clearpage
 \subsection{Revisione di Accettazione}
@@ -445,7 +576,114 @@ Notiamo dal grafico sopra riportato che il numero di metodi sia per l'applicazio
 \paragraph{MPRDS011 - Variabili non utilizzate}\mbox{}\\[0.4cm]
 Le variabili inutilizzate sono segnalate come warnings dagli \markg{IDE} utilizzati, sono perciò facili da individuare, il loro valore è 0.
 \subsubsection{Test sul software}
-I risultati sono relativi allo stato attuale di Revisione di Qualifica. Sono stati applicati i test necessari a coprire i requisiti obbligatori di qualità sui prodotti. Per l'app Android sono stati applicati test per verificare le funzionalità dei metodi, mentre per quanto riguarda il backend della Skill i test sono automaticamente generati per ogni funzione Lambda implementata. Non è ancora stato definito il numero totale di test che si andranno ad eseguire, questo numero sarà molto vicino al numero totale di requisiti definiti in analisi dei requisiti.
+I risultati sono relativi allo stato di Revisione di Accettazione. Sono stati applicati i test necessari a coprire i requisiti obbligatori di qualità sui prodotti. Per l'app Android sono stati applicati test per verificare le funzionalità dei metodi, mentre per quanto riguarda il backend della Skill i test sono automaticamente generati per ogni funzione Lambda implementata.
+\pagebreak
+\paragraph{Test di Unità}
+\label{sec:tuRA}
+Di seguito vengono riportati i Test di Unità relativi all'applicazione Android realizzata, con descrizione e corrispettivo codice identificativo.
+\begin{center}
+	\centering
+	\renewcommand{\arraystretch}{1.5}
+	\rowcolors{3}{tableLightYellow}{}
+	\begin{longtable}{  p{1.5cm}  p{10.5cm} p{2cm}  }
+		\rowcolor{tableHeadYellow}
+		\textbf{Codice}   & \textbf{Valore ottenuto} & \textbf{Esito} \\ 
+		\endhead
+		TU1 & Verifica che l’utente appena registrato venga salvato in nel database.  & Superato \\
+		TU2 & Verifica che vengano caricati i workflow dell’utente corrente. & Superato \\
+		TU3 & Verifica che il workflow appena creato venga salvato nel database nella giusta forma. & Superato \\
+		TU4 & Verifica che vengano caricati i connettori già impostati del workflow selezionato. & Superato \\
+		TU5 & Verifica dell’eliminazione dei workflow. & Superato \\
+		TU6 & Verifica che vengano caricati i parametri già impostati dei connettori già impostati del workflow selezionato. & Superato \\
+		TU7 & Verifica che salvando i connettori appena aggiunti e impostati questi vengano aggiunti nel DB nella corretta forma. & Superato \\
+		TU8 & Verifica dell’eliminazione dei connettori. & Superato \\
+		\rowcolor{white}
+		\caption{Elenco Test di Unità}
+	\end{longtable}
+\end{center}
+Per quanto riguarda la Skill sono stati eseguiti i test di unità già forniti da Amazon AWS, restituendo esito positivo per le funzionalità implementate.
+\paragraph{Test di Integrazione}
+\label{sec:tiRA}
+Di seguito vengono riportati i Test di Integrazione relativi all'applicazione Android realizzata, con descrizione e corrispettivo codice identificativo.
+\begin{center}
+	\centering
+	\renewcommand{\arraystretch}{1.5}
+	\rowcolors{3}{tableLightYellow}{}
+	\begin{longtable}{  p{1.5cm}  p{10.5cm} p{2cm}  }
+		\rowcolor{tableHeadYellow}
+		\textbf{Codice}   & \textbf{Valore ottenuto} & \textbf{Esito} \\ 
+		\endhead
+		TI1 & Verifica la compatibilità tra model view e controller.  & Superato \\
+		TI2 & Verifica l’integrazione tra Cognito e DynamoDB. & Superato \\
+		TI3 & Verifica l’integrazione tra Skill e DynamoDB. & Superato \\
+		TI4 & Verifica l’integrazione tra AWS MobileClient e Cognito. & Superato \\
+		TI5 & Verifica integrazione tra GraphQL Schema e AppSync. & Superato \\
+		\rowcolor{white}
+		\caption{Elenco Test di Integrazione}
+	\end{longtable}
+\end{center}
+\paragraph{Test di Sistema}
+\label{sec:tsRA}
+Di seguito vengono riportati i Test di Sistema relativi all'applicazione Android realizzata, con descrizione e corrispettivo codice identificativo.
+\begin{center}
+	\centering
+	\renewcommand{\arraystretch}{1.5}
+	\rowcolors{3}{tableLightYellow}{}
+	\begin{longtable}{  p{1.2cm}  p{8.5cm} p{2cm} p{1.5cm} }
+		\rowcolor{tableHeadYellow}
+		\textbf{Codice}   & \textbf{Valore ottenuto} & \textbf{Cod. \mbox{requisito}} & \textbf{Esito} \\ 
+		\endhead
+		TS1 & Verifica che il sistema permetta la registrazione. & R2F1 & Superato \\
+		TS2 & Verifica che il sistema permetta il login. & R2F2 & Superato \\
+		TS3 & Verifica che il sistema permetta l’accesso a tutti i workflow creati dall’utente. & R2F4 & Superato \\
+		TS4 & Verifica che il sistema mostri solo i workflow dell’utente corrente. & R2F5 & Superato \\
+		TS5 & Verifica che il sistema impedisca la creazione di workflow il cui nome è inferiore ai 4 caratteri. & R2F6 & Superato \\
+		TS6 & Verifica che il sistema visualizzi i connettori disponibili. & R2F7 & Superato \\
+		\rowcolor{white}
+		\caption{Elenco Test di Sistema}
+	\end{longtable}
+\end{center}
+\pagebreak
+\paragraph{Test di Validazione}
+\label{sec:tvRA}
+Di seguito vengono riportati i Test di Validazione relativi all'applicazione Android realizzata, con descrizione e corrispettivo codice identificativo.
+\begin{center}
+	\centering
+	\renewcommand{\arraystretch}{1.5}
+	\rowcolors{3}{tableLightYellow}{}
+	\begin{longtable}{  p{1.2cm}  p{8.5cm} p{2cm} p{1.5cm} }
+		\rowcolor{tableHeadYellow}
+		\textbf{Codice}   & \textbf{Valore ottenuto} & \textbf{Cod. \mbox{requisito}} & \textbf{Esito} \\ 
+		\endhead
+		TV1 & Verificare che il sistema permetta di registrarsi creando un area personale nella quale inserire workflow. & R2F1 & Superato \\
+		TV2 & Verificare che il sistema permetta il login. & R2F2 & Superato \\
+		TV3 & Verificare che il sistema non permetta l’inserimento di workflow con nome di meno di 4 caratteri. & R2F6 & Superato \\
+		TV4 & Verificare che il sistema mostri i connettori disponibili. & R2F7 & Superato \\
+		TV5 & Verificare che il sistema permetta di avviare il workflow tramite comando vocale impartito ad Alexa. & R2F9 & Superato \\
+		TV6 & Verificare che il sistema permetta di fermare l’esecuzione vocale del workflow tramite comando vocale ad alexa. & R2F12 & Superato \\
+		\rowcolor{white}
+		\caption{Elenco Test di Validazione}
+	\end{longtable}
+\end{center}
+Di seguito vengono descritte le procedure di attuazione dei Test di Validazione sopra riportate.
+\begin{center}
+	\centering
+	\renewcommand{\arraystretch}{1.5}
+	\rowcolors{3}{tableLightYellow}{}
+	\begin{longtable}{  p{1.5cm}  p{12.5cm} }
+		\rowcolor{tableHeadYellow}
+		\textbf{Codice}   & \textbf{Procedura}  \\ 
+		\endhead		
+		TV1 & L’utente inserisce i dati per la registrazione e conferma i dati. Inserisce il codice arrivatogli per mail per completare la registrazione. Arriva ad una bacheca vuota dove può inserire e visualizzare i workflow inseriti. \\
+		TV2 & L’utente inserisce i dati per il login e conferma i dati. L’utente arriva nella sua area personale e visualizza i workflow creati in precedenza se presenti. \\
+		TV3 & L’utente prova a inserire un workflow con nome di meno di 4 caratteri. Il sistema avvisa l utente che non è permesso e non salva il workflow. \\
+		TV4 & L’utente crea un workflow e preme il bottone per impostarlo. Il sistema presenta all’utente una lista dei connettori disponibili. \\
+		TV5 & L’utente comunica ad Alexa di voler avviare la skill. Alexa chiede che workflow avviare. L’utente comunica il nome del workflow Se valido e presente Alexa avvia le azioni del Workflow. \\
+		TV6 & Alexa sta eseguendo un workflow. L’utente impartisce un comando di stop all’assistente vocale (“stop” o “fermati”). L’assistente vocale interrompe l’esecuzione e chiede la prossima azione da eseguire. \\
+		\rowcolor{white}
+		\caption{Elenco procedure Test di Integrazione}
+	\end{longtable}
+\end{center}
 \pagebreak
 \paragraph{MPRCS006 - Misurazione dei test}
 \begin{center}
@@ -479,3 +717,9 @@ In questa revisione la copertura dei requisiti è pari al DA 94\%, valore consid
 \end{figure}
 \paragraph{MPRDS014 - Code Coverage}\mbox{}\\[0.4cm]
 \label{sec:CCRA}
+In questa revisione il Code Coverage calcolato è pari al 98\%, valore considerato accettato per tale revisione.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=13cm,keepaspectratio]{../includes/pics/ccRA.png}
+	\caption{\label{fig:mission}MPRDS014 - Code Coverage}
+\end{figure}
