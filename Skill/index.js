@@ -157,39 +157,19 @@ const RunWorkflowHandler = {
 	        request.dialogState = 'IN_PROGRESS';
 	        
 	        console.log("provo a fare addElicit");
-	        try{
 	        //la risposta si aspetta che l'utente dia un valore per elicitSlot
 	        response = handlerInput.responseBuilder
             .speak(speechText)
             .reprompt('')
             .addElicitSlotDirective('payload',request.intent)
             .getResponse();
-	        }catch(e){
-	        	console.log(e.message);
-	        	response = handlerInput.responseBuilder
-	            .speak('Ho fatto un casino')
-	            .reprompt('')
-	            .getResponse();
-	        }
         }else{
         	response = handlerInput.responseBuilder
             .speak(speechText)
             .reprompt('')
             .getResponse();
         }
-        try{
         return response;
-        }catch(e){
-        	console.log(e.message);
-        	return handlerInput.responseBuilder
-            .speak('Non ho imposato bene dialog')
-            .reprompt('')
-            .getResponse();
-        }
-    	/*return handlerInput.responseBuilder
-        .speak('robbbe')
-        .reprompt('rirobbe')
-        .getResponse();*/
     }
 };
 
