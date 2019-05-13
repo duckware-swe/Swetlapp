@@ -24,8 +24,8 @@ const LaunchRequestHandler = {
             let tokenOptions = buildHttpGetOptions(accessToken);
 
             let response = await httpGet(tokenOptions);
-            console.log({ response });
-            console.log('Username:' + response.username);
+            //console.log({ response });
+            //console.log('Username:' + response.username);
             //console.log('Username:' + response.id);
             const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
             sessionAttributes.username = response.username;
@@ -38,6 +38,7 @@ const LaunchRequestHandler = {
             return handlerInput.responseBuilder
                 .speak(speechText)
                 .reprompt(speechText)
+                .withSimpleCard(appName,speechText)
                 .getResponse();
         //}
     }
@@ -72,7 +73,7 @@ function httpGet(options) {
             });
 
             response.on('end', () => {
-                console.log({ returnData });
+                //console.log({ returnData });
                 resolve(JSON.parse(returnData));
             });
 
@@ -111,16 +112,17 @@ const RunWorkflowHandler = {
         let request = handlerInput.requestEnvelope.request;
         return request.type === 'IntentRequest' 
         	&& request.intent.name === 'RunWorkflowIntent' 
-            && request.dialogState === 'STARTED';
+            && request.dialogState === 'STARTED'
+            && request.intent.slots.workflow;
     },
     async handle(handlerInput) {
-    	console.log("entro in RunWork");
+    	//console.log("entro in RunWork");
     	let request = handlerInput.requestEnvelope.request;
         let workflowName = request.intent.slots.workflow.value;
         let speechText = '';
         let username = handlerInput.attributesManager.getSessionAttributes().username;
         let response;
-        console.log(request.intent);
+        //console.log(request.intent);
         let check = {
         		output: '',
         		noInput: true
@@ -156,17 +158,17 @@ const RunWorkflowHandler = {
 	        //il dialogo diventa IN_PROGRESS
 	        request.dialogState = 'IN_PROGRESS';
 	        
-	        console.log("provo a fare addElicit");
 	        //la risposta si aspetta che l'utente dia un valore per elicitSlot
 	        response = handlerInput.responseBuilder
             .speak(speechText)
-            .reprompt('')
+            .reprompt(speechText)
             .addElicitSlotDirective('payload',request.intent)
+            .addConfirmSlotDirective('payload',request.intent)
             .getResponse();
         }else{
         	response = handlerInput.responseBuilder
             .speak(speechText)
-            .reprompt('')
+            .reprompt(speechText)
             .getResponse();
         }
         return response;
@@ -188,7 +190,6 @@ const InProgressRunWorkflowHandler = {
             && handlerInput.attributesManager.getSessionAttributes().index !== 'undefined';
     },
     async handle(handlerInput) {
-    	console.log("avvio inProgress");
     	let request = handlerInput.requestEnvelope.request;
         let elicitSlot =  request.intent.slots.payload.value;
         let speechText = '';
@@ -197,7 +198,7 @@ const InProgressRunWorkflowHandler = {
         		noInput: true
         };
         let response;
-        console.log(request.intent);
+        //console.log(request.intent);
         let actionList = handlerInput.attributesManager.getSessionAttributes().actionList;
         let i = handlerInput.attributesManager.getSessionAttributes().index;
         
@@ -234,13 +235,14 @@ const InProgressRunWorkflowHandler = {
 	        //la risposta si aspetta che l'utente dia un valore per elicitSlot
 	        response = handlerInput.responseBuilder
             .speak(speechText)
-            .reprompt('')
+            .reprompt(speechText)
             .addElicitSlotDirective('payload',request.intent)
+            .addConfirmSlotDirective('payload',request.intent)            
             .getResponse();
         }else{
         	response = handlerInput.responseBuilder
             .speak(speechText)
-            .reprompt('')
+            .reprompt(speechText)
             .getResponse();
         }
         return response;
