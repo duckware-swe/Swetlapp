@@ -5,8 +5,8 @@ var exports = module.exports = {};
 
 class TVScheduleAction extends Action {
 
-    constructor(params) {
-        super(params);
+    constructor(name, params) {
+        super(name, params);
     }
 
     /**
@@ -14,7 +14,10 @@ class TVScheduleAction extends Action {
      * @returns {Promise<string>} Returns an output TODO
      */
     async run() {
-        let output = '';
+    	let check = {
+        		output: '',
+        		noInput: true
+        };
 
         //TODO check se ci sono elementi in params, altrimenti il pop può ritornare un undefined
 
@@ -35,15 +38,14 @@ chlist.forEach(function(channel){
 
         await getTVSchedule(this.params, time).then(
             data => {
-                console.log("CIELO FATTA");
-                output += "Notizie lette";
+                check.output += "Notizie lette";
             },
             error => {
                 console.log("CIE UN ERORE");
                 return error;
             }
         );
-        return output;
+        return check;
     }
 }
 

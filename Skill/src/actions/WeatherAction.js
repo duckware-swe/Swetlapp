@@ -22,9 +22,10 @@ function doRequest(url) {
 
 class WeatherAction extends Action {
 
-    constructor(params) {
-        super(params);
+    constructor(name, params) {
+        super(name, params);
     }
+
 
 
     /**
@@ -32,7 +33,10 @@ class WeatherAction extends Action {
      * @returns {Promise<string>} Returns an output containing the weather of a specified location
      */
     async run() {
-        let output = 'Le previsioni per ';
+    	let check = {
+        		output: 'Le previsioni per ',
+        		noInput: true
+        };
 
         let meteo = "https://api.openweathermap.org/data/2.5/weather?lat="+this.params[0]+"&lon="+this.params[1]+"&lang=it&appid=c09e3edbced881809f13e91920dd80ec";
 
@@ -40,10 +44,10 @@ class WeatherAction extends Action {
         let response = await doRequest(meteo);
         response = JSON.parse(response);
         if(response.name!='')
-        	output += response.name+" sono: "+response.weather[0].description;
+        	check.output += response.name+" sono: "+response.weather[0].description;
         else
-        	output += " oggi sono: "+response.weather[0].description;
-        return output;
+        	check.output += " oggi sono: "+response.weather[0].description;
+        return check;
     }
 
 

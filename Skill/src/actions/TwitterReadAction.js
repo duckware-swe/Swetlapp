@@ -11,8 +11,8 @@ var exports = module.exports = {};
 
 class TwitterReadAction extends Action {
 
-    constructor(params) {
-        super(params);
+    constructor(name, params) {
+        super(name, params);
     }
 
     /**
@@ -20,15 +20,18 @@ class TwitterReadAction extends Action {
      * @returns {Promise<string>} Returns an output containing the top twitter of a specified account
      */
     async run() {
-        let output = ' ';
+    	let check = {
+        		output: '',
+        		noInput: true
+        };
         let body = this.params[0];
         await twitter.get('statuses/user_timeline', {screen_name: body, count: 3}).then(data => {
-          output+= "Ultimi tweet di "+data[0].user.name+": ";
+          check.output+= "Ultimi tweet di "+data[0].user.name+": ";
           for(let i =0; i< data.length; i++){
-            output+= data[i].text+". <break time=\"0.8s\"/> ";
+            check.output+= data[i].text+". <break time=\"0.8s\"/> ";
           }
         }, err => {
-          output+= "L'Account "+body+" non esiste";
+          check.output+= "L'Account "+body+" non esiste";
         });
         /*for(let i=0; i<this.params.length; i++){
             let param = this.params[i];
@@ -51,7 +54,7 @@ class TwitterReadAction extends Action {
                 output += "Non riesco a leggere questo feed.";
             });
         }*/
-        return output;
+        return check;
     }
 }
 

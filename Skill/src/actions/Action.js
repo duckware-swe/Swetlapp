@@ -3,13 +3,12 @@ var exports = module.exports = {};
 class Action {
     /**
      *
+     * @param name {string} name of the action
      * @param params {JSON} parameters of the action
      */
-
-
-    constructor(params) {
+    constructor(name, params) {
+        this.name = name;
         this.params = params;
-        this.inputRequired = false;
     }
 
     /**

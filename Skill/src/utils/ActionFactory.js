@@ -16,24 +16,24 @@ var exports = module.exports = {};
  * @param params {JSON}
  * @returns {Action} Returns the appropriate Action depending on the the type of the action
  */
+//TODO: serve il name nelle Actions???
 function actionFactory(name, params) {
     switch (name) {
         case "custom_message":
-        	console.log("ho scelto il connettore");
-            return new CustomMessageAction(params);
+            return new CustomMessageAction(name, params);
         case "read_feed":
-            return new ReadFeedRSSAction(params);
+            return new ReadFeedRSSAction(name, params);
         case "read_tweet":
-            return new TwitterReadAction(params);
+            return new TwitterReadAction(name, params);
         case "write_tweet":
-            return new TwitterWriteAction(params);
+            return new TwitterWriteAction(name, params);
         case "tv_schedule":
-            return new TVScheduleAction(params);
+            return new TVScheduleAction(name, params);
         case "weather":
-        	return new WeatherAction(params);
-        case "add_card_trello":
+        	return new WeatherAction(name, params);
+        case "add_trello_cards":
             return new AddCardTrelloAction(name,params);
-        case "get_cards_on_board":
+        case "read_trello_cards":
             return new GetCardsFromBoardTrelloAction(name,params);
         default :
             throw "Unknown action";
