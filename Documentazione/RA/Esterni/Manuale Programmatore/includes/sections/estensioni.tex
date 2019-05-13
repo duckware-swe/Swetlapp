@@ -13,29 +13,31 @@ L'intera architettura viene automaticamente generata dal tool \emph{Amplify} dop
 \subsection{Android}
 
 \subsubsection{estensione delle risorse}
-Sarà necessario:
+Per estendere le risorse sarà necessario:
 \begin{itemize}
-
 \item localizzare il file swetlAPP/amplify/backend/api/testcognito/schema.graphql
-\item modificare questo per adattarlo al modello necessario
-\item salvare
-\item da CLI su root di progetto digitare e inviare amplify api push
-\item attendere sincronizzazione con il cloud AWS
+\item modificare questo file per adattarlo al modello necessario
+\item salvare il nuovo file
+\item da CLI su root di progetto digitare e inviare \textbf{amplify api push}
+\item attendere la sincronizzazione con il cloud AWS
 \end{itemize}
 
 \subsubsection{accesso a nuove risorse}
-Le classi e i metodi di accesso a queste risorse saranno disponibili in generatedJava, dare un comando clean eliminerà classi associate a risorse non piú esistenti. Le query verranno create con i metodi generati producendo prima un input se necessario e poi passandolo come parametro alla query, gli eventi successivi a una query saranno gestiti da una callback con i metodi onResponse e onFailure, si consiglia di mettere gli update della view dentro questi due metodi.
+Le classi e i metodi di accesso a queste risorse saranno disponibili nella cartella generatedJava, il comando \textbf{clean} eliminerà eventuali  classi associate a risorse non piú esistenti. \\
+Le query verranno create con i metodi generati producendo, se necessario, prima un input e poi passandolo come parametro alla query, gli eventi successivi a una query saranno gestiti da una callback con i metodi onResponse() e onFailure(). \\
+Ssi consiglia di mettere gli update della view dentro questi due metodi.
 
 \subsubsection{estensione frontend}
-Sarà necessario agire sui file in formato xml:
+Sarà necessario agire sui seguienti file xml:
 \begin{itemize}
-\item[layout] per dichiarare e modficare viste e posizioni di queste
-\item[strings] per dichiarare e modificare stringhe utilizzate dall'applicazione
-\item[colors] per dichiarare e modificare colori utilizzati dalle viste
-\item[styles] per dichiarare e modificare stili utilizzati dalole viste
+\item \textbf{layout} per dichiarare e modificare viste e le posizioni delle stesse
+\item \textbf{strings} per dichiarare e modificare stringhe utilizzate dall'applicazione
+\item \textbf{colors} per dichiarare e modificare i colori utilizzati dalle viste
+\item \textbf{styles} per dichiarare e modificare gli stili utilizzati dalle viste
+\end{itemize}
 
 \subsubsection{Cognito}
-Per modificare le policy e il frontend della drop-in UI di AWS Cognito sarà necessario accedere alla consol AWS Cognito da browser e navigare tra le categorie, nella categoria policy sarà possibile modificare la sicurezza necessaria per la passworde  l'obbligatorietà di vari attributi, nella categoria interfaccia si potranno modificare gli elementi della vista della drop-in UI tramite direttive CSS.
+Per modificare le policy e il frontend della drop-in UI di AWS Cognito sarà necessario accedere alla console AWS Cognito da browser e navigare tra le categorie, nella categoria policy sarà possibile modificare la sicurezza necessaria per la password e l'obbligatorietà di vari attributi, nella categoria interfaccia si potranno modificare gli elementi della vista della drop-in UI tramite direttive CSS.
 
 \subsubsection{implementazione nuovi connettori}
 Se si vuole aggiungere un connettore i cui parametri necessitano all'utente solo di digitare in campi di testo sarà sufficiente dichiarare il connettore (tramite il builder) nel metodo onCreate di ConnectorActivity, per come è implementato, il sistema provvederà ad aggiungerlo nelle opportune recycler view e a costruire il comportamento di inserimento dei parametri e loro archiviazione nel database.
