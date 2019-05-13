@@ -163,12 +163,13 @@ const RunWorkflowHandler = {
             .speak(speechText)
             .reprompt(speechText)
             .addElicitSlotDirective('payload',request.intent)
-            .addConfirmSlotDirective('payload',request.intent)
+            .withSimpleCard(appName,speechText)
             .getResponse();
         }else{
         	response = handlerInput.responseBuilder
             .speak(speechText)
             .reprompt(speechText)
+            .withSimpleCard(appName,speechText)
             .getResponse();
         }
         return response;
@@ -236,13 +237,14 @@ const InProgressRunWorkflowHandler = {
 	        response = handlerInput.responseBuilder
             .speak(speechText)
             .reprompt(speechText)
-            .addElicitSlotDirective('payload',request.intent)
-            .addConfirmSlotDirective('payload',request.intent)            
+            .addElicitSlotDirective('payload',request.intent)   
+            .withSimpleCard(appName,speechText)  
             .getResponse();
         }else{
         	response = handlerInput.responseBuilder
             .speak(speechText)
             .reprompt(speechText)
+            .withSimpleCard(appName,speechText)
             .getResponse();
         }
         return response;
