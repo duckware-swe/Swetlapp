@@ -69,7 +69,10 @@ function phraseGenerator(name, param) {
         	phrase.push(" ");
             return phrase[Math.floor(Math.random() * phrase.length)];
         case "weather":
-        	phrase.push(" ");
+        	phrase.push("Le previsioni per "+param+" sono: ");
+        	phrase.push("Oggi a "+param+" è: ");
+        	phrase.push("A "+param+" è: ");
+        	phrase.push("A "+param+" il tempo è: ");
             return phrase[Math.floor(Math.random() * phrase.length)];
         case "add_trello_cards":
         	phrase.push(" ");
