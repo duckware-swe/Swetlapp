@@ -116,7 +116,7 @@ const RunWorkflowHandler = {
             && request.intent.slots.workflow;
     },
     async handle(handlerInput) {
-    	//console.log("entro in RunWork");
+    	console.log("entro in RunWork");
     	let request = handlerInput.requestEnvelope.request;
         let workflowName = request.intent.slots.workflow.value;
         let speechText = '';
@@ -134,7 +134,7 @@ const RunWorkflowHandler = {
         
         speechText += 'Va bene, eseguo ' + JSON.stringify(workflowName) + '. ';
         let i=0;
-        for(; i<actionList.actions_records.length && check.slotReq==='DEFAULT'; i++) {
+        for(; i<actionList.actions_records.length && check.slotReq=='DEFAULT'; i++) {
             let action = actionList.actions_records[i];
             //console.log("Esecuzione azione: " + action.action);
             try {
@@ -146,7 +146,9 @@ const RunWorkflowHandler = {
             }
         }
         //se check.slotReq è diverso da DEFAULT allora di sicuro non ho finito il WF e devo continuare il dialogo con l'utente
-        if(check.slotReq!=='DEFAULT'){
+        if(check.slotReq!='DEFAULT'){
+        	console.log("multipli input");
+        	console.log(check.slotReq);
         	const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
         	
 	        //salvo la lista di azioni	        
@@ -162,12 +164,21 @@ const RunWorkflowHandler = {
 	        request.dialogState = 'IN_PROGRESS';
 	        
 	        //la risposta si aspetta che l'utente dia un valore per elicitSlot
+	        try{
 	        response = handlerInput.responseBuilder
             .speak(speechText)
             .reprompt(speechText)
             .addElicitSlotDirective(check.slotReq,request.intent)
             .withSimpleCard(appName,speechText)
             .getResponse();
+	        }catch(e){
+	        	console.log(e.message);
+	        	response = handlerInput.responseBuilder
+	            .speak(speechText)
+	            .reprompt(speechText)
+	            .withSimpleCard(appName,speechText)
+	            .getResponse();	        	
+	        }
         }else{
         	response = handlerInput.responseBuilder
             .speak(speechText)
@@ -206,7 +217,7 @@ const InProgressRunWorkflowHandler = {
         if(elicitSlot){
         	actionList.actions_records[i].params.push(elicitSlot);
         	//faccio partire il WF solo se ho ottenuto una risposta giusta
-        	for(; i<actionList.actions_records.length && check.slotReq==='DEFAULT'; i++) {
+        	for(; i<actionList.actions_records.length && check.slotReq=='DEFAULT'; i++) {
 	            let action = actionList.actions_records[i];
 	            //console.log("Esecuzione azione: " + action.action);
 	            try {
@@ -221,7 +232,7 @@ const InProgressRunWorkflowHandler = {
         	let speechText = 'Scusa, puoi ripetere?';
         }      
         
-        if(check.slotReq!=='DEFAULT'){
+        if(check.slotReq!='DEFAULT'){
         	const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
 	        //salvo la lista di azioni
         	sessionAttributes.actionList = actionList;
