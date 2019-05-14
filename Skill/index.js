@@ -142,6 +142,7 @@ const RunWorkflowHandler = {
                 //speechText += await actionFactory(action.action, action.params).run();
             	speechText += check.output+ " ";
             } catch (e) {
+                console.log("error: " + e);
                 speechText += "Azione non riconosciuta";
             }
         }
@@ -218,6 +219,7 @@ const InProgressRunWorkflowHandler = {
 	                //speechText += await actionFactory(action.action, action.params).run();
 	            	speechText += check.output+ " ";
 	            } catch (e) {
+	                console.log("in prog error: " + e);
 	                speechText += "Azione non riconosciuta";
 	            }
 	        }
