@@ -10,7 +10,7 @@ class CustomMessageAction extends Action {
     async run() {
         return {
         		output: 'Azione non riconosciuta.',
-        		noInput: true
+        		noInput: 'DAFAULT'
         	   };
     }
 }

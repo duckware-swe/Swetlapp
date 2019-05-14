@@ -125,7 +125,7 @@ const RunWorkflowHandler = {
         //console.log(request.intent);
         let check = {
         		output: '',
-        		noInput: true
+        		slotReq: 'DEFAULT'
         };
         let actionList;
         await getWF(username, workflowName).then(
@@ -134,7 +134,7 @@ const RunWorkflowHandler = {
         
         speechText += 'Va bene, eseguo ' + JSON.stringify(workflowName) + '. ';
         let i=0;
-        for(; i<actionList.actions_records.length && check.noInput; i++) {
+        for(; i<actionList.actions_records.length && check.slotReq==='DEFAULT'; i++) {
             let action = actionList.actions_records[i];
             //console.log("Esecuzione azione: " + action.action);
             try {
@@ -145,16 +145,20 @@ const RunWorkflowHandler = {
                 speechText += "Azione non riconosciuta";
             }
         }
-        //se check.noInput è falso allora di sicuro non ho finito il WF e devo continuare il dialogo con l'utente
-        if(!check.noInput){
+        //se check.slotReq è diverso da DEFAULT allora di sicuro non ho finito il WF e devo continuare il dialogo con l'utente
+        if(check.slotReq!=='DEFAULT'){
 	        //salvo la lista di azioni
-	        const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
+	        handlerInput.attributesManager.getSessionAttributes();
 	        sessionAttributes.actionList = actionList;
 	        
 	        //salvo la posizione
-		    const sessionAttributes2 = handlerInput.attributesManager.getSessionAttributes();
+		    handlerInput.attributesManager.getSessionAttributes();
 		    sessionAttributes.index = --i;	        	
 	        
+		    //salvo il nome dello slot richiesto
+		    handlerInput.attributesManager.getSessionAttributes();
+		    sessionAttributes.slotName = check.slotReq;
+		    
 	        //il dialogo diventa IN_PROGRESS
 	        request.dialogState = 'IN_PROGRESS';
 	        
@@ -162,7 +166,7 @@ const RunWorkflowHandler = {
 	        response = handlerInput.responseBuilder
             .speak(speechText)
             .reprompt(speechText)
-            .addElicitSlotDirective('payload',request.intent)
+            .addElicitSlotDirective(check.slotReq,request.intent)
             .withSimpleCard(appName,speechText)
             .getResponse();
         }else{
@@ -180,25 +184,29 @@ const InProgressRunWorkflowHandler = {
     canHandle(handlerInput) {
         let request = handlerInput.requestEnvelope.request;
         return request.type === 'IntentRequest' && request.dialogState === 'IN_PROGRESS'
-            && handlerInput.attributesManager.getSessionAttributes().index !== 'undefined';
+            && handlerInput.attributesManager.getSessionAttributes().slotName !== 'undefined';
     },
     async handle(handlerInput) {
     	let request = handlerInput.requestEnvelope.request;
-        let elicitSlot =  request.intent.slots.payload.value;
-        let speechText = '';
-        let check = {
-        		output: '',
-        		noInput: true
-        };
-        let response;
-        //console.log(request.intent);
+    	try{
+        let elicitSlot =  request.intent.slots[handlerInput.attributesManager.getSessionAttributes().slotName].value;
+    	}catch(e){
+    		console.log(e.message);
+    		console.log("non si può");
+    	}
         let actionList = handlerInput.attributesManager.getSessionAttributes().actionList;
         let i = handlerInput.attributesManager.getSessionAttributes().index;
+        let check = {
+        		output: '',
+        		slotReq: 'DEFAULT'
+        };
+        let speechText = '';
+        let response;
         
         if(elicitSlot){
         	actionList.actions_records[i].params.push(elicitSlot);
         	//faccio partire il WF solo se ho ottenuto una risposta giusta
-        	for(; i<actionList.actions_records.length && check.noInput; i++) {
+        	for(; i<actionList.actions_records.length && check.slotReq==='DEFAULT'; i++) {
 	            let action = actionList.actions_records[i];
 	            //console.log("Esecuzione azione: " + action.action);
 	            try {
@@ -213,14 +221,18 @@ const InProgressRunWorkflowHandler = {
         	let speechText = 'Scusa, puoi ripetere?';
         }      
         
-        if(!check.noInput){
+        if(check.slotReq!=='DEFAULT'){
 	        //salvo la lista di azioni
-	        const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
+	        handlerInput.attributesManager.getSessionAttributes();
 	        sessionAttributes.actionList = actionList;
 	        
 	        //salvo la posizione
-	        const sessionAttributes2 = handlerInput.attributesManager.getSessionAttributes();
+	        handlerInput.attributesManager.getSessionAttributes();
 	        sessionAttributes.index = --i;
+	        
+	        //salvo il nome dello slot richiesto
+		    handlerInput.attributesManager.getSessionAttributes();
+		    sessionAttributes.slotName = check.slotReq;
 	        
 	        //il dialogo diventa IN_PROGRESS
 	        request.dialogState = 'IN_PROGRESS';
@@ -229,7 +241,7 @@ const InProgressRunWorkflowHandler = {
 	        response = handlerInput.responseBuilder
             .speak(speechText)
             .reprompt(speechText)
-            .addElicitSlotDirective('payload',request.intent)   
+            .addElicitSlotDirective(check.slotReq,request.intent)   
             .withSimpleCard(appName,speechText)  
             .getResponse();
         }else{

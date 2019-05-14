@@ -16,7 +16,7 @@ class TwitterWriteAction extends Action {
     async run() {
     	let check = {
         		output: '',
-        		noInput: true
+        		slotReq: 'DEFAULT'
         };
         let output = ' Inviato il Tweet';
         /*let body = this.params[0];
@@ -29,10 +29,10 @@ class TwitterWriteAction extends Action {
         
         if(this.params.length==1) {
             check.output = "Dimmi che tweet vuoi pubblicare?";
-            check.noInput= false;
+            check.slotReq= 'tweetBody;
         } else if(this.params.length==2){
         	check.output = "confermi "+this.params[1]+" ?";
-        	check.noInput= false;
+        	check.slotReq= 'confirmitionSlot';
         }else if(this.params.length==2){
         	if(this.params[2]!="no"){
         		const twitter = new Twitter({
@@ -51,7 +51,7 @@ class TwitterWriteAction extends Action {
         	}else{
         		this.params.length =  1;
         		check.output = "Dimmi che tweet vuoi pubblicare?";
-        		check.noInput= false;
+        		check.slotReq = 'tweetBody';
         	}        	
         }        
         return check;

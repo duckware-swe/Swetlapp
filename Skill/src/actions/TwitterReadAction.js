@@ -22,7 +22,7 @@ class TwitterReadAction extends Action {
     async run() {
     	let check = {
         		output: '',
-        		noInput: true
+        		slotReq: 'DEFAULT'
         };
         let body = this.params[0];
         await twitter.get('statuses/user_timeline', {screen_name: body, count: 3}).then(data => {

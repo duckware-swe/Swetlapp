@@ -159,7 +159,7 @@ class AddCardTrelloAction extends Action {
     async run() {
     	let check = {
         		output: '',
-        		noInput: true
+        		slotReq: 'DEFAULT'
         };
         //let body = this.params[0];
         
@@ -214,7 +214,7 @@ class AddCardTrelloAction extends Action {
                     //Chiedo all'utente da che bacheca vuole leggere
                     console.log("AddCardTrello params < 2");
                     check.output = "Dimmi il nome della bacheca di Trello dove vuoi aggiungere la scheda";
-                    check.noInput = false;
+                    check.slotReq = 'trelloWorkspace';
                 }else if(this.params.length ==2){ //ho il nome della bacheca
                     indexParams = 1;
                     boardNameSaidByUser = this.params[indexParams];
@@ -227,12 +227,13 @@ class AddCardTrelloAction extends Action {
                         tempBool = await getBoardWrapper(memberId);
                         if(tempBool){//bacheca trovata.. OK!
                             check.output = "Ok adesso dimmi il nome della lista dove aggiungere la scheda";
+                            check.slotReq = 'trelloList'
                         }else{//Bacheca non trovata .. richiedere all'utente il nome della bacheca
                             check.output = "Riprova a dirmi il nome della bacheca di Trello dove vuoi aggiungere la scheda";
+                            check.slotReq = 'trelloWorkspace';
                             this.params.splice(indexParams,1);//rimuovo l'attuale valore vuoto presente in fondo e ricomincio perchè è vuoto
                         }
                     }
-                    check.noInput = false;
                 }else if(this.params.length == 3){//ho il nome della lista
                     indexParams = 2;
                     listNameSaidByUser = this.params[indexParams];
@@ -243,31 +244,33 @@ class AddCardTrelloAction extends Action {
                         tempBool = await getListsFromBoard(trelloBoardId);
                         if(tempBool){//lista trovata
                             check.output = "Ok adesso dimmi il titolo della scheda da aggiungere";
+                            check.slotReq = 'trelloCard';
                         }else{ //lista non trovata .. richiederla
                             check.output = "Riprova a dirmi il nome della lista dove aggiungere la scheda";
+                            check.slotReq = 'trelloList';
                             this.params.splice(indexParams,1);
                         } 
                     }
-                    check.noInput = false;
                 }else if(this.params.length == 4){//ho il titolo della scheda
                     indexParams = 3;
                     titoloSchedaDaAggiungere = this.params[indexParams];
                     if(titoloSchedaDaAggiungere == ''){//nome lista vuoto
                         this.params.splice(indexParams, 1);
                         check.output = "Riprova a dirmi il titolo della scheda che vuoi aggiungere";
+                        check.slotReq = 'trelloCard';
                     }else{
                         check.output = "Dimmi la descrizione della scheda da aggiungere";
+                        check.slotReq = 'trelloText';
                     }
-                    check.noInput = false;
                 }else if(this.params.length == 5){//ho la descrizione della scheda
                     indexParams = 4;
                     corpoSchedaDaAggiungere = this.params[4];
                     if(corpoSchedaDaAggiungere == ''){//nome lista vuoto
                         this.params.splice(indexParams,1);
                         check.output = "Riprova a dirmi la descrizione della scheda da aggiungere";
-                        check.noInput = false;
+                        check.slotReq = 'trelloText';
                     }else{ //tutto ok
-                        check.noInput = true;
+                    	check.slotReq = 'DEFAULT';
                         tempBool = true;
                     }
                 }

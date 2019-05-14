@@ -179,7 +179,7 @@ class GetCardsFromBoardTrelloAction extends Action {
     async run() {
         let check = {
             output: '',
-            noInput: true
+            slotReq: 'DEFAULT'
         };
         let tempBool=false; //variabile temporanea
         let tempObj;
@@ -197,12 +197,14 @@ class GetCardsFromBoardTrelloAction extends Action {
                     //Chiedo all'utente da che bacheca vuole leggere
                     console.log("GetCardsTrello params < 2");
                     check.output = "Dimmi il nome della bacheca di Trello da dove vuoi leggere le tue schede";
-                    check.noInput = false;
+                    check.slotReq = 'trelloWorkspace';
                 }else if(this.params.length ==2){ //ho il nome della bacheca
                     indexParams = 1;
                     boardNameSaidByUser = this.params[indexParams];
                     if(boardNameSaidByUser == ''){//nome vuoto
                         this.params.splice(indexParams,1);//rimuovo l'attuale valore vuoto presente in fondo e ricomincio
+                        check.output = "Riprova a dirmi il nome della bacheca di Trello da dove vuoi leggere le schede";
+                        check.slotReq = 'trelloWorkspace';
                     }else{
                         //si controlla se il nome della bacheca esiste ed è valido per l'utente
                         //quindi ottengo le bacheche dell'utente
@@ -210,12 +212,13 @@ class GetCardsFromBoardTrelloAction extends Action {
                         tempBool = await getBoardWrapper(memberId);
                         if(tempBool){//bacheca trovata.. OK!
                             check.output = "Ok adesso dimmi il nome della lista da dove leggere le tue schede";
+                            check.slotReq = 'trelloList';
                         }else{//Bacheca non trovata .. richiedere all'utente il nome della bacheca
                             check.output = "Riprova a dirmi il nome della bacheca di Trello da dove leggere le tue schede";
                             this.params.splice(indexParams,1);//rimuovo l'attuale valore vuoto presente in fondo e ricomincio perchè è vuoto
+                            check.slotReq = 'trelloWorkspace';
                         }
                     }
-                    check.noInput = false;
                 }else if(this.params.length == 3){//ho il nome della lista
                     indexParams = 2;
                     listNameSaidByUser = this.params[indexParams];
@@ -225,12 +228,12 @@ class GetCardsFromBoardTrelloAction extends Action {
                         //si ottiene la lista che l'utente ha voluto
                         tempBool = await getListsFromBoard(trelloBoardId);
                         if(tempBool){//lista trovata
-                            check.noInput = true; //tutto ok
+                            check.slotReq = 'DEFAULT'; //tutto ok
                             tempBool = true;
                         }else{ //lista non trovata .. richiederla
                             check.output = "Riprova a dirmi il nome della lista da dove leggere le tue schede";
                             this.params.splice(indexParams,1);
-                            check.noInput = false;
+                            check.slotReq = 'trelloList';
                         } 
                     }
                 }

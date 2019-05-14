@@ -35,7 +35,7 @@ class WeatherAction extends Action {
     async run() {
     	let check = {
         		output: 'Le previsioni per ',
-        		noInput: true
+        		slotReq: 'DEFAULT'
         };
 
         let meteo = "https://api.openweathermap.org/data/2.5/weather?lat="+this.params[0]+"&lon="+this.params[1]+"&lang=it&appid=c09e3edbced881809f13e91920dd80ec";

@@ -11,7 +11,7 @@ class CustomMessageAction extends Action {
     async run() {
     	let check = {
         		output: '',
-        		noInput: true
+        		noInput: 'DEFAULT'
         };
         this.params.forEach(param => {
             //console.log("Parametro: " + param);
