@@ -1,4 +1,5 @@
 const { Action } = require('./Action.js');
+const {phraseGenerator} = require("../utils/PhraseGenerator");
 const Twitter = require('twitter');
 const twitter = new Twitter({
   consumer_key: 'sFOOM7Ln3yEF3pzwibMv16OKs',

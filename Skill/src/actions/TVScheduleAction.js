@@ -1,4 +1,5 @@
 const { Action } = require('./Action.js');
+const {phraseGenerator} = require("../utils/PhraseGenerator");
 const {getDatabaseInstance, buildDatabaseParams} = require("../DatabaseInteractor");
 
 var exports = module.exports = {};

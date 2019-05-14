@@ -1,4 +1,5 @@
 const { Action } = require('./Action.js');
+const {phraseGenerator} = require("../utils/PhraseGenerator");
 const Twitter = require('twitter');
 
 var exports = module.exports = {};
