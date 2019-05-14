@@ -27,7 +27,7 @@ class TwitterWriteAction extends Action {
         	check.output = phraseGenerator("confirm_tweet",this.params[1]);
         	check.slotReq= 'confirmitionSlot';
         }else if(this.params.length==3){
-        	if(this.params[2]=="si" || this.params[2]=="no"){
+        	if(this.params[2]!="si" || this.params[2]!="no"){
         		check.output = phraseGenerator("confirm_tweet",this.params[1]);
             	check.slotReq= 'confirmitionSlot';
         	}else if(this.params[2]=="si"){
