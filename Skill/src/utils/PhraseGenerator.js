@@ -13,13 +13,13 @@ function phraseGenerator(name, param) {
     	case "no_auth":
     		phrase.push("Devi autenticarti con il tuo account <lang xml:lang=\"en-US\">SwetlApp</lang> per usare questa skill. Ti ho inviato le istruzioni nella tua <lang xml:lang=\"en-US\">App Alexa</lang>.");
     		phrase.push("Mi dispiace ma per usare <lang xml:lang=\"en-US\">SwetlApp</lang> devi prima autenticarti. Se non sai come eseguire l\'autenticazione segui le istruzioni nella tua <lang xml:lang=\"en-US\">App Alexa</lang>.");
-    	case "start" 
+    	case "start":
     		phrase.push("Ciao "+param+", benvenuto in <lang xml:lang=\"en-US\">SwetlApp</lang>, come posso aiutarti?");
     		phrase.push("Benvenuto in <lang xml:lang=\"en-US\">SwetlApp</lang>");
     		phrase.push("Ciao "+param+" sei in <lang xml:lang=\"en-US\">SwetlApp</lang>, sono qui per aiutarti");
     		phrase.push("Benvenuto "+param+", sei in <lang xml:lang=\"en-US\">SwetlApp</lang>, come posso aiutarti?");
     		phrase.push("Ciao "+param" sei in <lang xml:lang=\"en-US\">SwetlApp</lang>, prova a far partire un <lang xml:lang=\"en-US\">workflow</lang>?");
-    	case "start_WF" 
+    	case "start_WF":
     		phrase.push("Va bene, eseguo "+param+" ");
     		phrase.push("Eseguo "+param+" ");
     		phrase.push("Comincio "+param+" ");
