@@ -1,4 +1,4 @@
-const {phraseGenerator} = require("./src/utils/PhraseGenerator");
+
 var exports = module.exports = {};
 
 class Action {

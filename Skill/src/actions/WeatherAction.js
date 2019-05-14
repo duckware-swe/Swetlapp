@@ -1,3 +1,4 @@
+const {phraseGenerator} = require("./src/utils/PhraseGenerator");
 const { Action } = require('./Action.js');
 /*const weather = require('openweather-apis');
 const https = require('https');*/
