@@ -129,7 +129,7 @@ const RunWorkflowHandler = {
         };
         let actionList;
         await getWF(username, workflowName).then(
-            data => actionList = JSON.parse(data)
+            data =>  {actionList = JSON.parse(data); console.log(data); }
         );
         
         speechText += phraseGenerator("start_WF",workflowName);
