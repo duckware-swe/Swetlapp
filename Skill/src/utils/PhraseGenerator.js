@@ -41,7 +41,25 @@ function phraseGenerator(name, param) {
         	]
             return phrase[Math.floor(Math.random() * phrase.length)];
         case "write_tweet":
-            return new TwitterWriteAction(name, params);
+        	const phrase = [
+        		"Dimmi che <lang xml:lang=\"en-US\">Tweet</lang> vuoi pubblicare?",
+        		"Che cosa vuoi pubblicare?",
+        		"Dimmi che cosa vuoi pubblicare?",
+        		"Che <lang xml:lang=\"en-US\">Tweet</lang> vuoi inviare?",
+        		"Dimmi il testo del <lang xml:lang=\"en-US\">Tweet</lang> che vuoi inviare?"
+        	]
+            return phrase[Math.floor(Math.random() * phrase.length)];
+        case "confirm_tweet":
+        	const phrase = [
+        		param+", è questo quello che vuoi pubblicare?",
+        		param+", è questo quello che vuoi inviare?",
+        		param+", confermi l\'invio?",
+        		"Mi confermi di aver detto: "+param+"?",
+        		"Hai detto: "+param+", giusto?",
+        		"Confermi: "+param+"?",
+        		"Vuoi inviare: "+param+"?"
+        	]
+            return phrase[Math.floor(Math.random() * phrase.length)];
         case "tv_schedule":
             return new TVScheduleAction(name, params);
         case "weather":
