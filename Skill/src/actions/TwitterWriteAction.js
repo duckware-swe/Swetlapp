@@ -33,7 +33,7 @@ class TwitterWriteAction extends Action {
         } else if(this.params.length==2){
         	check.output = "confermi "+this.params[1]+" ?";
         	check.slotReq= 'confirmitionSlot';
-        }else if(this.params.length==2){
+        }else if(this.params.length==3){
         	if(this.params[2]!="no"){
         		const twitter = new Twitter({
           		  consumer_key: 'sFOOM7Ln3yEF3pzwibMv16OKs',
