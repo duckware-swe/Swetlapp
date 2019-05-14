@@ -14,7 +14,7 @@ const LaunchRequestHandler = {
         let speechText = '';
 
         if (!accessToken) {
-            speechText = responseGenerator("no_auth");
+            speechText = responseGenerator("no_auth"," ");
             return handlerInput.responseBuilder
                 .speak(speechText)
                 .withLinkAccountCard()
@@ -131,7 +131,7 @@ const RunWorkflowHandler = {
             data => actionList = JSON.parse(data)
         );
         
-        speechText += responseGenerator("start_WF", JSON.stringify(workflowName));
+        speechText += responseGenerator("start_WF",workflowName);
         let i=0;
         for(; i<actionList.actions_records.length && check.slotReq=='DEFAULT'; i++) {
             let action = actionList.actions_records[i];
