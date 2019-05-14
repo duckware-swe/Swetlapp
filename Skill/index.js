@@ -2,7 +2,7 @@ const https = require('https');
 const Alexa = require('ask-sdk');
 const {actionFactory} = require("./src/utils/ActionFactory");
 const {getDatabaseInstance, buildDatabaseParams} = require("./src/DatabaseInteractor");
-const phraseGenerator = require("./src/utils/PhraseGenerator");
+const {phraseGenerator} = require("./src/utils/PhraseGenerator");
 const appName = 'SwetlApp';
 
 const LaunchRequestHandler = {
