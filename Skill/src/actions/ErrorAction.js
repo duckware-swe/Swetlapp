@@ -3,7 +3,7 @@ const { Action } = require('./Action.js');
 
 var exports = module.exports = {};
 
-class CustomMessageAction extends Action {
+class ErrorAction extends Action {
     /**
      *
      * @returns {Promise<string>} Returns an error: the action is not available
@@ -16,4 +16,4 @@ class CustomMessageAction extends Action {
     }
 }
 
-exports.CustomMessageAction = CustomMessageAction;
+exports.ErrorAction = ErrorAction;
