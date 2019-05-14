@@ -47,7 +47,7 @@ class WeatherAction extends Action {
         if(response.name!='')
         	check.output += phraseGenerator("weather",response.name)+response.weather[0].description;
         else
-        	check.output += " oggi sono: "+response.weather[0].description;
+        	check.output += "Le previsioni per oggi sono: "+response.weather[0].description;
         return check;
     }
 
