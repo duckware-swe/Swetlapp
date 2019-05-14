@@ -24,6 +24,16 @@ function phraseGenerator(name, param) {
     	        "Ciao "+param" sei in <lang xml:lang=\"en-US\">SwetlApp</lang>, prova a far partire un <lang xml:lang=\"en-US\">workflow</lang>?"
     	    ],
     		return phrase[Math.floor(Math.random() * phrase.length)];
+    	case "start_WF" 
+			const phrase = [
+		        "Va bene, eseguo "+param+" ",
+		        "Eseguo "+param+" ",
+		        "Comincio "+param+" ",
+		        "Per cominciare ",
+		        "Inizio "+param+" ",
+		        "Comincio il <lang xml:lang=\"en-US\">workflow</lang> "+param+" "
+		    ],
+			return phrase[Math.floor(Math.random() * phrase.length)];
         case "read_feed":
         	const phrase = [
         		"Queste sono le notizie da "+ param + ": ",

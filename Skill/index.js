@@ -2,7 +2,7 @@ const https = require('https');
 const Alexa = require('ask-sdk');
 const {actionFactory} = require("./src/utils/ActionFactory");
 const {getDatabaseInstance, buildDatabaseParams} = require("./src/DatabaseInteractor");
-
+const responseGenerator = require("./src/utils/PhraseGenerator");
 const appName = 'SwetlApp';
 
 const LaunchRequestHandler = {
@@ -14,7 +14,7 @@ const LaunchRequestHandler = {
         let speechText = '';
 
         if (!accessToken) {
-            speechText = 'Devi autenticarti con il tuo account Swetlapp per usare questa skill. Ti ho inviato le istruzioni nella tua App Alexa.';
+            speechText = responseGenerator("no_auth");
             return handlerInput.responseBuilder
                 .speak(speechText)
                 .withLinkAccountCard()
@@ -27,14 +27,13 @@ const LaunchRequestHandler = {
             //console.log({ response });
             //console.log('Username:' + response.username);
             //console.log('Username:' + response.id);
-            const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
-            sessionAttributes.username = response.username;
+            handlerInput.attributesManager.getSessionAttributes().username = response.username;
         }
         catch (error) {
             console.log(`Error message: ${error.message}`);
         }
 
-        speechText = 'Ciao ' + handlerInput.attributesManager.getSessionAttributes().username + "! Benvenuto in " + appName;
+        speechText = responseGenerator("start",handlerInput.attributesManager.getSessionAttributes().username);
             return handlerInput.responseBuilder
                 .speak(speechText)
                 .reprompt(speechText)
@@ -132,7 +131,7 @@ const RunWorkflowHandler = {
             data => actionList = JSON.parse(data)
         );
         
-        speechText += 'Va bene, eseguo ' + JSON.stringify(workflowName) + '. ';
+        speechText += responseGenerator("start_WF", JSON.stringify(workflowName));
         let i=0;
         for(; i<actionList.actions_records.length && check.slotReq=='DEFAULT'; i++) {
             let action = actionList.actions_records[i];
@@ -140,25 +139,22 @@ const RunWorkflowHandler = {
             try {
             	check = await actionFactory(action.action, action.params).run();
                 //speechText += await actionFactory(action.action, action.params).run();
-            	speechText += check.output+ ". ";
+            	speechText += check.output+ " ";
             } catch (e) {
                 speechText += "Azione non riconosciuta";
             }
         }
         //se check.slotReq è diverso da DEFAULT allora di sicuro non ho finito il WF e devo continuare il dialogo con l'utente
         if(check.slotReq!='DEFAULT'){
-        	console.log("multipli input");
-        	console.log(check.slotReq);
-        	const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
         	
 	        //salvo la lista di azioni	        
-	        sessionAttributes.actionList = actionList;
+        	handlerInput.attributesManager.getSessionAttributes().actionList = actionList;
 	        
 	        //salvo la posizione
-	        sessionAttributes.index = --i;	        	
+        	handlerInput.attributesManager.getSessionAttributes().index = --i;	        	
 	        
 		    //salvo il nome dello slot richiesto
-	        sessionAttributes.slotName = check.slotReq;
+        	handlerInput.attributesManager.getSessionAttributes().slotName = check.slotReq;
 		    
 	        //il dialogo diventa IN_PROGRESS
 	        request.dialogState = 'IN_PROGRESS';
@@ -198,10 +194,7 @@ const InProgressRunWorkflowHandler = {
     },
     async handle(handlerInput) {
     	let request = handlerInput.requestEnvelope.request;
-    	const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
-    		console.log(sessionAttributes.slotName);
-    		console.log(request.intent.slots[sessionAttributes.slotName]);
-        let elicitSlot =  request.intent.slots[sessionAttributes.slotName].value;
+        let elicitSlot =  request.intent.slots[handlerInput.attributesManager.getSessionAttributes().slotName].value;
         	console.log(elicitSlot);
         let actionList = sessionAttributes.actionList;
         let i = sessionAttributes.index;
@@ -221,7 +214,7 @@ const InProgressRunWorkflowHandler = {
 	            try {
 	            	check = await actionFactory(action.action, action.params).run();
 	                //speechText += await actionFactory(action.action, action.params).run();
-	            	speechText += check.output+ ". ";
+	            	speechText += check.output+ " ";
 	            } catch (e) {
 	                speechText += "Azione non riconosciuta";
 	            }
@@ -231,15 +224,14 @@ const InProgressRunWorkflowHandler = {
         }      
         
         if(check.slotReq!='DEFAULT'){
-        	const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
 	        //salvo la lista di azioni
-        	sessionAttributes.actionList = actionList;
+        	handlerInput.attributesManager.getSessionAttributes().actionList = actionList;
 	        
 	        //salvo la posizione
-        	sessionAttributes.index = --i;
+        	handlerInput.attributesManager.getSessionAttributes().index = --i;
 	        
 	        //salvo il nome dello slot richiesto
-        	sessionAttributes.slotName = check.slotReq;
+        	handlerInput.attributesManager.getSessionAttributes().slotName = check.slotReq;
 	        
 	        //il dialogo diventa IN_PROGRESS
 	        request.dialogState = 'IN_PROGRESS';
@@ -318,7 +310,7 @@ const HelpIntentHandler = {
         return request.type === 'IntentRequest' && request.intent.name === 'AMAZON.HelpIntent';
     },
     handle(handlerInput) {
-        const speechText = 'Puoi eseguire i workflow creati nell\'app, prova a dire: esegui Roberto';
+        const speechText = 'Puoi eseguire i workflow creati nell\'app, prova a dire: avvia Roberto';
         const repromptText = 'Prova a chiedermi di eseguire un workflow che hai creato nell\'app';
 
         return handlerInput.responseBuilder
