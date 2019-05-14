@@ -119,7 +119,8 @@ const RunWorkflowHandler = {
     	let request = handlerInput.requestEnvelope.request;
         let workflowName = request.intent.slots.workflow.value;
         let speechText = '';
-        let username = handlerInput.attributesManager.getSessionAttributes().username;
+        const attributi = handlerInput.attributesManager.getSessionAttributes();
+        let username = attributi.username;
         let response;
         //console.log(request.intent);
         let check = {
@@ -148,13 +149,13 @@ const RunWorkflowHandler = {
         if(check.slotReq!='DEFAULT'){
         	
 	        //salvo la lista di azioni	        
-        	handlerInput.attributesManager.getSessionAttributes().actionList = actionList;
+        	attributi.actionList = actionList;
 	        
 	        //salvo la posizione
-        	handlerInput.attributesManager.getSessionAttributes().index = --i;	        	
+        	attributi.index = --i;	        	
 	        
 		    //salvo il nome dello slot richiesto
-        	handlerInput.attributesManager.getSessionAttributes().slotName = check.slotReq;
+        	attributi.slotName = check.slotReq;
 		    
 	        //il dialogo diventa IN_PROGRESS
 	        request.dialogState = 'IN_PROGRESS';
@@ -194,10 +195,11 @@ const InProgressRunWorkflowHandler = {
     },
     async handle(handlerInput) {
     	let request = handlerInput.requestEnvelope.request;
-        let elicitSlot =  request.intent.slots[handlerInput.attributesManager.getSessionAttributes().slotName].value;
+    	const attributi = handlerInput.attributesManager.getSessionAttributes();
+        let elicitSlot =  request.intent.slots[attributi.slotName].value;
         	console.log(elicitSlot);
-        let actionList = handlerInput.attributesManager.getSessionAttributes().actionList;
-        let i = handlerInput.attributesManager.getSessionAttributes().index;
+        let actionList = attributi.actionList;
+        let i = attributi.index;
         let check = {
         		output: '',
         		slotReq: 'DEFAULT'
@@ -225,13 +227,13 @@ const InProgressRunWorkflowHandler = {
         console.log("esco dal for");
         if(check.slotReq!='DEFAULT'){
 	        //salvo la lista di azioni
-        	handlerInput.attributesManager.getSessionAttributes().actionList = actionList;
+        	attributi.actionList = actionList;
 	        
 	        //salvo la posizione
-        	handlerInput.attributesManager.getSessionAttributes().index = --i;
+        	attributi.index = --i;
 	        
 	        //salvo il nome dello slot richiesto
-        	handlerInput.attributesManager.getSessionAttributes().slotName = check.slotReq;
+        	attributi.slotName = check.slotReq;
 	        
 	        //il dialogo diventa IN_PROGRESS
 	        request.dialogState = 'IN_PROGRESS';
