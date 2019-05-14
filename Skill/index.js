@@ -2,7 +2,7 @@ const https = require('https');
 const Alexa = require('ask-sdk');
 const {actionFactory} = require("./src/utils/ActionFactory");
 const {getDatabaseInstance, buildDatabaseParams} = require("./src/DatabaseInteractor");
-const responseGenerator = require("./src/utils/PhraseGenerator");
+const phraseGenerator = require("./src/utils/PhraseGenerator");
 const appName = 'SwetlApp';
 
 const LaunchRequestHandler = {
@@ -14,7 +14,7 @@ const LaunchRequestHandler = {
         let speechText = '';
 
         if (!accessToken) {
-            speechText = responseGenerator("no_auth"," ");
+            speechText = phraseGenerator("no_auth");
             return handlerInput.responseBuilder
                 .speak(speechText)
                 .withLinkAccountCard()
@@ -33,7 +33,7 @@ const LaunchRequestHandler = {
             console.log(`Error message: ${error.message}`);
         }
 
-        speechText = responseGenerator("start",handlerInput.attributesManager.getSessionAttributes().username);
+        speechText = phraseGenerator("start",handlerInput.attributesManager.getSessionAttributes().username);
             return handlerInput.responseBuilder
                 .speak(speechText)
                 .reprompt(speechText)
@@ -131,7 +131,7 @@ const RunWorkflowHandler = {
             data => actionList = JSON.parse(data)
         );
         
-        speechText += responseGenerator("start_WF",workflowName);
+        speechText += phraseGenerator("start_WF",workflowName);
         let i=0;
         for(; i<actionList.actions_records.length && check.slotReq=='DEFAULT'; i++) {
             let action = actionList.actions_records[i];

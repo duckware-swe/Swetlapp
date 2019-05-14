@@ -74,4 +74,4 @@ function phraseGenerator(name, param) {
     }
 }
 
-exports.actionFactory = actionFactory;
+exports.phraseGenerator = phraseGenerator;
