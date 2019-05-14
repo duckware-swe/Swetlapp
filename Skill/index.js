@@ -27,13 +27,14 @@ const LaunchRequestHandler = {
             //console.log({ response });
             //console.log('Username:' + response.username);
             //console.log('Id:' + response.id);
-            handlerInput.attributesManager.getSessionAttributes().username = response.given_name || response.username;
+            handlerInput.attributesManager.getSessionAttributes().name = response.given_name || response.username;
+            handlerInput.attributesManager.getSessionAttributes().username = response.username;
         }
         catch (error) {
             console.log(`Error message: ${error.message}`);
         }
 
-        speechText = phraseGenerator("start",handlerInput.attributesManager.getSessionAttributes().username);
+        speechText = phraseGenerator("start",handlerInput.attributesManager.getSessionAttributes().name);
             return handlerInput.responseBuilder
                 .speak(speechText)
                 .reprompt(speechText)
