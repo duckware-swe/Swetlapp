@@ -24,9 +24,9 @@ const LaunchRequestHandler = {
             let tokenOptions = buildHttpGetOptions(accessToken);
 
             let response = await httpGet(tokenOptions);
-            //console.log({ response });
-            //console.log('Username:' + response.username);
-            //console.log('Username:' + response.id);
+            console.log({ response });
+            console.log('Username:' + response.username);
+            console.log('Id:' + response.id);
             handlerInput.attributesManager.getSessionAttributes().username = response.username;
         }
         catch (error) {
