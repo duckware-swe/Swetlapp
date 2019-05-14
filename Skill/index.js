@@ -337,7 +337,7 @@ const ErrorHandler = {
         return true;
     },
     handle(handlerInput, error) {
-        //console.log(`Error handled: ${error.message}`);
+        console.log(`Error handled: ${error.message}`);
 
         return handlerInput.responseBuilder
             .speak('Scusa, non ho capito. Puoi ripetere?')

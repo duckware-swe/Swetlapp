@@ -29,7 +29,7 @@ class TwitterWriteAction extends Action {
         
         if(this.params.length==1) {
             check.output = "Dimmi che tweet vuoi pubblicare?";
-            check.slotReq= 'tweetBody;
+            check.slotReq= 'tweetBody';
         } else if(this.params.length==2){
         	check.output = "confermi "+this.params[1]+" ?";
         	check.slotReq= 'confirmitionSlot';
