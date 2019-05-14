@@ -16,7 +16,7 @@ class TVScheduleAction extends Action {
     async run() {
     	let check = {
         		output: '',
-        		noInput: true
+        		slotReq: 'DEFAULT'
         };
 
         //TODO check se ci sono elementi in params, altrimenti il pop può ritornare un undefined
