@@ -27,7 +27,10 @@ class TwitterWriteAction extends Action {
         	check.output = phraseGenerator("confirm_tweet",this.params[1]);
         	check.slotReq= 'confirmitionSlot';
         }else if(this.params.length==3){
-        	if(this.params[2]=="si"){
+        	if(this.params[2]=="si" || this.params[2]=="no"){
+        		check.output = phraseGenerator("confirm_tweet",this.params[1]);
+            	check.slotReq= 'confirmitionSlot';
+        	}else if(this.params[2]=="si"){
         		const twitter = new Twitter({
           		  consumer_key: 'sFOOM7Ln3yEF3pzwibMv16OKs',
           		  consumer_secret: '6SLqOZxNV22gDOmPSSJKQSeWWHfGVKwuk2aTf78HO0qfipwaof',
