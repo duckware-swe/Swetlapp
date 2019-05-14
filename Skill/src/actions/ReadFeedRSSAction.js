@@ -1,3 +1,4 @@
+const {phraseGenerator} = require("./src/utils/PhraseGenerator");
 const { Action } = require('./Action.js');
 const Parser = require('rss-parser');
 const parser = new Parser();
