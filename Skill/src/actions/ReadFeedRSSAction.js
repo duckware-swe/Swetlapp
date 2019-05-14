@@ -25,7 +25,7 @@ class ReadFeedRSSAction extends Action {
             //console.log("Parametro: " + param);
             await parser.parseURL(param).then(data => {
                 //console.log("Notizie di " + data.title);
-                check.output += 'Queste sono le notizie da: ' + data.title + '. <break time=\"1s\"/> ';
+                check.output += phraseGenerator("read_feed", data.title) + '<break time=\"1s\"/>';
 
                 let i = 0;
                 data.items.forEach(item => {
