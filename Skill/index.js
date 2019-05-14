@@ -199,12 +199,10 @@ const InProgressRunWorkflowHandler = {
     async handle(handlerInput) {
     	let request = handlerInput.requestEnvelope.request;
     	const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
-    	try{
+    		console.log(sessionAttributes.slotName);
+    		console.log(request.intent.slots[sessionAttributes.slotName]);
         let elicitSlot =  request.intent.slots[sessionAttributes.slotName].value;
-    	}catch(e){
-    		console.log(e.message);
-    		console.log("non si può");
-    	}
+        	console.log(elicitSlot);
         let actionList = sessionAttributes.actionList;
         let i = sessionAttributes.index;
         let check = {
