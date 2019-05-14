@@ -196,8 +196,8 @@ const InProgressRunWorkflowHandler = {
     	let request = handlerInput.requestEnvelope.request;
         let elicitSlot =  request.intent.slots[handlerInput.attributesManager.getSessionAttributes().slotName].value;
         	console.log(elicitSlot);
-        let actionList = sessionAttributes.actionList;
-        let i = sessionAttributes.index;
+        let actionList = handlerInput.attributesManager.getSessionAttributes().actionList;
+        let i = handlerInput.attributesManager.getSessionAttributes().index;
         let check = {
         		output: '',
         		slotReq: 'DEFAULT'
@@ -222,7 +222,7 @@ const InProgressRunWorkflowHandler = {
         }else{
         	let speechText = 'Scusa, puoi ripetere?';
         }      
-        
+        console.log("esco dal for");
         if(check.slotReq!='DEFAULT'){
 	        //salvo la lista di azioni
         	handlerInput.attributesManager.getSessionAttributes().actionList = actionList;
