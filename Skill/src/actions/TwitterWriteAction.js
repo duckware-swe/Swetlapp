@@ -28,10 +28,10 @@ class TwitterWriteAction extends Action {
         console.log("un sacco");*/
         
         if(this.params.length==1) {
-            check.output = "Dimmi che tweet vuoi pubblicare?";
+            check.output = phraseGenerator("write_tweet");
             check.slotReq= 'tweetBody';
         } else if(this.params.length==2){
-        	check.output = "confermi "+this.params[1]+" ?";
+        	check.output = phraseGenerator("confirm_tweet",this.params[1]);
         	check.slotReq= 'confirmitionSlot';
         }else if(this.params.length==3){
         	if(this.params[2]=="si"){
@@ -41,7 +41,7 @@ class TwitterWriteAction extends Action {
           		  access_token_key: '1110508480543248384-kkSx42K1rEjMeV4NA6YFVFKvvZGHXm',
           		  access_token_secret: 'Ch95zS5FfL6wiuaFOYl25Z83KcDjIm0VsXq9QpUmBQ4HE'
           		});
-        		check.output = 'Tweet inviato con successo';
+        		check.output = phraseGenerator("tweet_success");
         		let body = this.params[1];
         		await twitter.post('statuses/update', {status: body}).then(data => {
         			console.log(data);
@@ -50,7 +50,7 @@ class TwitterWriteAction extends Action {
         		});
         	}else{
         		this.params.length =  1;
-        		check.output = "Dimmi che tweet vuoi pubblicare?";
+        		check.output = phraseGenerator("write_tweet");
         		check.slotReq = 'tweetBody';
         	}        	
         }        

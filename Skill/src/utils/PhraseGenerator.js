@@ -57,6 +57,14 @@ function phraseGenerator(name, param) {
         	phrase.push("Confermi: "+param+"?");
         	phrase.push("Vuoi inviare: "+param+"?");
             return phrase[Math.floor(Math.random() * phrase.length)];
+        case "tweet_success":
+        	phrase.push("<lang xml:lang=\"en-US\">Tweet</lang> inviato con successo");
+        	phrase.push("<lang xml:lang=\"en-US\">Tweet</lang> pubblicato con successo");
+        	phrase.push("Ho inviato il <lang xml:lang=\"en-US\">Tweet</lang>");
+        	phrase.push("Ho inviato il <lang xml:lang=\"en-US\">Tweet</lang> richiesto");
+        	phrase.push("Ho pubblicato il <lang xml:lang=\"en-US\">Tweet</lang>");
+        	phrase.push("Ho pubblicato il <lang xml:lang=\"en-US\">Tweet</lang> richiesto");
+        	return phrase[Math.floor(Math.random() * phrase.length)];
         case "tv_schedule":
         	phrase.push(" ");
             return phrase[Math.floor(Math.random() * phrase.length)];
