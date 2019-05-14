@@ -147,17 +147,16 @@ const RunWorkflowHandler = {
         }
         //se check.slotReq è diverso da DEFAULT allora di sicuro non ho finito il WF e devo continuare il dialogo con l'utente
         if(check.slotReq!=='DEFAULT'){
-	        //salvo la lista di azioni
-	        handlerInput.attributesManager.getSessionAttributes();
+        	const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
+        	
+	        //salvo la lista di azioni	        
 	        sessionAttributes.actionList = actionList;
 	        
 	        //salvo la posizione
-		    handlerInput.attributesManager.getSessionAttributes();
-		    sessionAttributes.index = --i;	        	
+	        sessionAttributes.index = --i;	        	
 	        
 		    //salvo il nome dello slot richiesto
-		    handlerInput.attributesManager.getSessionAttributes();
-		    sessionAttributes.slotName = check.slotReq;
+	        sessionAttributes.slotName = check.slotReq;
 		    
 	        //il dialogo diventa IN_PROGRESS
 	        request.dialogState = 'IN_PROGRESS';
@@ -188,14 +187,15 @@ const InProgressRunWorkflowHandler = {
     },
     async handle(handlerInput) {
     	let request = handlerInput.requestEnvelope.request;
+    	const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
     	try{
-        let elicitSlot =  request.intent.slots[handlerInput.attributesManager.getSessionAttributes().slotName].value;
+        let elicitSlot =  request.intent.slots[sessionAttributes.slotName].value;
     	}catch(e){
     		console.log(e.message);
     		console.log("non si può");
     	}
-        let actionList = handlerInput.attributesManager.getSessionAttributes().actionList;
-        let i = handlerInput.attributesManager.getSessionAttributes().index;
+        let actionList = sessionAttributes.actionList;
+        let i = sessionAttributes.index;
         let check = {
         		output: '',
         		slotReq: 'DEFAULT'
@@ -222,17 +222,15 @@ const InProgressRunWorkflowHandler = {
         }      
         
         if(check.slotReq!=='DEFAULT'){
+        	const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
 	        //salvo la lista di azioni
-	        handlerInput.attributesManager.getSessionAttributes();
-	        sessionAttributes.actionList = actionList;
+        	sessionAttributes.actionList = actionList;
 	        
 	        //salvo la posizione
-	        handlerInput.attributesManager.getSessionAttributes();
-	        sessionAttributes.index = --i;
+        	sessionAttributes.index = --i;
 	        
 	        //salvo il nome dello slot richiesto
-		    handlerInput.attributesManager.getSessionAttributes();
-		    sessionAttributes.slotName = check.slotReq;
+        	sessionAttributes.slotName = check.slotReq;
 	        
 	        //il dialogo diventa IN_PROGRESS
 	        request.dialogState = 'IN_PROGRESS';
