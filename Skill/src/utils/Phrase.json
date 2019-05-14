@@ -1,0 +1,166 @@
+{
+    "autenticationMessage":[
+        "Devi autenticarti con il tuo account Amazon per usare MegAlexa. Se non sai come autenticarti segui le istruzioni che ti ho inviato nell'applicazione Amazon Alexa",
+        "Mi dispiace ma per usare MegAlexa devi prima autenticarti. Se non sai come eseguire l'autenticazione segui le istruzioni che ti ho inviato nell'applicazione Amazon Alexa."
+    ],
+    "start0":[
+        "Ciao, ",
+        "Bentornato "
+    ],
+    "start1":[
+        "benvenuto in <lang xml:lang=\"en-US\">SwetlApp</lang>, come posso aiutarti?",
+        "benvenuto in <lang xml:lang=\"en-US\">SwetlApp</lang>",
+        "sei in <lang xml:lang=\"en-US\">SwetlApp</lang>, sono qui per aiutarti",
+        "sei in <lang xml:lang=\"en-US\">SwetlApp</lang>, cominciamo un <lang xml:lang=\"en-US\">workflow</lang>?"
+    ],
+    "noAuth":[
+        "Ciao.",
+        "A presto.",
+        "Ciao, spero di risentirti presto!"
+    ],
+    "workflowStart":[
+        "Quale workflow vuoi far eseguire?",
+        "Dimmi il workflow che vuoi far eseguire."
+    ],
+    "workflowName":[
+        "Dì il nome del tuo workflow oppure creane uno nell'applicazione MegAlexa.",
+        "Dimmi il nome del tuo workflow oppure creane uno nell'applicazione MegAlexa."
+    ],
+    "errorCommand":[
+        "Mi dispiace non ho compreso il comando, ripeti per favore.",
+        "Non riesco a comprendere il comando richiesto, per favore ripeti."
+    ],
+    "doneWorkflow":[
+        "Il tuo workflow è finito, puoi iniziarne uno nuovo.",
+        "Il tuo workflow è completato, puoi eseguirne un altro."
+    ],
+    "pinBlockStart":[
+        "Qual è il tuo codice?",
+        "Dimmi il tuo codice segreto.",
+        "Confessami il tuo codice per continuare.",
+        "Qual è il tuo PIN?",
+        "Dimmi le quattro cifre segrete."
+    ],
+    "wrongPin":[
+        "Sbagliato, riprova.",
+        "Codice non corretto, riprova.",
+        "Mi dispiace il pin non è corretto, riprova.",
+        "Il codice non è corretto. Riprova, forse sarai più fortunato.",
+        "Sfortunatamente il codice non è corretto, riprovaci."
+    ],
+    "correctPin":[
+        "Il Pin è corretto",
+        "Splendido, il Pin è corretto",
+        "Corretto"
+    ],
+    "addDeleteModify":[
+        "Vuoi aggiungere, eliminare o modificare un elemento della tua lista?",
+        "Desideri aggiungere, modificare o eliminare un elemento della tua lista?",
+        "Nella tua lista vuoi aggiungere, modificare o eliminare qualche elemento?",
+        "Nella tua lista desideri inserire, cambiare o rimuovere qualche elemento?"
+    ],
+    "pleaseRepeatList":[
+        "non ho capito, puoi dire aggiungi, elimina, rimuovi, seguito da un elemento. Oppure dire fatto per uscire.",
+        "perfavore, ripeti.",
+        "hmmm, che volevi dire?",
+        "non sono sicura, puoi ripetere?"
+    ],
+    "addList":[
+        "è stato aggiunto.",
+        "correttamente aggiunto."
+    ],
+    "deleteList": [
+        "è stato rimosso.",
+        "correttamente rimosso."
+    ],
+    "notPresent": [
+        "L'elemento non è presente.",
+        "L'elemento richiesto non è presente."
+    ],
+    "editedWith": [
+        "modificato con"
+    ],
+    "editList": [
+        "con"
+    ],
+    "readFeed":[
+        "Queste sono le tue email."
+    ],
+    "writeTwitter":[
+        "Dì il tweet che vuoi scrivere.",
+        "Dimmi il tweet che vuoi postare.",
+        "Dì il tweet che vuoi condividere."
+    ],
+    "successTwitter":[
+        "Il tuo tweet è ora condiviso.",
+        "Perfetto, il tuo tweet è ora condiviso."
+    ],
+    "tweetedTwitter":[
+        "ha twittato" 
+    ],
+    "noTweetFoundTwitter": [
+        "non sono presenti tweet al momento",
+        "attualmente non ci sono tweet da leggere"
+    ],
+    "weatherStart":[
+        "Attualmente a",
+        "A",
+        "Oggi a",
+        "In questo momento a"
+    ],
+    "weatherGrade":[
+        "ci sono",
+        "sono presenti"
+    ],
+    "weatherDetails":[
+        "con"
+    ],
+    "weatherHigh":[
+        "e una massima di"
+    ],
+    "weatherLow":[
+        "con una minima di"
+    ],
+    "weatherCelsius": [
+        "gradi"
+    ],
+    "atTime":[
+        "alle"
+    ],
+    "dayTime":[
+        "Il giorno"
+    ],
+    "noLocation":[
+        "Nessun luogo indicato"
+    ],
+    "location":[
+        "Luogo"
+    ],
+    "senderEmail":[
+        "mittente"
+    ],
+    "subjectEmail":[
+        "oggetto"
+    ],
+    "noWeatherSentence":[
+        "in questo momento il servizio meteo non è disponibile.",
+        "il meteo non è disponibile."
+    ],
+    "noWriteTwitterSentence":[
+        "c'è stato un problema con l'invio del tweet",
+        "tweet non inviato, controlla che i dati inseriti nell'app siano corretti"
+    ],
+    "noFeedSentence":[
+        "c'è stato un problema con il feed rss, per favore controlla che il link inserito sia giusto",
+        "non riesco a trovare il tuo feed rss"
+    ],
+    "noEmailFoundSentence":[
+        "non hai nuove email"
+    ],
+    "noEventFoundCalendarSentence":[
+        "non hai alcun evento pianificato",
+        "nessun evento pianificato nel calendario di google",
+        "il tuo calendario di google è vuoto"
+    ]    
+
+}

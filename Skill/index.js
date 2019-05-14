@@ -177,14 +177,6 @@ const RunWorkflowHandler = {
 };
 
 const InProgressRunWorkflowHandler = {
-    
-    /*
-    canHandle(handlerInput) {
-        let request = handlerInput.requestEnvelope.request;
-        return request.type === 'IntentRequest' && request.dialogState === 'IN_PROGRESS'
-            && handlerInput.attributesManager.getSessionAttributes().index;
-        //TODO controllare intent name?
-    }*/
     canHandle(handlerInput) {
         let request = handlerInput.requestEnvelope.request;
         return request.type === 'IntentRequest' && request.dialogState === 'IN_PROGRESS'
