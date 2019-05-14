@@ -17,7 +17,7 @@ class ReadFeedRSSAction extends Action {
     async run() {
     	let check = {
         		output: '',
-        		noInput: 'DEFAULT'
+        		slotReq: 'DEFAULT'
         };
         //TODO change for
         for(let i=0; i<this.params.length; i++){
