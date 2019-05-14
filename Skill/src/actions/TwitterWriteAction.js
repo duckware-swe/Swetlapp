@@ -18,14 +18,6 @@ class TwitterWriteAction extends Action {
         		output: '',
         		slotReq: 'DEFAULT'
         };
-        let output = ' Inviato il Tweet';
-        /*let body = this.params[0];
-        await twitter.post('statuses/update', {status: body}).then(data => {
-          console.log(data);
-        }, err => {
-          console.log(err);
-        });
-        console.log("un sacco");*/
         
         if(this.params.length==1) {
             check.output = phraseGenerator("write_tweet");
