@@ -35,7 +35,7 @@ class WeatherAction extends Action {
      */
     async run() {
     	let check = {
-        		output: 'Le previsioni per ',
+        		output: '',
         		slotReq: 'DEFAULT'
         };
 
@@ -45,7 +45,7 @@ class WeatherAction extends Action {
         let response = await doRequest(meteo);
         response = JSON.parse(response);
         if(response.name!='')
-        	check.output += response.name+" sono: "+response.weather[0].description;
+        	check.output += phraseGenerator("weather",response.name)+response.weather[0].description;
         else
         	check.output += " oggi sono: "+response.weather[0].description;
         return check;
