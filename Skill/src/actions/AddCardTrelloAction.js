@@ -1,4 +1,3 @@
-const {phraseGenerator} = require("./src/utils/PhraseGenerator");
 const { Action } = require('./Action.js');
 const Trello = require("trello");
 const axios = require('axios');
