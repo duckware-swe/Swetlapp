@@ -1,4 +1,3 @@
-const {phrase} = require('./Phrase.json');
 var exports = module.exports = {};
 
 /**
@@ -11,14 +10,36 @@ var exports = module.exports = {};
 function phraseGenerator(name, param) {
     switch (name) {
     	case "no_auth":
-    		return phrase.noAuth[Math.floor(Math.random() * phrase.noAuth.length)];
+    		const phrase = [
+    			"Devi autenticarti con il tuo account <lang xml:lang=\"en-US\">SwetlApp</lang> per usare questa skill. Ti ho inviato le istruzioni nella tua <lang xml:lang=\"en-US\">App Alexa</lang>.",
+    			"Mi dispiace ma per usare <lang xml:lang=\"en-US\">SwetlApp</lang> devi prima autenticarti. Se non sai come eseguire l\'autenticazione segui le istruzioni nella tua <lang xml:lang=\"en-US\">App Alexa</lang>."
+    		];
+    		return phrase[Math.floor(Math.random() * phrase.length)];
     	case "start" 
-    	    //start0 contiene il saluto e start1 contiene la presentazione
-    		return phrase.start0[Math.floor(Math.random() * phrase.start0.length)] + param + phrase.start1[Math.floor(Math.random() * phrase.start1.length)];
+    		const phrase = [
+    	        "Ciao "+param+", benvenuto in <lang xml:lang=\"en-US\">SwetlApp</lang>, come posso aiutarti?",
+    	        "Benvenuto in <lang xml:lang=\"en-US\">SwetlApp</lang>",
+    	        "Ciao "+param+" sei in <lang xml:lang=\"en-US\">SwetlApp</lang>, sono qui per aiutarti",
+    	        "Benvenuto "+param+", sei in <lang xml:lang=\"en-US\">SwetlApp</lang>, come posso aiutarti?",
+    	        "Ciao "+param" sei in <lang xml:lang=\"en-US\">SwetlApp</lang>, prova a far partire un <lang xml:lang=\"en-US\">workflow</lang>?"
+    	    ],
+    		return phrase[Math.floor(Math.random() * phrase.length)];
         case "read_feed":
-            return phrase.readFeed[Math.floor(Math.random() * phrase.readFeed.length)] + " " + param;
+        	const phrase = [
+        		"Queste sono le notizie da "+ param + ": ",
+        		"Ultime notizie di "+param+": ",
+        		"Le ultime notizie di "+param+ " sono: ",
+        		"Ecco le notizie da "+param+": "
+        	]
+            return phrase[Math.floor(Math.random() * phrase.length)];
         case "read_tweet":
-            return new TwitterReadAction(name, params);
+        	const phrase = [
+        		"Questi sono gli ultimi <lang xml:lang=\"en-US\">Tweet</lang> da "+ param + ": ",
+        		"Ultimi <lang xml:lang=\"en-US\">Tweet</lang> di "+param+": ",
+        		"Gli ultimi <lang xml:lang=\"en-US\">Tweet</lang> di "+param+ " sono: ",
+        		"Ecco i <lang xml:lang=\"en-US\">Tweet</lang> pubblicati da "+param+": "
+        	]
+            return phrase[Math.floor(Math.random() * phrase.length)];
         case "write_tweet":
             return new TwitterWriteAction(name, params);
         case "tv_schedule":
