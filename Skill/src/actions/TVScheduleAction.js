@@ -123,7 +123,7 @@ function getTVSchedule(channel, time) {
 
     getDatabaseInstance().query(params).then(
         data => {
-            console.log("data query: " + data);
+            console.log("data query: " + dataf);
             if (time === null)
                 return channelSchedule.set(channel, data.Items);
             else {
@@ -137,6 +137,9 @@ function getTVSchedule(channel, time) {
                 console.log("data fine query: " +channelSchedule);
                 return channelSchedule;
             }
+        },
+        err => {
+            console.log("query err: " + err);
         }
     );
 }
