@@ -13,7 +13,7 @@ var mochaAsync = (fn) => {
     };
 };
 
-it("Sample async/await mocha test using wrapper", mochaAsync(async () => {
+it("httpGetMemberId", mochaAsync(async () => {
     var x = new AddCardTrelloAction("writetrello",[]);
     try{
         x = await  x.httpGetMemberId("ciao");
@@ -24,3 +24,37 @@ it("Sample async/await mocha test using wrapper", mochaAsync(async () => {
     }
 
 }));
+
+describe('Array',function(){
+    describe('#indexOf()', function(){
+        it('should return -1 when the value is not present', function(){
+            assert.equal([1,2,3].indexOf(4),-1);
+        });
+    })
+});
+
+describe('getBoardWrapper',function(){
+    it("Return true", mochaAsync(async () => {
+        var x = new AddCardTrelloAction("writetrello",[]);
+        try{
+            assert.equal([1,2,3].indexOf(4),-1);
+        }catch (e) {
+            console.log(e);
+            assert.equal([1,2,3].indexOf(4),-2);
+        }
+
+    }));
+});
+
+describe('getListsFromBoard',function(){
+    it("Return true", mochaAsync(async () => {
+        var x = new AddCardTrelloAction("writetrello",[]);
+        try{
+            assert.equal([1,2,3].indexOf(4),-1);
+        }catch (e) {
+            console.log(e);
+            assert.equal([1,2,3].indexOf(4),-2);
+        }
+
+    }));
+});
