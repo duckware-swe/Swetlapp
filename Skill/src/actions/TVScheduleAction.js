@@ -30,8 +30,9 @@ class TVScheduleAction extends Action {
 
             await getTVSchedule(this.params[0].toLowerCase(), fixTime(this.params[1])).then(
                 data => {
-                    if(!data.length)
+                    if(data.length === 0){
                         check.output = phraseGenerator("tv_empty", this.params) + "<break time='300ms'/> ";
+                    }
                     else{ 
                         check.output = phraseGenerator("tv_completed", this.params) + "<break time='300ms'/> ";
                         data.forEach(item => {
@@ -43,7 +44,7 @@ class TVScheduleAction extends Action {
                 //    console.log("data: "+ data);
                     
                 error => {
-                    console.log("CIE UN ERORE");
+                    console.log("CIE UN ERORE" + error);
                     return error;
                 }
             );
@@ -69,7 +70,7 @@ function fixTime(time){
 
 function getEndTime(time) {
     let aux = time.split(":").map(item => parseInt(item) );
-    aux[0] += 6;
+    aux[0] += 3;
     if(aux[0]>24)
         aux[0]=24;
     let auxString = aux.map(item => item.toString());
@@ -92,11 +93,12 @@ function getTVSchedule(channel, time) {
 
     return getDatabaseInstance().query(params).then(
         data => {
-            console.log("data query: " + JSON.stringify(data));
+            //console.log("data query: " + JSON.stringify(data));
             //if (time === null)
             //    return channelSchedule.set(channel, data.Items);
             //else {
                 //let periodSchedule = [];
+            if(data.Items.length !== 0){    
                 data.Items[0].schedule.forEach(item => {
                     console.log(item);
                     if (item.time >= time && item.time < getEndTime(time)) {
@@ -104,8 +106,9 @@ function getTVSchedule(channel, time) {
                         scheduleList.push(item)
                     }
                 });
+            }
                 //return channelSchedule.set(channel, periodSchedule);
-                return scheduleList;
+            return scheduleList;
             //}
         },
         err => {
