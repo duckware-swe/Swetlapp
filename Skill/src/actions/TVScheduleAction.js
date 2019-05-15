@@ -121,9 +121,9 @@ function getTVSchedule(channel, time) {
         channel
     );
 
-    getDatabaseInstance().query(params).then(
+    return getDatabaseInstance().query(params).then(
         data => {
-            console.log("data query: " + dataf);
+            console.log("data query: " + data);
             if (time === null)
                 return channelSchedule.set(channel, data.Items);
             else {
