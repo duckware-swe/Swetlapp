@@ -13,7 +13,7 @@ Dopo che la skill è stata avviata si possono impartire comandi per l'esecuzione
 Un esempio di dialogo per l'esecuzione di un workflow potrebbe essere il seguente:
 \begin{itemize}
 	\item Alexa: \textit{Alexa attende un'ordine da parte dell'utente}.
-	\item Utente: "Esegui \textit{nome del workflow}".
+	\item Utente: "Avvia \textit{nome del workflow}".
 \end{itemize}
 \subsubsection{Riesecuzione di un workflow}
 Nel caso in cui l'utente volesse ripetere l'esecuzione di un workflow è possibile impartire un comando del seguente tipo:
@@ -40,6 +40,14 @@ Nel caso l'utente desiderasse ottenere aiuto riguardo al modo di funzionamento d
 	\item Utente: "Aiutami" oppure "Ho bisogno di aiuto".
 \end{itemize}
 
+\subsection{Connettori che necessitano la registrazione a siti esterni}
+Di seguito sono elencati i connettori che poter essere usati necessitano di un account propriamente verificato:
+\begin{itemize}
+	\item \textbf{Connettori per operazioni su Trello}: è necessario quindi essere registrati sulla piattaforma \href{https://trello.com}{Trello};
+	\item \textbf{Connettori per lettura/scrittura di Tweet}: è necessario quindi essere registrati sulla piattaforma \href{https://twitter.com/}{Twitter}.
+\end{itemize}
+
+
 \subsection{Interazione Utente - Alexa per alcuni connettori}
 Durante l’esecuzione del workflow alcuni connettori potrebbero necessitare di un’ulteriore
 interazione vocale tra l’utente e l’assistente vocale. Di seguito viene esplicato in che modo
@@ -48,8 +56,67 @@ interazione vocale tra l’utente e l’assistente vocale. Di seguito viene espl
 All'esecuzione del connettore Meteo la risposta di Alexa sarà l'esposizione delle previsioni meteorologiche. Non è prevista una frase o una tipologia di frase standard per questo tipo di connettore.
 \subsubsection{Connettore TV Schedule}
 All'esecuzione del connettore TV Schedule la risposta di Alexa sarà l'esposizione del palinsesto televisivo. Non è prevista una frase o una tipologia di frase standard per questo tipo di connettore.
-\subsubsection{Connettore Tweet}
-Per la pubblicazione di un Tweet il connettore andrà a scrivere nella bacheca del profilo il testo precedentemente impostato sull'applicazione Android di SwetlApp, e a termine della pubblicazione Alexa risponderà con una conferma se le impostazioni sono state settate in maniera corretta.
-Per la lettura di un Tweet, Alexa risponderà nel seguente modo: "L'ultimo Tweet nella bacheca è: ... ".
-\subsubsection{Connettore "Trello"}
-\textit{Questa sezione verrà sviluppata quando la relativa parte software verrà completata.}
+\subsubsection{Connettore Pubblicazione Twitter}
+Per la pubblicazione di un Tweet l'utente dovrà aver collegato il proprio account Twitter all'applicazione.
+Durante l'esecuzione il dispositivo andrà a chiedere all'utente il testo del tweet da pubblicare nel seguente modo: "Per pubblicare un tweet, dimmi \textbf{invia} seguito dal corpo del messaggio", dopo aver ricevuto un risposta corretta la skill pubblicherà il tweet richiesto.
+\subsubsection{Connettore Lettura Twitter}
+Per la lettura degli ultimi tweet di un account Alexa risponderà leggendo gli ultimi 3 tweet pubblicati dall'account precedentemente scelto nel seguente modo: "Ultimi tweet di \textbf{Utente Twitter}: ... ".
+\subsubsection{Connettore lettura schede da Trello}
+Per poter usare questo connettore, è necessario effettuare il login al proprio account personale di Trello.
+\begin{itemize}
+	\item \textbf{Obiettivo di questo connettore}: questo connettore permette di leggere le prime tre schede assegnate all'utente di una lista facente parte di una bacheca a scelta dell'utente.
+	\item \textbf{Interazione utente-Alexa}: un modo in cui potrebbe avvenire l'interazione tra l'utente e il dispositivo Alexa è il seguente:
+	\begin{itemize}
+		\item Alexa: "Dimmi il nome della bacheca di Trello da dove vuoi leggere le tue schede";
+		\item Utente: "{\it nome bacheca esistente}".
+		\begin{itemize}
+			\item Alexa: "Ok adesso dimmi il nome della lista da dove leggere le tue schede".
+			\item Utente: "{\it nome lista esistente}".
+			\begin{itemize}
+				\item Alexa: "{\it lettura delle schede}".
+			\end{itemize}
+			\item Utente: "{\it nome lista inesistente}".
+			\begin{itemize}
+				\item Alexa: "Riprova a dirmi il nome della lista da dove leggere le tue schede".
+			\end{itemize}			
+		\end{itemize}
+		\item Utente: "{\it nome bacheca inesistente}".
+		\begin{itemize}
+			\item Alexa: "Riprova a dirmi il nome della bacheca di Trello da dove vuoi leggere le schede".
+		\end{itemize}
+	\end{itemize}
+\end{itemize}
+
+\subsubsection{Connettore aggiunta di una scheda su Trello}
+Per poter usare questo connettore, è necessario effettuare il login al proprio account personale di Trello.
+\begin{itemize}
+	\item \textbf{Obiettivo di questo connettore}: permette di aggiungere una singola scheda ad una lista di una bacheca scelta dall'utente
+	\item \textbf{Interazione utente-Alexa}: essendo un'operazione di pubblicazione di una scheda, durante l'esecuzione della skill per ogni scelta dell'utente il dispositivo Alexa chiederà conferma all'utente. A questo punto l'utente potrà dire {\it "si/certo/ok"} per confermare la scelta, altrimenti {\it "no" } per rifiutare la scelta. Se l'utente dice {\it "no" } allora avrà la possibilità di rifare l'ultima azione, quindi ad esempio potrà ridire il titolo della scheda da aggiungere se ha sbagliato a pronunciare al primo colpo.\newline
+	Un modo in cui potrebbe avvenire l'interazione tra l'utente e il dispositivo Alexa è il seguente:
+	\begin{itemize}
+		\item Alexa: "Dimmi il nome della bacheca di Trello dove vuoi aggiungere la scheda";
+		\item Utente: "{\it nome bacheca esistente}";
+		\begin{itemize}
+			\item Alexa: "Ok adesso dimmi il nome della lista dove aggiungere la scheda";
+			\item Utente: "{\it nome lista esistente}";
+			\begin{itemize}
+				\item Alexa: "Ok adesso dimmi il titolo della scheda da aggiungere";
+				\item Utente: "{\it titolo della scheda}";
+				\item Alexa: "Ok. Dimmi la descrizione della scheda da aggiungere";
+				\item Utente: "{\it descrizione della scheda}";
+				\item Alexa: "{\it La scheda è stata aggiunta corretamente}";
+			\end{itemize}
+			\item Utente: "{\it nome lista inesistente}";
+			\begin{itemize}
+				\item Alexa: "Riprova a dirmi il nome della lista dove aggiungere la scheda".
+			\end{itemize}		
+		\end{itemize}
+		\item Utente: "{\it nome bacheca inesistente}";
+		\begin{itemize}
+			\item Alexa: "Ok. Riprova a dirmi il nome della bacheca di Trello dove vuoi aggiungere la scheda";
+		\end{itemize}
+	\end{itemize}
+\end{itemize}
+
+
+

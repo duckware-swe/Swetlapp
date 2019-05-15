@@ -103,9 +103,15 @@ I requisiti vengono classificati ed assegnati attraverso l'utilizzo di un identi
 		R2V1.3 & Obbligatorio & Sarà necessario utilizzare JUnit per eseguire i test di unità                                                                              & Interno               \\  
 		R2V2   & Obbligatorio & Il collegamento con i servizi di AWS avverrà tramite l'SDK AWS  di Amazon                                                                  & Capitolato            \\  
 		R2V2.1 & Obbligatorio & Verrà utilizzata la versione 2.0 dell'SDK                                                                                                  & Interno               \\  
+<<<<<<< HEAD
 		R2V3   & Obbligatorio & Utilizzo di Amazon Amplify per la realizzazione di API per la comunicazione con l'applicazione                                         & Verbale               \\  
 		R2V3.1 & Obbligatorio & Creazione di endpoint API RESTful tramite Amazon Amplify & Interno               \\  
 		R2V4   & Obbligatorio & Utilizzo di AWS Lambda per l'esecuzione automatica di richieste HTTP create via Amplify & Verbale               \\  
+=======
+		R2V3   & Obbligatorio & Utilizzo di Amazon AppSync per la realizzazione di API per la comunicazione con l'applicazione                                         & Verbale               \\  
+		R2V3.1 & Obbligatorio & Creazione di endpoint GraphQL tramite Amazon AppSync                                                                               & Interno               \\  
+		R2V4   & Obbligatorio & Utilizzo di Amazon AppSync per l'esecuzione automatica di richieste GraphQL                                                 & Verbale               \\  
+>>>>>>> 1b2f71d4e3c70ff788b02d8296cd819ab5e319e4
 		R2V5   & Obbligatorio & Creazione di un database non relazionale utilizzando Amazon DynamoDB                                                                       & Capitolato ed Esterno \\  
 		R2V6   & Obbligatorio & Un utente può creare workflow solamente dopo aver effettuato il login con successo                                                         & Capitolato            \\
 		R2V7   & Obbligatorio & Si dovrà creare un'architettura REST per comunicare con l'applicazione                                                              & Interno    \\
@@ -119,26 +125,10 @@ I requisiti vengono classificati ed assegnati attraverso l'utilizzo di un identi
 		\caption{Tabella requisiti di vincolo}
 	\end{longtable}
 \end{center}
+
 \subsubsection{Requisiti prestazionali}
-\begin{center}
-	\renewcommand{\arraystretch}{1.5}
-	\rowcolors{3}{tableLightYellow}{}
-	\begin{longtable}{  >{\RaggedRight}p{2.5cm}  
-						>{\RaggedRight}p{2.1cm} 
-						>{\RaggedRight}p{7cm}  
-						>{\RaggedRight}p{1.7cm} 
-						}
-
-		\rowcolor{tableHeadYellow}
-
-		\textbf{Identificativo}   & \textbf{Importanza} & \textbf{Descrizioni} & \textbf{Fonte} \\ 
-
-		R2P1 & Desiderabile & Il server deve avere una latenza massima di 3 secondi, a meno di errori di connessione                     & Interno \\  
-		
-		\rowcolor{white}
-		\caption{Tabella requisiti prestazionali}
-	\end{longtable}
-\end{center}
+Non sono stati individuati requisiti prestazionali in quanto la maggior parte delle attività, per essere concluse, necessitano di una interazione con i servizi di AWS e quindi i tempi non risultano costanti o prevedibili con precisione.
+Qualsiasi operazione effettuata ha un tempo di soddisfacimento influenzato dal carico della rete nel momento della richiesta.
 
 \input{../includes/sections/tracciamento}
 	
@@ -147,7 +137,7 @@ I requisiti vengono classificati ed assegnati attraverso l'utilizzo di un identi
 \begin{center}
 	\renewcommand{\arraystretch}{1.5}
 	\rowcolors{3}{tableLightYellow}{}
-	\begin{longtable}{  >{\RaggedRight}p{1.8cm}  
+	\begin{longtable}{  >{\RaggedRight}p{2cm}  
 						>{\Centering}p{2cm} 
 						>{\Centering}p{2.2cm}  
 						>{\Centering}p{1.8cm} 
@@ -158,8 +148,8 @@ I requisiti vengono classificati ed assegnati attraverso l'utilizzo di un identi
 		Funzionali    & 21          & 4            & 3         & 28     \\
 		Di qualità    & 9           & 1            & 0         & 10      \\  
 		Di vincolo    & 15          & 2            & 0         & 17     \\  
-		Prestazionali & 0           & 1            & 0         & 1      \\  
-		Totale        & 45         	& 8            & 3         & 56     \\
+		Prestazionali    & 0           & 0           & 0         & 0     \\  
+		Totale        & 45         	& 7            & 3         & 55    \\
 		\rowcolor{white}
 		\caption{Tabella requisiti prestazionali}
 	\end{longtable}
