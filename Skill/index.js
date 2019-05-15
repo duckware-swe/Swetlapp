@@ -213,7 +213,14 @@ const InProgressRunWorkflowHandler = {
     	}else{
     		elicitSlot = request.intent.slots[attributi.slotName].value;
     	}
-          
+        if(elicitSlot=='undefined'){
+        	return handlerInput.responseBuilder
+            .speak("Scusa non ho capito, puoi ripetere?")
+            .reprompt("Scusa non ho capito, puoi ripetere?")
+            .addElicitSlotDirective(attributi.slotName,request.intent)
+            .withSimpleCard(appName,speechText)
+            .getResponse();
+        } 
         	console.log(elicitSlot);
         let actionList = attributi.actionList;
         let i = attributi.index;
