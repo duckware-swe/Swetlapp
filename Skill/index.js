@@ -200,9 +200,8 @@ const InProgressRunWorkflowHandler = {
     	const attributi = handlerInput.attributesManager.getSessionAttributes();
     	let elicitSlot = '';
     	if(attributi.slotName=='confirmitionSlot'){
-        	//console.log(request.intent.slots[attributi.slotName].resolutions.resolutionsPerAuthority[status]);
     		if(request.intent.slots[attributi.slotName].resolutions.resolutionsPerAuthority[0].status.code=="ER_SUCCESS_MATCH"){
-    			elicitSlot = request.intent.slots[attributi.slotName].resolutions.resolutionsPerAuthority[0].values.value.name;
+    			elicitSlot = request.intent.slots[attributi.slotName].resolutions.resolutionsPerAuthority[0].values[0].value.name;
     		}else{
     			return handlerInput.responseBuilder
                 .speak("Scusa non ho capito, puoi ripetere la risposta?")
