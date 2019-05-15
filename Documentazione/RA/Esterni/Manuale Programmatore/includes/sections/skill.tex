@@ -1,4 +1,4 @@
-\clearpage
+\pagebreak
 \section{Architettura Skill}
 
 L'architettura della skill che risiede in cloud in AWS Lambda è rappresentata dal seguente diagramma:
@@ -13,7 +13,7 @@ L'architettura della skill che risiede in cloud in AWS Lambda è rappresentata d
 
 \subsection{Back-end}
 La logica della skill è gestita dal file index.js al quale Alexa si appoggerà per l'invio delle richieste derivanti dall'interazione con l'utente.
-Ogni richiesta inviata incapsula una serie di dati, quali il tipo di intent che la attiva e i parametri forniti dall'utente, denominati slot, e sarà gestita da uno degli handler presenti nel file index.js.
+Ogni richiesta inviata incapsula una serie di dati, quali il tipo di \textit{intent} che la attiva e i parametri forniti dall'utente, denominati slot, e sarà gestita da uno degli handler presenti nel file index.js.
 Per ognuno di questi verrà eseguito il metodo \textit{canHandle()} e, in caso di ritorno positivo, sarà lanciato il relativo metodo \textit{handle()}, interrompendo la ricerca dell'handler adeguato.
 Nel caso in cui non venga trovato alcun gestore appropriato, la skill ha un comportamento non definito che porta al suo arresto improvviso; pertanto la best practice prevede l'implementazione di un handler di default che viene eseguito all'occorrenza di errori.
 

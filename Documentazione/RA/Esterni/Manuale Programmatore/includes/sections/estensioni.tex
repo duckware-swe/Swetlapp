@@ -1,34 +1,29 @@
-\clearpage
+\pagebreak
 
 \section{Estensione delle funzionalità}
-
 Il seguente paragrafo ha lo scopo di aiutare lo sviluppatore che intenda apportare modifiche all'architettura su AWS o estendere il codice sorgente.
 
 \subsection{Architettura AWS}
-
 L'intera architettura viene automaticamente generata dal tool \emph{Amplify} dopo aver interpretato il file GraphQL. Una volta modificato tale file, la console di Amplify genererà il database e l'intera infrastruttura per la comunicazione con l'applicazione Android e la Skill.\\[0.25cm]
 
-\textbf{Altro da mettere?}
-
 \subsection{Android}
-
-\subsubsection{estensione delle risorse}
+\subsubsection{Estensione delle risorse}
 Per estendere le risorse sarà necessario:
 \begin{itemize}
-\item localizzare il file swetlAPP/amplify/backend/api/testcognito/schema.graphql
-\item modificare questo file per adattarlo al modello necessario
-\item salvare il nuovo file
-\item da CLI su root di progetto digitare e inviare \textbf{amplify api push}
-\item attendere la sincronizzazione con il cloud AWS
+\item Localizzare il file swetlAPP/amplify/backend/api/testcognito/schema.graphql
+\item Modificare questo file per adattarlo al modello necessario
+\item Salvare il nuovo file
+\item Da CLI su root di progetto digitare e inviare \textbf{amplify api push}
+\item Attendere la sincronizzazione con il cloud AWS
 \end{itemize}
 
-\subsubsection{accesso a nuove risorse}
-Le classi e i metodi di accesso a queste risorse saranno disponibili nella cartella generatedJava, il comando \textbf{clean} eliminerà eventuali  classi associate a risorse non piú esistenti. \\
+\subsubsection{Accesso a nuove risorse}
+Le classi e i metodi di accesso a queste risorse saranno disponibili nella cartella generatedJava, il comando \textbf{clean} eliminerà eventuali  classi associate a risorse non più esistenti. \\
 Le query verranno create con i metodi generati producendo, se necessario, prima un input e poi passandolo come parametro alla query, gli eventi successivi a una query saranno gestiti da una callback con i metodi onResponse() e onFailure(). \\
-Ssi consiglia di mettere gli update della view dentro questi due metodi.
+Si consiglia di mettere gli update della view dentro questi due metodi.
 
-\subsubsection{estensione frontend}
-Sarà necessario agire sui seguienti file xml:
+\subsubsection{Estensione Front-end}
+Sarà necessario agire sui seguenti file XML:
 \begin{itemize}
 \item \textbf{layout} per dichiarare e modificare viste e le posizioni delle stesse
 \item \textbf{strings} per dichiarare e modificare stringhe utilizzate dall'applicazione
@@ -37,16 +32,11 @@ Sarà necessario agire sui seguienti file xml:
 \end{itemize}
 
 \subsubsection{Cognito}
-Per modificare le policy e il frontend della drop-in UI di AWS Cognito sarà necessario accedere alla console AWS Cognito da browser e navigare tra le categorie, nella categoria policy sarà possibile modificare la sicurezza necessaria per la password e l'obbligatorietà di vari attributi, nella categoria interfaccia si potranno modificare gli elementi della vista della drop-in UI tramite direttive CSS.
+Per modificare le policy e il front-end della drop-in UI di AWS Cognito sarà necessario accedere alla console AWS Cognito da browser e navigare tra le categorie, nella categoria policy sarà possibile modificare la sicurezza necessaria per la password e l'obbligatorietà di vari attributi, nella categoria interfaccia si potranno modificare gli elementi della vista della drop-in UI tramite direttive CSS.
 
-\subsubsection{implementazione nuovi connettori}
-Se si vuole aggiungere un connettore i cui parametri necessitano all'utente solo di digitare in campi di testo sarà sufficiente dichiarare il connettore (tramite il builder) nel metodo onCreate di ConnectorActivity, per come è implementato, il sistema provvederà ad aggiungerlo nelle opportune recycler view e a costruire il comportamento di inserimento dei parametri e loro archiviazione nel database.
+\subsubsection{Implementazione nuovi connettori}
+Se si vuole aggiungere un connettore i cui parametri necessitano all'utente solo di digitare in campi di testo sarà sufficiente dichiarare il connettore (tramite il builder) nel metodo onCreate di ConnectorActivity, per come è implementato, il sistema provvederà ad aggiungerlo nelle opportune RecyclerView e a costruire il comportamento di inserimento dei parametri e loro archiviazione nel database.
 Per connettori i cui input sono differenti da normali field testuali sarà necessario, oltre ad effettuare il processo suddetto, creare una activity che lo gestisca.
 
-
-
-
-
 \subsection{Skill}
-
 Todo \textbf{SONIA}
