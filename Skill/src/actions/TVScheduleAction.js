@@ -27,14 +27,12 @@ class TVScheduleAction extends Action {
             check.output = phraseGenerator("tv_ask_time");
             check.slotReq= 'timeSchedule';
         }else if(this.params.length==2){
-            console.log("orario in input: "+fixTime(this.params[1]));
-            console.log("canale in input: "+this.params[0].toLowerCase());
+
             await getTVSchedule(this.params[0].toLowerCase(), fixTime(this.params[1])).then(
                 data => {
                     if(!data.length)
                         check.output = phraseGenerator("tv_empty", this.params) + "<break time='300ms'/> ";
                     else{ 
-                        console.log("risultato query: " + JSON.stringify(data));
                         check.output = phraseGenerator("tv_completed", this.params) + "<break time='300ms'/> ";
                         data.forEach(item => {
                             let splitTime = item.time.split(":");

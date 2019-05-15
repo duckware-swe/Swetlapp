@@ -200,7 +200,7 @@ const InProgressRunWorkflowHandler = {
     	const attributi = handlerInput.attributesManager.getSessionAttributes();
     	let elicitSlot = '';
     	if(attributi.slotName=='confirmitionSlot'){
-        	console.log(request.intent.slots[attributi.slotName].resolutions.resolutionsPerAuthority[status]);
+        	console.log(request.intent.slots[attributi.slotName].resolutions.resolutionsPerAuthority[0].status.code);
     	}
     	/*if(attributi.slotName=='confirmitionSlot'){
         	console.log(request.intent.slots[attributi.slotName].resolutions.resolutionsPerAuthority[status]);
