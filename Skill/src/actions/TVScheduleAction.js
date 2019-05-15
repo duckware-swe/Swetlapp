@@ -28,14 +28,22 @@ class TVScheduleAction extends Action {
             check.slotReq= 'timeSchedule';
         }else if(this.params.length==2){
             console.log("orario in input: "+fixTime(this.params[1]));
-            console.log("canale in input: "+this.params[0]);
-            await getTVSchedule(this.params[0], fixTime(this.params[1])).then(
+            console.log("canale in input: "+this.params[0].toLowerCase());
+            await getTVSchedule(this.params[0].toLowerCase(), fixTime(this.params[1])).then(
                 data => {
-                    console.log("risultato query: " + data);
-                //    check.output = phraseGenerator("tv_completed", this.params);
+                    if(!data.length)
+                        check.output = phraseGenerator("tv_empty", this.params) + "<break time='300ms'/> ";
+                    else{ 
+                        console.log("risultato query: " + JSON.stringify(data));
+                        check.output = phraseGenerator("tv_completed", this.params) + "<break time='300ms'/> ";
+                        data.forEach(item => {
+                            let splitTime = item.time.split(":");
+                            check.output += "alle " + splitTime[0] + " e " + splitTime[1] + ", " + item.name +". "
+                        });
+                    }
+                },
                 //    console.log("data: "+ data);
                     
-                },
                 error => {
                     console.log("CIE UN ERORE");
                     return error;
@@ -45,43 +53,6 @@ class TVScheduleAction extends Action {
         return check;
     }
 }
-
-
-/*
-                const twitter = new Twitter({
-                  consumer_key: 'sFOOM7Ln3yEF3pzwibMv16OKs',
-                  consumer_secret: '6SLqOZxNV22gDOmPSSJKQSeWWHfGVKwuk2aTf78HO0qfipwaof',
-                  access_token_key: '1110508480543248384-kkSx42K1rEjMeV4NA6YFVFKvvZGHXm',
-                  access_token_secret: 'Ch95zS5FfL6wiuaFOYl25Z83KcDjIm0VsXq9QpUmBQ4HE'
-                });
-                check.output = phraseGenerator("tweet_success");
-                let body = this.params[1];
-                await twitter.post('statuses/update', {status: body}).then(data => {
-                    console.log(data);
-                }, err => {
-                    console.log(err);
-                });
-            }else{
-                this.params.length =  1;
-                check.output = phraseGenerator("write_tweet");
-                check.slotReq = 'tweetBody';
-            }           
-        }        
-        return check; */
-/*
-var chlist=["cielo", "spike"];
-chlist.forEach(function(channel){
-	var programmiDiOggi = promessaRitornata.get(channel);  //promessaRitornata e' il ritorno della query
-	console.log(channel + "-->");
-	programmiDiOggi.forEach(function(item){
-		console.log(item.name + " alle ore " + item.time);
-	});
-});
- 
-
-    }
-}
-*/
 
 function fixTime(time){
     switch (time) {
@@ -112,7 +83,7 @@ function getEndTime(time) {
 }
 
 function getTVSchedule(channel, time) {
-    let channelSchedule = new Map();
+    let scheduleList = [];
 
     let params = buildDatabaseParams(
         "TVChannels",
@@ -123,20 +94,21 @@ function getTVSchedule(channel, time) {
 
     return getDatabaseInstance().query(params).then(
         data => {
-            console.log("data query: " + data);
-            if (time === null)
-                return channelSchedule.set(channel, data.Items);
-            else {
-                let periodSchedule = [];
+            console.log("data query: " + JSON.stringify(data));
+            //if (time === null)
+            //    return channelSchedule.set(channel, data.Items);
+            //else {
+                //let periodSchedule = [];
                 data.Items[0].schedule.forEach(item => {
+                    console.log(item);
                     if (item.time >= time && item.time < getEndTime(time)) {
-                        periodSchedule.push(item);
+                        //periodSchedule.push(item);
+                        scheduleList.push(item)
                     }
                 });
-                channelSchedule.set(channel, periodSchedule);
-                console.log("data fine query: " +channelSchedule);
-                return channelSchedule;
-            }
+                //return channelSchedule.set(channel, periodSchedule);
+                return scheduleList;
+            //}
         },
         err => {
             console.log("query err: " + err);

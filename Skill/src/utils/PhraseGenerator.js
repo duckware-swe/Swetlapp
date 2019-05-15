@@ -81,7 +81,11 @@ function phraseGenerator(name, param) {
             return phrase[Math.floor(Math.random() * phrase.length)];
         case "tv_completed":
             phrase.push("la programmazione per "+param[0]+" dalle ore "+param[1]+" è:");
-            phrase.push("questa è la programmazione di "+param[0]+" dalle ore "+param[1]+" :");
+            phrase.push("questa è la programmazione di "+param[0]+" dalle ore "+param[1]+" : ");
+            return phrase[Math.floor(Math.random() * phrase.length)];
+        case "tv_empty":
+            phrase.push("la programmazione per "+param[0]+" dalle ore "+param[1]+" risulta essere vuota. ");
+            phrase.push("non ci sono programmi nel palinsesto di "+param[0]+" dalle ore "+param[1]+". ");
             return phrase[Math.floor(Math.random() * phrase.length)];
         case "weather":
         	phrase.push("Le previsioni per "+param+" sono: ");
