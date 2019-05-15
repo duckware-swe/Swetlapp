@@ -3,6 +3,7 @@ const { CustomMessageAction } = require('../actions/CustomMessageAction');
 const { ReadFeedRSSAction } = require('../actions/ReadFeedRSSAction.js');
 const { TwitterReadAction } = require('../actions/TwitterReadAction.js');
 const { TwitterWriteAction } = require('../actions/TwitterWriteAction.js');
+const { TwitterHomeAction } = require('../actions/TwitterHomeAction.js');
 const { TVScheduleAction } = require('../actions/TVScheduleAction.js');
 const { WeatherAction } = require('../actions/WeatherAction.js');
 const { AddCardTrelloAction } = require('../actions/AddCardTrelloAction');
@@ -27,6 +28,8 @@ function actionFactory(name, params) {
             return new TwitterReadAction(name, params);
         case "write_tweet":
             return new TwitterWriteAction(name, params);
+        case "home_tweet":
+            return new TwitterHomeAction(name, params);
         case "tv_schedule":
             return new TVScheduleAction(name, params);
         case "weather":

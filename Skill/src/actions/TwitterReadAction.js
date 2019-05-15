@@ -26,7 +26,7 @@ class TwitterReadAction extends Action {
         		slotReq: 'DEFAULT'
         };
         let body = this.params[0];
-        await twitter.get('statuses/user_timeline', {screen_name: body, count: 3}).then(data => {
+        await twitter.get('statuses/user_timeline', {screen_name: body, count: 3, exclude_replies: true}).then(data => {
           check.output+=phraseGenerato("read_tweet",data[0].user.name);
           for(let i =0; i< data.length; i++){
             check.output+= data[i].text+". <break time=\"0.8s\"/> ";
@@ -34,27 +34,6 @@ class TwitterReadAction extends Action {
         }, err => {
           check.output+= "L'Account "+body+" non esiste";
         });
-        /*for(let i=0; i<this.params.length; i++){
-            let param = this.params[i];
-            //console.log("Parametro: " + param);
-            await parser.parseURL(param).then(data => {
-                //console.log("Notizie di " + data.title);
-                output += 'Queste sono le notizie da: ' + data.title + '. <break time=\"1s\"/> ';
-
-                let i = 0;
-                data.items.forEach(item => {
-                    if (i < 4) {
-                        //console.log('NOTIZIA: ' + item.title);
-                        output = output + item.title + '. <break time=\"1.5s\"/> ';
-                        i++;
-                    }
-                });
-
-                output += '. <break time=\"1.5s\"/> ';
-            }, () => {
-                output += "Non riesco a leggere questo feed.";
-            });
-        }*/
         return check;
     }
 }

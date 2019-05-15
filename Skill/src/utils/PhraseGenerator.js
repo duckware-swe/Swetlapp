@@ -35,6 +35,12 @@ function phraseGenerator(name, param) {
         	phrase.push("Le ultime notizie di "+param+ " sono: ");
         	phrase.push("Ecco le notizie da "+param+": ");
             return phrase[Math.floor(Math.random() * phrase.length)];
+        case "home_tweet":
+        	phrase.push("Questi sono gli ultimi <lang xml:lang=\"en-US\">Tweet</lang> nella tua <lang xml:lang=\"en-US\">Home</lang>: ");
+        	phrase.push("Ultimi <lang xml:lang=\"en-US\">Tweet</lang> ricevuti : ");
+        	phrase.push("Gli ultimi <lang xml:lang=\"en-US\">Tweet</lang> ricevuti sono: ");
+        	phrase.push("Ecco i <lang xml:lang=\"en-US\">Tweet</lang> nella tua <lang xml:lang=\"en-US\">Home</lang>: ");
+            return phrase[Math.floor(Math.random() * phrase.length)];
         case "read_tweet":
         	phrase.push("Questi sono gli ultimi <lang xml:lang=\"en-US\">Tweet</lang> da "+ param + ": ");
         	phrase.push("Ultimi <lang xml:lang=\"en-US\">Tweet</lang> di "+param+": ");
