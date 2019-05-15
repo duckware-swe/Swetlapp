@@ -65,8 +65,17 @@ function phraseGenerator(name, param) {
         	phrase.push("Ho pubblicato il <lang xml:lang=\"en-US\">Tweet</lang>");
         	phrase.push("Ho pubblicato il <lang xml:lang=\"en-US\">Tweet</lang> richiesto");
         	return phrase[Math.floor(Math.random() * phrase.length)];
-        case "tv_schedule":
-        	phrase.push(" ");
+        case "tv_ask_channel":
+        	phrase.push("di quale canale vuoi sapere la programmazione?");
+            phrase.push("dimmi il canale della quale vuoi conoscere la programmazione");
+            return phrase[Math.floor(Math.random() * phrase.length)];
+        case "tv_ask_time":
+            phrase.push("a partire da che ora?");
+            phrase.push("dimmi un orario");
+            return phrase[Math.floor(Math.random() * phrase.length)];
+        case "tv_completed":
+            phrase.push("la programmazione per "+param[0]+" dalle ore "+param[1]+" è:");
+            phrase.push("questa è la programmazione di "+param[0]+" dalle ore "+param[1]+" :");
             return phrase[Math.floor(Math.random() * phrase.length)];
         case "weather":
         	phrase.push("Le previsioni per "+param+" sono: ");
