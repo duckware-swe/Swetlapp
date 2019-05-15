@@ -20,12 +20,6 @@ class TVScheduleAction extends Action {
         		slotReq: 'DEFAULT'
         };
 
-        //TODO check se ci sono elementi in params, altrimenti il pop può ritornare un undefined
-
-        //let time = this.params.pop();
-        //console.log(this.params);
-        //console.log(time);
-
         if(!(this.params.length)) {
             check.output = phraseGenerator("tv_ask_channel");
             check.slotReq= 'channelSchedule';
@@ -33,19 +27,20 @@ class TVScheduleAction extends Action {
             check.output = phraseGenerator("tv_ask_time");
             check.slotReq= 'timeSchedule';
         }else if(this.params.length==2){
-            
-            /*await getTVSchedule(this.params[0], this.params[1]).then(
+            console.log("orario in input: "+fixTime(this.params[1]));
+            console.log("canale in input: "+this.params[0]);
+            await getTVSchedule(this.params[0], fixTime(this.params[1])).then(
                 data => {
-                    check.output = phraseGenerator("tv_completed", this.params);
-                    console.log("data: "+ data);
+                    console.log("risultato query: " + data);
+                //    check.output = phraseGenerator("tv_completed", this.params);
+                //    console.log("data: "+ data);
                     
                 },
                 error => {
                     console.log("CIE UN ERORE");
                     return error;
                 }
-            );*/
-            console.log("sono dentro a paramz==2")
+            );
         }
         return check;
     }
@@ -88,6 +83,21 @@ chlist.forEach(function(channel){
 }
 */
 
+function fixTime(time){
+    switch (time) {
+        case 'NI':
+            return '00:00';
+        case 'MO':
+            return '06:00';
+        case 'AF':
+            return '12:00';
+        case 'EV':
+            return '18:00';
+        default :
+            return time;
+    }
+}
+
 function getEndTime(time) {
     let aux = time.split(":").map(item => parseInt(item) );
     aux[0] += 6;
@@ -101,39 +111,33 @@ function getEndTime(time) {
     return auxString[0] + ":" + auxString[1];
 }
 
-function getTVSchedule(channelList, time) {
+function getTVSchedule(channel, time) {
     let channelSchedule = new Map();
-    let promiseList = [];
 
-    channelList.forEach(channel => {
-        let params = buildDatabaseParams(
-            "TVChannels",
-            "schedule",
-            "channel",
-            channel
-        );
+    let params = buildDatabaseParams(
+        "TVChannels",
+        "schedule",
+        "channel",
+        channel
+    );
 
-        promiseList.push(
-            getDatabaseInstance().query(params).then(
-                data => {
-                    if (time === null)
-                        channelSchedule.set(channel, data.Items);
-                    else {
-                        let periodSchedule = [];
-                        data.Items[0].schedule.forEach(item => {
-                            if (item.time >= time && item.time < getEndTime(time)) {
-                                periodSchedule.push(item);
-                            }
-                        });
-                        channelSchedule.set(channel, periodSchedule);
+    getDatabaseInstance().query(params).then(
+        data => {
+            console.log("data query: " + data);
+            if (time === null)
+                return channelSchedule.set(channel, data.Items);
+            else {
+                let periodSchedule = [];
+                data.Items[0].schedule.forEach(item => {
+                    if (item.time >= time && item.time < getEndTime(time)) {
+                        periodSchedule.push(item);
                     }
-                }
-            )
-        );
-    });
-
-    return Promise.all(promiseList).then(
-        () => channelSchedule
+                });
+                channelSchedule.set(channel, periodSchedule);
+                console.log("data fine query: " +channelSchedule);
+                return channelSchedule;
+            }
+        }
     );
 }
 
