@@ -64,9 +64,58 @@ Per la lettura degli ultimi tweet di un account Alexa risponderà leggendo gli u
 \subsubsection{Connettore lettura schede da Trello}
 Per poter usare questo connettore, è necessario effettuare il login al proprio account personale di Trello.
 \begin{itemize}
-	\item \textbf{Obiettivo di questo connettore}: Questo connettore permette di leggere le prime tre schede assegnate all'utente di una lista facente parte di una bacheca a scelta dell'utente.
+	\item \textbf{Obiettivo di questo connettore}: questo connettore permette di leggere le prime tre schede assegnate all'utente di una lista facente parte di una bacheca a scelta dell'utente.
 	\item \textbf{Interazione utente-Alexa}: un modo in cui potrebbe avvenire l'interazione tra l'utente e il dispositivo Alexa è il seguente:
-	
+	\begin{itemize}
+		\item Alexa: "Dimmi il nome della bacheca di Trello da dove vuoi leggere le tue schede";
+		\item Utente: "{\it nome bacheca esistente}".
+		\begin{itemize}
+			\item Alexa: "Ok adesso dimmi il nome della lista da dove leggere le tue schede".
+			\item Utente: "{\it nome lista esistente}".
+			\begin{itemize}
+				\item Alexa: "{\it lettura delle schede}".
+			\end{itemize}
+			\item Utente: "{\it nome lista inesistente}".
+			\begin{itemize}
+				\item Alexa: "Riprova a dirmi il nome della lista da dove leggere le tue schede".
+			\end{itemize}			
+		\end{itemize}
+		\item Utente: "{\it nome bacheca inesistente}".
+		\begin{itemize}
+			\item Alexa: "Riprova a dirmi il nome della bacheca di Trello da dove vuoi leggere le schede".
+		\end{itemize}
+	\end{itemize}
+\end{itemize}
+
+\subsubsection{Connettore aggiunta di una scheda su Trello}
+Per poter usare questo connettore, è necessario effettuare il login al proprio account personale di Trello.
+\begin{itemize}
+	\item \textbf{Obiettivo di questo connettore}: permette di aggiungere una singola scheda ad una lista di una bacheca scelta dall'utente
+	\item \textbf{Interazione utente-Alexa}: essendo un'operazione di pubblicazione di una scheda, durante l'esecuzione della skill per ogni scelta dell'utente il dispositivo Alexa chiederà conferma all'utente. A questo punto l'utente potrà dire {\it "si/certo/ok"} per confermare la scelta, altrimenti {\it "no" } per rifiutare la scelta. Se l'utente dice {\it "no" } allora avrà la possibilità di rifare l'ultima azione, quindi ad esempio potrà ridire il titolo della scheda da aggiungere se ha sbagliato a pronunciare al primo colpo.\newline
+	Un modo in cui potrebbe avvenire l'interazione tra l'utente e il dispositivo Alexa è il seguente:
+	\begin{itemize}
+		\item Alexa: "Dimmi il nome della bacheca di Trello dove vuoi aggiungere la scheda";
+		\item Utente: "{\it nome bacheca esistente}";
+		\begin{itemize}
+			\item Alexa: "Ok adesso dimmi il nome della lista dove aggiungere la scheda";
+			\item Utente: "{\it nome lista esistente}";
+			\begin{itemize}
+				\item Alexa: "Ok adesso dimmi il titolo della scheda da aggiungere";
+				\item Utente: "{\it titolo della scheda}";
+				\item Alexa: "Ok. Dimmi la descrizione della scheda da aggiungere";
+				\item Utente: "{\it descrizione della scheda}";
+				\item Alexa: "{\it La scheda è stata aggiunta corretamente}";
+			\end{itemize}
+			\item Utente: "{\it nome lista inesistente}";
+			\begin{itemize}
+				\item Alexa: "Riprova a dirmi il nome della lista dove aggiungere la scheda".
+			\end{itemize}		
+		\end{itemize}
+		\item Utente: "{\it nome bacheca inesistente}";
+		\begin{itemize}
+			\item Alexa: "Ok. Riprova a dirmi il nome della bacheca di Trello dove vuoi aggiungere la scheda";
+		\end{itemize}
+	\end{itemize}
 \end{itemize}
 
 
