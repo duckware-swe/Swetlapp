@@ -198,7 +198,22 @@ const InProgressRunWorkflowHandler = {
     async handle(handlerInput) {
     	let request = handlerInput.requestEnvelope.request;
     	const attributi = handlerInput.attributesManager.getSessionAttributes();
-        let elicitSlot =  request.intent.slots[attributi.slotName].value;
+    	let elicitSlot = '';
+    	if(attributi.slotName=='confirmitionSlot'){
+    		if(request.intent.slots[attributi.slotName].resolutions.resolutionsPerAuthority.status.code=="ER_SUCCESS_MATCH"){
+    			elicitSlot = request.intent.slots[attributi.slotName].resolutions.resolutionsPerAuthority.values.value.name;
+    		}else{
+    			return handlerInput.responseBuilder
+                .speak("Scusa non ho capito, puoi ripetere la risposta?")
+                .reprompt("Scusa non ho capito, puoi ripetere la risposta?")
+                .addElicitSlotDirective(attributi.slotName,request.intent)
+                .withSimpleCard(appName,speechText)
+                .getResponse();
+    		}
+    	}else{
+    		elicitSlot = request.intent.slots[attributi.slotName].value;
+    	}
+          
         	console.log(elicitSlot);
         let actionList = attributi.actionList;
         let i = attributi.index;
