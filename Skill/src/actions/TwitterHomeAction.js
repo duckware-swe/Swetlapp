@@ -26,7 +26,7 @@ class TwitterHomeAction extends Action {
     		  access_token_secret: this.params[1]
 			});
     	await twitter.get('statuses/home_timeline', {count: 3, exclude_replies: true}).then(data => {
-            check.output+=phraseGenerato("home_tweet",data[0].user.name);
+            check.output+=phraseGenerator("home_tweet",data[0].user.name);
             for(let i =0; i< data.length; i++){
               check.output+= data[i].text+". <break time=\"0.8s\"/> ";
             }

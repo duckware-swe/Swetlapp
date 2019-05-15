@@ -27,7 +27,7 @@ class TwitterReadAction extends Action {
         };
         let body = this.params[0];
         await twitter.get('statuses/user_timeline', {screen_name: body, count: 3, exclude_replies: true}).then(data => {
-          check.output+=phraseGenerato("read_tweet",data[0].user.name);
+          check.output+=phraseGenerator("read_tweet",data[0].user.name);
           for(let i =0; i< data.length; i++){
             check.output+= data[i].text+". <break time=\"0.8s\"/> ";
           }
