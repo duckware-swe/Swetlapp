@@ -320,7 +320,7 @@ const CancelIntent = {
         return request.type === 'IntentRequest' && request.intent.name === 'AMAZON.CancelIntent';
     },
     handle(handlerInput) {
-        const speechText = 'Hai annullato il workflow';
+        const speechText = 'Hai annullato il workflow.';
         const repromptText = 'Come posso aiutarti?';
 
         return handlerInput.responseBuilder
