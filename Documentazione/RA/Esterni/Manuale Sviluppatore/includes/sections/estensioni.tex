@@ -39,4 +39,12 @@ Se si vuole aggiungere un connettore i cui parametri necessitano all'utente solo
 Per connettori i cui input sono differenti da normali field testuali sarà necessario, oltre ad effettuare il processo suddetto, creare una activity che lo gestisca.
 
 \subsection{Skill}
-Todo \textbf{SONIA}
+\subsubsection{Implementazione nuovi connettori}
+Per aggiungere un nuovo connettore è necessario farlo ereditare da /src/actions/Action.js e assegnarli un nome identificativo non già usato. Il costruttore necessita solo di due parametri che passerà al padre. Il fulcro del connettore sta nel metodo asincrono run(), esso deve ritornare un oggetto \textbf{check} composto da due valori: \textbf{output} che contiene l'effettivo testo che Amazon Alexa leggerà e \textbf{slotReq}. Questo secondo valore, che di default deve avere valore 'DEFAULT', serve nel caso l'action necessiti di un ulteriore interazione con l'utente, per esempio chiedergli un parametro, e contiene il nome dello slot da richiedere.
+
+\subsubsection{Connettori che interagiscono con l'utente}
+Nel caso \textbf{slotReq} non sia settato a 'DEFAULT' la Skill richiamerà l'action finchè essa non tornerà al valore normale, inserendo i nuovi valori in coda all'array \textbf{param[]}. Inoltre nel caso lo sviluppatore necessiti di nuovi slot esso dovrà aggiungerli alla build della Skill tramite console Amazon Developer Alexa.\\
+Consigliamo nel caso di slot contenenti testi molto lunghi di chiedere conferma all'utente tramite slot \textbf{confirmitionSlot} e controllare se la risposta dell'utente sia stata "si" o "no".
+
+\subsubsection{Collegare il connettore alla Skill}
+Infine dopo aver aggiunto eventuali slot dalla Console si deve collegare il connettore andando ad aggiungere il nome univoco dello stesso nel file /src/utils/ActionFactory.js all'interno dello switch, facendo tornare un oggetto del tipo del connettore da aggiungere.
