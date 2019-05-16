@@ -5,7 +5,7 @@ Per poter usufruire delle funzionalità previste dalla skill \textit{MegAlexa} �
 \subsection{Avvio della Skill}
 Per avviare l'esecuzione della skill è necessario pronunciare il nome "swetlapp" che identifica la skill creata dal gruppo \textit{Duckware}. Un esempio di avvio della skill, quindi, potrebbe essere il seguente:
 \begin{itemize}
-	\item Utente: "Hey Alexa, esegui swetlapp".
+	\item Utente: "Alexa, esegui swetlapp".
 	\item Alexa: "Ciao \textit{nome utente}. Benvenuto in swetlapp".
 \end{itemize}
 Dopo che la skill è stata avviata si possono impartire comandi per l'esecuzione di un particolare workflow.
@@ -24,15 +24,17 @@ Nel caso in cui l'utente volesse ripetere l'esecuzione di un workflow è possibi
 \subsubsection{Cancellazione esecuzione di un workflow}
 Per interrompere l'esecuzione di un workflow è necessario impartire ad Alexa un comando del genere:
 \begin{itemize}
-	\item Alexa: \textit{Alexa attende un'ordine da parte dell'utente}.
+	\item Alexa: \textit{Alexa sta eseguendo un workflow}.
 	\item Utente: "Cancella".
 \end{itemize}
+Alexa quindi interromperà l'esecuzione del workflow attuale e tornerà in attesa di un altro comando, restando comunque all'interno della Skill.
 \subsubsection{Stop esecuzione di un workflow}
-Per interrompere completamente l'esecuzione di un workflow è necessario fare uso di un comando del seguente tipo:
+Per interrompere completamente l'esecuzione della Skill è necessario fare uso di un comando del seguente tipo:
 \begin{itemize}
 	\item Alexa: \textit{Alexa attende un'ordine da parte dell'utente}.
 	\item Utente: "Ferma" oppure "Stop".
 \end{itemize}
+In questo caso, oltre ad interrompere l'esecuzione del workflow corrente, Alexa chiuderà anche la sessione della Skill.
 \subsubsection{Aiuto riguardo alla Skill}
 Nel caso l'utente desiderasse ottenere aiuto riguardo al modo di funzionamento della skill, è necessario far uso di una richiesta del genere:
 \begin{itemize}
@@ -52,13 +54,14 @@ Di seguito sono elencati i connettori che poter essere usati necessitano di un a
 Durante l’esecuzione del workflow alcuni connettori potrebbero necessitare di un’ulteriore
 interazione vocale tra l’utente e l’assistente vocale. Di seguito viene esplicato in che modo
 è strutturato il dialogo tra l’utente e Amazon Alexa.
-\subsubsection{Connettore Meteo}
-All'esecuzione del connettore Meteo la risposta di Alexa sarà l'esposizione delle previsioni meteorologiche. Non è prevista una frase o una tipologia di frase standard per questo tipo di connettore.
+%\subsubsection{Connettore Meteo}
+%All'esecuzione del connettore Meteo la risposta di Alexa sarà l'esposizione delle previsioni meteorologiche. Non è prevista una frase o una tipologia di frase standard per questo tipo di connettore.
 \subsubsection{Connettore TV Schedule}
-All'esecuzione del connettore TV Schedule la risposta di Alexa sarà l'esposizione del palinsesto televisivo. Non è prevista una frase o una tipologia di frase standard per questo tipo di connettore.
+All'esecuzione del connettore TV Schedule, Alexa chiederà all'utente di fornirle il nome del canale di cui desidera conoscere il palinsesto. Una volta ottenuta la risposta, Alexa necessiterà anche di un'orario indicativo da cui iniziare a esporre la programmazione, così da rispondere in maniera più precisia alla richiesta dell'utente.
+Sono disponibili 72 canali, tra i principali della televisione italiana, in chiaro e satellitare.
 \subsubsection{Connettore Pubblicazione Twitter}
 Per la pubblicazione di un Tweet l'utente dovrà aver collegato il proprio account Twitter all'applicazione.
-Durante l'esecuzione il dispositivo andrà a chiedere all'utente il testo del tweet da pubblicare nel seguente modo: "Per pubblicare un tweet, dimmi \textbf{invia} seguito dal corpo del messaggio", dopo aver ricevuto un risposta corretta la skill pubblicherà il tweet richiesto.
+Durante l'esecuzione il dispositivo andrà a chiedere all'utente il testo del tweet da pubblicare nel seguente modo: "Qual è il corpo del messaggio da inviare?", dopo aver ricevuto una risposta, verrà chiesta una conferma di invio che, se positiva, consentirà ad Alexa di pubblicare il tweet. Viceversa, se la risposta è negativa, verrà chiesto di comunicare nuovamente il testo del tweet.
 \subsubsection{Connettore Lettura Twitter}
 Per la lettura degli ultimi tweet di un account Alexa risponderà leggendo gli ultimi 3 tweet pubblicati dall'account precedentemente scelto nel seguente modo: "Ultimi tweet di \textbf{Utente Twitter}: ... ".
 \subsubsection{Connettore lettura schede da Trello}
