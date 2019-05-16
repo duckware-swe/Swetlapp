@@ -1,6 +1,6 @@
 \pagebreak
 \section{Architettura applicazione Android}
-Tutti i package sono stati generati automaticamente dall'IDE \emph{Android Studio} e dal tool di AWS \emph{Amplify}. L'applicazione contiene le seguenti activity:
+Tutti i \markg{\gls{package}} sono stati generati automaticamente dall'IDE Android Studio e dal tool di AWS, Amplify. L'applicazione contiene le seguenti activity:
 
 \begin{itemize}
     \item \emph{AuthenticationActivity}: è la prima activity che viene aperta dall'app, permette la registrazione, il login e verifica se l'utente è autenticato o meno. Il form di inserimento dei dati e la loro gestione è generato da AWS Cognito;
@@ -53,7 +53,7 @@ Tutti i package sono stati generati automaticamente dall'IDE \emph{Android Studi
 	    \end{center}
         \end{figure}
         
-Questa utilizza un builder pattern poichè i connettori vengono istanziati con attributi eterogenei e a volte vuoti.        
+Questa utilizza un \markg{\gls{builder pattern}} poichè i connettori vengono istanziati con attributi eterogenei e a volte vuoti.        
 
 Ogni Activity potrà comunicare con le API solamente utilizzando il client generato dalla classe \emph{ClientFactory}.\\[0.25cm]
 
@@ -64,7 +64,7 @@ Ogni Activity potrà comunicare con le API solamente utilizzando il client gener
 	\end{center}
 \end{figure}
 
-Le risorse dell'interfaccia grafica sono definite nel namespace \textit{res} e comprendono i file in linguaggio XML che descrivono gli elementi delle View (layout) e i valori importati da questi elementi (values) quali: 
+Le risorse dell'interfaccia grafica sono definite nel namespace \textit{res} e comprendono i file in linguaggio \markg{\Gls{XML}} che descrivono gli elementi delle View (layout) e i valori importati da questi elementi (values) quali: 
 \begin{itemize}
 \item colori;
 \item dimensioni;
@@ -73,7 +73,7 @@ Le risorse dell'interfaccia grafica sono definite nel namespace \textit{res} e c
 \item stringhe per lingua inglese;
 \end{itemize}
 
-Oltre alle activity e alle risorse XML , è importante notare che tutto il codice necessario alle operazioni sulle risorse back-end è definito nel namespace \textit{generatedJava}, tutto il codice contenuto in questo namespace è generato in automatico da Amplify.
+Oltre alle activity e alle risorse XML, è importante notare che tutto il codice necessario alle operazioni sulle risorse back-end è definito nel namespace \textit{generatedJava}, tutto il codice contenuto in questo namespace è generato in automatico da Amplify.
 
 \subsection{Amplify}
 Amplify è il framework di Amazon utilizzato per generare un SDK che permette la comunicazione dell'applicazione Android con i servizi in cloud di AWS. La CLI di Amplify consente di sincronizzare i servizi online con l'applicazione, generare librerie di supporto e fornire strumenti di test allo sviluppatore.
@@ -92,7 +92,7 @@ L'integrazione di Amplify in Android Studio consente di delegare controllo e cre
     \item aggiunta di API GraphQL.
 \end{itemize}
 
-I metodi per interfacciarsi con Cognito vengono forniti da una libreria di Amazon mentre i metodi per fare query e mutazioni all'endpoint GraphQL vengono generati da Amplify.
+I metodi per interfacciarsi con Cognito vengono forniti da una libreria di Amazon, mentre i metodi per effettuare query e mutazioni all'endpoint GraphQL vengono generati da Amplify.
 
 
 Questo è un esempio di query per inserire dati relativi ad un utente:
@@ -111,9 +111,8 @@ Questo è un esempio di query per inserire dati relativi ad un utente:
         			.mutate(addUserMutation).enqueue(callback);
 \end{verbatim}
 
-CreateUserInput e CreateUserMutation sono due classi generate da Amplify, entrambe sono costruibili tramite builder pattern, AWSMobileClient (singleton) ci permette di comunicare con la user pool di AWS Cognito e ci ritorna informazioni relative all'utente. Quindi si crea l'input per la mutazione, si crea la mutazione stessa, infine esegue questa utilizzando come oggetto di invocazione l'istanza di ClientFactory ritornata dal metodo appSyncClient().\\
-Lo schema generale per "comunicare" con le risorse è sempre questo (a meno di query di sola lettura in cui non è necessario costruire un input).
-
+CreateUserInput e CreateUserMutation sono due classi generate da Amplify, entrambe sono costruibili tramite builder pattern; AWSMobileClient (\markg{\gls{singleton pattern}}) permette di comunicare con la user pool di AWS Cognito e ritorna informazioni relative all'utente. Quindi si crea l'input per la mutazione, si crea la mutazione stessa, infine si esegue quest'ultima utilizzando come oggetto di invocazione l'istanza di ClientFactory ritornata dal metodo appSyncClient().\\
+Lo schema generale per comunicare con le risorse è sempre questo (a meno di query di sola lettura in cui non è necessario costruire un input).
 
 \subsection{Generazione API}
 Le API nel nostro caso corrispondono a una soluzione per richieste HTTP ad un endpoint GraphQL.
@@ -124,7 +123,7 @@ Componenti principali di AppSync sono:
 \item Operazioni: query e mutazioni;
 \item Data source: nel nostro caso DynamoDB;
 \item Resolver: converte operazioni GraphQL per essere eseguite sul data source effettivo;
-\item AppSync client: dove sono definite le operazioni GraphQL;
+\item AppSync client: dove sono definite le operazioni GraphQL.
 \end{itemize}
 L'ordine degli eventi per l'impostazione del back-end è questo:
 
@@ -132,9 +131,9 @@ L'ordine degli eventi per l'impostazione del back-end è questo:
 \item Settaggio di un endpoint GraphQL tramite CLI Amplify;
 \item Scrittura dello schema delle risorse in linguaggio GraphQL Schema;
 \item Pubblicazione dello schema;
-\item Generazione delle API su AppSync (automatico)
-\item Generazione del database DynamoDB (automatico)
-\item Generazione dell'SDK per effettuare operazioni definite dallo schema GraphQL (automatico)
+\item Generazione delle API su AppSync (automatico);
+\item Generazione del database DynamoDB (automatico);
+\item Generazione dell'SDK per effettuare operazioni definite dallo schema GraphQL (automatico).
 \end{itemize}
 
 Lo schema GraphQL che abbiamo scritto è il seguente:
@@ -157,18 +156,18 @@ A partire da questo, in DynamoDB è stata generata una tabella User con i campi:
 \begin{itemize}
 \item id;
 \item name;
-\item lista di workflow;
+\item lista di workflow.
 \end{itemize}
 
-Amplify genera solo le classi Java dei tipi con direttiva \textit{@model}, quindi abbiamo a disposizione solo operazioni con il tipo User, per accedere ai workflow, ai connettori dei workflow e ai parametri dei connettori è necessario operare con il file Json definito dalla stringa \textit{def}, per operare agevolmente con i file Json in ambiente Android abbiamo importato le librerie \textit{import org.json.JSONException} e \textit{import org.json.JSONObject}.
+Amplify genera solo le classi Java dei tipi con direttiva \textit{@model}, quindi abbiamo a disposizione solo operazioni con il tipo User, per accedere ai workflow, ai connettori dei workflow e ai parametri dei connettori è necessario operare con il file \markg{\Gls{JSON}} definito dalla stringa \textit{def}, per operare agevolmente con i file Json in ambiente Android abbiamo importato le librerie \textit{import org.json.JSONException} e \textit{import org.json.JSONObject}.
 
-Esempio: per generare il Json nella forma:
+Esempio: per generare il JSON nella forma:
 
 \begin{verbatim}
 {\"action\":\"connector_action\",\"params\":[\"first_param\",\"second_param\"]}
 \end{verbatim}
 
-il codice Java sarà:
+il codice Java corrispondente sarà:
 
 \begin{verbatim}
             Map<String, Object> connMap = new HashMap<>();

@@ -5,15 +5,15 @@
 \subsection{Scopo del paragrafo}
 Questo paragrafo ha lo scopo di indicare agli sviluppatore come controllare le azioni del proprio codice e la sua sintassi.
 
-\subsection{Test su Android Studio}
-In Android Studio è possibile eseguire test sia per l'applicazione, con Java e JUnit, sia per la Skill utilizzando Amplify ed il suo framework interno.
+\subsection{Test in Android Studio}
+In Android Studio è possibile eseguire test sia per l'applicazione, con Java e \markg{\Gls{JUnit}}, sia per la Skill utilizzando Amplify ed il suo framework interno.
 \begin{itemize}
-    \item I test per il codice dell'applicazione sono presenti in Android Studio all'interno dell'apposito progetto \emph{test}. Questi sono stati creati con il supporto della libreria jUnit 5 e possono essere eseguiti direttamente dall'editor di Android Studio cliccando sul bottone verde di \emph{Run}.
+    \item I test per il codice dell'applicazione sono presenti in Android Studio all'interno dell'apposito progetto \emph{test}. Questi sono stati creati con il supporto della libreria jUnit 5 e possono essere eseguiti direttamente dall'editor di Android Studio cliccando sul pulsante verde di \emph{Run}.
     \item I test per il \emph{GraphQL} sono integrati nella console di Amplify.
 \end{itemize}
 
-\subsection{Test su AWS}
-Per eseguire test sulla Skill e su Alexa è necessario accedere al portale sviluppatori\footnote{\href{https://developer.amazon.com/alexa-skills-kit}{https://developer.amazon.com/alexa-skills-kit}} di AWS ed entrare nell'area dedicata alle Skill Alexa. In quest'area si potranno eseguire dei test preimpostati e vedere i risultati su:
+\subsection{Test in ambiente AWS}
+Per testare la Skill è necessario accedere al portale sviluppatori\footnote{\href{https://developer.amazon.com/alexa/console/ask}{https://developer.amazon.com/alexa/console/ask}} di Alexa e selezionare la Skill che si vuole testare. In quest'area si potranno eseguire dei test preimpostati e vedere i risultati su:
 \begin{itemize}
     \item \textbf{Logger:} una finestra che mostra un resoconto di tutte le azioni eseguite dal Back-end e le risposte ricevute da Alexa:
     \item \textbf{Alexa:} se un dispositivo fisico Alexa è disponibile, verranno eseguiti direttamente i test su di esso.

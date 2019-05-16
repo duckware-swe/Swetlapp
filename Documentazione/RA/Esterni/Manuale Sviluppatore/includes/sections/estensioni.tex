@@ -1,24 +1,25 @@
 \pagebreak
 
 \section{Estensione delle funzionalità}
-Il seguente paragrafo ha lo scopo di aiutare lo sviluppatore che intenda apportare modifiche all'architettura su AWS o estendere il codice sorgente.
+Il seguente paragrafo ha lo scopo di aiutare lo sviluppatore che intende apportare modifiche all'architettura su AWS o estendere il codice sorgente.
 
 \subsection{Architettura AWS}
 L'intera architettura viene automaticamente generata dal tool \emph{Amplify} dopo aver interpretato il file GraphQL. Una volta modificato tale file, la console di Amplify genererà il database e l'intera infrastruttura per la comunicazione con l'applicazione Android e la Skill.\\[0.25cm]
 
 \subsection{Android}
+\label{sec:estensioni-android}
 \subsubsection{Estensione delle risorse}
 Per estendere le risorse sarà necessario:
 \begin{itemize}
 \item Localizzare il file swetlAPP/amplify/backend/api/testcognito/schema.graphql
 \item Modificare questo file per adattarlo al modello necessario
 \item Salvare il nuovo file
-\item Da CLI su root di progetto digitare e inviare \textbf{amplify api push}
+\item Da CLI sulla cartella root di progetto digitare e inviare \textbf{amplify api push}
 \item Attendere la sincronizzazione con il cloud AWS
 \end{itemize}
 
 \subsubsection{Accesso a nuove risorse}
-Le classi e i metodi di accesso a queste risorse saranno disponibili nella cartella generatedJava, il comando \textbf{clean} eliminerà eventuali  classi associate a risorse non più esistenti. \\
+Le classi e i metodi di accesso a queste risorse saranno disponibili nella cartella \emph{generatedJava}, il comando \textbf{clean} eliminerà eventuali  classi associate a risorse non più esistenti. \\
 Le query verranno create con i metodi generati producendo, se necessario, prima un input e poi passandolo come parametro alla query, gli eventi successivi a una query saranno gestiti da una callback con i metodi onResponse() e onFailure(). \\
 Si consiglia di mettere gli update della view dentro questi due metodi.
 
@@ -32,18 +33,20 @@ Sarà necessario agire sui seguenti file XML:
 \end{itemize}
 
 \subsubsection{Cognito}
-Per modificare le policy e il front-end della drop-in UI di AWS Cognito sarà necessario accedere alla console AWS Cognito da browser e navigare tra le categorie, nella categoria policy sarà possibile modificare la sicurezza necessaria per la password e l'obbligatorietà di vari attributi, nella categoria interfaccia si potranno modificare gli elementi della vista della drop-in UI tramite direttive CSS.
+Per modificare le policy e il front-end della drop-in UI di AWS Cognito sarà necessario accedere alla console AWS Cognito da browser e navigare tra le categorie, nella categoria \emph{policy} sarà possibile modificare la sicurezza necessaria per la password e l'obbligatorietà di vari attributi, nella categoria interfaccia si potranno modificare gli elementi della vista della drop-in UI tramite direttive CSS.
 
 \subsubsection{Implementazione nuovi connettori}
-Se si vuole aggiungere un connettore i cui parametri necessitano all'utente solo di digitare in campi di testo sarà sufficiente dichiarare il connettore (tramite il builder) nel metodo onCreate di ConnectorActivity, per come è implementato, il sistema provvederà ad aggiungerlo nelle opportune RecyclerView e a costruire il comportamento di inserimento dei parametri e loro archiviazione nel database.
-Per connettori i cui input sono differenti da normali field testuali sarà necessario, oltre ad effettuare il processo suddetto, creare una activity che lo gestisca.
+Se si vuole aggiungere un connettore i cui parametri necessitano all'utente solo di digitare in campi di testo sarà sufficiente dichiarare il connettore (tramite il builder) nel metodo \emph{onCreate()} di ConnectorActivity, per come è implementato, il sistema provvederà ad aggiungerlo nelle opportune RecyclerView e a costruire il comportamento di inserimento dei parametri e loro archiviazione nel database.
+Per connettori con input differenti da normali field testuali sarà necessario, oltre ad effettuare il suddetto processo, creare una activity che lo gestisca.
 
 \subsection{Skill}
+\label{sec:estensioni-skill}
 \subsubsection{Implementazione nuovi connettori}
-Per aggiungere un nuovo connettore è necessario farlo ereditare da /src/actions/Action.js e assegnarli un nome identificativo non già usato. Il costruttore necessita solo di due parametri che passerà al padre. Il fulcro del connettore sta nel metodo asincrono run(), esso deve ritornare un oggetto \textbf{check} composto da due valori: \textbf{output} che contiene l'effettivo testo che Amazon Alexa leggerà e \textbf{slotReq}. Questo secondo valore, che di default deve avere valore 'DEFAULT', serve nel caso l'action necessiti di un ulteriore interazione con l'utente, per esempio chiedergli un parametro, e contiene il nome dello slot da richiedere.
+Per aggiungere un nuovo connettore è necessario farlo ereditare da /src/actions/Action.js e assegnargli un nome identificativo non già usato. Il costruttore necessita solo di due parametri che passerà al padre. Il fulcro del connettore sta nel metodo asincrono run(), esso deve ritornare un oggetto \textbf{check} composto da due valori: \textbf{output} che contiene l'effettivo testo che Amazon Alexa leggerà e \textbf{slotReq}. Questo secondo valore, che normalmente è settato a 'DEFAULT', serve nel caso l'action necessiti di un'interazione con l'utente, per esempio chiedergli un parametro, e contiene il nome dello slot da richiedere.
 
 \subsubsection{Connettori che interagiscono con l'utente}
-Nel caso \textbf{slotReq} non sia settato a 'DEFAULT' la Skill richiamerà l'action finchè essa non tornerà al valore normale, inserendo i nuovi valori in coda all'array \textbf{param[]}. Inoltre nel caso lo sviluppatore necessiti di nuovi slot esso dovrà aggiungerli alla build della Skill tramite console Amazon Developer Alexa.\\
+Nel caso in cui \textbf{slotReq} non sia settato a 'DEFAULT', la Skill richiamerà l'action specificata finchè \emph{slotReq} non tornerà al valore normale, inserendo i nuovi valori in coda all'array \textbf{param[]}. Inoltre, nel caso in cui lo sviluppatore necessiti di nuovi slot, esso dovrà aggiungerli alla build della Skill tramite console Amazon Developer Alexa.\\
+Si sconsiglia l'utilizzo di uno slot generico e polivalente, perchè azioni diverse probabilmente necessitano di tipologie di input diverse. Dalla console di Alexa, è possibile stabilire la tipologia di input di uno slot, scegliendo dalle librerie predefinite di Amazon oppure creando uno slot custom. Questo permette ad Alexa di migliorare la comprensione dell'iterazione con l'utente, in quanto sarà già a conoscenza del formato o delle possibili risposte che l'utente potrà fornire.
 Consigliamo nel caso di slot contenenti testi molto lunghi di chiedere conferma all'utente tramite slot \textbf{confirmitionSlot} e controllare se la risposta dell'utente sia stata "si" o "no".
 
 \subsubsection{Collegare il connettore alla Skill}
