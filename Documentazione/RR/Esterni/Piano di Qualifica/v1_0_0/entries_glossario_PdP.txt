@@ -1,0 +1,29 @@
+- validazione
+	La verifica accerta che l’esecuzione delle attività di processo attuate nel periodo in esame («fase») non abbia introdotto errori;
+- workflow
+- front-end & back-end
+    I termini front end (in sigla FE) e back end (in sigla BE) (anche scritti, con grafia meno corretta, ma più comune, frontend o front-end e backend o back-end) denotano, rispettivamente, la parte visibile all'utente e con cui egli può interagire (interfaccia utente) e la parte che permette l'effettivo funzionamento di queste interazioni;
+- PDCA
+	Il ciclo di Deming (o ciclo di PDCA, acronimo dall'inglese Plan–Do–Check–Act, in italiano "Pianificare - Fare - Verificare - Agire") è un metodo di gestione iterativo in quattro fasi utilizzato per il controllo e il miglioramento continuo dei processi e dei prodotti. È noto anche come ciclo di Shewhart, (o ciclo PDSA, acronimo dall'inglese Plan-Do-Study-Act, in italiano "Pianificare - Fare - Studiare - Agire"). Un'altra versione di questo ciclo viene chiamata, OPDCA, in cui la "O" ha il significato sia di "osservazione", che di "afferrare la condizione attuale."
+	È un modello studiato per il miglioramento continuo della qualità in un'ottica a lungo raggio. Serve per promuovere una cultura della qualità che è tesa al miglioramento continuo dei processi e all'utilizzo ottimale delle risorse. Questo strumento parte dall'assunto che per il raggiungimento del massimo della qualità sia necessaria la costante interazione tra ricerca, progettazione, test, produzione e vendita. Per migliorare la qualità e soddisfare il cliente, è necessario passare attraverso tutte e quattro le fasi costantemente, tenendo come criterio principale la qualità.
+- schedule variance
+	Si tratta di una formula che permette di calcolare se si `e in linea con la schedulazione temporale delle attivita` e si calcola attraverso la seguente formula: SV= BCWP - BCWS;
+- budget variance
+	La "Budget Variance" è la differenza tra l'importo della spesa o delle entrate di bilancio o di base e l'importo effettivo. La varianza del budget è favorevole quando le entrate effettive sono superiori al budget o quando la spesa effettiva è inferiore al budget. In rari casi, la varianza del budget può anche fare riferimento alla differenza tra attività e passività effettive e preventivate.
+	Una varianza del budget è spesso causata da ipotesi errate o budget improprio (come l'utilizzo della politica per ottenere un obiettivo di budget insolitamente facile), in modo che la base di riferimento rispetto alla misurazione dei risultati effettivi non sia ragionevole;
+- TDD
+	Il test-driven development (abbreviato in TDD), in italiano sviluppo guidato dai test[1] o sviluppo guidato dalle verifiche[2] è un modello di sviluppo del software che prevede che la stesura dei test automatici avvenga prima di quella del software che deve essere sottoposto a test, e che lo sviluppo del software applicativo sia orientato esclusivamente all'obiettivo di passare i test automatici precedentemente predisposti.
+
+	Più in dettaglio, il TDD prevede la ripetizione di un breve ciclo di sviluppo in tre fasi, detto "ciclo TDD". Nella prima fase (detta "fase rossa"), il programmatore scrive un test automatico per la nuova funzione da sviluppare, che deve fallire in quanto la funzione non è stata ancora realizzata. Nella seconda fase (detta "fase verde"), il programmatore sviluppa la quantità minima di codice necessaria per passare il test. Nella terza fase (detta "fase grigia" o di refactoring), il programmatore esegue il refactoring del codice per adeguarlo a determinati standard di qualità.[3]
+- verifica
+	Processo di supporto che accerta che le esecuzioni delle attivit`a non abbiano introdotto errori.
+- repository
+	Ambiente di un sistema informativo in cui vengono gestiti i metadati attraverso tabelle relazionali. L’insieme di tabelle, regole e motori di calcolo tramite cui si gestiscono i metadati prende il nome di metabase.
+-black-box
+	Tipologia di test atta a verificare il comportamento del codice fornendo dei parametri di ingresso e controllando che quelli di uscita corrispondano a quelli previsti, ignorando la logica all’interno.
+- white-box
+	Tipologia di test atta a verificare la struttura del codice, controllando ogni azione logica che il codice pu`o o deve compiere.
+- Quality Assurance
+	indica il team di verificatori che effettua l’analisi dinamica del software attraverso test ad alto livello.
+- baseline
+	Base verifica e di appoggio dalla quale non si pu`o retrocedere. E` collocata in una repositoryG ed utilizzata per i successivi incrementi.

@@ -1,0 +1,64 @@
+\subsection{Specifica dei test}
+\label{sec:specifica_test}
+\subsubsection{Scopo}
+\label{sec:test_scopo}
+Per garantire la qualità del prodotto e quindi la rilevazione degli errori durante la fase di sviluppo verrà fatta particolare attenzione sull'analisi dinamica del codice per mezzo di test automatici.
+\subsubsection{Tipologia dei Test}
+\label{sec:tipologia_test}
+Sono state create tre macro categorie di test sulla base di tre tipologie di errore per la loro identificazione:
+\begin{itemize}
+	\item \textbf{Test di modulo} per verificare la logica del software;
+	\item \textbf{Test ad alto livello} per verificare le funzionalità del sistema;
+	\item \textbf{Test di regressione} per verificare i test precedenti dopo una modifica.
+\end{itemize} 
+\paragraph{Test di modulo}\mbox{}\\[0.4cm]
+I test di questa tipologia si occupano della \markg{verifica} logica del software e verranno creati ed eseguiti dai programmatori. Il successo di questi test costituirà il vincolo per poter consegnare/caricare il codice all'interno della \markg{repository}.
+Essi si dividono in:
+\begin{itemize}
+	\item \textbf{Test di unità - TU}\\
+	Si verifica le parti di lavoro prodotte dal programmatore che corrispondo a piccole parti di codice e unità logiche, come ad esempio una classe, un metodo o funzione, oppure un insieme di essi.
+	Si va quindi a isolare dal resto del codice una piccola parte di software testabile, chiamata \textit{unità}. Bisogna dunque stabilire se questa \textit{unità} funziona esattamente come previsto prima di poterla stabilmente integrare nella versione principale del software. L'approccio al test di unità verrà affidato ad un apposito framework di testing chiamato \footnote{\href{https://junit.org/junit5/}{JUnit}}.
+	\item \textbf{Test di integrazione - TI}
+	Si verifica l'integrazione tra le unità logiche che formano i vari componenti del sistema. Si verifica quindi che i componenti del sistema non contengano errori dovuti all'integrazione tra unità;
+	Per testare l'integrazione si è scelto la tecnica dal basso verso l'alto, ovvero si testano per prime le parti con minore dipendenza funzionale e con maggiore funzionalità e successivamente risalire l'albero delle dipendenze.	
+\end{itemize} 
+\paragraph{Test ad alto livello}\mbox{}\\[0.4cm]
+I test di questa tipologia si occupano di verificare le funzionalità del sistema, ovvero sul comportamento dell'applicazione, e gestire dai verificatori (team di \markg{Quality Assurance - QA}). Maggior parte di questi test sono manuali e per garantirne la loro organizzazione verrà gestita tramite degli apposti tool che verranno discussi in sede di Technology Baseline.
+\begin{itemize}
+	\item \textbf{Test funzionali - TF}\\
+	Si verifica l'implementazione delle specifiche del prodotto concentrandosi sulle funzionalità delle suddette specifiche. Tali test sono visti come dei test di unità ad alto livello, difatti l'analisi della struttura è delegata ai Test di unità - TU.
+	Questi test possono essere automatizzati e scritti dai programmatori, ma vengono affiancati ad una revisione ed esecuzione svolta dai verificatori;
+	\item \textbf{Test di sistema - TS}\\
+	Si verifica il sistema e l'architettura nella sua interezza. Il test di sistema sancisce quindi la validazione del software finale, giunto ad una release definitiva, e verifica che esso soddisfi tutti i requisiti in modo completo. Tali test sono complessi e pesanti, la loro implementazione verrà discussa in sede di Technology Baseline. Necessario l'utilizzo di componenti software supervisionati dai verificatori, quindi eseguiti dal team di \markg{Quality Assurance - QA};
+	\item \textbf{Test di validazione - TV}\\
+	Sono dei test finali che hanno il compito di valutare se il sistema sviluppato corrisponde alle richieste del proponente, quindi tali verifiche sono legate ai \markg{requisiti}. I test sono principalmente manuali ed eseguiti dal team \markg{Quality Assurance - QA}. Nelle fasi finali dello sviluppo verranno fatti i controlli assieme ai proponenti per determinale la validità del prodotto. 
+\end{itemize} 
+\paragraph{Test di regressione}\mbox{}\\[0.4cm]
+I test di questa tipologia si occupa di rieseguire in modo selettivo i vari test, di modulo e di alto livello esclusi quelli di \markg{validazione}, elencati e descritti sopra. 
+È quindi necessario l'esecuzione di questi test ogni qual volta che il codice viene modificato: l'inserimento di nuove funzionalità, la correzione di un bug o la modifica di parti del codice sorgente comporta l'esecuzione di tutti i test relativi ad essa. Vengono fatti questi test a fronte del fatto che l'introduzione di modifiche, migliorie e/o correzioni all'interno del codice è fortemente propenso all'inserimento di errori. I test di modulo necessari per la consegna nella \markg{repository} vengono eseguiti automaticamente, mentre per i test ad alto livello i verificatori pianificheranno l'esecuzione ad ogni superamento di \markg{baseline}.
+\paragraph{Tracciamento dei test}\mbox{}\\[0.4cm]
+Ogni test è strutturato nel seguente modo:
+\begin{itemize}
+	\item Codice identificativo
+	\item Descrizione
+	\item Stato
+\end{itemize}
+La sintassi scelta per il codice identificativo è la seguente:
+\begin{center}
+	\textbf{T\{tipo\}\{codice\}}
+\end{center}
+dove l'attributo \textbf{tipo} può essere:
+\begin{itemize}
+	\item \textbf{U}: Test di unità;
+	\item \textbf{I}: Test di integrazione;
+	\item \textbf{F}: Test funzionali;
+	\item \textbf{S}: Test di sistema;
+	\item \textbf{V}: Test di validazione;
+\end{itemize}
+mentre l'attributo \textbf{codice} è un numero incrementale che parte da 1 ed è associato al test di unità. Lo stato del test può essere uno dei seguenti:
+\begin{itemize}
+	\item Implementato;
+	\item Non implementato;
+	\item Superato;
+	\item Non superato;
+\end{itemize}

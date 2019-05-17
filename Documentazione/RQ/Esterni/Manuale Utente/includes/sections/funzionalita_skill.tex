@@ -1,0 +1,54 @@
+\section{Funzionalità Skill Amazon Alexa}
+\label{sec:sec_interazione_amazon_alexa}
+Per poter usufruire delle funzionalità previste dalla skill \textit{MegAlexa} è necessario far riferimento ad un dispositivo fisico (o virtuale) con abilitata la tecnologia Amazon Alexa.
+\subsection{Avvio della Skill}
+Per avviare l'esecuzione della skill è necessario pronunciare il nome "swetlapp" che identifica la skill creata dal gruppo \textit{Duckware}. Un esempio di avvio della skill, quindi, potrebbe essere il seguente:
+\begin{itemize}
+	\item Utente: "Hey Alexa, esegui swetlapp".
+	\item Alexa: "Ciao \textit{nome utente}. Benvenuto in swetlapp".
+\end{itemize}
+Dopo che la skill è stata avviata si possono impartire comandi per l'esecuzione di un particolare workflow.
+\subsubsection{Esecuzione di un workflow}
+Un esempio di dialogo per l'esecuzione di un workflow potrebbe essere il seguente:
+\begin{itemize}
+	\item Alexa: \textit{Alexa attende un'ordine da parte dell'utente}.
+	\item Utente: "Esegui \textit{nome del workflow}".
+\end{itemize}
+\subsubsection{Riesecuzione di un workflow}
+Nel caso in cui l'utente volesse ripetere l'esecuzione di un workflow è possibile impartire un comando del seguente tipo:
+\begin{itemize}
+	\item Alexa: \textit{Alexa attende un'ordine da parte dell'utente}.
+	\item Utente: "Ripeti \textit{nome del workflow}" oppure "Ripeti workflow \textit{nome del workflow}".
+\end{itemize}
+\subsubsection{Cancellazione esecuzione di un workflow}
+Per interrompere l'esecuzione di un workflow è necessario impartire ad Alexa un comando del genere:
+\begin{itemize}
+	\item Alexa: \textit{Alexa attende un'ordine da parte dell'utente}.
+	\item Utente: "Cancella".
+\end{itemize}
+\subsubsection{Stop esecuzione di un workflow}
+Per interrompere completamente l'esecuzione di un workflow è necessario fare uso di un comando del seguente tipo:
+\begin{itemize}
+	\item Alexa: \textit{Alexa attende un'ordine da parte dell'utente}.
+	\item Utente: "Ferma" oppure "Stop".
+\end{itemize}
+\subsubsection{Aiuto riguardo alla Skill}
+Nel caso l'utente desiderasse ottenere aiuto riguardo al modo di funzionamento della skill, è necessario far uso di una richiesta del genere:
+\begin{itemize}
+	\item Alexa: \textit{Alexa attende un'ordine da parte dell'utente}.
+	\item Utente: "Aiutami" oppure "Ho bisogno di aiuto".
+\end{itemize}
+
+\subsection{Interazione Utente - Alexa per alcuni connettori}
+Durante l’esecuzione del workflow alcuni connettori potrebbero necessitare di un’ulteriore
+interazione vocale tra l’utente e l’assistente vocale. Di seguito viene esplicato in che modo
+è strutturato il dialogo tra l’utente e Amazon Alexa.
+\subsubsection{Connettore Meteo}
+All'esecuzione del connettore Meteo la risposta di Alexa sarà l'esposizione delle previsioni meteorologiche. Non è prevista una frase o una tipologia di frase standard per questo tipo di connettore.
+\subsubsection{Connettore TV Schedule}
+All'esecuzione del connettore TV Schedule la risposta di Alexa sarà l'esposizione del palinsesto televisivo. Non è prevista una frase o una tipologia di frase standard per questo tipo di connettore.
+\subsubsection{Connettore Tweet}
+Per la pubblicazione di un Tweet il connettore andrà a scrivere nella bacheca del profilo il testo precedentemente impostato sull'applicazione Android di SwetlApp, e a termine della pubblicazione Alexa risponderà con una conferma se le impostazioni sono state settate in maniera corretta.
+Per la lettura di un Tweet, Alexa risponderà nel seguente modo: "L'ultimo Tweet nella bacheca è: ... ".
+\subsubsection{Connettore "Trello"}
+\textit{Questa sezione verrà sviluppata quando la relativa parte software verrà completata.}

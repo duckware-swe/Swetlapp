@@ -1,0 +1,50 @@
+\pagebreak
+\section{Installazione}
+\label{sec:installazione}
+\subsection{Requisiti software}
+\begin{itemize}
+    \item Java Development Kit (jdk) 1.8.151 o superiore;
+    \item Android Studio 3.3 o superiore;
+    \item Node.js 10.15 o superiore;
+    \item Mozilla Firefox v.53 o superiore;
+    \item AWS Amplify.
+\end{itemize}
+\textbf{Note}. La console di Amplify può essere integrata in \markg{\Gls{Android Studio}} e consente di generare tutti gli SDK necessari senza accedere alla console di AWS. Il team \textit{duckware} ha utilizzato questo approccio perché automatizza l'import ed il setup delle librerie all'interno dell'applicazione.\\[0.25cm]
+Tuttavia è anche possibile utilizzare la versione standalone della console ma in questo caso è richiesto il setup manuale delle librerie e l'importazione dei file necessari.\\[0.25cm]Di seguito vengono riportati i requisti per l'installazione del software sopra elencato per le distribuzioni di Windows e Mac OSX:
+\subsection{Requisiti per Windows}
+\begin{itemize}
+    \item Sistema operativo: Windows 10, 32 o 64 bit;
+    \item RAM: 8GB di RAM;
+    \item Disco fisso: 4GB di spazio libero richiesto;
+    \item Connessione ad internet richiesta.
+\end{itemize}
+\subsection{Requisiti per Mac OSX}
+\begin{itemize}
+    \item Sistema operativo: MacOS 10.14 Mojave o superiore, 64 bit;
+    \item RAM: 8GB di RAM;
+    \item Disco fisso: 4GB di spazio libero richiesto;
+    \item Connessione ad internet richiesta.
+\end{itemize}
+
+\subsection{Installazione}
+Creare una cartella per il progetto \textit{SwetlApp} ed utilizzando \markg{\Gls{Git}} da \markg{\Gls{CLI}} fare una copia del seguente comando:
+\begin{verbatim}
+    git clone https://github.com/Andreapava/swetlAPP.git
+\end{verbatim}
+altrimenti clonare il progetto tramite \markg{\gls{client}} GUI di Git, copiando l'indirizzo HTTPS \href{https://github.com/Andreapava/swetlAPP.git}{https://github.com/Andreapava/swetlAPP.git}.\\
+Tramite CLI, eseguire il seguente comando in una nuova cartella, così da poter clonare il codice sorgente della skill per Alexa:
+\begin{verbatim}
+    git clone https://github.com/duckware-swe/Swetlapp.git
+\end{verbatim}
+In alternativa, clonare il progetto copiando l'indirizzo HTTPS \href{https://github.com/duckware-swe/Swetlapp.git}{https://github.com/duckware-swe/Swetlapp.git} nel client Git.
+
+\subsection{Esecuzione}
+\subsubsection{Applicazione Android}
+Per poter utilizzare e testare \textit{SwetlApp} è sufficiente eseguire il comando \emph{Build and Run} da Android Studio e fare il \markg{\gls{deployment}} dell'applicazione su un dispositivo reale o emulato. Nel secondo caso, sono sufficienti le impostazioni di default generate dall'AVD manager.
+\subsubsection{Skill Alexa}
+Per eseguire la skill per Alexa, è necessario seguire questi passi per poter eseguire il codice in ambiente AWS:
+\begin{enumerate}
+    \item Accedere a \url{https://developer.amazon.com/it/alexa-skills-kit/} ed effettuare il login;
+    \item Navigare su \emph{Le mie console Alexa} e cliccare su \emph{Skills};
+    \item Utilizzare i pulsanti proposti dall'interfaccia per creare, modificare e cancellare skill.
+\end{enumerate}

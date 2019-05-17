@@ -1,0 +1,132 @@
+\clearpage
+\definecolor{tableHeadYellow}{rgb}{1.0, 0.88, 0.21}
+\definecolor{tableLightYellow}{rgb}{1.0, 0.97, 0.86}
+\definecolor{white}{rgb}{1.0, 1.0, 1.0}
+
+\section{Requisiti}
+\subsection{Classificazione dei \markg{requisiti}}
+I \markg{requisiti} vengono classificati ed assegnati attraverso l'utilizzo di un identificativo univoco secondo le regole riportate all'interno del documento Norme di progetto v1.0.0
+\subsubsection{Requisiti funzionali}
+Requisiti funzionali
+\begin{center}
+	\renewcommand{\arraystretch}{1.5}
+	\rowcolors{3}{tableLightYellow}{}
+	\begin{longtable}{  p{2.5cm}  p{2.1cm} p{7cm}  p{1.7cm} }
+		\rowcolor{tableHeadYellow}
+		\textbf{Identificativo}   & \textbf{Importanza} & \textbf{Descrizioni} & \textbf{Fonte} \\ 
+		\endhead
+		R2F1   & Obbligatorio & L'utente può registrarsi e creare una sua area personale nella quale inserire \markg{workflow}                & Capitolato e Verbale \\  
+		R2F1.1 & Obbligatorio & La registrazione necessita di nome, cognome ed indirizzo email valido                               & Interno              \\  
+		R2F2   & Obbligatorio & L'utente può effettuare il login alla sua area personale                                              & Capitolato           \\  
+		R2F2.1 & Obbligatorio & L'utente può recuperare la password in caso di smarrimento                                            & Interno              \\  
+		R2F2.2 & Obbligatorio & L'utente può effettuare il logout                                                                    & Interno              \\  
+		R1F3   & Desiderabile & L'utente può leggere una breve guida all'uso dell'applicazione                                        & Interno              \\  
+		R2F4   & Obbligatorio & L'utente può gestire tutti i \markg{workflow} che ha inserito                                                 & Capitolato           \\  
+		R2F4.1 & Obbligatorio & Ogni utente avrà i suoi \markg{workflow} personali che non saranno visibili ad altri utenti                   & Capitolato           \\  
+		R2F4.2 & Obbligatorio & Ogni \markg{workflow} dovrà avere un nome identificativo di almeno 4 caratteri                                & Interno              \\  
+		R2F4.3 & Obbligatorio & L'utente può aggiungere un \markg{workflow} alla sua lista personale                                          & Capitolato           \\  
+		R2F4.4 & Obbligatorio & L'utente può rimuovere un \markg{workflow} dalla sua lista personale                                          & Interno              \\  
+		R2F4.5 & Obbligatorio & L'utente può modificare un \markg{workflow} dalla sua lista personale                                         & Interno              \\  
+		R2F4.6 & Obbligatorio & L'utente può vedere un numero che indica quanti \markg{workflow} ha creato                                    & Interno              \\  
+		R2F5   & Obbligatorio & L'utente può vedere una lista di \markg{connettori} da assegnare al \markg{workflow} su cui sta operando              & Capitolato           \\  
+		R2F5.1 & Obbligatorio & L'utente può vedere una lista di \markg{connettori} da rimuovere dal \markg{workflow} su cui sta operando             & Interno              \\  
+		R2F5.2 & Obbligatorio & L'utente deve poter selezionare più di un \markg{connettore} per ciascun \markg{workflow}                             & Verbale              \\  
+		R0F5.3 & Opzionale    & L'utente deve vedere un conteggio di quanti \markg{connettori} sono stati selezionati                         & Interno              \\  
+		R2F5.4 & Obbligatorio & L'utente deve selezionare almeno un \markg{connettore} dalla lista per poter creare un \markg{workflow}               & Interno e Verbale    \\  
+		R2F5.5 & Obbligatorio & L'utente deve poter selezionare lo stesso \markg{connettore} una sola volta per \markg{workflow}                                  & Interno              \\  
+		R2F6   & Obbligatorio & L'applicazione dovrà supportare più lingue                                                            & Capitolato           \\  
+		R1F6.1 & Desiderabile & Verrà caricata automaticamente la lingua corrispondente alle impostazioni di località del dispositivo & Interno              \\
+		R2F7 & Obbligatorio	& L'utente deve poter avviare i \markg{workflow} creati tramite comando vocale impartito ad \markg{Amazon} \markg{Alexa}. & Capitolato \\
+		R1F8	& Desiderabile	& L'utente deve poter conoscere tramite comando vocale impartito ad \markg{Amazon} \markg{Alexa} la lista dei \markg{workflow} personali creati in precedenza.	& Interno \\
+		R1F9	& Desiderabile	& L'utente deve poter chiedere un aiuto per utilizzare la skill tramite comando vocale impartito ad \markg{Amazon} \markg{Alexa}.	& Interno \\
+		R2F10	& Obbligatorio	& L'utente deve poter interrompere l'esecuzione della skill tramite comando vocale impartito ad \markg{Amazon} \markg{Alexa}.	& Esterno e Interno \\
+		R0F11	& Opzionale	& L'utente deve poter terminare il \markg{connettore} attualmente in esecuzione per passare al successivo tramite comando vocale impartito ad \markg{Amazon} \markg{Alexa}.	& Interno \\
+		\rowcolor{white}
+		\caption{Tabella \markg{requisiti} funzionali}
+	\end{longtable}
+\end{center}
+
+\subsubsection{Requisiti di qualità}
+Requisiti di qualità
+\begin{center}
+	\renewcommand{\arraystretch}{1.5}
+	\rowcolors{3}{tableLightYellow}{}
+	\begin{longtable}{  p{2.5cm}  p{2.1cm} p{7cm}  p{1.7cm} }
+		\rowcolor{tableHeadYellow}
+		\textbf{Identificativo}   & \textbf{Importanza} & \textbf{Descrizioni} & \textbf{Fonte} \\ 
+		\endhead
+		R2Q1   & Obbligatorio & Codifica e progettazione devono seguire le norme riportate all'interno del documento Piano di qualifica v1.0.0                      & Interno    \\  
+		R2Q2   & Obbligatorio & L'approccio al codice \markg{Java} dovrà seguire quanto riportato \href{https://google.github.io/styleguide/javaguide.html}{qui}                      & Capitolato \\  
+		R2Q2.1 & Obbligatorio & Lo sviluppo del codice deve essere supportato dall'utilizzo di test di unità                                                        & Interno    \\  
+		R2Q3   & Obbligatorio & Dovrà essere fornito un manuale utente in lingua italiana che tratterà l'uso dell'applicazione                                      & Verbale    \\  
+		R2Q4   & Obbligatorio & Il codice sorgente deve essere caricato nella piattaforma \markg{GitLab} di duckware                                                        & Interno    \\  
+		R2Q5   & Obbligatorio & Si dovranno utilizzare i servizi di \markg{AWS} quali \markg{API} Gateway, Lambda ed Aurora Serverless ove necessario                               & Capitolato \\  
+		R2Q5.1 & Obbligatorio & Si dovrà creare un'\markg{architettura} REST per comunicare con l'applicazione                                                              & Interno    \\  
+		R2Q6   & Obbligatorio & Per lo sviluppo del prodotto richiesto devono essere rispettate tutte le norme descritte nel documento Norme di Progetto v1.0.0 & Interno    \\  
+		R2Q7   & Obbligatorio & Per lo sviluppo del prodotto richiesto devono essere rispettati tutti i \markg{processi} descritti nel documento Piano di Qualifica v1.0.0 & Interno    \\
+		\rowcolor{white}
+		\caption{Tabella \markg{requisiti} di qualità}
+	\end{longtable}
+\end{center}
+\clearpage
+\subsubsection{Requisiti di vincolo}
+Requisiti di vincolo
+\begin{center}
+	\renewcommand{\arraystretch}{1.5}
+	\rowcolors{3}{tableLightYellow}{}
+	\begin{longtable}{  p{2.5cm}  p{2.1cm} p{7cm}  p{1.7cm} }
+		\rowcolor{tableHeadYellow}
+		\textbf{Identificativo}   & \textbf{Importanza} & \textbf{Descrizioni} & \textbf{Fonte} \\ 
+		\endhead
+		R1V1   & Desiderabile & L'applicazione dovrà essere sviluppata per dispositivi \markg{Android}                                                                             & Capitolato            \\  
+		R2V1.1 & Obbligatorio & L'applicazione dovrà essere sviluppata con \markg{Java} 10 o superiore                                                                             & Interno               \\  
+		R2V1.2 & Obbligatorio & L'applicazione dovrà supportare un livello di \markg{API} \markg{Android} che sia 26 o superiore                                                           & Interno               \\  
+		R2V1.3 & Obbligatorio & Sarà necessario utilizzare JUnit per eseguire i test di unità                                                                              & Interno               \\  
+		R2V2   & Obbligatorio & L'applicazione dovrà essere creata utilizzando \markg{IntelliJ IDEA}                                                                               & Interno               \\  
+		R2V2.1 & Obbligatorio & Il deploy dell'applicazione avverrà per mezzo degli strumenti di build forniti da \markg{IntelliJ IDEA}                                            & Interno               \\  
+		R2V2.2 & Obbligatorio & debug dell'applicazione dovrà essere eseguito sull'emulatore ufficiale fornito da Google utilizzando il toolkit AVD                        & Interno               \\  
+		R1V2.3 & Desiderabile & Il debug dovrà avvenire in un reale dispositivo con dimensioni di schermo differenti da quelle impostate dall'emulatore creato tramite AVD & Interno               \\  
+		R2V2.4 & Obbligatorio & L'applicazione deve avere come target minimo di SDK la versione di \markg{API} xx (dopo decido ma credo metteremo la                               & Interno               \\  
+		R2V3   & Obbligatorio & Il collegamento con i servizi di \markg{AWS} avverrà tramite l'SDK \markg{AWS}  di amazon                                                                  & Capitolato            \\  
+		R2V3.1 & Obbligatorio & Verrà utilizzata la versione 2.0 dell'SDK                                                                                                  & Interno               \\  
+		R2V4   & Obbligatorio & Utilizzo di \markg{Amazon} \markg{API} Gateway per la realizzazione di \markg{API} per la comunicazione con l'applicazione                                         & Verbale               \\  
+		R2V4.1 & Obbligatorio & Creazione di endpoint \markg{API} RESTful tramite \markg{Amazon} \markg{API} Gateway                                                                               & Interno               \\  
+		R2V5   & Obbligatorio & Utilizzo di \markg{AWS} Lambda per l'esecuzione automatica di richieste HTTP create via \markg{API} Gateway                                                & Verbale               \\  
+		R2V6   & Obbligatorio & Creazione di un database relazionale utilizzando \markg{Amazon} Aurora                                                                             & Capitolato ed Esterno \\  
+		R2V7   & Obbligatorio & Un utente può creare \markg{workflow} solamente dopo aver effettuato il login con successo                                                         & Capitolato            \\
+		\caption{Tabella \markg{requisiti} di vincolo}
+	\end{longtable}
+\end{center}
+\subsubsection{Requisiti prestazionali}
+Requisiti prestazionali
+\begin{center}
+	\renewcommand{\arraystretch}{1.5}
+	\rowcolors{3}{tableLightYellow}{}
+	\begin{longtable}{  p{2.5cm}  p{2.1cm} p{7cm}  p{1.7cm} }
+		\rowcolor{tableHeadYellow}
+		\textbf{Identificativo}   & \textbf{Importanza} & \textbf{Descrizioni} & \textbf{Fonte} \\ 
+		R2P1 & Desiderabile & Il \markg{server} dovrebbe avere una latenza massima di 3 secondi, a meno di errori di connessione                     & Interno \\  
+		R2P2 & Obbligatorio & L'applicazione deve sempre rimanere responsiva e mostrare adeguati indicatori di caricamento in caso di attesa & Interno \\
+		\caption{Tabella \markg{requisiti} prestazionali}
+	\end{longtable}
+\end{center}
+
+\input{../includes/sections/tracciamento}
+	
+\subsection{Riepilogo}
+Riepilogo
+\begin{center}
+	\renewcommand{\arraystretch}{1.5}
+	\rowcolors{3}{tableLightYellow}{}
+	\begin{longtable}{  p{1.8cm}  p{2cm} p{2.2cm}  p{1.8cm} p{1.2cm}}
+		\rowcolor{tableHeadYellow}
+		\textbf{Tipologia}   & \textbf{Obbligatori} & \textbf{Desiderabili} & \textbf{Opzionali} & \textbf{Totale}\\ 
+		Funzionali    & 21          & 4            & 2         & 27     \\
+		Di qualità    & 9           & 0            & 0         & 9      \\  
+		Di vincolo    & 14          & 2            & 0         & 16     \\  
+		Prestazionali & 1           & 1            & 0         & 2      \\  
+		Totale        & 45          & 7            & 2         & 54     \\
+		\rowcolor{white}
+		\caption{Tabella \markg{requisiti} prestazionali}
+	\end{longtable}
+\end{center}

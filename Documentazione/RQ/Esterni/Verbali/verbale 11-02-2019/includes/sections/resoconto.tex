@@ -1,0 +1,40 @@
+\clearpage
+\section{Resoconto}
+	\subsection{Elenco domande fatte al \emph{CEO Stefano Dindo di Zero12}}
+	\label{sec:elenco}
+	Nella tabella si riportano le domande preparate e le risposte ottenute dal \textbf{CEO S. Dindo} in risposta alla mail inviata.
+		\begin{center}
+			\renewcommand{\arraystretch}{1.5}
+			\rowcolors{3}{tableLightYellow}{}
+			\begin{longtable}{  p{2.5cm} p{11.7cm} }
+				\rowcolor{tableHeadYellow}
+				\textbf{Identificativo}&\textbf{Domanda e risposta}\\
+				D1 & Come scelta di implementazione è stato deciso di utilizzare come database \textit{Amazon DynamoDB}, un db non relazionale. Si chiede una considerazione da parte vostra sulla nostra scelta di utilizzare tale tecnologia.
+				\begin{itemize}
+					\item \textbf{Risposta CEO S. Dindo}: Si per le architetture \textit{serverless DynamoDB} è un buon database \textit{NoSQL} quindi avete fatto la scelta giusta. 
+				\end{itemize}
+				\\
+				D2 & Per la realizzazione della skill per Alexa stiamo utilizzando il sito \href{https://developer.amazon.com/alexa}{https://developer.amazon.com/alexa}, dove creiamo la \textit{skill} vera e propria, inserendo gli \textit{intent} per i comandi e per abbozzare un discorso con Alexa;
+				ed il sito \href{https://amzn.to/2UbRK0D}{https://amzn.to/2UbRK0D} per la creazione delle lambda che verrano poi eseguite dalla \textit{skill}.
+				Si chiede se tale approccio per la realizzazione della \textit{skill} sia quello corretto, e/o sapere se presenti altre modalità più corrette per la creazione di tale \textit{skill}.
+				\begin{itemize}
+					\item \textbf{Risposta CEO S. Dindo}: Corretto.
+				\end{itemize}
+				\\
+				D3 & Durante l'esecuzione di una lambda, è possibile, e se si come, collegare e far comunicare tra loro altre lambda? 
+				\begin{itemize}
+					\item \textbf{Risposta CEO S. Dindo}: Si, tratta eventi quindi potete fare in modo che una lambda chiami delle altre API così questa avvia delle lambda oppure usare \href{https://amzn.to/2tFT7co}{https://amzn.to/2tFT7co} se dovete fare in modo di creare una catena di lambda dove la prima passa il risultato alla seconda e così via. Terza strada sarebbe quella di integrare l'sdk sulla lambda e chiamare tramite un hook un'altra lambda... qui però bisogna stare attenti perché se la prima lambda deve attendere il tempo della seconda potenzialmente potrebbero aumentare i costi di esecuzione delle lambda perché pagate anche il tempo in cui la prima \textit{lambda} attende l'esecuzione della prima.
+				\end{itemize}
+				\\
+				D4 & L'approccio attualmente utilizzato per effettuare chiamate al database dall'applicazione prevede di effettuare una richiesta \textit{HTTPS GET} che avvierà una lambda che si occuperà della comunicazione con \textit{DynamoDB}. Come è possibile risolvere le stesse richieste utilizzando invece una chiamata di tipo \textit{POST}?
+				\begin{itemize}
+					\item \textbf{Risposta CEO S. Dindo}: Dovete usare API gateway dove mappate le API rest e quindi potete definire delle post che poi chiamano una lambda. 
+				\end{itemize}
+				\\
+				\rowcolor{white}
+				\caption{Tabella riassuntiva domande e risposte}
+			\end{longtable}	
+		\end{center}
+	
+	
+%\footnote{\href{https://developer.amazon.com/alexa}{https://developer.amazon.com/alexa}}

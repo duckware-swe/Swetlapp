@@ -1,0 +1,38 @@
+\clearpage
+\section{Specifica dei test}
+\subsection{Scopo}
+Per garantire la qualità del prodotto e quindi la rilevazione degli errori durante la fase di sviluppo verrà fatta particolare attenzione sull'analisi dinamica del codice per mezzo di test automatici.
+Durante la fase di codifica e stesura del codice i programmatori e verificatori seguiranno il modello di sviluppo del software \markg{TDD} (test-driven development) per garantire il corretto sviluppo dell'applicativo commissionato.
+Per primi verranno creati i test e di seguito il codice necessario per soddisfarli.
+\subsection{Tipologia dei Test}
+Sono state create tre macro categorie di test sulla base di tre tipologie di errore per la loro identificazione:
+\begin{itemize}
+	\item \textbf{Test di modulo} per verificare la logica del software;
+	\item \textbf{Test ad alto livello} per verificare le funzionalità del sistema;
+	\item \textbf{Test di regressione} per verificare i test precedenti dopo una modifica.
+\end{itemize} 
+\subsubsection{Test di modulo}
+I test di questa tipologia si occupano della \markg{verifica} logica del software e verranno creati ed eseguiti dai programmatori. Il successo di questi test costituirà il vincolo per poter consegnare/caricare il codice all'interno della \markg{repository}.
+Essi si dividono in:
+\begin{itemize}
+	\item \textbf{Test di unità - TU}\\
+	Si verifica le parti di lavoro prodotte dal programmatore che corrispondo a piccole parti di codice e unità logiche, come ad esempio una classe, un metodo o funzione, oppure un insieme di essi.
+	Verranno creati dei test \markg{black-box} per testare le funzionalità delle unità logiche e test \markg{white-box} per verificare la struttura del codice;
+	\item \textbf{Test di integrazione - TI}
+	Si verifica l'integrazione tra le unità logiche che formano i vari componenti del sistema. Si verifica quindi che i componenti del sistema non contengano errori dovuti all'integrazione tra unità;
+	Per testare l'integrazione si è scelto la tecnica dal basso verso l'alto, ovvero si testano per prime le parti con minore dipendenza funzionale e con maggiore funzionalità e successivamente risalire l'albero delle dipendenze.	
+\end{itemize} 
+\subsubsection{Test ad alto livello}
+I test di questa tipologia si occupano di verificare le funzionalità del sistema, ovvero sul comportamento dell'applicazione, e gestire dai verificatori (team di \markg{Quality Assurance - QA}). Maggior parte di questi test sono manuali e per garantirne la loro organizzazione verrà gestita tramite degli apposti tool che verranno discussi in sede di Technology Baseline.
+\begin{itemize}
+	\item \textbf{Test funzionali - TF}\\
+	Si verifica l'implementazione delle specifiche del prodotto concentrandosi sulle funzionalità delle suddette specifiche. Tali test sono visti come dei test di unità ad alto livello, difatti l'analisi della struttura è delegata ai Test di unità - TU.
+	Questi test possono essere automatizzati e scritti dai programmatori, ma vengono affiancati ad una revisione ed esecuzione svolta dai verificatori;
+	\item \textbf{Test di sistema - TS}\\
+	Si verifica il sistema e l'architettura nella sua interezza. Tali test sono complessi e pesanti, la loro implementazione verrà discussa in sede di Technology Baseline. Necessario l'utilizzo di componenti software supervisionati dai verificatori, quindi eseguiti dal team di \markg{Quality Assurance - QA};
+	\item \textbf{Test di validazione - TV}\\
+	Sono dei test finali che hanno il compito di valutare se il sistema sviluppato corrisponde alle richieste del proponente, quindi tali verifiche sono legate ai \markg{requisiti}. I test sono principalmente manuali ed eseguiti dal team \markg{Quality Assurance - QA}. Nelle fasi finali dello sviluppo verranno fatti i controlli assieme ai proponenti per determinale la validità del prodotto. 
+\end{itemize} 
+\subsubsection{Test di regressione}
+I test di questa tipologia si occupa di rieseguire in modo selettivo i vari test, di modulo e di alto livello esclusi quelli di \markg{validazione}, elencati e descritti sopra. 
+È quindi necessario l'esecuzione di questi test ogni qual volta che il codice viene modificato: l'inserimento di nuove funzionalità, la correzione di un bug o la modifica di parti del codice sorgente comporta l'esecuzione di tutti i test relativi ad essa. Vengono fatti questi test a fronte del fatto che l'introduzione di modifiche, migliorie e/o correzioni all'interno del codice è fortemente propenso all'inserimento di errori. I test di modulo necessari per la consegna nella \markg{repository} vengono eseguiti automaticamente, mentre per i test ad alto livello i verificatori pianificheranno l'esecuzione ad ogni superamento di \markg{baseline}.

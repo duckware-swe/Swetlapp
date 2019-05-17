@@ -57,6 +57,10 @@
 *-blx.bib
 *.run.xml
 
+## .Rhistory
+
+.Rhistory
+
 # End of https://www.gitignore.io/api/latex
 #################################################################################################
 

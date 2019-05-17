@@ -1,0 +1,195 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[italian]{babel}
+\usepackage{a4wide}
+\usepackage{graphicx}
+\graphicspath{{images/}}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage[table]{xcolor}
+\usepackage{longtable}
+\geometry{a4paper,top=3cm,bottom=3cm,left=3cm,right=3cm}
+\usepackage{eurosym}
+%heightrounded,bindingoffset=5mm}
+
+		%%%%%%%%%%%%%%%%%%%%
+		%%%%%%%TITOLO%%%%%%%
+		%%%%%%%%%%%%%%%%%%%%
+\newcommand{\thetitle}{Lettera di Presentazione} %MODIFICARE IL TITOLO
+
+		%%%%%%%%%%%%%%%%%%%%
+		%%%%%%VERSIONE%%%%%%
+		%%%%%%%%%%%%%%%%%%%%
+\newcommand{\theversion}{ X.X.X } %MODIFICARE IL NUMERO DI VERSIONE
+
+		%%%%%%%%%%%%%%%%%%%%
+		%%%%VERIFICATORI%%%%
+		%%%%%%%%%%%%%%%%%%%%
+\newcommand{\verif}{Primo Verificatore, Secondo Verificatore}
+
+		%%%%%%%%%%%%%%%%%%%%
+		%%%%RESPONSABILE%%%%
+		%%%%%%%%%%%%%%%%%%%%
+\newcommand{\resp}{Unico Responsabile}
+
+		%%%%%%%%%%%%%%%%%%%%
+		%%%%%DESCRIZIONE%%%%
+		%%%%%%%%%%%%%%%%%%%%
+\newcommand{\descript}{\input{desc_documento}}
+
+\usepackage{afterpage}
+\usepackage{subfig}
+\usepackage{tikz}
+\usepackage{tabularx}
+\usetikzlibrary{shapes,arrows}
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+\pgfplotsset{plot coordinates/math parser=false}
+\newlength\figureheight
+\newlength\figurewidth
+\pgfkeys{/pgf/number format/.cd,
+set decimal separator={,\!},
+1000 sep={\,},
+}
+\usepackage{ifthen}
+\usepackage{ifpdf}
+\ifpdf
+\usepackage[pdftex]{hyperref}
+\else
+\usepackage{hyperref}
+\fi
+\usepackage{color}
+\hypersetup{%
+colorlinks=true,
+linkcolor=black,
+citecolor=black,
+urlcolor=black}
+\renewcommand{\baselinestretch}{1.05}
+		%%%%%%%%%%%%%%%%%%%%
+		%%%FANCYPAGESTYLE%%%
+		%%%%%%%%%%%%%%%%%%%%
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyfoot[R]{}
+\fancyfoot[L]{}
+\fancyfoot[C]{\thepage}
+\fancyhead[R]{\includegraphics[width=0.2\textwidth]{logo}}
+\fancyhead[L]{\thetitle}
+\setlength{\headheight}{60pt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\let\headruleORIG\headrule
+\renewcommand{\headrule}{\color{black} \headruleORIG}
+\renewcommand{\headrulewidth}{1.0pt}
+\renewcommand{\footrulewidth}{1.0pt}
+\usepackage{colortbl}
+\arrayrulecolor{black}
+
+\fancypagestyle{plain}{
+  \fancyhead{}
+  \fancyfoot[C]{\thepage}
+  \renewcommand{\headrulewidth}{0pt}
+}
+
+\usepackage{amsthm}
+\usepackage{amssymb,amsmath}
+
+\usepackage{array}
+\usepackage{bm}
+\usepackage{multirow}
+\usepackage[footnote]{acronym}
+
+\newcommand\blankpage{%
+    \null
+    \newpage}
+
+\parskip=5pt
+
+\begin{document}
+
+\definecolor{tableHeadYellow}{rgb}{1.0, 0.88, 0.21}
+\definecolor{tableLightYellow}{rgb}{1.0, 0.97, 0.86}
+\definecolor{white}{rgb}{1.0, 1.0, 1.0}
+	
+\begin{center}
+\begin{minipage}{0.275\textwidth}
+  \begin{flushleft} 
+  \end{flushleft}
+\end{minipage}%
+\begin{minipage}{0.275\textwidth}
+  \begin{flushleft} 
+  \end{flushleft}
+\end{minipage}%
+\begin{minipage}{0.45\textwidth}
+  \begin{flushleft}
+    Università degli Studi di Padova\\
+    Dipartimento di Matematica\\
+    Via Trieste, 62 \\
+    35131 Padova (PD)
+  \end{flushleft}
+\end{minipage}\\[1.5cm]
+\end{center}
+\begin{flushleft}
+\begin{minipage}{0.50\textwidth}
+  \begin{flushleft} 
+  	Alla cortese attenzione dei Committenti:\\
+  	Prof.  Tullio Vardanega\\
+  	Prof.  Riccardo Cardin\\[1cm]
+  	Egregio Prof.  Tullio Vardanega,\\
+  	Egregio Prof.  Riccardo Cardin,\\[0.3cm]
+  \end{flushleft}
+\end{minipage}
+\end{flushleft}
+Con la presente, il gruppo \emph{duckware} intende comunicarVi ufficialmente l’impegno alla realizzazione del prodotto da Voi commissionato, denominato:
+\begin{center}
+\textbf{\textit{MegAlexa: arricchitore di skill di Amazon Alexa}}
+\end{center}
+proposto da \emph{Zero12}.\\[0.5cm]
+Allegati alla presente, potrete trovare i seguenti documenti che illustrano in dettaglio analisi del prodotto, di pianificazione e relativi criteri a garanzia della qualità:
+\begin{itemize}
+\item Analisi dei Requisiti v1.0.0;
+\item Glossario v1.0.0;
+\item Piano di Progetto v1.0.0;
+\item Piano di Qualifica v1.0.0;
+\item Verbali esterni:
+	\begin{itemize}
+		\item Verbale 2018-12-14 v1.0.0;
+	\end{itemize}
+\item Norme di Progetto v1.0.0;
+\item Studio di Fattibilità v1.0.0;
+\item Verbali interni:
+	\begin{itemize}
+		\item Verbale 2018-12-13 v1.0.0;
+		\item Verbale 2018-12-06 v1.0.0;
+		\item Verbale 2018-11-28 v1.0.0;
+		\item Verbale 2018-11-20 v1.0.0;
+	\end{itemize}
+\end{itemize}
+Il gruppo duckware ha stimato di consegnare il prodotto richiesto entro il giorno 10/05/2019, con relativo collaudo, salvo ulteriori accordi, per il giorno 17/05/2019. Il preventivo di costo fissato è pari a 13.085 \euro, come descritto all’interno del documento Piano di Progetto v1.0.0.\\[0.5cm]
+Si riportano di seguito i nomi dei componenti del gruppo:
+\begin{center}
+	\renewcommand{\arraystretch}{1.5}
+	\rowcolors{3}{tableLightYellow}{}
+	\begin{longtable}{  p{4cm}  p{2cm}  }
+		\rowcolor{tableHeadYellow}
+		\textbf{Nome}   & \textbf{Matricola} \\
+		Sonia Menon & 1144731\\
+		Alberto Miola & 1143297\\
+		Andrea Pavin & 1122443\\
+		Alessandro Pegoraro & 1143562\\
+		Matteo Pellanda & 1125349\\
+		Pardeep Singh & 1143264\\
+		Luca Stocco & 1125280\\
+		\rowcolor{white}
+		\caption{Tabella componenti duckware.}
+	\end{longtable}
+\end{center}
+Rimaniamo a Vostra completa disposizione per qualsiasi chiarimento in merito ai documenti presentati.\\[1cm]
+Cordiali saluti,\\
+\includegraphics[width=0.2\textwidth]{../images/firme/firma_sonia.png}\\
+Sonia Menon\\
+Responsabile di Progetto
+\vfill
+\end{document}

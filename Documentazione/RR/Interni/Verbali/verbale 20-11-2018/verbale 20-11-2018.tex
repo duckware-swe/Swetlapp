@@ -1,0 +1,53 @@
+\input{../../../../Template_Latex/packages}
+\input{../../../../Template_Latex/commands}
+\input{../../../../Template_Latex/style}
+
+\begin{document}
+	%RIDEFINIZIONE COMANDI
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\renewcommand{\thetitle}{\Ver}
+	\renewcommand{\thedate}{20 Novembre 2018}
+	\renewcommand{\theversion}{1.0.0}
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	
+	%COMANDI PER PRIMA PAGINA
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\renewcommand{\usage}{Interno}
+	\renewcommand{\status}{Approvato}
+	\renewcommand{\verif}{\sonia}
+	\renewcommand{\resp}{\pardeep}
+	\renewcommand{\editorfrow}{\matteo} %editors prima riga
+	\renewcommand{\editorsrow}{} %editors seconda riga
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	
+	%CONTENUTI
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\renewcommand{\contents}{
+		\input{includes/sections/informazioni_sulla_riunione}
+		\input{includes/sections/ordine_del_giorno}
+		\input{includes/sections/resoconto}
+	}
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	
+	%PRIMA PAGINA
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\input{../../../../Template_Latex/firstPage_verbale}
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	
+	%INDICE E CHANGELOG
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\pagenumbering{roman} %enumerazione pagine per indice
+	\tableofcontents %crea indice
+	\clearpage %pagina nuova
+	\pagenumbering{gobble} %esclude dalla numerazione 
+	\input{includes/changelog} %registro delle modifiche
+	\clearpage %pagina nuova
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+	%CONTENUTO
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\pagenumbering{arabic} %enumerazione pagine per contenuto
+	\pagestyle{fancy}
+	\contents
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}

@@ -1,0 +1,65 @@
+\input{../../../../Template_Latex/packages}
+\input{../../../../Template_Latex/commands}
+\input{../../../../Template_Latex/style}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\begin{document}
+	%RIDEFINIZIONE COMANDI
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\renewcommand{\thetitle}{\PdP}
+	\renewcommand{\thedate}{08 Marzo 2019}
+	\renewcommand{\theversion}{2.0.0}
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	
+	%COMANDI PER PRIMA PAGINA
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\renewcommand{\usage}{Esterno}
+	\renewcommand{\status}{Approvato}
+	\renewcommand{\verif}{\alberto , \luca}
+	\renewcommand{\resp}{\andrea}
+	\renewcommand{\editorfrow}{\alessandro , \pardeep} %editors prima riga
+	\renewcommand{\editorsrow}{\matteo , \sonia} %editors seconda riga
+	\renewcommand{\proposer}{zero12} %esterni / interni
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	
+	%CONTENUTI
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\renewcommand{\contents}{
+		\input{../includes/sections/introduzione}
+		\input{../includes/sections/analisi_dei_rischi}
+		\input{../includes/sections/modello_di_sviluppo}
+		\input{../includes/sections/pianificazione}
+		\input{../includes/sections/suddivisione_risorse_preventivo}
+		\input{../includes/sections/consuntivo}
+		\appendix
+		\input{../includes/sections/organigramma}
+		\input{../includes/sections/attuazione_rischi}
+	}
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	
+	%PRIMA PAGINA
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\input{../../../../Template_Latex/firstPage}
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	
+	%INDICE E CHANGELOG
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\pagenumbering{roman} %enumerazione pagine per indice
+	\tableofcontents %crea indice
+	\clearpage %pagina nuova
+	\listoftables
+	\pagebreak
+	\listoffigures
+	\pagebreak
+	\pagenumbering{gobble} %esclude dalla numerazione 
+	\input{../includes/changelog} %registro delle modifiche
+	\clearpage %pagina nuova
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+	%CONTENUTO
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\pagenumbering{arabic} %enumerazione pagine per contenuto
+	\cambiastile
+	\pagestyle{fancy}
+	\contents
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
