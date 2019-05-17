@@ -7,7 +7,7 @@ var apiKey = '77b62a6bf6bde24b95bd2f7d28d7b226';
 var token = 'a1a5b837de41f33a97f27b8afc716f0dbd0a8db35d51c77cafe95a1db9fdd333';
 var trello = new Trello(apiKey, token);
 
-let memberId; //id dell'utente
+let memberId=''; //id dell'utente
 let boardsIDs=[]; //contiene gli ID tutte le bachece proprie dell'utente (nel caso serva)
 let trelloBoardId ='';//id della bacheca che l'utente ha scelto a voce
 let objBoard = null; //oggetto JSON contiene tutto sulla bacheca voluta dall'utente
@@ -79,6 +79,7 @@ function getBoardWrapper(memberId){
                         boardsIDs.push(trelloBoardId);
 
                         console.log('trello board: ',actualBoard);
+						console.log('trelloboard sade by user == fdsfsdf', (actualBoard.name).toLowerCase() == (boardNameSaidByUser).toLowerCase());
                         if((actualBoard.name).toLowerCase() == (boardNameSaidByUser).toLowerCase()){//se il nome  dela bacheca coincide con quello detto dall'utente
                             trelloBoardId = actualBoard.id; //ID della bacheca voluta dall'utente
                             /*if(!(trelloBoardId in objBoard)){//se la proprietà non è già presente
@@ -188,19 +189,23 @@ class GetCardsFromBoardTrelloAction extends Action {
 
        try{
             //ottengo il memberId
-            memberId = await httpGetMemberId(nomeUtente);
-            console.log('memberId: ', memberId);
+			if(memberId == ''){
+				memberId = await httpGetMemberId(nomeUtente);
+				console.log('memberId: ', memberId);
+			}
         
             console.log("this.params: ", this.params);
             if(memberId !== ''){
                 //Prova con Dialog
+				indexParams = this.params.length-1;
                 if(this.params.length < 2){//ho solo il token
                     //Chiedo all'utente da che bacheca vuole leggere
-                    console.log("GetCardsTrello params < 2");
+					console.log("GetCardsTrello params < 2");
+					token = this.params[indexParams];
                     check.output = "Dimmi il nome della bacheca di Trello da dove vuoi leggere le tue schede";
                     check.slotReq = 'trelloWorkspace';
                 }else if(this.params.length ==2){ //ho il nome della bacheca
-                    indexParams = 1;
+                    
                     boardNameSaidByUser = this.params[indexParams];
                     if(boardNameSaidByUser == ''){//nome vuoto
                         this.params.splice(indexParams,1);//rimuovo l'attuale valore vuoto presente in fondo e ricomincio
@@ -221,7 +226,6 @@ class GetCardsFromBoardTrelloAction extends Action {
                         }
                     }
                 }else if(this.params.length == 3){//ho il nome della lista
-                    indexParams = 2;
                     listNameSaidByUser = this.params[indexParams];
                     if(listNameSaidByUser == ''){//nome lista vuoto
                         this.params.splice(indexParams,1);
