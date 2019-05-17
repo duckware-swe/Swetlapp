@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">swetlApp</string>
+    <string name="action_settings">Settings</string>
+    <string name="logout">Logout</string>
+    <string name="delete">Delete</string>
+    <string name="workflow">Workflow</string>
+    <string name="wf_name">Workflow name</string>
+    <string name="setwf">set</string>
+    <string name="available_connectors">AVAILABLE CONNECTORS</string>
+    <string name="active_connectors">ACTIVE CONNECTORS</string>
+    <string name="save_edits">save edits</string>
+    <string name="add">add</string>
+    <string name="remove">remove</string>
+    <string name="setConn">set</string>
+    <string name="setConnAct">Set the connector</string>
+    <string name="yConn">Your connectors</string>
+    <string name="no_location_detected">
+        No location detected. Make sure location is enabled on the device.
+    </string>
+
+    <string name="permission_rationale">Location permission is needed for core functionality</string>
+    <string name="permission_denied_explanation">Permission was denied, but is needed for core
+        functionality.</string>
+    <string name="settings">Settings</string>
+</resources>

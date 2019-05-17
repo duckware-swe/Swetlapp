@@ -1,0 +1,12 @@
+{
+    "AppSyncApiName": "testcognito",
+    "DynamoDBBillingMode": "PAY_PER_REQUEST",
+    "AuthCognitoUserPoolId": {
+        "Fn::GetAtt": [
+            "authcognito67b7895e",
+            "Outputs.UserPoolId"
+        ]
+    },
+    "S3DeploymentBucket": "testcognito-20190320172632-deployment",
+    "S3DeploymentRootKey": "amplify-appsync-files/35c0c3343b93b6e5aadebc2122b8c6b66892a3d8"
+}
