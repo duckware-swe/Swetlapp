@@ -1,0 +1,53 @@
+\input{../../../../Template_Latex/packages}
+\input{../../../../Template_Latex/commands}
+\input{../../../../Template_Latex/style}
+
+\begin{document}
+	%RIDEFINIZIONE COMANDI
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\renewcommand{\thetitle}{Nome Documento}
+	\renewcommand{\thedate}{00 Dicembre 2018}
+	\renewcommand{\theversion}{0.0.0}
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	
+	%COMANDI PER PRIMA PAGINA
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\renewcommand{\usage}{Interno/Esterno}
+	\renewcommand{\status}{Stato attuale}
+	\renewcommand{\verif}{Primo Verificatore , Secondo Verificatore}
+	\renewcommand{\resp}{Unico Responsabile}
+	\renewcommand{\editorfrow}{Nomi Editori , Prima Riga} %editors prima riga
+	\renewcommand{\editorsrow}{Nomi Editori , Seconda Riga} %editors seconda riga
+	\renewcommand{\proposer}{zero12 / blank} %esterni / interni
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	
+	%CONTENUTI
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\renewcommand{\contents}{
+		\input{../includes/sections/example}
+	}
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	
+	%PRIMA PAGINA
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\input{../../../../Template_Latex/firstPage}
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	
+	%INDICE E CHANGELOG
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\pagenumbering{roman} %enumerazione pagine per indice
+	\tableofcontents %crea indice
+	\clearpage %pagina nuova
+	\pagenumbering{gobble} %esclude dalla numerazione 
+	\input{../includes/changelog} %registro delle modifiche
+	\clearpage %pagina nuova
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+	%CONTENUTO
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\pagenumbering{arabic} %enumerazione pagine per contenuto
+	\cambiastile
+	\pagestyle{fancy}
+	\contents
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}

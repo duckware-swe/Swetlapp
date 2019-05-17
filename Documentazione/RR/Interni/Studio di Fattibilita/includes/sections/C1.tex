@@ -1,0 +1,61 @@
+\clearpage
+\section{Capitolato C1 - Butterfly}
+	\subsection{Descrizione}
+	L'obiettivo del progetto Butterfly è di semplificare i \markg{processi} di Continuos Integration e Continuos Delivery che vengono attuati nelle realtà aziendali.
+Questi \markg{processi} coinvolgono vari strumenti \markg{software} tra i quali troviamo:
+ 	\begin{description}
+ 		\item[\markg{Git}:] Per il controllo di versione distribuito (\markg{DVCS})
+ 		\item[SonarQube:] piattaforma che consente di capire la qualità del codice attraverso la sua analisi statica
+ 		\item[Redmine:] Permette di gestire uno o più progetti mantenendo sotto controllo le varie attività che ne fanno parte
+ 		\item[Jenkins:] Fornisce una serie di servizi che permettono la Continuos Integration durante lo sviluppo del \markg{software}
+ 	\end{description}
+ 	
+ 	Questi strumenti forniscono una propria interfaccia per la segnalazione dei messaggi verso l'esterno. Questa discrepanza di meccanismi di interazione con gli strumenti
+complica di molto i \markg{processi} di Continuos Integration/Delivery. Infatti per conoscere lo stato di un particolare strumento bisogna
+accedere ad una specifica dashboard; inoltre l'interfaccia offerta da questi strumenti potrebbe anche soffrire
+delle limitazioni di visibilità di rete, con la conseguenza di non essere raggiungibili in tutte le situazioni.
+
+	\subsection{Dominio Applicativo}
+Creare una piattaforma \markg{software} che accentri le segnalazioni provenienti dai vari strumenti \markg{software}.
+Questa piattaforma \markg{software} deve seguire il \markg{design pattern} Publisher/Subscriber che consenta la comunicazione asincrona fra i vari strumenti.
+Si richiede, quindi, di sviluppare una serie di componenti che si interfaccino con i vari strumenti, e provvedano a riportare le segnalazioni intercettate all'utente finale.
+La piattaforma sarà composta da quattro tipologie di componenti:
+\begin{description}
+ \item[Producers:] Sono i componenti con il compito di recuperare le segnalazioni degli strumenti, e pubblicare queste ultime all'interno di adeguati Topic. Queste segnalazioni devono essere pubblicate sotto forma di messaggi.
+E' richiesta la creazione di un componente per ciascun strumento.
+ \item[Broker:] Strumento che permetta l'instanziazione e la gestione dei vari Topic.
+ \item[Consumers:] Questi componenti sono quelli che si interfacciano con l'utente finale. 
+\end{description}
+ 
+Quindi i componenti consumer dovranno recuperare i messaggi dai Topic adeguati e procedere al loro
+   invio verso l'utente finale. 
+   L'utente finale può vedere i messaggi recuperati dai Topic nei seguenti modi:
+\begin{itemize}
+    \item Telegram
+    \item \markg{Slack}
+    \item Email
+\end{itemize}
+   Perciò è richiesta la creazione di componenti consumer che permettano, rispettivamente, di recapitare i messaggi su Telegram, \markg{Slack} o invio di Email.
+Viene inoltre chiesto di creare un applicativo Gestore Personale che recuperi i messaggi da un Topic specifico, e in base alla tipologia del messaggio (deducibile da alcuni metadati) lo inoltri verso l'utente più appropriato.
+
+\subsection{Dominio Tecnologico}
+Il capitolato non mette vincoli rigidi sull'utilizzo delle tecnologie, tuttavia viene consigliato:
+\begin{itemize}
+ \item L'uso di un linguaggio di programmazione tra \markg{Java} (versione 8 o superiore), Python o NodeJs per lo sviluppo dei componenti applicativi
+ \item L'uso del \markg{software} Apache Kafka per la realizzazione del componente Broker.
+\end{itemize}
+Invece tra le richieste difficilmente contrattabili troviamo:
+\begin{itemize} 
+ \item il \markg{software} sviluppato deve rispettare i 12 fattori esposti dal documento \href{https://en.wikipedia.org/wiki/Twelve-Factor_App_methodology}{"The Twelve-Factor App"}
+ \item uso di Docker per la creazione di vari container
+ \item i vari componenti devono mettere a disposizione delle \markg{API} Rest
+ \item tutte le componenti applicative devono essere corredate da test unitari e d'integrazione
+\end{itemize}
+
+\subsection{Valutazione Finale}
+ Il gruppo ha mostrato discreto interesse per questo capitolato in quanto risulta ben strutturato e dettagliato (riguardo anche le aspettative minime del prodotto \markg{software} finale).
+ Tuttavia si è deciso di mantenere questo capitolato come terza scelta del gruppo per i seguenti motivi:
+\begin{itemize}
+  \item le tecnologie presentate hanno generato uno scarso stimolo positivo da parte dei componenti del gruppo.
+  \item è richiesto uno sforzo abbastanza grande per quanto riguarda lo studio dell'interfacciamento con i singoli componenti.
+\end{itemize}

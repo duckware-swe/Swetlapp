@@ -1,0 +1,147 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[italian]{babel}
+\usepackage{a4wide}
+\usepackage{graphicx}
+\graphicspath{{images/}}
+\usepackage{geometry}
+\geometry{a4paper,top=3cm,bottom=3cm,left=3cm,right=3cm}
+
+%heightrounded,bindingoffset=5mm}
+
+		%%%%%%%%%%%%%%%%%%%%
+		%%%%%%%TITOLO%%%%%%%
+		%%%%%%%%%%%%%%%%%%%%
+\newcommand{\thetitle}{TITOLO DEL DOCUMENTO} %MODIFICARE IL TITOLO
+
+		%%%%%%%%%%%%%%%%%%%%
+		%%%%%%VERSIONE%%%%%%
+		%%%%%%%%%%%%%%%%%%%%
+\newcommand{\theversion}{ X.X.X } %MODIFICARE IL NUMERO DI VERSIONE
+
+		%%%%%%%%%%%%%%%%%%%%
+		%%%%VERIFICATORI%%%%
+		%%%%%%%%%%%%%%%%%%%%
+\newcommand{\verif}{Primo Verificatore, Secondo Verificatore}
+
+		%%%%%%%%%%%%%%%%%%%%
+		%%%%RESPONSABILE%%%%
+		%%%%%%%%%%%%%%%%%%%%
+\newcommand{\resp}{Unico Responsabile}
+
+		%%%%%%%%%%%%%%%%%%%%
+		%%%%%DESCRIZIONE%%%%
+		%%%%%%%%%%%%%%%%%%%%
+\newcommand{\descript}{\input{desc_documento}}
+
+\usepackage{afterpage}
+\usepackage{subfig}
+\usepackage{tikz}
+\usepackage{tabularx}
+\usetikzlibrary{shapes,arrows}
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+\pgfplotsset{plot coordinates/math parser=false}
+\newlength\figureheight
+\newlength\figurewidth
+\pgfkeys{/pgf/number format/.cd,
+set decimal separator={,\!},
+1000 sep={\,},
+}
+\usepackage{ifthen}
+\usepackage{ifpdf}
+\ifpdf
+\usepackage[pdftex]{hyperref}
+\else
+\usepackage{hyperref}
+\fi
+\usepackage{color}
+\hypersetup{%
+colorlinks=true,
+linkcolor=black,
+citecolor=black,
+urlcolor=black}
+\renewcommand{\baselinestretch}{1.05}
+		%%%%%%%%%%%%%%%%%%%%
+		%%%FANCYPAGESTYLE%%%
+		%%%%%%%%%%%%%%%%%%%%
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyfoot[R]{\thepage}
+\fancyfoot[L]{\thetitle}
+\fancyfoot[C]{}
+\fancyhead[R]{\includegraphics[width=0.15\textwidth]{logo}}
+\fancyhead[L]{\bfseries\nouppercase{\leftmark}}
+\setlength{\headheight}{15pt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\let\headruleORIG\headrule
+\renewcommand{\headrule}{\color{black} \headruleORIG}
+\renewcommand{\headrulewidth}{1.0pt}
+\usepackage{colortbl}
+\arrayrulecolor{black}
+
+\fancypagestyle{plain}{
+  \fancyhead{}
+  \fancyfoot[C]{\thepage}
+  \renewcommand{\headrulewidth}{0pt}
+}
+
+\usepackage{amsthm}
+\usepackage{amssymb,amsmath}
+
+\usepackage{array}
+\usepackage{bm}
+\usepackage{multirow}
+\usepackage[footnote]{acronym}
+
+\newcommand\blankpage{%
+    \null
+    \newpage}
+
+\parskip=5pt
+%\sloppy
+
+\begin{document}
+		%%%%%%%%%%%%%%%%%%%%
+		%%%%PRIMA PAGINA%%%%
+		%%%%%%%%%%%%%%%%%%%%
+\begin{titlepage}
+\begin{center}
+\includegraphics[width=0.5\textwidth]{logo}\\
+{\large LETTERA DI PRESENTAZIONE\\Ingegneria del Software a.a. 2018/2019}\\[0.5cm]
+{\large Alla compresenza di\\ \textbf{ZERO12}}\\[0.25cm]
+\rule{\linewidth}{0.25mm} \\[1.0cm]
+
+\noindent
+\begin{minipage}{0.4\textwidth}
+  \begin{flushleft} \large
+    \emph{Componenti:}\\ [0.25cm]
+    Sonia \textsc{Menon}\\
+	Alberto \textsc{Miola}\\
+	Alessandro \textsc{Pegoraro}\\	
+	Matteo \textsc{Pellanda}\\    
+	Pardeep \textsc{Singh}\\    
+    Luca \textsc{Stocco}
+  \end{flushleft}
+\end{minipage}%
+\begin{minipage}{0.4\textwidth}
+  \begin{flushright} \large
+    \emph{Destinatari:} \\ [0.25cm]
+    Prof.~Tullio \textsc{Vardanega}\\
+    Prof.\hspace{0.12cm} ~Riccardo \textsc{Cardin}\\
+    ZERO12 Software\\
+  \end{flushright}
+\end{minipage}\\[1.0cm]
+
+
+\begin{LARGE}
+	\textbf{Descrizione}\\ [1.0cm]
+\end{LARGE}
+	\descript%INSERISCE DESCRIZIONE DI desc_documento.tex
+\vfill
+\end{center}
+\end{titlepage}
+\end{document}

@@ -1,0 +1,166 @@
+\clearpage
+\definecolor{tableHeadYellow}{rgb}{1.0, 0.88, 0.21}
+\definecolor{tableLightYellow}{rgb}{1.0, 0.97, 0.86}
+\definecolor{white}{rgb}{1.0, 1.0, 1.0}
+
+\section{Requisiti}
+\label{sec:requisiti}
+\subsection{Classificazione dei requisiti}
+\label{sec:classificazione_requisiti}
+I requisiti vengono classificati ed assegnati attraverso l'utilizzo di un identificativo univoco secondo le regole riportate all'interno del documento Norme di progetto v2.0.0
+\subsubsection{Requisiti funzionali}
+\begin{center}
+	\renewcommand{\arraystretch}{1.5}
+	\rowcolors{3}{tableLightYellow}{}
+	\begin{longtable}{  >{\RaggedRight}p{2.5cm}  
+						>{\RaggedRight}p{2.1cm} 
+						>{\RaggedRight}p{7cm}  
+						>{\RaggedRight}p{1.7cm} 
+						}
+		\rowcolor{tableHeadYellow}
+		\textbf{Identificativo}   & \textbf{Importanza} & \textbf{Descrizioni} & \textbf{Fonte} \\ 
+		\endhead
+		R2F1   & Obbligatorio & L'utente può registrarsi creando una sua area personale nella quale inserire workflow                & Capitolato e Verbale \\  
+		R2F1.1 & Obbligatorio & La registrazione necessita di un indirizzo email valido                               & Interno              \\  
+		R2F2   & Obbligatorio & L'utente può effettuare il login alla sua area personale                                              & Capitolato           \\  
+		R2F2.1   & Obbligatorio & L'utente può effettuare il login con username e password creati dopo la registrazione               & Capitolato e Interno      \\  
+		R2F2.2 & Obbligatorio & L'utente può recuperare la password in caso di smarrimento                                            & Interno              \\  
+		R2F2.3 & Obbligatorio & L'utente può effettuare il logout                                                                    & Interno              \\  
+		R1F3   & Desiderabile & L'utente può leggere una breve guida all'uso dell'applicazione                                        & Interno              \\  
+		R2F4   & Obbligatorio & L'utente può gestire tutti i workflow che ha inserito                                                 & Capitolato           \\  
+		R2F4.1 & Obbligatorio & L'utente può aggiungere un workflow alla sua lista personale                                          & Capitolato           \\  
+		R2F4.2 & Obbligatorio & L'utente può rimuovere un workflow dalla sua lista personale                                          & Interno              \\  
+		R2F4.3 & Obbligatorio & L'utente può modificare un workflow dalla sua lista personale                                         & Interno              \\  
+		R2F4.4 & Obbligatorio & L'utente può vedere un numero che indica quanti workflow ha creato                                    & Interno              \\  
+		R2F5   & Obbligatorio & Ogni utente avrà i suoi workflow personali che non saranno visibili ad altri utenti                   & Capitolato           \\  
+		R2F6   & Obbligatorio & Ogni workflow dovrà avere un nome identificativo di almeno 4 caratteri                                & Interno              \\
+		R2F7   & Obbligatorio & L'utente può vedere una lista di connettori da assegnare al workflow su cui sta operando              & Capitolato           \\  
+		R2F7.1 & Obbligatorio & L'utente può vedere una lista di connettori da rimuovere dal workflow su cui sta operando             & Interno              \\  
+		R2F7.2 & Obbligatorio & L'utente deve poter selezionare più di un connettore per ciascun workflow                             & Verbale              \\  
+		R0F7.3 & Opzionale    & L'utente deve vedere un conteggio di quanti connettori sono stati selezionati                         & Interno              \\  
+		R2F7.4 & Obbligatorio & L'utente deve aggiungere almeno un connettore dalla lista per poter avviare il workflow               & Interno e Verbale    \\  
+		R2F7.5 & Obbligatorio & L'utente può aggiungere lo stesso connettore una sola volta per workflow                                  & Interno              \\  
+		R2F8   & Obbligatorio & L'applicazione dovrà supportare più lingue                                                            & Capitolato           \\  
+		R1F8.1 & Desiderabile & Verrà caricata automaticamente la lingua corrispondente alle impostazioni di località del dispositivo & Interno              \\
+		R2F9   & Obbligatorio	& L'utente deve poter avviare i workflow creati tramite comando vocale impartito ad Amazon Alexa & Capitolato \\
+		R1F10	& Desiderabile	& L'utente deve poter conoscere tramite comando vocale impartito ad Amazon Alexa la lista dei workflow personali creati in precedenza	& Interno \\
+		R1F11	& Desiderabile	& L'utente deve poter chiedere un aiuto per utilizzare la skill tramite comando vocale impartito ad Amazon Alexa	& Interno \\
+		R2F12	& Obbligatorio	& L'utente deve poter interrompere l'esecuzione della skill tramite comando vocale impartito ad Amazon Alexa	& Esterno e Interno \\
+		R0F13	& Opzionale	& L'utente deve poter terminare il connettore attualmente in esecuzione per passare al successivo tramite comando vocale impartito ad Amazon Alexa	& Interno \\
+		R0F14	& Opzionale & L'utente deve poter ripetere dall'inizio il workflow appena eseguito tramite comando vocale impartito ad Amazon Alexa. & Interno \\ 
+		\rowcolor{white}
+		\caption{Tabella requisiti funzionali}
+	\end{longtable}
+\end{center}
+
+\subsubsection{Requisiti di qualità}
+\begin{center}
+	\renewcommand{\arraystretch}{1.5}
+	\rowcolors{3}{tableLightYellow}{}
+	\begin{longtable}{  >{\RaggedRight}p{2.5cm}  
+						>{\RaggedRight}p{2.1cm} 
+						>{\RaggedRight}p{7cm}  
+						>{\RaggedRight}p{1.7cm} 
+						}
+		\rowcolor{tableHeadYellow}
+
+		\textbf{Identificativo}   & \textbf{Importanza} & \textbf{Descrizioni} & \textbf{Fonte} \\ 
+		\endhead
+
+		R2Q1   & Obbligatorio & Per lo sviluppo del prodotto richiesto devono essere rispettati tutti i processi descritti nel documento Piano di Qualifica v2.0.0 & Interno    \\
+		R2Q2   & Obbligatorio & L'approccio al codice Java dovrà seguire quanto riportato al seguente link: https://google.github.io/styleguide/javaguide.html                & Capitolato \\
+		R2Q2.1 & Obbligatorio & Lo sviluppo del codice deve essere supportato dall'utilizzo di test di unità                                                        & Interno    \\  
+		R2Q3   & Obbligatorio & Dovrà essere fornito un manuale utente in lingua italiana che tratterà l'uso dell'applicazione                                      & Verbale    \\  
+		R2Q4   & Obbligatorio & Il codice sorgente deve essere caricato nella piattaforma GitLab di duckware                                                        & Interno    \\  
+		R2Q5   & Obbligatorio & Per lo sviluppo del prodotto richiesto devono essere rispettate tutte le norme descritte nel documento Norme di Progetto v2.0.0 & Interno    \\  
+		R2Q6   & Obbligatorio & L'applicazione dovrà essere creata utilizzando IntelliJ IDEA                                                                               & Interno               \\  
+		R2Q6.1 & Obbligatorio & Il deploy dell'applicazione avverrà per mezzo degli strumenti di build forniti da IntelliJ IDEA                                            & Interno               \\  
+		R2Q6.2 & Obbligatorio & Il debug dell'applicazione dovrà essere eseguito sull'emulatore ufficiale fornito da Google utilizzando il toolkit AVD                        & Interno               \\  
+		R1Q6.3 & Desiderabile & Il debug dovrà avvenire in un reale dispositivo con dimensioni di schermo differenti da quelle impostate dall'emulatore creato tramite AVD & Interno               \\
+
+		\rowcolor{white}
+		\caption{Tabella requisiti di qualità}
+	\end{longtable}
+\end{center}
+\clearpage
+\subsubsection{Requisiti di vincolo}
+\begin{center}
+	\renewcommand{\arraystretch}{1.5}
+	\rowcolors{3}{tableLightYellow}{}
+	\begin{longtable}{  >{\RaggedRight}p{2.5cm}  
+						>{\RaggedRight}p{2.1cm} 
+						>{\RaggedRight}p{7cm}  
+						>{\RaggedRight}p{1.7cm} 
+						}
+		\rowcolor{tableHeadYellow}
+
+		\textbf{Identificativo}   & \textbf{Importanza} & \textbf{Descrizioni} & \textbf{Fonte} \\ 
+		\endhead
+
+		R1V1   & Desiderabile & L'applicazione dovrà essere sviluppata per dispositivi Android                                                                             & Capitolato            \\  
+		R2V1.1 & Obbligatorio & L'applicazione dovrà essere sviluppata con Java 10 o superiore                                                                             & Interno               \\  
+		R2V1.2 & Obbligatorio & L'applicazione dovrà supportare un livello di API Android che sia 26 o superiore                                                           & Interno               \\  
+		R2V1.3 & Obbligatorio & Sarà necessario utilizzare JUnit per eseguire i test di unità                                                                              & Interno               \\  
+		R2V2   & Obbligatorio & Il collegamento con i servizi di AWS avverrà tramite l'SDK AWS  di Amazon                                                                  & Capitolato            \\  
+		R2V2.1 & Obbligatorio & Verrà utilizzata la versione 2.0 dell'SDK                                                                                                  & Interno               \\  
+		R2V3   & Obbligatorio & Utilizzo di Amazon API Gateway per la realizzazione di API per la comunicazione con l'applicazione                                         & Verbale               \\  
+		R2V3.1 & Obbligatorio & Creazione di endpoint API RESTful tramite Amazon API Gateway                                                                               & Interno               \\  
+		R2V4   & Obbligatorio & Utilizzo di AWS Lambda per l'esecuzione automatica di richieste HTTP create via API Gateway                                                & Verbale               \\  
+		R2V5   & Obbligatorio & Creazione di un database non relazionale utilizzando Amazon DynamoDB                                                                       & Capitolato ed Esterno \\  
+		R2V6   & Obbligatorio & Un utente può creare workflow solamente dopo aver effettuato il login con successo                                                         & Capitolato            \\
+		R2V7   & Obbligatorio & Si dovrà creare un'architettura REST per comunicare con l'applicazione                                                              & Interno    \\
+		R2V8	& Obbligatorio & Utilizzo di  Alexa Developer Console per la definizione del modello di interazione della skill	& Interno \\
+		R2V9	& Obbligatorio & Utilizzo di AWS Lambda per l'esecuzione automatica di richieste da parte della skill	& Interno \\
+		R1V10	& Desiderabile & La skill dovrà essere sviluppata con Node.js 8.10 o superiore	& Interno \\
+		R2V11	& Obbligatorio	& La skill dovrà essere testata su Alexa Developer Console o con dispositivo fisico con supporto ad Amazon Alexa	& Capitolato ed Interno \\
+		R2V12	& Obbligatorio	& Un utente potrà accedere alle funzionalità complete della skill solo dopo aver collegato un account Amazon valido	& Interno \\
+		
+		\rowcolor{white}		
+		\caption{Tabella requisiti di vincolo}
+	\end{longtable}
+\end{center}
+\subsubsection{Requisiti prestazionali}
+\begin{center}
+	\renewcommand{\arraystretch}{1.5}
+	\rowcolors{3}{tableLightYellow}{}
+	\begin{longtable}{  >{\RaggedRight}p{2.5cm}  
+						>{\RaggedRight}p{2.1cm} 
+						>{\RaggedRight}p{7cm}  
+						>{\RaggedRight}p{1.7cm} 
+						}
+
+		\rowcolor{tableHeadYellow}
+
+		\textbf{Identificativo}   & \textbf{Importanza} & \textbf{Descrizioni} & \textbf{Fonte} \\ 
+
+		R2P1 & Desiderabile & Il server deve avere una latenza massima di 3 secondi, a meno di errori di connessione                     & Interno \\  
+		
+		\rowcolor{white}
+		\caption{Tabella requisiti prestazionali}
+	\end{longtable}
+\end{center}
+
+\input{../includes/sections/tracciamento}
+	
+\subsection{Riepilogo}
+\label{sec:riepilogo}
+\begin{center}
+	\renewcommand{\arraystretch}{1.5}
+	\rowcolors{3}{tableLightYellow}{}
+	\begin{longtable}{  >{\RaggedRight}p{1.8cm}  
+						>{\Centering}p{2cm} 
+						>{\Centering}p{2.2cm}  
+						>{\Centering}p{1.8cm} 
+						>{\Centering}p{1.2cm}
+						}
+		\rowcolor{tableHeadYellow}
+		\textbf{Tipologia}   & \textbf{Obbligatori} & \textbf{Desiderabili} & \textbf{Opzionali} & \textbf{Totale}\\ 
+		Funzionali    & 21          & 4            & 3         & 28     \\
+		Di qualità    & 9           & 1            & 0         & 10      \\  
+		Di vincolo    & 15          & 2            & 0         & 17     \\  
+		Prestazionali & 0           & 1            & 0         & 1      \\  
+		Totale        & 45         	& 8            & 3         & 56     \\
+		\rowcolor{white}
+		\caption{Tabella requisiti prestazionali}
+	\end{longtable}
+\end{center}

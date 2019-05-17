@@ -1,0 +1,146 @@
+\definecolor{white}{rgb}{1.0, 1.0, 1.0}
+\clearpage
+\section{Qualità del processo}
+\label{sec:qualita_processo}
+\subsection{Scopo}
+\label{sec:qualita_processo_scopo}
+Per garantire la qualità del prodotto finale è necessario perseguire la qualità dei processi che lo definiscono. Si è deciso di seguire un'organizzazione interna dei processi incentrata sul principio del miglioramento continuo: \markg{PDCA} (Plan, Do, Check, Act) e di adottare lo standard ISO/IEC 15504, conosciuto come \markg{SPICE} (Software Process Improvement and Capability Determination), contenente un modello di riferimento che definisce una dimensione del processo ed una dimensione della capacità.
+\subsection{Competenze}
+\label{sec:qualita_processo_competenze}
+Lo standard stila una serie di regole molto dettagliate per coloro che si occupano della qualità dei processi. Durante la realizzazione del progetto ci saranno frequenti cambi di ruolo necessari per gli scopi didattici. Risulta di conseguenza difficile applicare nel dettaglio l'intera regolamentazione. Il Gruppo \emph{duckware} si impegna a rispettare tali norme riportate nei documenti prodotti nei limiti delle conoscenze acquisibili nel tempo limitato.
+\subsection{Processi}
+\label{sec:processi}
+\subsubsection{PROC001 - Pianificazione di progetto}
+\label{sec:processo_pianificazione_progetto}
+Il seguente processo (in realtà è un macro-processo) ha lo scopo di produrre dei piani di sviluppo studiati per il progetto, comprendenti la scelta del modello di ciclo di vita del prodotto, la descrizione delle attività e dei compiti da svolgere, la pianificazione temporale del lavoro e dei costi da sostenere. Inoltre questo processo riguarda anche l'allocazione dei compiti e responsabilità ai vari membri del gruppo e le misurazioni per rilevare lo stato del progetto rispetto alle pianificazioni prodotte.\\
+\paragraph{Obiettivi}\mbox{}\\[0.4cm]
+Di seguito vengono elencate delle caratteristiche alle quali il gruppo dovrà fare particolare attenzione durante lo sviluppo del progetto:
+\begin{itemize}
+	\item \textbf{Calendario:} Assicurare una pianificazione dei lavori adatta ai compiti da svolgere, per evitare di avere ripercussioni negative sul budget preventivato;
+	\item \textbf{Budget:} Tenere sempre sotto controllo l'utilizzo del budget disponibile, al fine di non avere scarti eccessivi con il costo preventivato;
+	\item \textbf{Formazione personale:} Assicurarsi che ogni membro del gruppo abbia un adeguato livello di preparazione riguardo allo svolgimento dei task assegnati, con lo scopo di evitare ritardi rispetto a quanto pianificato;
+	\item \textbf{Task:} Assicurare l'applicazione del principio del miglioramento continuo sulla pianificazione dei \markg{task} e il loro completamento;
+	\item \textbf{Standard:} Riferirsi a standard di processo ogni qualvolta questo sia possibile.
+\end{itemize}
+Vengono utilizzate le seguenti metriche definite nelle \textit{Norme di progetto} alla §3.5:
+\begin{itemize}
+	\item \label{metrica_processo_MPRC001}\hyperref[sec:qprocesso_tabella_metriche_obiettivi]{MPRC001} Schedule Variance;
+	\item \label{metrica_processo_MPRC002}\hyperref[sec:qprocesso_tabella_metriche_obiettivi]{MPRC002} Budget Variance;
+	\item \label{metrica_processo_MPRC003}\hyperref[sec:qprocesso_tabella_metriche_obiettivi]{MPRC003} Rischi non previsti;
+	\item \label{metrica_processo_MPRC004}\hyperref[sec:qprocesso_tabella_metriche_obiettivi]{MPRC004} Indisponibilità servizi terzi;
+	\item \label{metrica_processo_MPRC005}\hyperref[sec:qprocesso_tabella_metriche_obiettivi]{MPRC005} Media di commit per settimana.
+\end{itemize}
+\paragraph{Tabella riassuntiva delle metriche e degli obiettivi}\mbox{}\\[0.4cm]
+\label{sec:qprocesso_tabella_metriche_obiettivi}
+Di seguito viene riportata la tabella riassuntiva delle metriche e degli obiettivi riconosciuti durante la qualità dei processi.
+\begin{center}
+	\renewcommand{\arraystretch}{1.5}
+	\rowcolors{3}{tableLightYellow}{}
+		\begin{longtable}{  >{\RaggedRight}p{2.8cm}  >{\RaggedRight}p{5cm} >{\RaggedRight}p{2.5cm}  >{\RaggedRight}p{2.5cm}  }
+			\rowcolor{tableHeadYellow}
+			\textbf{Metrica}   & \textbf{Obiettivo} & \textbf{Valori \mbox{accettati}} & \textbf{Valori \mbox{ottimali}}\\
+			%\textbf{MPRC001} SPICE & Miglioramento continuo & $x \eqslantgtr \text{livello 2}$ & $x \eqslantgtr \text{livello 4}$  \\
+			\textbf{\label{metrica_processo_ob_MPRC001}\hyperref[metrica_processo_MPRC001]{MPRC001}} SV & Monitoraggio schedulazione temporale & $x \eqslantless \text{- 5 giorni}$ & 0 giorni \\
+			\textbf{\label{metrica_processo_ob_MPRC002}\hyperref[metrica_processo_MPRC002]{MPRC002}} BV & Monitoraggio costo preventivo fuori budget & $x \eqslantless -10$\% & 0\% \\
+			\textbf{\label{metrica_processo_ob_MPRC003}\hyperref[metrica_processo_MPRC003]{MPRC003}} Rischi non previsti & Controllo dei rischi non previsti &  x < 3 &  x = 0  \\
+			\textbf{\label{metrica_processo_ob_MPRC004}\hyperref[metrica_processo_MPRC004]{MPRC004}} \mbox{Indisponibilità} servizi terzi & Controllo indisponibilità dei servizi terzi & x < 3 & x = 0 \\
+			\textbf{\label{metrica_processo_ob_MPRC005}\hyperref[metrica_processo_MPRC005]{MPRC005}} \mbox{Media} di commit per settimana & Controllo della media dei commit & 100 commit /settimana & 140 commit /settimana \\
+			\rowcolor{white}
+			\caption{Tabella riassuntiva metriche e obiettivi per qualità di processo}
+		\end{longtable}
+\end{center}
+\subsubsection{PROC002 - Verifica del software}
+\label{sec:verifica_del_software}
+L'obiettivo di questo processo è quello di verificare se il \markg{software} prodotto durante lo sviluppo del progetto soddisfi i \markg{requisiti} ad esso assegnati.
+\paragraph{Obiettivi}\mbox{}\\[0.4cm]
+Il software prodotto deve possedere le seguenti caratteristiche, in modo da facilitare il processo di verifica:
+\begin{itemize}
+	\item \textbf{Commenti al codice:} Ogni unità di codice deve essere sufficientemente commentata;
+	\item \textbf{Prevenzione di bug:} Bisogna accertarsi che ogni unità di codice prodotto non sia affetta da bug prima dell'utilizzo.
+\end{itemize}
+Vengono utilizzate le seguenti metriche definite nelle \textit{Norme di Progetto} alla §3.5:
+\begin{itemize}
+	\item \label{metrica_processo_MPRC006}\hyperref[sec:qprocesso_tabella_metriche_sw_obiettivi_MPRC006]{MPRC006 Misurazione dei test};
+	\item \label{metrica_processo_MPRC007}\hyperref[sec:qprocesso_tabella_metriche_sw_obiettivi_MPRC007]{MPRC007 Copertura requisiti}.
+	\item \label{metrica_processo_MPRDS014}\hyperref[sec:qprocesso_tabella_metriche_sw_obiettivi_MPRDS014]{MPRDS014 Code Coverage}.
+\end{itemize}
+
+
+\paragraph{Tabella riassuntiva delle metriche e degli obiettivi}\mbox{}\\[0.3cm]
+\textbf{MPRC006 - Misurazione dei test}
+\begin{center}	
+	\renewcommand{\arraystretch}{1.5}
+	\rowcolors{3}{tableLightYellow}{}
+	\begin{longtable}{  >{\RaggedRight}p{2.8cm}  >{\RaggedRight}p{5cm} >{\RaggedRight}p{2.5cm}  >{\RaggedRight}p{2.5cm}  }
+		\rowcolor{tableHeadYellow}
+		\textbf{Metrica}   & \textbf{Obiettivo} & \textbf{Valori \mbox{accettati}} & \textbf{Valori \mbox{ottimali}}\\
+		\textbf{\label{metrica_processo_ob_MPRC006}\hyperref[metrica_processo_MPRC006]{MPRC006.1}} & Superamento Percentuale test passati & 100\% & 100\% \\  
+		\textbf{\label{metrica_processo_ob_MPRC006}\hyperref[metrica_processo_MPRC006]{MPRC006.2}} & Superamento Percentuale test falliti & 0\% & 0\% \\ 
+		\textbf{\label{metrica_processo_ob_MPRC006}\hyperref[metrica_processo_MPRC006]{MPRC006.3}} & Superamento Efficienza progettazione test & < 40 minuti & < 20 minuti \\ 
+		\textbf{\label{metrica_processo_ob_MPRC006}\hyperref[metrica_processo_MPRC006]{MPRC006.4}} & Superamento Contenimento dei difetti & > 60\% privi & 100\% \\ 
+		\textbf{\label{metrica_processo_ob_MPRC006}\hyperref[metrica_processo_MPRC006]{MPRC006.5}} & Superamento Copertura dei test eseguiti & 90\% & 100\% \\
+		\rowcolor{white}
+		\caption{Tabella delle metriche della qualità del software - MPRC006.x}
+		\label{sec:qprocesso_tabella_metriche_sw_obiettivi_MPRC006}
+	\end{longtable}
+\end{center}
+
+\pagebreak
+\textbf{MPRC007 - Copertura requisiti}
+\label{sec:copertura_req}
+\begin{center}	
+	\renewcommand{\arraystretch}{1.5}
+	\rowcolors{3}{tableLightYellow}{}
+	\begin{longtable}{  >{\RaggedRight}p{2.8cm}  >{\RaggedRight}p{5cm} >{\RaggedRight}p{2.5cm}  >{\RaggedRight}p{2.5cm}  }
+		\rowcolor{tableHeadYellow}
+		\textbf{Metrica}   & \textbf{Obiettivo} & \textbf{Valori \mbox{accettati}} & \textbf{Valori \mbox{ottimali}}\\		
+		\textbf{\label{metrica_processo_ob_MPRC007}\hyperref[metrica_processo_MPRC007]{MPRC007}} & Superamento Copertura requisiti & > 70\% & 100\% \\ 
+		\rowcolor{white}
+		\caption{Tabella delle metriche della qualità del software - MPRC007}
+		\label{sec:qprocesso_tabella_metriche_sw_obiettivi_MPRC007}
+	\end{longtable}
+\end{center}
+\textbf{MPRDS014 - Code Coverage}
+\label{sec:copertura_req}
+\begin{center}	
+	\renewcommand{\arraystretch}{1.5}
+	\rowcolors{3}{tableLightYellow}{}
+	\begin{longtable}{  >{\RaggedRight}p{2.8cm}  >{\RaggedRight}p{5cm} >{\RaggedRight}p{2.5cm}  >{\RaggedRight}p{2.5cm}  }
+		\rowcolor{tableHeadYellow}
+		\textbf{Metrica}   & \textbf{Obiettivo} & \textbf{Valori \mbox{accettati}} & \textbf{Valori \mbox{ottimali}}\\		
+		\textbf{\label{metrica_processo_ob_MPRC007}\hyperref[metrica_processo_MPRDS014]{MPRDS014}} & Copertura Code Coverage & > 85\% & 100\% \\ 
+		\rowcolor{white}
+		\caption{Tabella delle metriche della qualità del software - MPRDS014}
+		\label{sec:qprocesso_tabella_metriche_sw_obiettivi_MPRC007}
+	\end{longtable}
+\end{center}
+
+\subsubsection{PROC003 - Gestione rischi}
+\label{sec:gestione_rischi}
+Lo scopo di questo processo è identificare nuovi rischi e monitorarli per ridurre la possibilità dell'insorgere di questi durante l'attività del progetto.
+\paragraph{Obiettivi}\mbox{}\\[0.4cm]
+Durante lo svolgimento del progetto gli analisti faranno particolare attenzione ad analizzare con cura i possibili rischi che possono insorgere nella rispettiva fase in cui si trova il progetto. 
+Quindi le azioni concrete saranno:
+\begin{itemize}
+	\item \textbf{Individuare rischi della fase:} Ad ogni nuova fase del progetto verranno analizzati possibili rischi, cercando delle soluzioni (possibilmente automatiche) per diminuire l’occorrenza di questi;
+	\item \textbf{Analisi:} I rischi saranno gestiti con una prima analisi che dovrà fornire uno strumento (o procedura automatica) per ridurre o prevenire le cause scatenanti di questo rischio.
+\end{itemize}
+Vengono utilizzate le seguenti metriche definite nelle \textit{Norme di progetto} alla §3.5:
+\begin{itemize}
+	\item \label{metrica_processo_MPRC003}\hyperref[metrica_processo_ob_MPRC003]{MPRC003} Rischi non previsti;
+	\item \label{metrica_processo_MPRC004}\hyperref[metrica_processo_ob_MPRC004]{MPRC004} Indisponibilità servizi terzi;
+\end{itemize}
+\clearpage
+\paragraph{Tabella riassuntiva delle metriche e degli obiettivi}\mbox{}\\[0.3cm]
+\begin{center}
+\renewcommand{\arraystretch}{1.5}
+\rowcolors{3}{tableLightYellow}{}
+	\begin{longtable}{  >{\RaggedRight}p{2.8cm}  >{\RaggedRight}p{5cm} >{\RaggedRight}p{2.5cm}  >{\RaggedRight}p{2.5cm}  }
+		\rowcolor{tableHeadYellow}
+		\textbf{Metrica}   & \textbf{Obiettivo} & \textbf{Valori \mbox{accettati}} & \textbf{Valori \mbox{ottimali}}\\
+		\textbf{\label{metrica_processo_ob_MPRC003}\hyperref[metrica_processo_MPRC003]{MPRC003}} Rischi non previsti & Controllo dei rischi non previsti &  x < 3 &  x = 0  \\
+		\textbf{\label{metrica_processo_ob_MPRC004}\hyperref[metrica_processo_MPRC004]{MPRC004}} \mbox{Indisponibilità} servizi terzi & Controllo indisponibilità dei servizi terzi & x < 3 & x = 0 \\
+		\rowcolor{white}
+		\caption{Tabella riassuntiva metriche e obiettivi per qualità di processo - Gestione rischi}
+	\end{longtable}
+\end{center}

@@ -1,0 +1,104 @@
+\clearpage
+\section{Analisi dei rischi}
+\label{sec:analisi_rischi}
+Questa sezione elenca i possibili rischi in cui il gruppo \emph{duckware} può incorrere durante la realizzazione del prodotto.\\
+\\
+I rischi rilevati possono essere raggruppati nelle seguenti categorie, che vengono così codificate: 
+\begin{itemize}
+	\item RT - A livello tecnologico; 
+	\item RP - A livello dei componenti del gruppo \emph{duckware};
+	\item RO - A livello di organizzazione del lavoro;
+	\item RV - A livello di valutazione dei costi;
+	\item RR - A livello dei \markg{requisiti}.
+\end{itemize}
+~
+Ogni rischio possiede:
+	
+\begin{itemize}
+	\item Descrizione;
+	\item Probabilità di occorrenza;
+	\item Grado di pericolosità;
+	\item Identificazione;
+	\item Controllo;
+	\item Contromisure.
+\end{itemize}
+Nell'appendice §B viene descritto il risultato del monitoraggio sull'effettivo riscontro di ogni rischio verificatosi nell'avanzamento del progetto.
+
+\begin{center}
+	\renewcommand{\arraystretch}{1.5}
+	\begin{longtable}[H]{   >{\RaggedRight}p{2.5cm}  
+							>{\RaggedRight}p{4.4cm} 
+							>{\RaggedRight}p{4.4cm}  
+							>{\RaggedRight}p{2.55cm}  
+							}
+							
+		\rowcolor{tableHeadYellow}
+		\textbf{Nome}   & \textbf{Descrizione} & \textbf{Identificazione e \hbox{Controllo}} & \textbf{Grado di \mbox{Rischio}}\\ 
+
+		\textbf{Tecnologie da usare RT1} 
+			&Allo stato attuale i componenti del gruppo non hanno particolari conoscenze riguardo alle tecnologie da usare (ad esempio \markg{Amazon} \markg{AWS}). Di conseguenza, i tempi di apprendimento non possono essere ben quantificabili a priori
+			&Il Responsabile deve verificare il grado di preparazione di ogni membro del gruppo \newline Ogni componente del gruppo deve studiare tutte le tecnologie necessarie, facendo uso dei documenti forniti dall'Amministratore
+			&\textbf{Occorrenza:} media
+				\newline \textbf{Pericolosità:} alta \\
+		 	\textbf{Contromisure:} &
+			\multicolumn{3}{L{12.2cm}}{Il carico di lavoro dovrà essere ridistribuito fra gli altri membri con l'accortezza di non far slittare le \markg{milestone} fissate} \\
+		
+		\rowcolor{tableLightYellow}
+		\textbf{Problemi hardware personale RT2} 
+			&Gli strumenti hardware personali dei membri del gruppo sono soggetti a rotture a malfunzionamenti, con conseguente perdita di tempo e/o dati
+			&Ogni membro è responsabile della cura del proprio computer e della notifica di comportamenti anomali \newline Il lavoro di ognuno dovrà essere salvato sul repository remoto in GitLab
+			&\textbf{Occorrenza:} \hbox{bassa}
+				\newline \textbf{Pericolosità:} media \\
+		\rowcolor{tableLightYellow}
+		 \textbf{Contromisure:} & \multicolumn{3}{L{12.2cm}}{In caso di perdita di dati, questi dovranno essere ripristinati prontamente dai membri del gruppo} \\
+		
+		\textbf{Problemi risorse condivise RT3} 
+			&Il gruppo utilizza tecnologie per lo sviluppo del progetto (quali server e software di terze parti) che possono subire malfunzionamenti o aggiornamenti instabili mettendo a rischio l'intero lavoro
+			&I membri monitoreranno con l'uso gli strumenti condivisi, notando e riportando eventuali anomalie, prestando particolare attenzione in coincidenza con aggiornamenti di software terzi
+			& \textbf{Occorrenza:} \hbox{bassa}
+				\newline \textbf{Pericolosità:} media \\
+		 \textbf{Contromisure:} & \multicolumn{3}{L{12.2cm}}{Se si verificassero problemi a risorse condivise, non risolvibili dai membri del gruppo, si cercherà di portare avanti il lavoro che non ne necessita l'uso, fino alla risoluzione del problema} \\
+		
+		\rowcolor{tableLightYellow}
+		\textbf{Contrasti nel gruppo RP1} 
+			&Per la maggior parte dei componenti, questo progetto è la prima esperienza di lavoro in un gruppo di grandi dimensioni. Tale fattore potrebbe causare problemi di collaborazione causando squilibri interni e ritardi nella consegna del prodotto
+			&Il Responsabile dovrà monitorare i rapporti tra i membri e farà da riferimento qualora sorgessero dei conflitti
+			&\textbf{Occorrenza:} \hbox{bassa}
+				\newline \textbf{Pericolosità:} media \\
+		\rowcolor{tableLightYellow}		 
+		 \textbf{Contromisure:} & \multicolumn{3}{L{12.2cm}}{Nel caso di contrasti, il Responsabile dovrà intervenire per riportare equilibrio nel gruppo} \\		
+			
+			\textbf{Problemi dei componenti RO1} 
+			&Ogni membro del gruppo ha impegni personali e necessità proprie. Risulta inevitabile il verificarsi di problemi organizzativi in seguito a sovrapposizioni di tali impegni o all'insorgere di problematiche personali
+			&Il Responsabile dovrà monitorare l'andamento dei lavori controllando le scadenze \newline Ogni membro dovrà notificare il Responsabile dell'impossibilità di portare a termine nei tempi il lavoro assegnatogli
+			&\textbf{Occorrenza:} \hbox{media}
+				\newline \textbf{Pericolosità:} media \\
+		 \textbf{Contromisure:} & \multicolumn{3}{L{12.2cm}}{Il Responsabile provvederà a una ripianificazione del lavoro, eventualmente suddividendo il carico tra i membri del gruppo disponibili per rispettare le scadenze} \\
+		 
+		 \rowcolor{tableLightYellow}
+		 \textbf{Perdita di membri RO2} 
+			&È possibile che per problemi personali, accademici o altri conflitti qualche componente sia portato a lasciare il lavoro del gruppo, mettendo a serio rischio l'organizzazione precedentemente fatta
+			&Ognuno dovrà cercare di prevedere l'insorgersi di problematiche bloccanti per l'impegno preso
+			&\textbf{Occorrenza:} \hbox{bassa}
+				\newline \textbf{Pericolosità:} molto alta \\
+		\rowcolor{tableLightYellow}
+		 \textbf{Contromisure:} & \multicolumn{3}{L{12.2cm}}{Il Responsabile provvederà a una ripianificazione del lavoro, discutendo con il gruppo e il committente eventuali rivalutazioni} \\
+		
+		\textbf{Sottostima dei costi RV1} 
+			&Durante la pianificazione è possibile che i tempi per l'esecuzione di alcune attività vengano calcolati in modo errato vista l'inesperienza dei membri del gruppo
+			&Ad ogni implementazione di una tecnologia proposta si andrà a controllare il tempo impiegato per aggiungerla \newline Ad ogni fase del progetto, il gruppo svolgerà delle considerazioni sullo stato dei lavori (monitorato dal Responsabile) per individuare eventuali false stime dei costi
+			&\textbf{Occorrenza:} \hbox{media}
+				\newline \textbf{Pericolosità:} alta \\	 
+		 \textbf{Contromisure:} & \multicolumn{3}{L{12.2cm}}{In caso di ritardi, il Responsabile dovrà provvedere a una redistribuzione del lavoro residuo tra i membri} \\
+
+			\rowcolor{tableLightYellow}
+			\textbf{Variazione nei requisiti RR1} 
+			&È possibile che alcuni \markg{requisiti} siano individuati in modo erroneo o incompleto da parte degli Analisti rispetto alle aspettative del proponente. Sarà quindi possibile che alcuni \markg{requisiti} vengano rimossi, aggiunti o modificati durante il corso del progetto;
+			&Per ridurre al minimo la probabilità che si verifichi un tale errore nella prima fase di analisi vi è stato un continuo confronto con il proponente sia in via telematica che con incontri personali
+			&\textbf{Occorrenza:} \hbox{media}
+				\newline \textbf{Pericolosità:} alta \\
+		\rowcolor{tableLightYellow}
+		 \textbf{Contromisure:} & \multicolumn{3}{L{12.2cm}}{Sarà indispensabile correggere eventuali errori o imprecisioni indicati dal committente al termine di ogni revisione o incontro con il gruppo} \\
+		\caption{Tabella analisi rischi}
+	\end{longtable}
+\end{center}

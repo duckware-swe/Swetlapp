@@ -1,0 +1,44 @@
+\clearpage
+
+\section{Preparazione ambiente di lavoro}
+\label{sec:ambientelavoro}
+\subsection{Scopo del paragrafo}
+Questo paragrafo spiega come configurare l'ambiente di lavoro di modo che possa essere replicato da chiunque per operare nelle stesse condizioni del team \textit{duckware}. Tutti i tool che verranno elencati non sono obbligatori ma evitano l'insorgere di problemi legati alla compatibilità.
+
+\subsection{Node.js}
+Per la creazione della Skill di Alexa è necessario installare Node.js, disponibile sia per Windows che per Mojave. Successivamente, bisognerà aprire la console di Node.js ed eseguire:
+\begin{verbatim}
+    npm install aws-sdk
+\end{verbatim}
+In questo modo verranno installati tutti i pacchetti necessari per poter lavorare sul codice delle Skill. Si consiglia l'aggiornamento frequente della libreria \emph{aws-sdk} che viene settimanalmente aggiornata.
+
+\subsection{Android Studio}
+L'IDE scelto per lo sviluppo di \textit{SwetlApp} è Android Studio, il tool ufficiale di Google scaricabile gratuitamente e disponibile sia per Microsoft Windows sia per MacOS Mojave.\\[0.25cm]
+Dal sito ufficiale è disponibile anche una versione per Linux ma questa non risulta essere stabile in tutte le distribuzioni e si possono riscontrare diversi problemi nella configurazione dei dispositivi virtuali.
+
+\subsection{Amplify}
+Amplify è un framework di AWS che facilita l'integrazione dei servizi di AWS nelle applicazioni Android e iOS. Nel progetto \emph{SwetlApp} è stato utilizzato per aggiungere all applicazione il servizio di autenticazione Cognito e per generare le API.\\[0.25cm]
+L'installazione di Amplify avviene all'interno della CLI di Android Studio eseguendo il seguente comando, premesso che Node.js sia stato installato:
+\begin{verbatim}
+    npm install -g @aws-amplify/cli
+\end{verbatim}
+Per configurare l'ambiente al primo avvio e scaricare le dipendenze necessarie bisognerà utilizzare sempre nella CLI questo comando:
+\begin{verbatim}
+    amplify configure
+\end{verbatim}
+Per impostare permessi e ruoli e collegare il progetto al backend su cloud AWS che si aggiungerà sarà necessario spostarsi nella root del progetto e dare il comando
+\begin{verbatim}
+    amplify init
+\end{verbatim}
+Per modificare le API (riferite ad un endpoint GraphQL) sarà necessario modificare il file SwetlApp \textbackslash amplify \textbackslash backend \textbackslash api \textbackslash SwetlApp \textbackslash schema.graphql e dare il comando 
+\begin{verbatim}
+    amplify api push
+\end{verbatim}
+Per aggiungere plugin (per una spiegazione in dettaglio su questi riferirsi alla sezione Architecture del link di Amplify fornito) è necessario dare il comando:
+\begin{verbatim}
+    amplify <category> add
+\end{verbatim}
+dove <category> si riferisce al tipo di plugin.
+
+\subsection{Java Development Kit}
+Con l'installazione di Android Studio viene automaticamente installata la versione più recente del JDK, compatibile con l'IDE. È anche possibile installare la propria versione del kit anche se ci potrebbero essere dei problemi di compatibilità. Su Windows andrà installato \emph{JDK} mentre su MacOS \emph{OpenJDK}.

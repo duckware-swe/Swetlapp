@@ -1,0 +1,11 @@
+type User @model {
+  id: ID!
+  name: String!
+  workflow: [Workflow!]
+}
+
+type Workflow {
+  idwf: ID!
+  name: String
+  def: String
+}

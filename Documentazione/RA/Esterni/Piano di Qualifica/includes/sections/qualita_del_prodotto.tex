@@ -1,0 +1,143 @@
+\clearpage
+\section{Qualità del prodotto}
+\label{sec:qualita_prodotto}
+\subsection{Scopo}
+\label{sec:qualita_prodotto_scopo}
+Basandosi sullo standard ISO/IEC 9126, sono state individuate le qualità che secondo il gruppo \emph{duckware} risultano importanti nell'arco del ciclo di vita del prodotto.
+\subsection{Prodotti}
+\subsubsection{Qualità dei documenti}
+\label{sec:qualita_documenti}
+I documenti prodotti dal gruppo \emph{duckware} dovranno essere leggibili, comprensibili e corretti dal punto di vista ortografico, sintattico, logico e semantico.
+\paragraph{Comprensione}
+\begin{itemize}
+	\item \textbf{Leggibilità}: i documenti prodotti devono essere leggibili e comprensibili a persone con almeno licenza di scuola superiore di primo grado;
+	\item \textbf{Correttezza ortografica}: i documenti prodotti non devono presentare errori ortografici.
+\end{itemize}
+Verranno utilizzate le seguenti metriche definite nelle \textit{Norme di progetto} alla §3.6:
+\begin{itemize}
+	\item \hyperref[sec:qprodotto_tabella_metriche_obiettivi]{MPRDD001} Indice di Gulpease;
+	\item \hyperref[sec:qprodotto_tabella_metriche_obiettivi]{MPRDD002} Correttezza ortografica.
+\end{itemize}
+\subsubsection{Qualità del software}
+\label{sec:qualita_software_parag}
+\paragraph{Funzionalità}\mbox{}\\
+Il prodotto deve fornire tutte le funzionalità che sono state individuate durante la redazione del documento \emph{Analisi dei requisiti}.\\[0.4cm]
+\textbf{Obiettivi di qualità} \ Il gruppo \emph{duckware} si impegna a perseguire:
+\begin{itemize}
+	\item \textbf{Adeguatezza}: le funzionalità offerte dal prodotto risultano conformi rispetto alle aspettative;
+	\item \textbf{Accuratezza}: il prodotto fornisce i risultati attesi, soddisfacendo il livello di dettaglio richiesto;
+	\item \textbf{Sicurezza}: il prodotto assicura la protezione dei dati e delle informazioni che gli verranno forniti, affinché non sia permesso nè l'accesso nè la modifica a utenti o sistemi non autorizzati.
+\end{itemize}
+Verranno utilizzate le seguenti metriche definite nelle \textit{Norme di progetto} alla §3.7:
+\begin{itemize}
+	\item \hyperref[sec:qualita_software]{MPRDS001} Copertura \markg{requisiti obbligatori};
+	\item \hyperref[sec:qualita_software]{MPRDS002} Copertura \markg{requisiti accettati}.
+\end{itemize}
+
+\paragraph{Affidabilità}\mbox{}\\[0.4cm]
+Il prodotto software deve svolgere correttamente le sue funzioni durante il suo utilizzo, anche in caso in cui si presentino situazioni non previste (anomale).\\ 
+\textbf{Obiettivi di qualità} \ L'esecuzione del prodotto dovrà avere le seguenti caratteristiche:
+\begin{itemize}
+	\item \textbf{Maturità:} principalmente si vuole evitare che si verifichino dei malfunzionamenti in seguito a difetti del software;
+	\item \textbf{Tolleranza agli errori:} nel caso in cui si verifichino degli errori, dovuti a guasti o ad un uso scorretto dell'applicativo, questi devono essere gestiti correttamente.
+\end{itemize}
+Verranno utilizzate le seguenti metriche definite nelle \textit{Norme di progetto} alla §3.7:
+\begin{itemize}
+	\item \hyperref[sec:qualita_software]{MPRDS003} Percentuale di \markg{failure};
+	\item \hyperref[sec:qualita_software]{MPRDS004} Blocco operazioni non corrette.
+\end{itemize}
+
+\paragraph{Usabilità}\mbox{}\\[0.4cm]
+Rappresenta la capacità del prodotto finale di poter essere usato e compreso facilmente, in ogni sua parte, da qualsiasi utente che lo voglia usare.\\[0.4cm]
+\textbf{Obiettivi di qualità} \ Il prodotto dovrà puntare ai seguenti obiettivi di usabilità:
+\begin{itemize}
+	\item \textbf{Comprensibilità:} l'utente deve essere in grado di riconoscere le funzionalità che sono offerte dal software, e deve poter comprendere le sue modalità di utilizzo per raggiungere i risultati attesi;
+	\item \textbf{Apprendibilità:} all'utente viene data la possibilità di poter imparare le funzionalità offerte dal software;
+	\item \textbf{Operabilità:} le funzioni presenti devono essere coerenti con le aspettative dell'utente;
+	\item \textbf{Attrattiva:} l'utilizzo del software deve risultare piacevole per l'utente.
+\end{itemize}
+Verranno utilizzate le seguenti metriche definite nelle \textit{Norme di progetto} alla §3.7:
+\begin{itemize}
+	\item \hyperref[sec:qualita_software]{MPRDS005} Comprensibilità delle funzioni offerte;
+	\item \hyperref[sec:qualita_software]{MPRDS006} Facilità di apprendimento delle funzionalità.
+\end{itemize}
+
+\textbf{Misurazione}
+Queste metriche di usabilità saranno misurate tramite alcune sessioni di prova con utenti esterni, così da ottenere \markg{feedback} reali e misurazioni attendibili. Per questa procedura non è ancora possibile stabilire che metriche usare per misurarne l'usabilità del prodotto. Verrà decisa in successiva revisione dopo un'analisi approfondita con la proponente.
+
+\paragraph{Efficienza}\mbox{}\\[0.4cm]
+Attraverso questa metrica è possibile determinare la capacità del prodotto di eseguire le funzionalità offerte nel minor tempo possibile.
+Inoltre con la misurazione dell'efficienza si vuole anche ridurre il numero di risorse usate dal software per eseguire le funzionalità offerte.\\[0.4cm]
+\textbf{Obiettivi di qualità} \ Il prodotto deve essere il più efficiente possibile secondo i seguenti criteri:
+\begin{itemize}
+	\item \textbf{Comportamento rispetto al tempo:} il software deve eseguire le funzionalità che offre in tempi adeguati;
+	\item \textbf{Utilizzo delle risorse:} il software, per eseguire le sue funzionalità, deve avvalersi di un appropriato numero e tipo di risorse.
+\end{itemize}
+Verranno utilizzate le seguenti metriche definite nelle \textit{Norme di progetto} alla §3.7:
+\begin{itemize}
+	\item \hyperref[sec:qualita_software]{MPRDS007} Tempo di risposta.
+	\item \hyperref[sec:qualita_software]{MPRDS009} Complessità ciclomatica.
+\end{itemize}
+
+\paragraph{Manutenibilità}\mbox{}\\[0.4cm]
+Questa metrica indica la capacità del software di poter essere modificato, adattato o migliorato a seconda delle esigenze.\\[0.4cm]
+\textbf{Obiettivi di qualità} \ Per misurare la misurabilità si andranno a valutare le seguenti caratteristiche del software:
+\begin{itemize}
+	\item \textbf{Stabilità:} a seguito di modifiche del software non devono insorgere effetti non voluti;
+	\item \textbf{Testabilità:} si deve poter facilmente testare il software;
+	\item \textbf{Modificabilità:} il software deve poter essere modificato in alcune delle parti che lo compongono;
+	\item \textbf{Analizzabilità:} si deve poter identificare facilmente le possibili cause di eventuali errori/malfunzionamenti.
+\end{itemize}
+Verranno utilizzate le seguenti metriche definite nelle \textit{Norme di progetto} alla §3.7:
+\begin{itemize}
+	\item \hyperref[sec:qualita_software]{MPRDS008} Impatto delle modifiche;
+	\item \hyperref[sec:qualita_software]{MPRDS010} Numero di metodi;
+	\item \hyperref[sec:qualita_software]{MPRDS011} Variabili non utilizzate.
+	\item \hyperref[sec:qualita_software]{MPRDS013} Rapporto linee di codice e commento.
+\end{itemize}
+\clearpage
+\subsection{Tabella riassuntiva delle metriche e degli obiettivi}
+\label{sec:qprodotto_tabella_metriche_obiettivi}
+\textbf{Documenti}\\
+Di seguito viene riportata la tabella riassuntiva delle metriche e degli obiettivi riconosciuti, con il range di accettazione e di ottimalità, per le misure effettuate nei documenti.
+\label{sec:qprodotto_tabella_metriche_obiettivi}
+\begin{center}	\renewcommand{\arraystretch}{1.5}
+	\rowcolors{3}{tableLightYellow}{}
+	\begin{longtable}{  >{\RaggedRight}p{2.8cm}  >{\RaggedRight}p{5cm} >{\RaggedRight}p{2.5cm}  >{\RaggedRight}p{2.5cm}  }
+		\rowcolor{tableHeadYellow}
+		\textbf{Metrica}   & \textbf{Obiettivo} & \textbf{Valori \mbox{accettati}} & \textbf{Valori \mbox{ottimali}}\\
+		\textbf{MPRDD001} Indice di Gulpease & Leggibilità del documento & 50 < x < 100 & 60 < x < 100 \\
+		\textbf{MPRDD002} Correttezza ortografica & Documenti privi di errori & 95\% privi & 100\% privi \\
+		\rowcolor{white}
+		\caption{Tabella delle metriche della qualità di documenti}
+	\end{longtable}
+\end{center}
+\pagebreak
+\textbf{Software}\\
+Di seguito viene riportata la tabella riassuntiva delle metriche e degli obiettivi riconosciuti, con il range di accettazione e di ottimalità, per le misure effettuate nel software.
+\label{sec:qualita_software}
+\begin{center}
+	\centering
+	\renewcommand{\arraystretch}{1.5}
+	\rowcolors{3}{tableLightYellow}{}
+	\begin{longtable}{ >{\RaggedRight}p{2.8cm} >{\RaggedRight}p{5cm}  >{\RaggedRight}p{3cm} >{\RaggedRight}p{2.5cm}  }
+		\rowcolor{tableHeadYellow}
+		\textbf{Metrica}  & \textbf{Obiettivo} & \textbf{Range \mbox{accettazione}} & \textbf{Range \mbox{ottimale}} \\ 
+		%\endhead
+		\textbf{MPRDS001} & Copertura requisiti obbligatori & 100\% & 100\% \\
+		\textbf{MPRDS002} & Copertura requisiti accettati & 60\% - 100\% & 80\% - 100\% \\
+		\textbf{MPRDS003} & Percentuale di failure & 0\% - 5\% & 0\% \\
+		\textbf{MPRDS004} & Blocco operazioni non corrette & 80\% - 100\% & 100\% \\
+		\textbf{MPRDS005} & Comprensibilità delle funzioni offerte & 80\% -100\% & 85\% - 100\% \\
+		\textbf{MPRDS006} & Facilità di apprendimento delle funzionalità & 0 - 30 min & 0-15 min \\
+		\textbf{MPRDS007} & Tempo di risposta & 0 - 4 sec & 0 - 2 sec \\
+		\textbf{MPRDS008} & Impatto delle modifiche & 0\% - 20\% & 0\% - 10\% \\
+		\textbf{MPRDS009} & Complessità ciclomatica                & 0 - 30      &      0 - 30 \\
+		\textbf{MPRDS010} & Numero di metodi                       & 2 - 10      &      3 - 8 \\
+		\textbf{MPRDS011} & Variabili non utilizzate               & 0           &      0 \\
+		\textbf{MPRDS012} & Numero di bug per linea                & 0 - 60      &      0 - 25 \\
+		\textbf{MPRDS013} & Rapporto linee di codice e commento    & \textgreater { 0.20 }      & SV \textgreater { 0.30 } \\
+		\rowcolor{white}
+		\caption{Tabella delle metriche della qualità del software}
+	\end{longtable}
+\end{center}
