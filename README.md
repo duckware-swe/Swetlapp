@@ -8,7 +8,7 @@
 * [AWS] - for Amazon's services
 * [Latex] - for documentation
  
-### Componenti del team Duck 
+## Componenti del team Duck 
 | Membro | Matricola | Email |
 |---------|-----------|-------|
 Sonia Menon | 1144731 | sonia.menon@studenti.unipd.it
@@ -21,7 +21,7 @@ Pardeep Singh | 1143264 | pardeep.singh@studenti.unipd.it
 
 Email: duckware.swe@gmail.com
 
-### Link delle presentazioni 
+## Link delle presentazioni 
 
 * [Revisione dei Requisiti](https://prezi.com/jzqlkuw-sn_f/?utm_campaign=share&utm_medium=copy&rc=ex0share)
 * [Revisione di Progettazione](https://slides.com/soniamenon/deck-3/fullscreen)
