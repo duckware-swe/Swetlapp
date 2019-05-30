@@ -22,7 +22,7 @@ Email: duckware.swe@gmail.com
 
 ### Link delle presentazioni 
 
-* (Revisione dei Requisiti)[https://prezi.com/jzqlkuw-sn_f/?utm_campaign=share&utm_medium=copy&rc=ex0share]
-* (Revisione di Progettazione)[https://slides.com/soniamenon/deck-3/fullscreen]
-* (Revisione di Qualifica)[https://slides.com/mpelland/rq-2/fullscreen]
-* (Revisione dei Accettazione)[https://slides.com/mpelland/rq-8a9bdcc8-ec12-4f8e-9f97-696ba6368677/fullscreen]
+* [Revisione dei Requisiti](https://prezi.com/jzqlkuw-sn_f/?utm_campaign=share&utm_medium=copy&rc=ex0share)
+* [Revisione di Progettazione](https://slides.com/soniamenon/deck-3/fullscreen)
+* [Revisione di Qualifica](https://slides.com/mpelland/rq-2/fullscreen)
+* [Revisione dei Accettazione](https://slides.com/mpelland/rq-8a9bdcc8-ec12-4f8e-9f97-696ba6368677/fullscreen)
