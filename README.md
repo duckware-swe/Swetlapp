@@ -6,6 +6,7 @@
 * [Java] - Android Studio for Android Application
 * [NodeJS] - for Amazon Alexa Skill & Amazon Lambda
 * [AWS] - for Amazon's services
+* [Latex] - for documentation
  
 ### Componenti del team Duck 
 | Membro | Matricola | Email |
@@ -26,3 +27,5 @@ Email: duckware.swe@gmail.com
 * [Revisione di Progettazione](https://slides.com/soniamenon/deck-3/fullscreen)
 * [Revisione di Qualifica](https://slides.com/mpelland/rq-2/fullscreen)
 * [Revisione dei Accettazione](https://slides.com/mpelland/rq-8a9bdcc8-ec12-4f8e-9f97-696ba6368677/fullscreen)
+
+**Free Software**
