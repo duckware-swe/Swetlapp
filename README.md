@@ -1,7 +1,13 @@
 
 # Progetto SWE a.a. 2018/2019 - Duckware
+
+## Tecnologie utilizzate
+
+* [Java] - Android Studio for Android Application
+* [NodeJS] - for Amazon Alexa Skill & Amazon Lambda
+* [AWS] - for Amazon's services
  
-## Componenti del team Duck 
+### Componenti del team Duck 
 | Membro | Matricola | Email |
 |---------|-----------|-------|
 Sonia Menon | 1144731 | sonia.menon@studenti.unipd.it
