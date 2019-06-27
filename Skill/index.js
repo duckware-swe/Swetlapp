@@ -9,6 +9,7 @@ const LaunchRequestHandler = {
     canHandle(handlerInput) {
         return handlerInput.requestEnvelope.request.type === 'LaunchRequest';
     },
+    
     async handle(handlerInput) {
         const { accessToken } = handlerInput.requestEnvelope.context.System.user;
         let speechText = '';
