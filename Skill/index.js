@@ -74,7 +74,6 @@ function httpGet(options) {
             });
 
             response.on('end', () => {
-                //console.log({ returnData });
                 resolve(JSON.parse(returnData));
             });
 
@@ -117,14 +116,12 @@ const RunWorkflowHandler = {
             && request.intent.slots.workflow;
     },
     async handle(handlerInput) {
-    	console.log("entro in RunWork");
     	let request = handlerInput.requestEnvelope.request;
         let workflowName = request.intent.slots.workflow.value;
         let speechText = '';
         const attributi = handlerInput.attributesManager.getSessionAttributes();
         let username = attributi.username;
         let response;
-        //console.log(request.intent);
         let check = {
         		output: '',
         		slotReq: 'DEFAULT'
@@ -138,7 +135,6 @@ const RunWorkflowHandler = {
         let i=0;
         for(; i<actionList.actions_records.length && check.slotReq=='DEFAULT'; i++) {
             let action = actionList.actions_records[i];
-            //console.log("Esecuzione azione: " + action.action);
             try {
             	check = await actionFactory(action.action, action.params).run();
                 //speechText += await actionFactory(action.action, action.params).run();
@@ -237,7 +233,6 @@ const InProgressRunWorkflowHandler = {
         	//faccio partire il WF solo se ho ottenuto una risposta giusta
         	for(; i<actionList.actions_records.length && check.slotReq=='DEFAULT'; i++) {
 	            let action = actionList.actions_records[i];
-	            //console.log("Esecuzione azione: " + action.action);
 	            try {
 	            	check = await actionFactory(action.action, action.params).run();
 	                //speechText += await actionFactory(action.action, action.params).run();
@@ -250,7 +245,6 @@ const InProgressRunWorkflowHandler = {
         }else{
         	let speechText = 'Scusa, puoi ripetere?';
         }      
-        console.log("esco dal for");
         if(check.slotReq!='DEFAULT'){
 	        //salvo la lista di azioni
         	attributi.actionList = actionList;
@@ -376,7 +370,6 @@ const ErrorHandler = {
 let skill;
 
 exports.handler = async function (event, context) {
-    //console.log(`REQUEST++++${JSON.stringify(event)}`);
     if (!skill) {
         skill = Alexa.SkillBuilders.standard()
             .addRequestHandlers(
@@ -394,7 +387,6 @@ exports.handler = async function (event, context) {
     }
 
     const response = await skill.invoke(event, context);
-    //console.log(`RESPONSE++++${JSON.stringify(response)}`);
 
     return response;
 };
