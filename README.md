@@ -4,9 +4,9 @@
 ## Tecnologie utilizzate
 
 * [Java] - Android Studio for Android Application
-* [NodeJS] - for Amazon Alexa Skill & Amazon Lambda
-* [AWS] - for Amazon's services
-* [Latex] - for documentation
+* [NodeJS] - Amazon Alexa Skill & Amazon Lambda
+* [AWS] - Amazon's services
+* [Latex] - Documentation
  
 ## Componenti del team Duck 
 | Membro | Matricola | Email |
